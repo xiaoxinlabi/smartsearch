@@ -1,7 +1,7 @@
 package info.puton.product.smartsearch.service.impl;
 
 import info.puton.product.smartsearch.dao.HBaseDao;
-import info.puton.product.smartsearch.service.HBaseFileOperator;
+import info.puton.product.smartsearch.service.FileStorage;
 import info.puton.product.smartsearch.util.FileUtil;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,7 @@ import java.io.File;
  * Created by taoyang on 2016/9/20.
  */
 @Service
-public class HBaseService implements HBaseFileOperator {
+public class HBaseService implements FileStorage {
 
     @Autowired
     HBaseDao hbd;
