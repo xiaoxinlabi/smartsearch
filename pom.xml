@@ -49,6 +49,10 @@
     <jackson.version>2.7.6</jackson.version>
     <gson.version>2.7</gson.version>
     <junit.version>4.12</junit.version>
+    <tika.version>1.13</tika.version>
+    <es.version>2.0.0</es.version>
+    <hbase.version>0.98.6-hadoop2</hbase.version>
+    <hdfs.version>2.2.0</hdfs.version>
 
   </properties>
 
@@ -99,6 +103,39 @@
       <artifactId>junit</artifactId>
       <version>${junit.version}</version>
       <scope>test</scope>
+    </dependency>
+
+    <!-- HBase-->
+    <dependency>
+      <groupId>org.apache.hbase</groupId>
+      <artifactId>hbase-client</artifactId>
+      <version>${hbase.version}</version>
+    </dependency>
+
+    <!-- HDFS-->
+    <dependency>
+      <groupId>org.apache.hadoop</groupId>
+      <artifactId>hadoop-hdfs</artifactId>
+      <version>${hdfs.version}</version>
+    </dependency>
+
+    <!-- Tika -->
+    <dependency>
+      <groupId>org.apache.tika</groupId>
+      <artifactId>tika-core</artifactId>
+      <version>${tika.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.tika</groupId>
+      <artifactId>tika-parsers</artifactId>
+      <version>${tika.version}</version>
+    </dependency>
+
+    <!-- ES -->
+    <dependency>
+      <groupId>org.elasticsearch</groupId>
+      <artifactId>elasticsearch</artifactId>
+      <version>${es.version}</version>
     </dependency>
 
   </dependencies>
