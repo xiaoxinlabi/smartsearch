@@ -5,6 +5,8 @@ package info.puton.product.smartsearch.service;
  */
 public interface HBaseFileOperator {
 
+    void initStorage() throws Exception;
+
     void putFile(String filePath, String key) throws Exception;
 
     void getFile(String fileLocation, String key) throws Exception;

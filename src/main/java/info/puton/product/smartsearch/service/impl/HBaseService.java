@@ -32,11 +32,8 @@ public class HBaseService implements HBaseFileOperator {
         static String DATA = "data";
     }
 
-    public void deleteTable() throws Exception {
+    public void initStorage() throws Exception {
         hbd.deleteTable(TABLE.FILE);
-    }
-
-    public void createTable() throws Exception {
         hbd.createTable(TABLE.FILE, COLUMN_FAMILY.FILE);
     }
 
@@ -57,24 +54,6 @@ public class HBaseService implements HBaseFileOperator {
         String filePath = fileLocation + "/" + name + "." + type;
         File file = new File(filePath);
         FileUtils.writeByteArrayToFile(file, data);
-    }
-
-    public static void main(String[] args) {
-        try {
-
-            HBaseFileOperator hbfo = new HBaseService();
-
-//            HBaseFileStore.deleteTable();
-
-            String filePath = "D:/programming/java/practice/hbase-practice/src/main/resources/一碗阳春面.docx";
-
-//            putFile(filePath, "a00002");
-
-            hbfo.getFile("E:/tmp/yang", "a00002");
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
 }
