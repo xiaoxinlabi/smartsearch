@@ -7,6 +7,28 @@
   <version>1.0-SNAPSHOT</version>
   <name>SmartSearch</name>
   <url>http://puton.info/article/smartsearch.html</url>
+  <developers>
+    <developer>
+      <id>yang</id>
+      <name>阳</name>
+      <email>ty@puton.info</email>
+      <organization>Teradata</organization>
+      <roles>
+        <role>Architect</role>
+        <role>Backend Developer</role>
+      </roles>
+    </developer>
+    <developer>
+      <id>pauline</id>
+      <name>波琳</name>
+      <email>pauline@puton.info</email>
+      <organization>Teradata</organization>
+      <roles>
+        <role>UI Designer</role>
+        <role>Frontend Developer</role>
+      </roles>
+    </developer>
+  </developers>
 
   <properties>
 
