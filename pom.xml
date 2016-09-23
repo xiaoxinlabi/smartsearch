@@ -150,7 +150,7 @@
       <version>${spring.data.elasticsearch.version}</version>
     </dependency>
 
-    <!-- google -->
+    <!-- Google -->
     <dependency>
       <groupId>com.google.guava</groupId>
       <artifactId>guava</artifactId>

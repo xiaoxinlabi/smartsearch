@@ -5,7 +5,7 @@ package info.puton.product.smartsearch.model;
  */
 public class FileFullText {
 
-    private String fileKey;
+    private String id;
 
     private String fileName;
 
@@ -18,31 +18,12 @@ public class FileFullText {
     public FileFullText() {
     }
 
-    public FileFullText(String fileKey, String fileName, String author, String modifyDate, String content) {
-        this.fileKey = fileKey;
-        this.fileName = fileName;
-        this.author = author;
-        this.modifyDate = modifyDate;
-        this.content = content;
+    public String getId() {
+        return id;
     }
 
-    @Override
-    public String toString() {
-        return "FileFullText{" +
-                "fileKey='" + fileKey + '\'' +
-                ", fileName='" + fileName + '\'' +
-                ", author='" + author + '\'' +
-                ", modifyDate='" + modifyDate + '\'' +
-                ", content='" + content + '\'' +
-                '}';
-    }
-
-    public String getFileKey() {
-        return fileKey;
-    }
-
-    public void setFileKey(String fileKey) {
-        this.fileKey = fileKey;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getFileName() {
@@ -77,5 +58,14 @@ public class FileFullText {
         this.content = content;
     }
 
-
+    @Override
+    public String toString() {
+        return "FileFullText{" +
+                "id='" + id + '\'' +
+                ", fileName='" + fileName + '\'' +
+                ", author='" + author + '\'' +
+                ", modifyDate='" + modifyDate + '\'' +
+                ", content='" + content + '\'' +
+                '}';
+    }
 }

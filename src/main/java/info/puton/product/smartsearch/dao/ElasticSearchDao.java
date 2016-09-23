@@ -1,5 +1,6 @@
 package info.puton.product.smartsearch.dao;
 
+import org.elasticsearch.action.delete.DeleteResponse;
 import org.elasticsearch.action.index.IndexResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
@@ -21,6 +22,11 @@ public class ElasticSearchDao {
                 .setSource(data)
                 .get();
         System.out.println("Index created. id:" + response.getId());
+    }
+
+    public void deleteIndex(String index, String type, String id){
+        DeleteResponse response = elasticsearchTemplate.getClient().prepareDelete(index, type, id).get();
+        System.out.println("Index deleted. id:" + response.getId());
     }
 
 }

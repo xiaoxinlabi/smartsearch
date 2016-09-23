@@ -26,36 +26,29 @@ import java.util.UUID;
 public class TikaService implements FileExtractor {
 
     @Override
-    public FileFullText extract(File file) {
+    public FileFullText extract(File file) throws TikaException, SAXException, IOException {
         FileFullText fileFullText = new FileFullText();
         String fileKey = UUID.randomUUID().toString();
-        fileFullText.setFileKey(fileKey);//fileKey
+        fileFullText.setId(fileKey);//fileKey
         fileFullText.setFileName(file.getName());//fileName
         ContentHandler handler = new BodyContentHandler();
         AutoDetectParser parser = new AutoDetectParser();
         Metadata metadata = new Metadata();
-        try {
-            InputStream stream = TikaInputStream.get(file.toPath());
-            parser.parse(stream, handler, metadata);
+        InputStream stream = TikaInputStream.get(file.toPath());
+        parser.parse(stream, handler, metadata);
 //            for (String name : metadata.names()) {
 //                System.out.println(name + ":" + metadata.get(name));
 //            }
-            String author = metadata.get("Author");//author
-            fileFullText.setAuthor(author);
+        String author = metadata.get("Author");//author
+        fileFullText.setAuthor(author);
 //            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-            Date date = metadata.getDate(Property.get("Last-Modified"));
-            String lastModified = sdf.format(date);
-            fileFullText.setModifyDate(lastModified);//modifyDate
-            String content = handler.toString();
-            fileFullText.setContent(content);//content
-        } catch (SAXException e) {
-            e.printStackTrace();
-        } catch (TikaException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = metadata.getDate(Property.get("Last-Modified"));
+        String lastModified = sdf.format(date);
+        fileFullText.setModifyDate(lastModified);//modifyDate
+        String content = handler.toString();
+        fileFullText.setContent(content);//content
+        System.out.println("Metadata extracted. fileKey:" + fileKey);
         return fileFullText;
     }
 }

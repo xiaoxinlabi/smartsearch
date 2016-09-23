@@ -76,6 +76,7 @@ public class HBaseDao {
         Put p1 = new Put(Bytes.toBytes(rowKey));
         p1.add(Bytes.toBytes(columnFamily), Bytes.toBytes(qualifier), data);
         table.put(p1);
+        System.out.println("Cell put. rowKey:" + rowKey);
     }
 
     /**
@@ -89,7 +90,6 @@ public class HBaseDao {
      */
     public void putCell(HTable table, String rowKey, String columnFamily, String qualifier, String data) throws Exception{
         putCell(table, rowKey, columnFamily, qualifier, Bytes.toBytes(data));
-        System.out.println("put '"+rowKey+"', '"+columnFamily+":"+qualifier+"', '"+data+"'");
     }
 
     /**
