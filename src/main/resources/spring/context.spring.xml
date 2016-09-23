@@ -19,12 +19,12 @@
     http://www.springframework.org/schema/aop
     http://www.springframework.org/schema/aop/spring-aop.xsd
     http://www.springframework.org/schema/util
-    http://www.springframework.org/schema/util/spring-util.xsd">
+    http://www.springframework.org/schema/util/spring-util.xsd
+    ">
 
     <!-- 扫描dao -->
     <context:component-scan base-package="info.puton.product.*.dao"/>
     <!-- 扫描service -->
     <context:component-scan base-package="info.puton.product.*.service"/>
-
 
 </beans>

@@ -1,5 +1,6 @@
 package info.puton.product.smartsearch.service.impl;
 
+import info.puton.product.smartsearch.model.FileFullText;
 import info.puton.product.smartsearch.service.FileIndexer;
 import org.springframework.stereotype.Service;
 
@@ -9,4 +10,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class ElasticSearchService implements FileIndexer {
 
+    @Override
+    public void createIndex(FileFullText fileFullText) {
+
+
+
+    }
 }
