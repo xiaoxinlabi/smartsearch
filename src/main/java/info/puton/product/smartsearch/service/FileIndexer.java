@@ -9,4 +9,6 @@ public interface FileIndexer {
 
     void createIndex(FileFullText fileFullText);
 
+    void initIndex();
+
 }

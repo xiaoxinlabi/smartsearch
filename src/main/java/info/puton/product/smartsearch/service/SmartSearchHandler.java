@@ -5,6 +5,6 @@ package info.puton.product.smartsearch.service;
  */
 public interface SmartSearchHandler {
 
-    void handleFile();
+    void handleFile(String filePath);
 
 }

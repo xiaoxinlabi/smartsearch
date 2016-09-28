@@ -20,6 +20,34 @@ public class ElasticSearchDaoTest extends TestSupport {
     ElasticSearchDao elasticSearchDao;
 
     @Test
+    public void testCreateSchema() throws Exception {
+        String source = "{\n" +
+                "    \"" + Type.DOC  + "\": {\n" +
+                "      \"properties\": {\n" +
+                "        \"fileName\": {\n" +
+                "          \"type\": \"string\",\n" +
+                "          \"analyzer\": \"ik\"\n" +
+                "        },\n" +
+                "        \"author\": {\n" +
+                "          \"type\": \"string\",\n" +
+                "          \"analyzer\": \"ik\"\n" +
+                "        },\n" +
+                "        \"content\": {\n" +
+                "          \"type\": \"string\",\n" +
+                "          \"analyzer\": \"ik\"\n" +
+                "        }\n" +
+                "      }\n" +
+                "    }\n" +
+                "  }";
+        elasticSearchDao.createSchema(Index.FILE_FULL_TEXT, Type.DOC, source);
+    }
+
+    @Test
+    public void testDeleteSchema() throws Exception {
+        elasticSearchDao.deleteSchema(Index.FILE_FULL_TEXT);
+    }
+
+    @Test
     public void testCreateIndex() throws Exception {
         Map data = new HashMap();
         data.put("key1","value1");
@@ -27,10 +55,4 @@ public class ElasticSearchDaoTest extends TestSupport {
         elasticSearchDao.createIndex("myindex","mytype","myid1",data);
     }
 
-    @Test
-    public void testDeleteIndex() throws Exception {
-//        String id = "0cc0d86a-9243-4866-9011-bd4a66dc3e12";
-        String id = "a59b6a3f-35dc-4e9c-ba35-dc6519368cf1";
-        elasticSearchDao.deleteIndex(Index.SMART_SEARCH, Type.FILE_FULL_TEXT, id);
-    }
 }

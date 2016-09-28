@@ -5,6 +5,14 @@ package info.puton.product.smartsearch.constant;
  */
 public class Type {
 
-    public final static String FILE_FULL_TEXT = "filefulltext";
+    public final static String TXT = "txt";
+
+    public final static String DOC = "doc";
+
+    public final static String XLS = "xls";
+
+    public final static String PPT = "ppt";
+
+    public final static String PDF = "pdf";
 
 }

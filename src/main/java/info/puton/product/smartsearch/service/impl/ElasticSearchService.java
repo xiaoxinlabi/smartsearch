@@ -5,6 +5,7 @@ import info.puton.product.smartsearch.constant.Type;
 import info.puton.product.smartsearch.dao.ElasticSearchDao;
 import info.puton.product.smartsearch.model.FileFullText;
 import info.puton.product.smartsearch.service.FileIndexer;
+import info.puton.product.smartsearch.util.FileUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,15 +23,31 @@ public class ElasticSearchService implements FileIndexer {
 
     @Override
     public void createIndex(FileFullText fileFullText) {
-
         String id = fileFullText.getId();
         Map data = new HashMap();
         data.put("fileName", fileFullText.getFileName());
         data.put("author", fileFullText.getAuthor());
         data.put("modifyDate", fileFullText.getModifyDate());
         data.put("content", fileFullText.getContent());
-
-        elasticSearchDao.createIndex(Index.SMART_SEARCH, Type.FILE_FULL_TEXT, id, data);
-
+        String type = FileUtil.getFileSuffix(fileFullText.getFileName());
+        elasticSearchDao.createIndex(Index.FILE_FULL_TEXT, type, id, data);
     }
+
+    @Override
+    public void initIndex() {
+//        elasticSearchDao.deleteSchema(Index.SMART_SEARCH, Type.FILE_FULL_TEXT);
+        String source = "{\n" +
+                "    \"mytype1\": {\n" +
+                "      \"properties\": {\n" +
+                "        \"field1\": {\n" +
+                "          \"type\": \"string\",\n" +
+                "          \"analyzer\": \"ik\"\n" +
+                "        }\n" +
+                "      }\n" +
+                "    }\n" +
+                "  }";
+//        elasticSearchDao.createSchema();
+    }
+
+
 }

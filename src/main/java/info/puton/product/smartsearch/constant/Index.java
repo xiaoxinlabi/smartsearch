@@ -5,6 +5,6 @@ package info.puton.product.smartsearch.constant;
  */
 public class Index {
 
-    public final static String SMART_SEARCH = "smartsearch";
+    public final static String FILE_FULL_TEXT = "filefulltext";
 
 }

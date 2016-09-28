@@ -29,9 +29,7 @@ public class SmartSearchService implements SmartSearchHandler {
     FileIndexer fileIndexer;
 
     @Override
-    public void handleFile() {
-
-        String filePath = "D:/programming/java/product/smartsearch/src/test/resources/一碗阳春面.docx";
+    public void handleFile(String filePath) {
 
         FileFullText fileFullText = null;
         try {
