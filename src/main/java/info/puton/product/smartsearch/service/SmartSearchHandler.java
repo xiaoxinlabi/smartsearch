@@ -10,7 +10,7 @@ import java.io.IOException;
  */
 public interface SmartSearchHandler {
 
-    void initSearch() throws Exception;
+    void initFile() throws Exception;
 
     void handleFile(String filePath) throws Exception;
 

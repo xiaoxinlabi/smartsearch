@@ -29,7 +29,7 @@ public class SmartSearchService implements SmartSearchHandler {
     FileIndexer fileIndexer;
 
     @Override
-    public void initSearch() throws Exception {
+    public void initFile() throws Exception {
         fileStorage.init();
         fileIndexer.init();
     }

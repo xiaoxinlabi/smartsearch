@@ -7,6 +7,8 @@ public class FileFullText {
 
     private String id;
 
+    private String type;
+
     private String fileName;
 
     private String author;
@@ -24,6 +26,14 @@ public class FileFullText {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getFileName() {
@@ -62,6 +72,7 @@ public class FileFullText {
     public String toString() {
         return "FileFullText{" +
                 "id='" + id + '\'' +
+                ", type='" + type + '\'' +
                 ", fileName='" + fileName + '\'' +
                 ", author='" + author + '\'' +
                 ", modifyDate='" + modifyDate + '\'' +

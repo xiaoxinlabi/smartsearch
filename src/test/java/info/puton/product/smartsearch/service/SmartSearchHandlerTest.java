@@ -16,8 +16,8 @@ public class SmartSearchHandlerTest extends TestSupport {
     SmartSearchHandler smartSearchHandler;
 
     @Test
-    public void testInitSearch() throws Exception {
-        smartSearchHandler.initSearch();
+    public void testInitFile() throws Exception {
+        smartSearchHandler.initFile();
     }
 
     @Test

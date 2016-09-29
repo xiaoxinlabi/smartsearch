@@ -2,6 +2,7 @@ package info.puton.product.smartsearch.service.impl;
 
 import info.puton.product.smartsearch.model.FileFullText;
 import info.puton.product.smartsearch.service.FileExtractor;
+import info.puton.product.smartsearch.util.FileUtil;
 import org.apache.tika.exception.TikaException;
 import org.apache.tika.io.TikaInputStream;
 import org.apache.tika.metadata.Metadata;
@@ -29,8 +30,9 @@ public class TikaService implements FileExtractor {
     public FileFullText extract(File file) throws TikaException, SAXException, IOException {
         FileFullText fileFullText = new FileFullText();
         String fileKey = UUID.randomUUID().toString();
-        fileFullText.setId(fileKey);//fileKey
+        fileFullText.setId(fileKey);//id
         fileFullText.setFileName(file.getName());//fileName
+        fileFullText.setType(FileUtil.getFileSuffix(file.getName()));//type
         ContentHandler handler = new BodyContentHandler();
         AutoDetectParser parser = new AutoDetectParser();
         Metadata metadata = new Metadata();
