@@ -34,10 +34,9 @@ public class HBaseDao {
             HTableDescriptor tableDesc = new HTableDescriptor(TableName.valueOf(tableName));
             tableDesc.addFamily(new HColumnDescriptor(columnFamily));
             admin.createTable(tableDesc);
-            System.out.println("create table success!");
+            System.out.println("Table created. tableName:" + tableName);
         }
         admin.close();
-
     }
 
     /**
@@ -52,6 +51,7 @@ public class HBaseDao {
             try {
                 admin.disableTable(tableName);
                 admin.deleteTable(tableName);
+                System.out.println("Table deleted. tableName:" + tableName);
             } catch (Exception e) {
                 // TODO: handle exception
                 e.printStackTrace();

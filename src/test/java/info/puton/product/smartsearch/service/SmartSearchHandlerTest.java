@@ -16,11 +16,14 @@ public class SmartSearchHandlerTest extends TestSupport {
     SmartSearchHandler smartSearchHandler;
 
     @Test
-    public void testHandleFile() throws Exception {
-
-        String filePath = "D:/programming/java/product/smartsearch/src/test/resources/一碗阳春面.docx";
-
-        smartSearchHandler.handleFile(filePath);
-
+    public void testInitSearch() throws Exception {
+        smartSearchHandler.initSearch();
     }
+
+    @Test
+    public void testHandleFile() throws Exception {
+        String filePath = "D:/programming/java/product/smartsearch/src/test/resources/一碗阳春面.docx";
+        smartSearchHandler.handleFile(filePath);
+    }
+
 }

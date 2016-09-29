@@ -1,5 +1,6 @@
 package info.puton.product.smartsearch.service.impl;
 
+import info.puton.product.smartsearch.constant.Analyzer;
 import info.puton.product.smartsearch.constant.Index;
 import info.puton.product.smartsearch.constant.Type;
 import info.puton.product.smartsearch.dao.ElasticSearchDao;
@@ -22,7 +23,7 @@ public class ElasticSearchService implements FileIndexer {
     ElasticSearchDao elasticSearchDao;
 
     @Override
-    public void createIndex(FileFullText fileFullText) {
+    public void createDocument(FileFullText fileFullText) {
         String id = fileFullText.getId();
         Map data = new HashMap();
         data.put("fileName", fileFullText.getFileName());
@@ -30,24 +31,53 @@ public class ElasticSearchService implements FileIndexer {
         data.put("modifyDate", fileFullText.getModifyDate());
         data.put("content", fileFullText.getContent());
         String type = FileUtil.getFileSuffix(fileFullText.getFileName());
-        elasticSearchDao.createIndex(Index.FILE_FULL_TEXT, type, id, data);
+        elasticSearchDao.createDocument(Index.FILE_FULL_TEXT, type, id, data);
     }
 
     @Override
     public void initIndex() {
-//        elasticSearchDao.deleteSchema(Index.SMART_SEARCH, Type.FILE_FULL_TEXT);
-        String source = "{\n" +
-                "    \"mytype1\": {\n" +
-                "      \"properties\": {\n" +
-                "        \"field1\": {\n" +
-                "          \"type\": \"string\",\n" +
-                "          \"analyzer\": \"ik\"\n" +
-                "        }\n" +
-                "      }\n" +
+        try{
+            elasticSearchDao.deleteIndex(Index.FILE_FULL_TEXT);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        elasticSearchDao.createIndex(Index.FILE_FULL_TEXT);
+        String docSource =
+                "{\n" +
+                "  \"properties\": {\n" +
+                "    \"fileName\": {\n" +
+                "      \"type\": \"string\",\n" +
+                "      \"analyzer\": \"" + Analyzer.IK + "\"\n" +
+                "    },\n" +
+                "    \"author\": {\n" +
+                "      \"type\": \"string\",\n" +
+                "      \"analyzer\": \"" + Analyzer.IK + "\"\n" +
+                "    },\n" +
+                "    \"content\": {\n" +
+                "      \"type\": \"string\",\n" +
+                "      \"analyzer\": \"" + Analyzer.IK + "\"\n" +
                 "    }\n" +
-                "  }";
-//        elasticSearchDao.createSchema();
+                "  }\n" +
+                "}";
+        elasticSearchDao.createSchema(Index.FILE_FULL_TEXT, Type.DOC, docSource);
+        String docxSource =
+                "{\n" +
+                "  \"properties\": {\n" +
+                "    \"fileName\": {\n" +
+                "      \"type\": \"string\",\n" +
+                "      \"analyzer\": \"" + Analyzer.IK + "\"\n" +
+                "    },\n" +
+                "    \"author\": {\n" +
+                "      \"type\": \"string\",\n" +
+                "      \"analyzer\": \"" + Analyzer.IK + "\"\n" +
+                "    },\n" +
+                "    \"content\": {\n" +
+                "      \"type\": \"string\",\n" +
+                "      \"analyzer\": \"" + Analyzer.IK + "\"\n" +
+                "    }\n" +
+                "  }\n" +
+                "}";
+        elasticSearchDao.createSchema(Index.FILE_FULL_TEXT, Type.DOCX, docxSource);
     }
-
 
 }

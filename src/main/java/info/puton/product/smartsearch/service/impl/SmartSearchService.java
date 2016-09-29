@@ -29,24 +29,17 @@ public class SmartSearchService implements SmartSearchHandler {
     FileIndexer fileIndexer;
 
     @Override
-    public void handleFile(String filePath) {
+    public void initSearch() throws Exception {
+        fileStorage.initStorage();
+        fileIndexer.initIndex();
+    }
 
+    @Override
+    public void handleFile(String filePath) throws Exception {
         FileFullText fileFullText = null;
-        try {
-            fileFullText = fileExtractor.extract(new File(filePath));
-            fileStorage.putFile(filePath, fileFullText.getId());
-            fileIndexer.createIndex(fileFullText);
-        } catch (TikaException e) {
-            e.printStackTrace();
-        } catch (SAXException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        System.out.println("File handled. name:" +fileFullText.getFileName());
-
+        fileFullText = fileExtractor.extract(new File(filePath));
+        fileStorage.putFile(filePath, fileFullText.getId());
+        fileIndexer.createDocument(fileFullText);
+        System.out.println("File handled. name:" + fileFullText.getFileName());
     }
 }

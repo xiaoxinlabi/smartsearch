@@ -43,8 +43,8 @@ public class ElasticSearchDaoTest extends TestSupport {
     }
 
     @Test
-    public void testDeleteSchema() throws Exception {
-        elasticSearchDao.deleteSchema(Index.FILE_FULL_TEXT);
+    public void testDeleteIndex() throws Exception {
+        elasticSearchDao.deleteIndex(Index.FILE_FULL_TEXT);
     }
 
     @Test
@@ -52,7 +52,7 @@ public class ElasticSearchDaoTest extends TestSupport {
         Map data = new HashMap();
         data.put("key1","value1");
         data.put("key2",2);
-        elasticSearchDao.createIndex("myindex","mytype","myid1",data);
+        elasticSearchDao.createDocument("myindex","mytype","myid1",data);
     }
 
 }
