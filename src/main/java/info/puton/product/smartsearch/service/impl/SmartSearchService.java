@@ -30,16 +30,16 @@ public class SmartSearchService implements SmartSearchHandler {
 
     @Override
     public void initSearch() throws Exception {
-        fileStorage.initStorage();
-        fileIndexer.initIndex();
+        fileStorage.init();
+        fileIndexer.init();
     }
 
     @Override
     public void handleFile(String filePath) throws Exception {
         FileFullText fileFullText = null;
         fileFullText = fileExtractor.extract(new File(filePath));
-        fileStorage.putFile(filePath, fileFullText.getId());
-        fileIndexer.createDocument(fileFullText);
+        fileStorage.put(filePath, fileFullText.getId());
+        fileIndexer.add(fileFullText);
         System.out.println("File handled. name:" + fileFullText.getFileName());
     }
 }

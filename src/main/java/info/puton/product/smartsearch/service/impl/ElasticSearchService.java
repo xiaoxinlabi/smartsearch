@@ -7,6 +7,7 @@ import info.puton.product.smartsearch.dao.ElasticSearchDao;
 import info.puton.product.smartsearch.model.FileFullText;
 import info.puton.product.smartsearch.service.FileIndexer;
 import info.puton.product.smartsearch.util.FileUtil;
+import org.elasticsearch.action.delete.DeleteResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +24,7 @@ public class ElasticSearchService implements FileIndexer {
     ElasticSearchDao elasticSearchDao;
 
     @Override
-    public void createDocument(FileFullText fileFullText) {
+    public void add(FileFullText fileFullText) {
         String id = fileFullText.getId();
         Map data = new HashMap();
         data.put("fileName", fileFullText.getFileName());
@@ -35,7 +36,13 @@ public class ElasticSearchService implements FileIndexer {
     }
 
     @Override
-    public void initIndex() {
+    public void delete(String index, String type, String id) {
+        elasticSearchDao.deleteDocument(index, type, id);
+    }
+
+
+    @Override
+    public void init() {
         try{
             elasticSearchDao.deleteIndex(Index.FILE_FULL_TEXT);
         } catch (Exception e){

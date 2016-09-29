@@ -46,4 +46,9 @@ public class ElasticSearchDao {
         System.out.println("Index created. id:" + response.getId());
     }
 
+    public void deleteDocument(String index, String type, String id){
+        DeleteResponse response = elasticsearchTemplate.getClient().prepareDelete(index, type, id).get();
+        System.out.println("Index deleted. id:" + response.getId());
+    }
+
 }

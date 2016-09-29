@@ -7,8 +7,10 @@ import info.puton.product.smartsearch.model.FileFullText;
  */
 public interface FileIndexer {
 
-    void createDocument(FileFullText fileFullText);
+    void add(FileFullText fileFullText);
 
-    void initIndex();
+    void delete(String index, String type, String id);
+
+    void init();
 
 }
