@@ -1,0 +1,29 @@
+.tds-content-logo{
+    margin-top: 15%;
+    /*position: fixed;*/
+}
+
+.tds-content-logo-image{
+    vertical-align: middle;
+    text-align: right;
+}
+
+.tds-content-logo-text{
+    vertical-align: middle;
+    text-align: left;
+    font-size: 45px;
+    color: #B41116;
+}
+
+.tds-content-logo-text .right{
+    vertical-align: middle;
+    text-align: left;
+    font-size: 45px;
+    color: #B41116;
+}
+
+.tds-content-search{
+    margin-top: 30px;
+    /*position: fixed;*/
+}
+

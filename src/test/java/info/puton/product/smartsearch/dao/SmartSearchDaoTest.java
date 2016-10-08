@@ -4,6 +4,9 @@ import info.puton.product.common.feature.test.TestSupport;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static org.junit.Assert.*;
 
 /**
@@ -17,10 +20,12 @@ public class SmartSearchDaoTest extends TestSupport {
     @Test
     public void testHighlightQuery() throws Exception {
 
-//        System.out.println(smartSearchDao.highlightQuery("陶阳"));
-//        System.out.println(smartSearchDao.highlightQuery("阳春面"));
-//        System.out.println(smartSearchDao.highlightQuery("检索"));
-        System.out.println(smartSearchDao.highlightQuery("简介"));
+        Map params = new HashMap();
+        params.put("keyword","陶阳");
+//        params.put("keyword","阳春面");
+//        params.put("keyword","检索");
+//        params.put("keyword","简介");
+        System.out.println(smartSearchDao.highlightQuery(params));
 
     }
 }

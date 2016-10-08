@@ -34,7 +34,10 @@ public class SmartSearchDao {
     @Value("#{settings['maxContentLength']}")
     private Integer maxContentLength;
 
-    public List<BaseSearchResult> highlightQuery(String keyword){
+    public List<BaseSearchResult> highlightQuery(Map params){
+
+        String keyword = (String) params.get("keyword");
+
         QueryBuilder qb = QueryBuilders.multiMatchQuery(
                 keyword,
                 Field.FILE_NAME,
@@ -46,8 +49,8 @@ public class SmartSearchDao {
         srb.addHighlightedField(Field.FILE_NAME);
         srb.addHighlightedField(Field.CONTENT);
 //        srb.setHighlighterPhraseLimit(maxContentLength);
-        srb.setHighlighterPreTags("<em>");
-        srb.setHighlighterPostTags("</em>");
+        srb.setHighlighterPreTags("<span>");
+        srb.setHighlighterPostTags("</span>");
         srb.setHighlighterFragmentSize(maxContentLength);
 
         SearchResponse sr = srb.execute().actionGet();

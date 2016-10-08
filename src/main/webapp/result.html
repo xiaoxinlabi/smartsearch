@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+  <title>智搜</title>
+
+  <!-- Bootstrap -->
+  <link href="./assets/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="./assets/js/html5shiv.min.js"></script>
+  <script src="./assets/js/respond.min.js"></script>
+  <![endif]-->
+
+  <link href="./css/result.css" rel="stylesheet">
+  
+</head>
+<body>
+
+  <div class="container tds-content-all">
+    
+    <div class="row tds-content-top">
+
+      <div class="col-md-1">
+
+          <a href="./index.html"><img src="./img/hsb_icon.png" width="47px" height="47px"></a>
+
+      </div>
+
+      <div class="col-md-7">
+        
+        <div class="input-group">
+
+          <div class="input-group-btn">
+            <button type="button" class="btn btn-primary btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="tds-file-type-selector">所有类型 <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+              <li class="tds-file-type-item" data-id=""><a>所有类型</a></li>
+              <li role="separator" class="divider"></li>
+              <li class="tds-file-type-item" data-id="doc"><a>.doc/.docx</a></li>
+              <li class="tds-file-type-item" data-id="ppt"><a>.ppt/.pptx</a></li>
+              <li class="tds-file-type-item" data-id="xls"><a>.xls/.xlsx</a></li>
+              <li class="tds-file-type-item" data-id="pdf"><a>.pdf</a></li>
+              <li class="tds-file-type-item" data-id="txt"><a>.txt</a></li>
+            </ul>
+          </div>
+
+          <input type="text" class="form-control input-lg" id="search-wd">
+			      <span class="input-group-btn">
+              <button class="btn btn-lg btn-primary" type="button" id="search-button" data-loading-text="正在查询..." autocomplete="off">
+                <strong>搜索一下</strong>
+              </button>
+			      </span>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="row tds-content-middle">
+
+      <!--左侧结果区域-->
+      <div class="col-md-8 tds-content-middle-left">
+
+        <div>
+
+          <hr>
+          类型：
+
+          <span id="tds-file-facet-list">
+
+            <img src="./img/file_type_icon/text.png" class="tds-icon-sm"><a class="tds-file-facet-item" data-id="txt">txt</a>&nbsp;
+            <img src="./img/file_type_icon/doc.png" class="tds-icon-sm"><a class="tds-file-facet-item" data-id="doc">doc(x)</a>&nbsp;
+            <img src="./img/file_type_icon/xls.png" class="tds-icon-sm"><a class="tds-file-facet-item" data-id="xls">xls(x)</a>&nbsp;
+            <img src="./img/file_type_icon/ppt.png" class="tds-icon-sm"><a class="tds-file-facet-item" data-id="ppt">ppt(x)</a>&nbsp;
+            <img src="./img/file_type_icon/pdf.png" class="tds-icon-sm"><a class="tds-file-facet-item" data-id="pdf">pdf</a>&nbsp;
+            <img src="./img/file_type_icon/ini.png" class="tds-icon-sm"><a class="tds-file-facet-item" data-id="ini">others</a>&nbsp;
+
+          </span>
+
+          <hr>
+
+        </div>
+
+
+        <div id="tds-file-list">
+
+          <div class="tds-file-record">
+
+            <!--<div class="row">-->
+              <!--<div class="col-md-12">-->
+
+                <!--<a><h4><strong>用户收入日收入趋势.doc</strong></h4></a>-->
+
+              <!--</div>-->
+
+            <!--</div>-->
+
+            <!--<div class="row">-->
+
+              <!--<div class="col-md-2">-->
+
+                <!--<img src="./img/file_type_icon/docx.png" width="100%" height="auto">-->
+
+              <!--</div>-->
+
+              <!--<div class="col-md-10">-->
+
+                <!--<p>文件大小：100KB</p>-->
+                <!--<p>文件作者：Ke，Liu</p>-->
+                <!--<p>修改时间：2015/3/9 13:50:45</p>-->
+                <!--<p>下载地址：-->
+                  <!--<a>点击下载</a>-->
+                <!--</p>-->
+
+              <!--</div>-->
+
+            <!--</div>-->
+
+            <!--<div class="row">-->
+
+              <!--<div class="col-md-12">-->
+
+                <!--<p>内容预览：当日收入：统计日用户出账费用，出账费用包括:月租费，通信费，功能费和其他一次性费用(如人工调帐包多月费用等)。</p>-->
+
+              <!--</div>-->
+
+            <!--</div>-->
+
+          <!--</div>-->
+
+          <!--<div class="tds-file-record">-->
+
+            <!--<div class="row">-->
+              <!--<div class="col-md-12">-->
+
+                <!--<a><h4><strong>用户收入日收入报表.xls</strong></h4></a>-->
+
+              <!--</div>-->
+
+            <!--</div>-->
+
+            <!--<div class="row">-->
+
+              <!--<div class="col-md-2">-->
+
+                <!--<img src="./img/file_type_icon/xlsx.png" width="100%" height="auto">-->
+
+              <!--</div>-->
+
+              <!--<div class="col-md-10">-->
+
+                <!--<p>文件大小：204KB</p>-->
+                <!--<p>文件作者：David，Qi</p>-->
+                <!--<p>修改时间：2015/3/12 13:50:45</p>-->
+                <!--<p>下载地址：-->
+                  <!--<a>点击下载</a>-->
+                <!--</p>-->
+
+              <!--</div>-->
+
+            <!--</div>-->
+
+            <!--<div class="row">-->
+
+              <!--<div class="col-md-12">-->
+
+                <!--<p>内容预览：当日收入：统计日用户出账费用，出账费用包括:月租费，通信费，功能费和其他一次性费用(如人工调帐包多月费用等)。</p>-->
+
+              <!--</div>-->
+
+            <!--</div>-->
+
+          <!--</div>-->
+
+        </div>
+
+        <div>
+          <ul id='tds-result-pagination'>
+
+          </ul>
+        </div>
+
+
+      </div>
+
+    </div>
+
+    <div class="row tds-content-bottom">
+
+    </div>
+
+  </div>
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="./assets/js/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="./assets/js/bootstrap.min.js"></script>
+
+  <script src="./utils/js/bootstrap-paginator.min.js"></script>
+
+  <script src="./js/common.js"></script>
+  <script src="./js/result.js"></script>
+
+</body>
+</html>
