@@ -3,11 +3,7 @@ package info.puton.product.smartsearch.model;
 /**
  * Created by taoyang on 2016/9/18.
  */
-public class FileFullText {
-
-    private String id;
-
-    private String type;
+public class FileFullText extends BaseSearchResult<FileFullText> {
 
     private String fileName;
 
@@ -16,25 +12,6 @@ public class FileFullText {
     private String modifyDate;
 
     private String content;
-
-    public FileFullText() {
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
 
     public String getFileName() {
         return fileName;
@@ -68,12 +45,13 @@ public class FileFullText {
         this.content = content;
     }
 
+    public FileFullText() {
+    }
+
     @Override
     public String toString() {
         return "FileFullText{" +
-                "id='" + id + '\'' +
-                ", type='" + type + '\'' +
-                ", fileName='" + fileName + '\'' +
+                "fileName='" + fileName + '\'' +
                 ", author='" + author + '\'' +
                 ", modifyDate='" + modifyDate + '\'' +
                 ", content='" + content + '\'' +
