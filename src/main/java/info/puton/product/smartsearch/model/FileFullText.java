@@ -3,7 +3,7 @@ package info.puton.product.smartsearch.model;
 /**
  * Created by taoyang on 2016/9/18.
  */
-public class FileFullText extends BaseSearchResult<FileFullText> {
+public class FileFullText extends BaseSearchResult {
 
     private String fileName;
 
@@ -50,7 +50,7 @@ public class FileFullText extends BaseSearchResult<FileFullText> {
 
     @Override
     public String toString() {
-        return "FileFullText{" +
+        return super.toString() + " " + "FileFullText{" +
                 "fileName='" + fileName + '\'' +
                 ", author='" + author + '\'' +
                 ", modifyDate='" + modifyDate + '\'' +

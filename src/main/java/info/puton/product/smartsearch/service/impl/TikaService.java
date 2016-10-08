@@ -49,6 +49,11 @@ public class TikaService implements FileExtractor {
         String lastModified = sdf.format(date);
         fileFullText.setModifyDate(lastModified);//modifyDate
         String content = handler.toString();
+        content = content
+                .replaceAll("\\n+", " ")
+                .replaceAll("\\r+", " ")
+                .replaceAll("\\t+", " ")
+                .replaceAll("\\s+", " ");
         fileFullText.setContent(content);//content
         System.out.println("Metadata extracted. fileKey:" + fileKey);
         return fileFullText;

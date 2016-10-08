@@ -19,8 +19,10 @@ public class SmartSearchHandlerTest extends TestSupport {
 
     @Test
     public void testHandleFile() throws Exception {
-        String filePath = "D:/programming/java/product/smartsearch/src/test/resources/一碗阳春面.docx";
-        smartSearchHandler.handleFile(filePath);
+        String filePath1 = "D:/programming/java/product/smartsearch/src/test/resources/一碗阳春面.docx";
+        smartSearchHandler.handleFile(filePath1);
+        String filePath2 = "D:/programming/java/product/smartsearch/src/test/resources/Hbase简介.pptx";
+        smartSearchHandler.handleFile(filePath2);
     }
 
 }

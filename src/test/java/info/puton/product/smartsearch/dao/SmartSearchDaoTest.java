@@ -17,8 +17,10 @@ public class SmartSearchDaoTest extends TestSupport {
     @Test
     public void testHighlightQuery() throws Exception {
 
-//        smartSearchDao.highlightQuery("失踪的顾客");
-        smartSearchDao.highlightQuery("阳春面");
+//        System.out.println(smartSearchDao.highlightQuery("陶阳"));
+//        System.out.println(smartSearchDao.highlightQuery("阳春面"));
+//        System.out.println(smartSearchDao.highlightQuery("检索"));
+        System.out.println(smartSearchDao.highlightQuery("简介"));
 
     }
 }

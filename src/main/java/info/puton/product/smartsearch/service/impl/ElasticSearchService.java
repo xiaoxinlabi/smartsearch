@@ -49,6 +49,26 @@ public class ElasticSearchService implements FileIndexer {
             e.printStackTrace();
         }
         elasticSearchDao.createIndex(Index.FILE_FULL_TEXT);
+        //txt
+        String txtSource =
+                "{\n" +
+                        "  \"properties\": {\n" +
+                        "    \"fileName\": {\n" +
+                        "      \"type\": \"string\",\n" +
+                        "      \"analyzer\": \"" + Analyzer.IK + "\"\n" +
+                        "    },\n" +
+                        "    \"author\": {\n" +
+                        "      \"type\": \"string\",\n" +
+                        "      \"analyzer\": \"" + Analyzer.IK + "\"\n" +
+                        "    },\n" +
+                        "    \"content\": {\n" +
+                        "      \"type\": \"string\",\n" +
+                        "      \"analyzer\": \"" + Analyzer.IK + "\"\n" +
+                        "    }\n" +
+                        "  }\n" +
+                        "}";
+        elasticSearchDao.createSchema(Index.FILE_FULL_TEXT, Type.TXT, txtSource);
+        //doc
         String docSource =
                 "{\n" +
                 "  \"properties\": {\n" +
@@ -67,6 +87,7 @@ public class ElasticSearchService implements FileIndexer {
                 "  }\n" +
                 "}";
         elasticSearchDao.createSchema(Index.FILE_FULL_TEXT, Type.DOC, docSource);
+        //docx
         String docxSource =
                 "{\n" +
                 "  \"properties\": {\n" +
@@ -85,6 +106,101 @@ public class ElasticSearchService implements FileIndexer {
                 "  }\n" +
                 "}";
         elasticSearchDao.createSchema(Index.FILE_FULL_TEXT, Type.DOCX, docxSource);
+        //xls
+        String xlsSource =
+                "{\n" +
+                        "  \"properties\": {\n" +
+                        "    \"fileName\": {\n" +
+                        "      \"type\": \"string\",\n" +
+                        "      \"analyzer\": \"" + Analyzer.IK + "\"\n" +
+                        "    },\n" +
+                        "    \"author\": {\n" +
+                        "      \"type\": \"string\",\n" +
+                        "      \"analyzer\": \"" + Analyzer.IK + "\"\n" +
+                        "    },\n" +
+                        "    \"content\": {\n" +
+                        "      \"type\": \"string\",\n" +
+                        "      \"analyzer\": \"" + Analyzer.IK + "\"\n" +
+                        "    }\n" +
+                        "  }\n" +
+                        "}";
+        elasticSearchDao.createSchema(Index.FILE_FULL_TEXT, Type.XLS, xlsSource);
+        //xlsx
+        String xlsxSource =
+                "{\n" +
+                        "  \"properties\": {\n" +
+                        "    \"fileName\": {\n" +
+                        "      \"type\": \"string\",\n" +
+                        "      \"analyzer\": \"" + Analyzer.IK + "\"\n" +
+                        "    },\n" +
+                        "    \"author\": {\n" +
+                        "      \"type\": \"string\",\n" +
+                        "      \"analyzer\": \"" + Analyzer.IK + "\"\n" +
+                        "    },\n" +
+                        "    \"content\": {\n" +
+                        "      \"type\": \"string\",\n" +
+                        "      \"analyzer\": \"" + Analyzer.IK + "\"\n" +
+                        "    }\n" +
+                        "  }\n" +
+                        "}";
+        elasticSearchDao.createSchema(Index.FILE_FULL_TEXT, Type.XLSX, xlsxSource);
+        //ppt
+        String pptSource =
+                "{\n" +
+                        "  \"properties\": {\n" +
+                        "    \"fileName\": {\n" +
+                        "      \"type\": \"string\",\n" +
+                        "      \"analyzer\": \"" + Analyzer.IK + "\"\n" +
+                        "    },\n" +
+                        "    \"author\": {\n" +
+                        "      \"type\": \"string\",\n" +
+                        "      \"analyzer\": \"" + Analyzer.IK + "\"\n" +
+                        "    },\n" +
+                        "    \"content\": {\n" +
+                        "      \"type\": \"string\",\n" +
+                        "      \"analyzer\": \"" + Analyzer.IK + "\"\n" +
+                        "    }\n" +
+                        "  }\n" +
+                        "}";
+        elasticSearchDao.createSchema(Index.FILE_FULL_TEXT, Type.PPT, pptSource);
+        //pptx
+        String pptxSource =
+                "{\n" +
+                        "  \"properties\": {\n" +
+                        "    \"fileName\": {\n" +
+                        "      \"type\": \"string\",\n" +
+                        "      \"analyzer\": \"" + Analyzer.IK + "\"\n" +
+                        "    },\n" +
+                        "    \"author\": {\n" +
+                        "      \"type\": \"string\",\n" +
+                        "      \"analyzer\": \"" + Analyzer.IK + "\"\n" +
+                        "    },\n" +
+                        "    \"content\": {\n" +
+                        "      \"type\": \"string\",\n" +
+                        "      \"analyzer\": \"" + Analyzer.IK + "\"\n" +
+                        "    }\n" +
+                        "  }\n" +
+                        "}";
+        elasticSearchDao.createSchema(Index.FILE_FULL_TEXT, Type.PPTX, pptxSource);
+        //pdf
+        String pdfSource =
+                "{\n" +
+                        "  \"properties\": {\n" +
+                        "    \"fileName\": {\n" +
+                        "      \"type\": \"string\",\n" +
+                        "      \"analyzer\": \"" + Analyzer.IK + "\"\n" +
+                        "    },\n" +
+                        "    \"author\": {\n" +
+                        "      \"type\": \"string\",\n" +
+                        "      \"analyzer\": \"" + Analyzer.IK + "\"\n" +
+                        "    },\n" +
+                        "    \"content\": {\n" +
+                        "      \"type\": \"string\",\n" +
+                        "      \"analyzer\": \"" + Analyzer.IK + "\"\n" +
+                        "    }\n" +
+                        "  }\n" +
+                        "}";
+        elasticSearchDao.createSchema(Index.FILE_FULL_TEXT, Type.PDF, pdfSource);
     }
 
 }

@@ -3,7 +3,7 @@ package info.puton.product.smartsearch.model;
 /**
  * Created by taoyang on 2016/9/29.
  */
-public class BaseSearchResult<T> {
+public class BaseSearchResult {
 
     private String index;
 
@@ -11,9 +11,7 @@ public class BaseSearchResult<T> {
 
     private String id;
 
-    private Double score;
-
-    private T source;
+    private Float score;
 
     public String getIndex() {
         return index;
@@ -39,28 +37,12 @@ public class BaseSearchResult<T> {
         this.id = id;
     }
 
-    public Double getScore() {
+    public Float getScore() {
         return score;
     }
 
-    public void setScore(Double score) {
+    public void setScore(Float score) {
         this.score = score;
-    }
-
-    public T getSource() {
-        return source;
-    }
-
-    public void setSource(T source) {
-        this.source = source;
-    }
-
-    public BaseSearchResult(String index, String type, String id, Double score, T source) {
-        this.index = index;
-        this.type = type;
-        this.id = id;
-        this.score = score;
-        this.source = source;
     }
 
     public BaseSearchResult() {
@@ -73,7 +55,6 @@ public class BaseSearchResult<T> {
                 ", type='" + type + '\'' +
                 ", id='" + id + '\'' +
                 ", score=" + score +
-                ", source=" + source +
                 '}';
     }
 }
