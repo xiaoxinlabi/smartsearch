@@ -37,6 +37,7 @@ public class SmartSearchDao {
     public List<BaseSearchResult> highlightQuery(Map params){
 
         String keyword = (String) params.get("keyword");
+        String filterType = (String) params.get("type");
 
         QueryBuilder qb = QueryBuilders.multiMatchQuery(
                 keyword,
@@ -45,6 +46,18 @@ public class SmartSearchDao {
         SearchRequestBuilder srb = elasticsearchTemplate.getClient().prepareSearch(Index.FILE_FULL_TEXT);
 
         srb.setQuery(qb);
+
+        if(filterType!=null && !"".equals(filterType)){
+            if(filterType.equals(Type.DOC)){
+                srb.setTypes(Type.DOC, Type.DOCX);
+            } else if(filterType.equals(Type.XLS)){
+                srb.setTypes(Type.XLS, Type.XLSX);
+            } else if(filterType.equals(Type.PPT)){
+                srb.setTypes(Type.PPT, Type.PPTX);
+            } else {
+                srb.setTypes(filterType);
+            }
+        }
 
         srb.addHighlightedField(Field.FILE_NAME);
         srb.addHighlightedField(Field.CONTENT);
