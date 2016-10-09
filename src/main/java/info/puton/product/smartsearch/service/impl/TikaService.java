@@ -16,8 +16,6 @@ import org.xml.sax.SAXException;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.UUID;
 
 /**
@@ -33,21 +31,19 @@ public class TikaService implements FileExtractor {
         fileFullText.setId(fileKey);//id
         fileFullText.setFileName(file.getName());//fileName
         fileFullText.setType(FileUtil.getFileSuffix(file.getName()));//type
+        fileFullText.setSize(file.length());//size
         ContentHandler handler = new BodyContentHandler();
         AutoDetectParser parser = new AutoDetectParser();
         Metadata metadata = new Metadata();
         InputStream stream = TikaInputStream.get(file.toPath());
         parser.parse(stream, handler, metadata);
-//            for (String name : metadata.names()) {
-//                System.out.println(name + ":" + metadata.get(name));
-//            }
+            for (String name : metadata.names()) {
+                System.out.println(name + ":" + metadata.get(name));
+            }
         String author = metadata.get("Author");//author
         fileFullText.setAuthor(author);
-//            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        Date date = metadata.getDate(Property.get("Last-Modified"));
-        String lastModified = sdf.format(date);
-        fileFullText.setModifyDate(lastModified);//modifyDate
+        String lastModified = metadata.get(Property.get("Last-Modified"));
+        fileFullText.setLastModified(lastModified);//lastModified
         String content = handler.toString();
         content = content
                 .replaceAll("\\n+", " ")

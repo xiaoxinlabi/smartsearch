@@ -28,8 +28,9 @@ public class ElasticSearchService implements FileIndexer {
         String id = fileFullText.getId();
         Map data = new HashMap();
         data.put("fileName", fileFullText.getFileName());
+        data.put("size", fileFullText.getSize());
         data.put("author", fileFullText.getAuthor());
-        data.put("modifyDate", fileFullText.getModifyDate());
+        data.put("lastModified", fileFullText.getLastModified());
         data.put("content", fileFullText.getContent());
         String type = fileFullText.getType();
         elasticSearchDao.createDocument(Index.FILE_FULL_TEXT, type, id, data);

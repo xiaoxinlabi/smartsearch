@@ -35,7 +35,7 @@ public class ElasticSearchDao {
                 .setType(type)
                 .setSource(source)
                 .get();
-        System.out.println("Schema created. index:" + index + "type:" + type);
+        System.out.println("Schema created. index:" + index + " type:" + type);
     }
 
     public void deleteIndex(String index){

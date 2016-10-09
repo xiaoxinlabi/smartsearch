@@ -92,8 +92,9 @@ public class SmartSearchDao {
                 result.setScore(score);
 
                 String fileName = (String) searchHit.getSource().get("fileName");
+                Long size = ((Integer) searchHit.getSource().get("size")).longValue();
                 String author = (String) searchHit.getSource().get("author");
-                String modifyDate = (String) searchHit.getSource().get("modifyDate");
+                String lastModified = (String) searchHit.getSource().get("lastModified");
                 String content = (String) searchHit.getSource().get("content");
                 Map<String, HighlightField> highlightFields = searchHit.highlightFields();
                 if(highlightFields.containsKey("fileName")){
@@ -113,8 +114,9 @@ public class SmartSearchDao {
 //                System.out.println(content);
 
                 result.setFileName(fileName);
+                result.setSize(size);
                 result.setAuthor(author);
-                result.setModifyDate(modifyDate);
+                result.setLastModified(lastModified);
                 result.setContent(content);
 
                 resultList.add(result);

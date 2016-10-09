@@ -7,9 +7,11 @@ public class FileFullText extends BaseSearchResult {
 
     private String fileName;
 
+    private Long size;
+
     private String author;
 
-    private String modifyDate;
+    private String lastModified;
 
     private String content;
 
@@ -21,6 +23,14 @@ public class FileFullText extends BaseSearchResult {
         this.fileName = fileName;
     }
 
+    public Long getSize() {
+        return size;
+    }
+
+    public void setSize(Long size) {
+        this.size = size;
+    }
+
     public String getAuthor() {
         return author;
     }
@@ -29,12 +39,12 @@ public class FileFullText extends BaseSearchResult {
         this.author = author;
     }
 
-    public String getModifyDate() {
-        return modifyDate;
+    public String getLastModified() {
+        return lastModified;
     }
 
-    public void setModifyDate(String modifyDate) {
-        this.modifyDate = modifyDate;
+    public void setLastModified(String lastModified) {
+        this.lastModified = lastModified;
     }
 
     public String getContent() {
@@ -50,10 +60,11 @@ public class FileFullText extends BaseSearchResult {
 
     @Override
     public String toString() {
-        return super.toString() + " " + "FileFullText{" +
+        return "FileFullText{" +
                 "fileName='" + fileName + '\'' +
+                ", size='" + size + '\'' +
                 ", author='" + author + '\'' +
-                ", modifyDate='" + modifyDate + '\'' +
+                ", lastModified='" + lastModified + '\'' +
                 ", content='" + content + '\'' +
                 '}';
     }

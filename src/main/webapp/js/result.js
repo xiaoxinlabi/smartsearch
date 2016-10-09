@@ -112,6 +112,8 @@ function getResult(keyword, type, currentPage, pageSize){
             inHtml='';
             for(var i =0; i<list.length; i++){
                 var record = list[i];
+                var newDate = new Date();
+                newDate.setTime(record.lastModified);
                 inHtml+='<div class="tds-file-record">' +
                     '<div class="row">' +
                     '<div class="col-md-12">' +
@@ -127,9 +129,9 @@ function getResult(keyword, type, currentPage, pageSize){
                     '</a>' +
                     '</div>' +
                     '<div class="col-md-10" class="tds-file-record-metadata">' +
-                    //'<p>文件大小：' + Math.ceil(record.size/1024) + 'KB</p>' +
+                    '<p>文件大小：' + Math.ceil(record.size/1024) + 'KB</p>' +
                     '<p>文件作者：' + record.author + '</p>' +
-                    '<p>修改时间：' + record.modifyDate + '</p>' +
+                    '<p>修改时间：' + newDate.toLocaleDateString() + '</p>' +
                     '<p>在线预览：' +
                     //'<a class="tds-file-prev" data-hdfspath="http://' + hdfsHost + ':50070/webhdfs/v1' + record.hdfsPath + '?op=OPEN">点击预览 </a>' +
                     '<a class="tds-file-prev">点击预览 </a>' +
