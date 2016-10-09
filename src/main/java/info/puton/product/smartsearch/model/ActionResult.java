@@ -7,7 +7,7 @@ import java.util.Map;
 /**
  * Created by taoyang on 11/5/15.
  */
-public class QueryResult {
+public class ActionResult {
 
     /** 成功标志 */
     private boolean success;
@@ -21,25 +21,25 @@ public class QueryResult {
     private final static String KEY_SUCCESS="success" ;
     private final static String KEY_ERROR="error" ;
 
-    public QueryResult(boolean success, int total, Map message, Object data) {
+    public ActionResult(boolean success, int total, Map message, Object data) {
         this.success = success;
         this.total = total;
         this.message = message;
         this.data = data;
     }
 
-    public QueryResult() {
+    public ActionResult() {
         this(true, 0, null, null);
     }
 
-    public QueryResult(boolean success, String message) {
+    public ActionResult(boolean success, String message) {
         if (success)
             this.putMessage(KEY_SUCCESS, message);
         else
             this.putMessage(KEY_ERROR, message);
     }
 
-    public QueryResult(Object data) {
+    public ActionResult(Object data) {
         this(true, 0, null, data);
         if (data instanceof Map) {
             this.total = 1;

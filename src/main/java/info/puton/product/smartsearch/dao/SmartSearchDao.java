@@ -5,6 +5,7 @@ import info.puton.product.smartsearch.constant.Index;
 import info.puton.product.smartsearch.constant.Type;
 import info.puton.product.smartsearch.model.BaseSearchResult;
 import info.puton.product.smartsearch.model.FileFullText;
+import info.puton.product.smartsearch.model.PageModel;
 import org.elasticsearch.action.search.SearchRequestBuilder;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.common.text.Text;
@@ -34,19 +35,24 @@ public class SmartSearchDao {
     @Value("#{settings['maxContentLength']}")
     private Integer maxContentLength;
 
-    public List<BaseSearchResult> highlightQuery(Map params){
+    public PageModel<BaseSearchResult> queryResult(Map params){
 
         String keyword = (String) params.get("keyword");
         String filterType = (String) params.get("type");
+        Integer currentPage = (Integer) params.get("currentPage");
+        Integer pageSize = (Integer) params.get("pageSize");
 
+        //query
         QueryBuilder qb = QueryBuilders.multiMatchQuery(
                 keyword,
                 Field.FILE_NAME,
                 Field.CONTENT);
-        SearchRequestBuilder srb = elasticsearchTemplate.getClient().prepareSearch(Index.FILE_FULL_TEXT);
-
+        SearchRequestBuilder srb = elasticsearchTemplate
+                .getClient()
+                .prepareSearch(Index.FILE_FULL_TEXT);
         srb.setQuery(qb);
 
+        //type
         if(filterType!=null && !"".equals(filterType)){
             if(filterType.equals(Type.DOC)){
                 srb.setTypes(Type.DOC, Type.DOCX);
@@ -59,6 +65,7 @@ public class SmartSearchDao {
             }
         }
 
+        //highlight
         srb.addHighlightedField(Field.FILE_NAME);
         srb.addHighlightedField(Field.CONTENT);
 //        srb.setHighlighterPhraseLimit(maxContentLength);
@@ -66,6 +73,16 @@ public class SmartSearchDao {
         srb.setHighlighterPostTags("</span>");
         srb.setHighlighterFragmentSize(maxContentLength);
 
+        //pagination
+        PageModel<BaseSearchResult> pageModel = new PageModel<>();
+        pageModel.setCurrent(currentPage);
+        pageModel.setSize(pageSize);
+        Long rowFrom = pageModel.getStart();
+
+        srb.setFrom(rowFrom.intValue());
+        srb.setSize(pageSize);
+
+        //action
         SearchResponse sr = srb.execute().actionGet();
 //        System.out.println(sr);
 
@@ -121,9 +138,13 @@ public class SmartSearchDao {
 
                 resultList.add(result);
             }
-
         }
-        return resultList;
+
+        Long count = sr.getHits().totalHits();
+        pageModel.setCount(count);
+        pageModel.setDatas(resultList);
+
+        return pageModel;
     }
 
 }

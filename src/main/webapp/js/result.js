@@ -3,7 +3,7 @@
  */
 
 // 分页功能
-var currentPage = 1, pageSize = 10;
+var currentPage = 1, pageSize = 3;
 
 $(function(){
 
@@ -36,16 +36,16 @@ function init(){
     });
 
 
-    $('#tds-file-list').on('click','.tds-file-prev', function () {
+    //$('#tds-file-list').on('click','.tds-file-prev', function () {
+    //
+    //    //alert($(this).data('hdfspath'));
+    //    window.open ('./preview?hdfsPath=' + $(this).data('hdfspath'), 'newwindow', 'height=800, width=1200, top=100, left=200, toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no, status=no');
+    //
+    //});
 
-        //alert($(this).data('hdfspath'));
-        window.open ('./preview?hdfsPath=' + $(this).data('hdfspath'), 'newwindow', 'height=800, width=1200, top=100, left=200, toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no, status=no');
-
-    });
-
-    $('#tds-file-list').on('click','.tds-file-down', function () {
-        window.open ('./download?hdfsPath=' + $(this).data('hdfspath'), 'newwindow', 'height=800, width=1200, top=100, left=200, toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no, status=no');
-    });
+    //$('#tds-file-list').on('click','.tds-file-down', function () {
+    //    window.open ('./download?hdfsPath=' + $(this).data('hdfspath'), 'newwindow', 'height=800, width=1200, top=100, left=200, toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no, status=no');
+    //});
 
     $('.tds-file-type-item').on('click', function () {
         $("#tds-file-type-selector").html($(this).text()+' <span class="caret"></span>')
@@ -108,7 +108,7 @@ function getResult(keyword, type, currentPage, pageSize){
             //alert(JSON.stringify(response.data));
             var tdsFileList = $('#tds-file-list');
             tdsFileList.children().remove();
-            list = response.data;
+            list = response.data.datas;
             inHtml='';
             for(var i =0; i<list.length; i++){
                 var record = list[i];
@@ -154,13 +154,13 @@ function getResult(keyword, type, currentPage, pageSize){
 
             var element = $('#tds-result-pagination');
 
-            var totalPages = (response.data.file.totalPages <= 5) ? response.data.file.totalPages : 5;
+            var totalPages = (response.data.totalPages <= 5) ? response.data.totalPages : 5;
 
-            var numberOfPages = (response.data.file.totalPages <= 5) ? response.data.file.totalPages : 5;
+            var numberOfPages = (response.data.totalPages <= 5) ? response.data.totalPages : 5;
 
             var options = {
                 bootstrapMajorVersion:3,
-                currentPage: response.data.file.current,
+                currentPage: response.data.current,
                 totalPages: totalPages,
                 numberOfPages : numberOfPages,
                 onPageClicked: function(e,originalEvent,type,page){

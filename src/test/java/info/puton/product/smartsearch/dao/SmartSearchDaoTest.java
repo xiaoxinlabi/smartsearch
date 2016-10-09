@@ -18,14 +18,14 @@ public class SmartSearchDaoTest extends TestSupport {
     SmartSearchDao smartSearchDao;
 
     @Test
-    public void testHighlightQuery() throws Exception {
+    public void testQueryResult() throws Exception {
 
         Map params = new HashMap();
         params.put("keyword","陶阳");
 //        params.put("keyword","阳春面");
 //        params.put("keyword","检索");
 //        params.put("keyword","简介");
-        System.out.println(smartSearchDao.highlightQuery(params));
+        System.out.println(smartSearchDao.queryResult(params));
 
     }
 }

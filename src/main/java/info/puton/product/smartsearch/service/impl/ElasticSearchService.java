@@ -58,10 +58,6 @@ public class ElasticSearchService implements FileIndexer {
                         "      \"type\": \"string\",\n" +
                         "      \"analyzer\": \"" + Analyzer.IK + "\"\n" +
                         "    },\n" +
-                        "    \"author\": {\n" +
-                        "      \"type\": \"string\",\n" +
-                        "      \"analyzer\": \"" + Analyzer.IK + "\"\n" +
-                        "    },\n" +
                         "    \"content\": {\n" +
                         "      \"type\": \"string\",\n" +
                         "      \"analyzer\": \"" + Analyzer.IK + "\"\n" +
@@ -74,10 +70,6 @@ public class ElasticSearchService implements FileIndexer {
                 "{\n" +
                 "  \"properties\": {\n" +
                 "    \"fileName\": {\n" +
-                "      \"type\": \"string\",\n" +
-                "      \"analyzer\": \"" + Analyzer.IK + "\"\n" +
-                "    },\n" +
-                "    \"author\": {\n" +
                 "      \"type\": \"string\",\n" +
                 "      \"analyzer\": \"" + Analyzer.IK + "\"\n" +
                 "    },\n" +
@@ -96,10 +88,6 @@ public class ElasticSearchService implements FileIndexer {
                 "      \"type\": \"string\",\n" +
                 "      \"analyzer\": \"" + Analyzer.IK + "\"\n" +
                 "    },\n" +
-                "    \"author\": {\n" +
-                "      \"type\": \"string\",\n" +
-                "      \"analyzer\": \"" + Analyzer.IK + "\"\n" +
-                "    },\n" +
                 "    \"content\": {\n" +
                 "      \"type\": \"string\",\n" +
                 "      \"analyzer\": \"" + Analyzer.IK + "\"\n" +
@@ -112,10 +100,6 @@ public class ElasticSearchService implements FileIndexer {
                 "{\n" +
                         "  \"properties\": {\n" +
                         "    \"fileName\": {\n" +
-                        "      \"type\": \"string\",\n" +
-                        "      \"analyzer\": \"" + Analyzer.IK + "\"\n" +
-                        "    },\n" +
-                        "    \"author\": {\n" +
                         "      \"type\": \"string\",\n" +
                         "      \"analyzer\": \"" + Analyzer.IK + "\"\n" +
                         "    },\n" +
@@ -134,10 +118,6 @@ public class ElasticSearchService implements FileIndexer {
                         "      \"type\": \"string\",\n" +
                         "      \"analyzer\": \"" + Analyzer.IK + "\"\n" +
                         "    },\n" +
-                        "    \"author\": {\n" +
-                        "      \"type\": \"string\",\n" +
-                        "      \"analyzer\": \"" + Analyzer.IK + "\"\n" +
-                        "    },\n" +
                         "    \"content\": {\n" +
                         "      \"type\": \"string\",\n" +
                         "      \"analyzer\": \"" + Analyzer.IK + "\"\n" +
@@ -150,10 +130,6 @@ public class ElasticSearchService implements FileIndexer {
                 "{\n" +
                         "  \"properties\": {\n" +
                         "    \"fileName\": {\n" +
-                        "      \"type\": \"string\",\n" +
-                        "      \"analyzer\": \"" + Analyzer.IK + "\"\n" +
-                        "    },\n" +
-                        "    \"author\": {\n" +
                         "      \"type\": \"string\",\n" +
                         "      \"analyzer\": \"" + Analyzer.IK + "\"\n" +
                         "    },\n" +
@@ -172,10 +148,6 @@ public class ElasticSearchService implements FileIndexer {
                         "      \"type\": \"string\",\n" +
                         "      \"analyzer\": \"" + Analyzer.IK + "\"\n" +
                         "    },\n" +
-                        "    \"author\": {\n" +
-                        "      \"type\": \"string\",\n" +
-                        "      \"analyzer\": \"" + Analyzer.IK + "\"\n" +
-                        "    },\n" +
                         "    \"content\": {\n" +
                         "      \"type\": \"string\",\n" +
                         "      \"analyzer\": \"" + Analyzer.IK + "\"\n" +
@@ -188,10 +160,6 @@ public class ElasticSearchService implements FileIndexer {
                 "{\n" +
                         "  \"properties\": {\n" +
                         "    \"fileName\": {\n" +
-                        "      \"type\": \"string\",\n" +
-                        "      \"analyzer\": \"" + Analyzer.IK + "\"\n" +
-                        "    },\n" +
-                        "    \"author\": {\n" +
                         "      \"type\": \"string\",\n" +
                         "      \"analyzer\": \"" + Analyzer.IK + "\"\n" +
                         "    },\n" +

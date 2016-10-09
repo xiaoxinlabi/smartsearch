@@ -21,7 +21,7 @@ public class FileStorageTest extends TestSupport {
 
     @Test
     public void testPut() throws Exception {
-        String filePath = "D:/programming/java/practice/hbase-practice/src/main/resources/一碗阳春面.docx";
+        String filePath = "src/main/resources/一碗阳春面.docx";
         hbfo.put(filePath, "a00002");
     }
 
