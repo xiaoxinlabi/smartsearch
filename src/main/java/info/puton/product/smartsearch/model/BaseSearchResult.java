@@ -13,6 +13,12 @@ public class BaseSearchResult {
 
     private Float score;
 
+    private Long timestamp;
+
+    private String owner;
+
+    private String group;
+
     public String getIndex() {
         return index;
     }
@@ -45,6 +51,30 @@ public class BaseSearchResult {
         this.score = score;
     }
 
+    public Long getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(Long timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    public String getOwner() {
+        return owner;
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
+    }
+
+    public String getGroup() {
+        return group;
+    }
+
+    public void setGroup(String group) {
+        this.group = group;
+    }
+
     public BaseSearchResult() {
     }
 
@@ -55,6 +85,9 @@ public class BaseSearchResult {
                 ", type='" + type + '\'' +
                 ", id='" + id + '\'' +
                 ", score=" + score +
+                ", timestamp=" + timestamp +
+                ", owner='" + owner + '\'' +
+                ", group='" + group + '\'' +
                 '}';
     }
 }

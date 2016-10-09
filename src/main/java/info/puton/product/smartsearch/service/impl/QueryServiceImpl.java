@@ -34,8 +34,6 @@ public class QueryServiceImpl implements IQueryService {
 
         //TODO need support for pagination
 
-//        List<BaseSearchResult> baseSearchResults = smartSearchDao.highlightQuery(params);
-
         PageModel<BaseSearchResult> pageModel = smartSearchDao.queryResult(params);
 
         return pageModel;

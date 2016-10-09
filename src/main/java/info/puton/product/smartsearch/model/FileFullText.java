@@ -9,8 +9,6 @@ public class FileFullText extends BaseSearchResult {
 
     private Long size;
 
-    private String author;
-
     private String lastModified;
 
     private String content;
@@ -29,14 +27,6 @@ public class FileFullText extends BaseSearchResult {
 
     public void setSize(Long size) {
         this.size = size;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
     }
 
     public String getLastModified() {
@@ -62,8 +52,7 @@ public class FileFullText extends BaseSearchResult {
     public String toString() {
         return "FileFullText{" +
                 "fileName='" + fileName + '\'' +
-                ", size='" + size + '\'' +
-                ", author='" + author + '\'' +
+                ", size=" + size +
                 ", lastModified='" + lastModified + '\'' +
                 ", content='" + content + '\'' +
                 '}';

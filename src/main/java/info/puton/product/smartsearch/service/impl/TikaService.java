@@ -16,6 +16,7 @@ import org.xml.sax.SAXException;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Map;
 import java.util.UUID;
 
 /**
@@ -25,10 +26,14 @@ import java.util.UUID;
 public class TikaService implements FileExtractor {
 
     @Override
-    public FileFullText extract(File file) throws TikaException, SAXException, IOException {
+    public FileFullText extract(File file, Map additional) throws TikaException, SAXException, IOException {
         FileFullText fileFullText = new FileFullText();
         String fileKey = UUID.randomUUID().toString();
         fileFullText.setId(fileKey);//id
+        fileFullText.setOwner((String) additional.get("owner"));//owner
+        fileFullText.setGroup((String) additional.get("group"));//group
+        fileFullText.setTimestamp(System.currentTimeMillis());//timestamp
+
         fileFullText.setFileName(file.getName());//fileName
         fileFullText.setType(FileUtil.getFileSuffix(file.getName()));//type
         fileFullText.setSize(file.length());//size
@@ -40,9 +45,15 @@ public class TikaService implements FileExtractor {
             for (String name : metadata.names()) {
                 System.out.println(name + ":" + metadata.get(name));
             }
-        String author = metadata.get("Author");//author
-        fileFullText.setAuthor(author);
         String lastModified = metadata.get(Property.get("Last-Modified"));
+        String creationDate = metadata.get(Property.get("Creation-Date"));
+        if(lastModified!=null){
+
+        }else if(creationDate!=null){
+            lastModified = creationDate;
+        }else{
+
+        }
         fileFullText.setLastModified(lastModified);//lastModified
         String content = handler.toString();
         content = content

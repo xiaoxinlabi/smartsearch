@@ -19,9 +19,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * Created by taoyang on 2016/9/30.
@@ -110,8 +110,18 @@ public class SmartSearchDao {
 
                 String fileName = (String) searchHit.getSource().get("fileName");
                 Long size = ((Integer) searchHit.getSource().get("size")).longValue();
-                String author = (String) searchHit.getSource().get("author");
                 String lastModified = (String) searchHit.getSource().get("lastModified");
+//                System.out.println("before:"+lastModified);
+                SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+                sdf1.setTimeZone(TimeZone.getTimeZone("UTC"));
+                SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                try {
+                    Date date = sdf1.parse(lastModified);
+                    lastModified = sdf2.format(date);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+//                System.out.println("after:"+lastModified);
                 String content = (String) searchHit.getSource().get("content");
                 Map<String, HighlightField> highlightFields = searchHit.highlightFields();
                 if(highlightFields.containsKey("fileName")){
@@ -132,7 +142,6 @@ public class SmartSearchDao {
 
                 result.setFileName(fileName);
                 result.setSize(size);
-                result.setAuthor(author);
                 result.setLastModified(lastModified);
                 result.setContent(content);
 

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
+import java.util.Map;
 
 /**
  * Created by taoyang on 2016/9/21.
@@ -32,9 +33,8 @@ public class SmartSearchService implements SmartSearchHandler {
     }
 
     @Override
-    public void handleFile(String filePath) throws Exception {
-        FileFullText fileFullText = null;
-        fileFullText = fileExtractor.extract(new File(filePath));
+    public void handleFile(String filePath, Map additional) throws Exception {
+        FileFullText fileFullText = fileExtractor.extract(new File(filePath), additional);
         fileStorage.put(filePath, fileFullText.getId());
         fileIndexer.add(fileFullText);
         System.out.println("File handled. name:" + fileFullText.getFileName());

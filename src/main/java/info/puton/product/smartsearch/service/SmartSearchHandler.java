@@ -4,6 +4,7 @@ import org.apache.tika.exception.TikaException;
 import org.xml.sax.SAXException;
 
 import java.io.IOException;
+import java.util.Map;
 
 /**
  * Created by taoyang on 2016/9/21.
@@ -12,6 +13,6 @@ public interface SmartSearchHandler {
 
     void initFile() throws Exception;
 
-    void handleFile(String filePath) throws Exception;
+    void handleFile(String filePath, Map additional) throws Exception;
 
 }

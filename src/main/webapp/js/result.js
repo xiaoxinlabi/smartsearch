@@ -3,7 +3,7 @@
  */
 
 // 分页功能
-var currentPage = 1, pageSize = 3;
+var currentPage = 1, pageSize = 5;
 
 $(function(){
 
@@ -106,14 +106,19 @@ function getResult(keyword, type, currentPage, pageSize){
             $("#search-button").button('reset');
 
             //alert(JSON.stringify(response.data));
+
+            var ssResultCount = $('#ss-result-count');
+            ssResultCount.children().remove();
+            var count = response.data.count;
+            inHtml='智搜为您找到' + count + '个相关结果';
+            ssResultCount.append(inHtml);
+
             var tdsFileList = $('#tds-file-list');
             tdsFileList.children().remove();
             list = response.data.datas;
             inHtml='';
             for(var i =0; i<list.length; i++){
                 var record = list[i];
-                var newDate = new Date();
-                newDate.setTime(record.lastModified);
                 inHtml+='<div class="tds-file-record">' +
                     '<div class="row">' +
                     '<div class="col-md-12">' +
@@ -130,8 +135,8 @@ function getResult(keyword, type, currentPage, pageSize){
                     '</div>' +
                     '<div class="col-md-10" class="tds-file-record-metadata">' +
                     '<p>文件大小：' + Math.ceil(record.size/1024) + 'KB</p>' +
-                    '<p>文件作者：' + record.author + '</p>' +
-                    '<p>修改时间：' + newDate.toLocaleDateString() + '</p>' +
+                    '<p>文件归属：' + record.owner + '</p>' +
+                    '<p>修改时间：' + record.lastModified + '</p>' +
                     '<p>在线预览：' +
                     //'<a class="tds-file-prev" data-hdfspath="http://' + hdfsHost + ':50070/webhdfs/v1' + record.hdfsPath + '?op=OPEN">点击预览 </a>' +
                     '<a class="tds-file-prev">点击预览 </a>' +
