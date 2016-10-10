@@ -26,5 +26,10 @@
             </list>
         </property>
     </bean>
-
+    <!-- 支持上传文件 -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
+    <!-- 获取静态资源-->
+    <mvc:annotation-driven/>
+    <!-- 映射静态资源 -->
+    <mvc:resources location="/cache/init/" mapping="/cache/init/**" />
 </beans>

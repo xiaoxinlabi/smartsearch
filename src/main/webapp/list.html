@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>上传结果</title>
+</head>
+<body>
+
+</body>
+</html>
+
+
+<script>
+    var $_GET = (function () {
+        var url = window.document.location.href.toString();
+        var u = url.split("?");
+        if (typeof(u[1]) == "string") {
+            u = u[1].split("&");
+            var get = {};
+            for (var i in u) {
+                var j = u[i].split("=");
+                get[j[0]] = j[1];
+            }
+            return get;
+        } else {
+            return {};
+        }
+    })();
+    var status = $_GET['status'];
+    if(status=='OK'){
+        alert("上传成功!")
+    }
+</script>
