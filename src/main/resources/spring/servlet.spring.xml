@@ -31,5 +31,5 @@
     <!-- 获取静态资源-->
     <mvc:annotation-driven/>
     <!-- 映射静态资源 -->
-    <mvc:resources location="/lupload/" mapping="/lupload/**" />
+    <mvc:resources location="/cache/init/" mapping="/cache/init/**" />
 </beans>
