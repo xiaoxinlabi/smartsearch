@@ -1,5 +1,6 @@
 package info.puton.product.smartsearch.controller;
 
+import info.puton.product.smartsearch.constant.FilePath;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -31,7 +32,7 @@ public class FileController {
         // new Date()为获取当前系统时间
         String timestamp = df.format(new Date());
 //        System.out.println(timestamp);
-        String filePath = "cache/ini/"+timestamp;
+        String filePath = FilePath.CACHE.INITIAL+timestamp;
         //创建你要保存的文件的路径
 //        String path = request.getSession().getServletContext().getRealPath("uploadfile");
         String path = request.getSession().getServletContext().getRealPath(filePath);
