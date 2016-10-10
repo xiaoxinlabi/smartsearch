@@ -12,7 +12,6 @@ import org.elasticsearch.common.text.Text;
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.SearchHit;
-import org.elasticsearch.search.SearchHits;
 import org.elasticsearch.search.highlight.HighlightField;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -32,8 +31,8 @@ public class SmartSearchDao {
     @Autowired
     private ElasticsearchTemplate elasticsearchTemplate;
 
-    @Value("#{settings['maxContentLength']}")
-    private Integer maxContentLength;
+    @Value("#{settings['maxHighlightedSize']}")
+    private Integer maxHighlightedSize;
 
     public PageModel<BaseSearchResult> queryResult(Map params){
 
@@ -71,7 +70,7 @@ public class SmartSearchDao {
 //        srb.setHighlighterPhraseLimit(maxContentLength);
         srb.setHighlighterPreTags("<span>");
         srb.setHighlighterPostTags("</span>");
-        srb.setHighlighterFragmentSize(maxContentLength);
+        srb.setHighlighterFragmentSize(maxHighlightedSize);
 
         //pagination
         PageModel<BaseSearchResult> pageModel = new PageModel<>();
@@ -108,20 +107,14 @@ public class SmartSearchDao {
                 result.setId(id);
                 result.setScore(score);
 
+                String owner = (String) searchHit.getSource().get("owner");
+                String group = (String) searchHit.getSource().get("group");
+                Long timestamp = (Long) searchHit.getSource().get("timestamp");
+
                 String fileName = (String) searchHit.getSource().get("fileName");
                 Long size = ((Integer) searchHit.getSource().get("size")).longValue();
-                String lastModified = (String) searchHit.getSource().get("lastModified");
-//                System.out.println("before:"+lastModified);
-                SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
-                sdf1.setTimeZone(TimeZone.getTimeZone("UTC"));
-                SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                try {
-                    Date date = sdf1.parse(lastModified);
-                    lastModified = sdf2.format(date);
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-//                System.out.println("after:"+lastModified);
+                Long lastModified = (Long) searchHit.getSource().get("lastModified");
+
                 String content = (String) searchHit.getSource().get("content");
                 Map<String, HighlightField> highlightFields = searchHit.highlightFields();
                 if(highlightFields.containsKey("fileName")){
@@ -132,13 +125,14 @@ public class SmartSearchDao {
                     Text[] highlightedContents = highlightFields.get("content").getFragments();
                     content = highlightedContents[0].toString();
                 } else {
-                    if(content.length()> maxContentLength){
-                        content = content.substring(0,maxContentLength);
+                    if(content.length()> maxHighlightedSize){
+                        content = content.substring(0, maxHighlightedSize);
                     }
                 }
 
-//                System.out.println(fileName);
-//                System.out.println(content);
+                result.setOwner(owner);
+                result.setGroup(group);
+                result.setTimestamp(timestamp);
 
                 result.setFileName(fileName);
                 result.setSize(size);

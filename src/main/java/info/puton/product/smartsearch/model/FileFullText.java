@@ -9,7 +9,7 @@ public class FileFullText extends BaseSearchResult {
 
     private Long size;
 
-    private String lastModified;
+    private Long lastModified;
 
     private String content;
 
@@ -29,11 +29,11 @@ public class FileFullText extends BaseSearchResult {
         this.size = size;
     }
 
-    public String getLastModified() {
+    public Long getLastModified() {
         return lastModified;
     }
 
-    public void setLastModified(String lastModified) {
+    public void setLastModified(Long lastModified) {
         this.lastModified = lastModified;
     }
 

@@ -32,8 +32,6 @@ public class QueryServiceImpl implements IQueryService {
         params.put("currentPage", currentPage);
         params.put("pageSize", pageSize);
 
-        //TODO need support for pagination
-
         PageModel<BaseSearchResult> pageModel = smartSearchDao.queryResult(params);
 
         return pageModel;

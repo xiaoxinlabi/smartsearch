@@ -23,7 +23,7 @@ public class SmartSearchHandlerTest extends TestSupport {
     @Test
     public void testHandleFile() throws Exception {
         Map additional = new HashMap();
-        additional.put("owner","hsb");
+        additional.put("owner","public");
         additional.put("group","public");
         String filePath1 = "src/test/resources/一碗阳春面.docx";
         smartSearchHandler.handleFile(filePath1, additional);
@@ -47,6 +47,8 @@ public class SmartSearchHandlerTest extends TestSupport {
         smartSearchHandler.handleFile(filePath10, additional);
         String filePath11 = "src/test/resources/ESManual13.pdf";
         smartSearchHandler.handleFile(filePath11, additional);
+        String filePath12 = "src/test/resources/HyperbaseManual_T00146x-04-012_2016-08-26.pdf";
+        smartSearchHandler.handleFile(filePath12, additional);
     }
 
 }
