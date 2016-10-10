@@ -49,9 +49,14 @@ public class HBaseService implements FileStorage {
 
     public void get(String fileLocation, String key) throws Exception {
         String name = hbd.getStringCell(TABLE.FILE, key, COLUMN_FAMILY.FILE, COLUMN_QUALIFIER.NAME);
+        get(fileLocation, key, name);
+    }
+
+    @Override
+    public void get(String fileLocation, String key, String rename) throws Exception {
         String type = hbd.getStringCell(TABLE.FILE, key, COLUMN_FAMILY.FILE, COLUMN_QUALIFIER.TYPE);
         byte[] data = hbd.getBytesCell(TABLE.FILE, key, COLUMN_FAMILY.FILE, COLUMN_QUALIFIER.DATA);
-        String filePath = fileLocation + "/" + name + "." + type;
+        String filePath = fileLocation + "/" + rename + "." + type;
         File file = new File(filePath);
         FileUtils.writeByteArrayToFile(file, data);
     }

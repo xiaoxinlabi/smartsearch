@@ -30,4 +30,5 @@ public class FileExtractorTest extends TestSupport {
         FileFullText fileFullText = fileExtractor.extract(new File(filePath), additional);
         System.out.println(fileFullText);
     }
+
 }

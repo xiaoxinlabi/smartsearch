@@ -11,4 +11,6 @@ public interface FileStorage {
 
     void get(String fileLocation, String key) throws Exception;
 
+    void get(String fileLocation, String key, String rename) throws Exception;
+
 }

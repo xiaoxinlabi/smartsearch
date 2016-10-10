@@ -43,9 +43,9 @@ function init(){
     //
     //});
 
-    //$('#tds-file-list').on('click','.tds-file-down', function () {
-    //    window.open ('./download?hdfsPath=' + $(this).data('hdfspath'), 'newwindow', 'height=800, width=1200, top=100, left=200, toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no, status=no');
-    //});
+    $('#tds-file-list').on('click','.tds-file-down', function () {
+        window.open ('rest/file/download?id=' + $(this).data('id') + '&type=' + $(this).data('type'), 'newwindow');
+    });
 
     $('.tds-file-type-item').on('click', function () {
         $("#tds-file-type-selector").html($(this).text()+' <span class="caret"></span>')
@@ -125,7 +125,7 @@ function getResult(keyword, type, currentPage, pageSize){
                     '<div class="row">' +
                     '<div class="col-md-12">' +
                     //'<a class="tds-highlight-name tds-file-down" data-hdfspath="http://' + hdfsHost + ':50070/webhdfs/v1' + record.hdfsPath + '?op=OPEN"><h4><strong>'+ (record.highlightName ? record.highlightName:record.name) +'</strong></h4></a>' +
-                    '<a class="tds-highlight-name tds-file-down"><h4><strong>'+ record.fileName +'</strong></h4></a>' +
+                    '<a class="tds-highlight-name tds-file-down" data-id="' + record.id + '" data-type = "' + record.type + '"><h4><strong>'+ record.fileName +'</strong></h4></a>' +
                     '</div>' +
                     '</div>' +
                     '<div class="row">' +
@@ -141,10 +141,10 @@ function getResult(keyword, type, currentPage, pageSize){
                     '<p>修改时间：' + newDate.toLocaleString() + '</p>' +
                     '<p>在线预览：' +
                     //'<a class="tds-file-prev" data-hdfspath="http://' + hdfsHost + ':50070/webhdfs/v1' + record.hdfsPath + '?op=OPEN">点击预览 </a>' +
-                    '<a class="tds-file-prev">点击预览 </a>' +
+                    '<a class="tds-file-prev">在线预览 </a>' +
                     '&nbsp;&nbsp;下载地址：' +
-                    //'<a class="tds-file-down" data-hdfspath="http://' + hdfsHost + ':50070/webhdfs/v1' + record.hdfsPath + '?op=OPEN">点击下载 </a>' +
-                    '<a class="tds-file-down">点击下载 </a>' +
+                    //'<a class="tds-file-down" data-id="' + record.id + '" data-fileName="' + record.fileName + '" data-timestamp="' + record.timestamp + '">点击下载 </a>' +
+                    '<a class="tds-file-down" data-id="' + record.id + '" data-type = "' + record.type + '">点击下载 </a>' +
                     '</p>' +
                     '</div>' +
                     '</div>' +
