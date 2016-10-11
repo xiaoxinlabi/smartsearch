@@ -47,8 +47,6 @@ public class SmartSearchHandlerTest extends TestSupport {
         smartSearchHandler.handleFile(filePath10, additional);
         String filePath11 = "src/test/resources/ESManual13.pdf";
         smartSearchHandler.handleFile(filePath11, additional);
-        String filePath12 = "src/test/resources/HyperbaseManual_T00146x-04-012_2016-08-26.pdf";
-        smartSearchHandler.handleFile(filePath12, additional);
     }
 
 }
