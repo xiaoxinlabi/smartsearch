@@ -12,28 +12,45 @@ function wait(){
 
 function embedPDF(){
 
-    if(pdfPath=="wait"){
+    $("#pdf").load("./common/loading/index.html");
 
-        $("#pdf").load("./common/loading/index.html");
+    id = $_GET['id'];
+    type = $_GET['type'];
 
-        setTimeout('wait()',3000);
+    var settings = {
+        "async": true,
+        "url": "rest/file/preview",
+        "method": "GET",
+        "headers": {
+            "cache-control": "no-cache"
+        },
+        "data":{
+            id:id,
+            type:type
+        }
+    };
 
-        //alert("文件正在转换");
-
-    } else if(pdfPath!=null && pdfPath!=""){
-
-        var myPDF = new PDFObject({
-
-            url : "." + pdfPath
-
-            //url :  "./cache/pdf/20151117061046/个人外部训练申请表.pdf"
-
-        }).embed('pdf');
-
-    }else{
-
-        alert("文件预览异常");
-
-    }
-
+    $.ajax(settings).done(function (response) {
+        var status = response.status;
+        switch (status) {
+            case 'ok':
+                $("#pdf").children().remove();
+                pdfPath = response.pdfPath;
+                if(pdfPath!=null && pdfPath!=""){
+                    var myPDF = new PDFObject({
+                        url : pdfPath
+                    }).embed('pdf');
+                }
+                break;
+            case 'wait':
+                setTimeout('wait()',3000);
+                break;
+            case 'error':
+                alert("文件不支持");
+                break;
+            default :
+                alert("未知异常");
+                break;
+        }
+    });
 }
