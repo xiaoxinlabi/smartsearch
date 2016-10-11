@@ -88,7 +88,7 @@ public class FileController {
 
         if(!iniFile.exists()) {
             try {
-                fileStorage.get(iniCacheDir, id, id);//rename by id.type
+                fileStorage.getFile(iniCacheDir, id, id);//rename by id.type
             } catch (Exception e) {
                 e.printStackTrace();
             }

@@ -32,12 +32,12 @@ public class HBaseService implements FileStorage {
         static String DATA = "data";
     }
 
-    public void init() throws Exception {
+    public void initFile() throws Exception {
         hbd.deleteTable(TABLE.FILE);
         hbd.createTable(TABLE.FILE, COLUMN_FAMILY.FILE);
     }
 
-    public void put(String filePath, String key) throws Exception {
+    public void putFile(String filePath, String key) throws Exception {
 //        HBaseDao.createTable(TABLE.FILE, COLUMN_FAMILY.FILE);
         String name = FileUtil.getFileName(filePath);
         String type = FileUtil.getFileSuffix(filePath);
@@ -47,13 +47,13 @@ public class HBaseService implements FileStorage {
         hbd.putCell(TABLE.FILE, key, COLUMN_FAMILY.FILE, COLUMN_QUALIFIER.DATA, data);
     }
 
-    public void get(String fileLocation, String key) throws Exception {
+    public void getFile(String fileLocation, String key) throws Exception {
         String name = hbd.getStringCell(TABLE.FILE, key, COLUMN_FAMILY.FILE, COLUMN_QUALIFIER.NAME);
-        get(fileLocation, key, name);
+        getFile(fileLocation, key, name);
     }
 
     @Override
-    public void get(String fileLocation, String key, String rename) throws Exception {
+    public void getFile(String fileLocation, String key, String rename) throws Exception {
         String type = hbd.getStringCell(TABLE.FILE, key, COLUMN_FAMILY.FILE, COLUMN_QUALIFIER.TYPE);
         byte[] data = hbd.getBytesCell(TABLE.FILE, key, COLUMN_FAMILY.FILE, COLUMN_QUALIFIER.DATA);
         String filePath = fileLocation + "/" + rename + "." + type;

@@ -110,7 +110,7 @@ function getResult(keyword, type, currentPage, pageSize){
             ssResultCount.children().remove();
             var count = response.data.count;
             inHtml='智搜为您找到' + count + '个相关结果';
-            ssResultCount.append(inHtml);
+            ssResultCount.html(inHtml);
 
             var tdsFileList = $('#tds-file-list');
             tdsFileList.children().remove();

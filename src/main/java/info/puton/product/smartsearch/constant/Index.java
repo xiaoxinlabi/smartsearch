@@ -7,4 +7,6 @@ public class Index {
 
     public final static String FILE_FULL_TEXT = "filefulltext";
 
+    public final static String ADDRESS = "address";
+
 }

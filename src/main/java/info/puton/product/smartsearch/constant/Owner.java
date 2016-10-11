@@ -5,6 +5,6 @@ package info.puton.product.smartsearch.constant;
  */
 public class Owner {
 
-    public final static String DEFAULT = "public";
+    public final static String DEFAULT = "default";
 
 }

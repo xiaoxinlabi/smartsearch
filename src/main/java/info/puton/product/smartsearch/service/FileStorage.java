@@ -5,12 +5,12 @@ package info.puton.product.smartsearch.service;
  */
 public interface FileStorage {
 
-    void init() throws Exception;
+    void initFile() throws Exception;
 
-    void put(String filePath, String key) throws Exception;
+    void putFile(String filePath, String key) throws Exception;
 
-    void get(String fileLocation, String key) throws Exception;
+    void getFile(String fileLocation, String key) throws Exception;
 
-    void get(String fileLocation, String key, String rename) throws Exception;
+    void getFile(String fileLocation, String key, String rename) throws Exception;
 
 }

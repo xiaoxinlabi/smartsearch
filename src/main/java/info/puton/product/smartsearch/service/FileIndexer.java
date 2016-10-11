@@ -9,10 +9,10 @@ import java.util.Map;
  */
 public interface FileIndexer {
 
-    void init();
+    void initFile();
 
-    void add(FileFullText fileFullText);
+    void addFile(FileFullText fileFullText);
 
-    void delete(String index, String type, String id);
+    void deleteFile(String type, String id);
 
 }

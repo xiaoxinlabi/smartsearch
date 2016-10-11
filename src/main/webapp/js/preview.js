@@ -7,7 +7,7 @@ $(function(){
 });
 
 function wait(){
-    window.location.replace(location)
+    window.location.replace(location);
 }
 
 function embedPDF(){

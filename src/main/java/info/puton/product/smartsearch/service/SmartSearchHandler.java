@@ -1,5 +1,6 @@
 package info.puton.product.smartsearch.service;
 
+import info.puton.product.smartsearch.model.Address;
 import org.apache.tika.exception.TikaException;
 import org.xml.sax.SAXException;
 
@@ -14,5 +15,7 @@ public interface SmartSearchHandler {
     void initFile() throws Exception;
 
     void handleFile(String filePath, Map additional) throws Exception;
+
+    void handleAddress(Address address) throws Exception;
 
 }

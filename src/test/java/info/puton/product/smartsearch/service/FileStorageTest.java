@@ -16,17 +16,17 @@ public class FileStorageTest extends TestSupport {
 
     @Test
     public void testInit() throws Exception {
-        hbfo.init();
+        hbfo.initFile();
     }
 
     @Test
     public void testPut() throws Exception {
         String filePath = "src/main/resources/一碗阳春面.docx";
-        hbfo.put(filePath, "a00002");
+        hbfo.putFile(filePath, "a00002");
     }
 
     @Test
     public void testGet() throws Exception {
-        hbfo.get("E:/tmp/yang", "a00002");
+        hbfo.getFile("E:/tmp/yang", "a00002");
     }
 }
