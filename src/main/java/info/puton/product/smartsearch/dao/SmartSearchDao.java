@@ -49,7 +49,8 @@ public class SmartSearchDao {
                 Field.CONTENT,
                 Field.ENGLISH_NAME,
                 Field.CHINESE_NAME,
-                Field.MOBILE_PHONE);
+                Field.MOBILE_PHONE,
+                Field.ACCOUNT_ID);
         SearchRequestBuilder srb = elasticsearchTemplate
                 .getClient()
                 .prepareSearch(Index.FILE_FULL_TEXT, Index.ADDRESS);
@@ -73,8 +74,10 @@ public class SmartSearchDao {
         srb.addHighlightedField(Field.CONTENT);
         srb.addHighlightedField(Field.ENGLISH_NAME);
         srb.addHighlightedField(Field.CHINESE_NAME);
+        srb.addHighlightedField(Field.MOBILE_PHONE);
+        srb.addHighlightedField(Field.ACCOUNT_ID);
 //        srb.setHighlighterPhraseLimit(maxContentLength);
-        srb.setHighlighterPreTags("<span>");
+        srb.setHighlighterPreTags("<span class=\"ss-highlight\">");
         srb.setHighlighterPostTags("</span>");
         srb.setHighlighterFragmentSize(maxHighlightedSize);
 
@@ -113,12 +116,12 @@ public class SmartSearchDao {
                 String content = (String) searchHit.getSource().get("content");
                 Map<String, HighlightField> highlightFields = searchHit.highlightFields();
                 if(highlightFields.containsKey("fileName")){
-                    Text[] highlightedFileNames = highlightFields.get("fileName").getFragments();
-                    fileName = highlightedFileNames[0].toString();
+                    Text[] highlights = highlightFields.get("fileName").getFragments();
+                    fileName = highlights[0].toString();
                 }
                 if(highlightFields.containsKey("content")){
-                    Text[] highlightedContents = highlightFields.get("content").getFragments();
-                    content = highlightedContents[0].toString();
+                    Text[] highlights = highlightFields.get("content").getFragments();
+                    content = highlights[0].toString();
                 } else {
                     if(content.length()> maxHighlightedSize){
                         content = content.substring(0, maxHighlightedSize);
@@ -158,14 +161,20 @@ public class SmartSearchDao {
 
                 Map<String, HighlightField> highlightFields = searchHit.highlightFields();
                 if(highlightFields.containsKey("englishName")){
-                    Text[] highlightedEnglishNames = highlightFields.get("englishName").getFragments();
-                    englishName = highlightedEnglishNames[0].toString();
+                    Text[] highlights = highlightFields.get("englishName").getFragments();
+                    englishName = highlights[0].toString();
                 }
                 if(highlightFields.containsKey("chineseName")){
-                    Text[] highlightedChineseNames = highlightFields.get("chineseName").getFragments();
-                    chineseName = highlightedChineseNames[0].toString();
-                } else {
-
+                    Text[] highlights = highlightFields.get("chineseName").getFragments();
+                    chineseName = highlights[0].toString();
+                }
+                if(highlightFields.containsKey("mobilePhone")){
+                    Text[] highlights = highlightFields.get("mobilePhone").getFragments();
+                    mobilePhone = highlights[0].toString();
+                }
+                if(highlightFields.containsKey("accountId")){
+                    Text[] highlights = highlightFields.get("accountId").getFragments();
+                    accountId = highlights[0].toString();
                 }
 
                 result.setIndex(index);

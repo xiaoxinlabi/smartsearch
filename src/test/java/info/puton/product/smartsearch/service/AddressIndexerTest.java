@@ -24,6 +24,7 @@ public class AddressIndexerTest extends TestSupport {
     public void testAddAddress() throws Exception {
         Address address = new Address();
         address.setId("yt255014");
+        address.setAccountId("yt255014");
         address.setEnglishName("taoyang");
         address.setChineseName("陶阳");
         address.setFixedPhone("021-88888888");

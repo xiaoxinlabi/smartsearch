@@ -182,7 +182,7 @@ public class ElasticSearchService implements FileIndexer, AddressIndexer {
         }
         elasticSearchDao.createIndex(Index.ADDRESS);
         //txt
-        String defaultSource =
+        String addressSource =
                         "{\n" +
                         "  \"properties\": {\n" +
                         "    \"chineseName\": {\n" +
@@ -191,7 +191,7 @@ public class ElasticSearchService implements FileIndexer, AddressIndexer {
                         "    }" +
                         "  }\n" +
                         "}";
-        elasticSearchDao.createSchema(Index.ADDRESS, Type.DEFAULT, defaultSource);
+        elasticSearchDao.createSchema(Index.ADDRESS, Type.ADDRESS, addressSource);
     }
 
     @Override
@@ -214,7 +214,7 @@ public class ElasticSearchService implements FileIndexer, AddressIndexer {
         data.put("owner", address.getOwner()!=null ? address.getOwner() : Owner.DEFAULT);
         data.put("group", address.getGroup()!=null ? address.getGroup() : Group.DEFAULT);
         data.put("timestamp", address.getTimestamp()!=null ? address.getTimestamp():System.currentTimeMillis());
-        elasticSearchDao.createDocument(Index.ADDRESS, Type.DEFAULT, id, data);
+        elasticSearchDao.createDocument(Index.ADDRESS, Type.ADDRESS, id, data);
     }
 
     @Override

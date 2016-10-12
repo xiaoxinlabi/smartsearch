@@ -5,29 +5,29 @@ package info.puton.product.smartsearch.model;
  */
 public class Address extends BaseSearchResult {
 
-    private String accountId;
+    private String accountId; //账号
 
-    private String englishName;
+    private String englishName; //英文名
 
-    private String chineseName;
+    private String chineseName; //中文名
 
-    private String fixedPhone;
+    private String fixedPhone;  //座机
 
-    private String mobilePhone;
+    private String mobilePhone; //手机
 
-    private String email;
+    private String email; //邮箱
 
-    private String address;
+    private String address; //地址
 
-    private String qq;
+    private String qq; //扣扣
 
-    private String organization;
+    private String organization; //机构
 
-    private String department;
+    private String department; //部门
 
-    private String position;
+    private String position; //职位
 
-    private String remark;
+    private String remark; //备注
 
     public String getAccountId() {
         return accountId;

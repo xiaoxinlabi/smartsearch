@@ -124,13 +124,15 @@ function getResult(keyword, type, currentPage, pageSize){
 
                 if(index == "filefulltext"){
                     //文件
-                    var newDate = new Date();
-                    newDate.setTime(record.lastModified);
+                    modifyDate = new Date();
+                    modifyDate.setTime(record.lastModified);
+                    indexDate = new Date();
+                    indexDate.setTime(record.timestamp);
                     inHtml+='<div class="ss-record-row">' +
                         '<div class="row">' +
                         '<div class="col-md-12">' +
-                            //'<a class="ss-highlight-name ss-file-down" data-hdfspath="http://' + hdfsHost + ':50070/webhdfs/v1' + record.hdfsPath + '?op=OPEN"><h4><strong>'+ (record.highlightName ? record.highlightName:record.name) +'</strong></h4></a>' +
-                        '<a class="ss-highlight-name ss-file-down" data-id="' + record.id + '" data-type = "' + record.type + '"><h4><strong>'+ record.fileName +'</strong></h4></a>' +
+                            //'<a class="ss-file-down" data-hdfspath="http://' + hdfsHost + ':50070/webhdfs/v1' + record.hdfsPath + '?op=OPEN"><h4><strong>'+ (record.highlightName ? record.highlightName:record.name) +'</strong></h4></a>' +
+                        '<a class="ss-file-down" data-id="' + record.id + '" data-type = "' + record.type + '"><h4><strong>'+ record.fileName +'</strong></h4></a>' +
                         '</div>' +
                         '</div>' +
                         '<div class="row">' +
@@ -141,27 +143,106 @@ function getResult(keyword, type, currentPage, pageSize){
                         '</a>' +
                         '</div>' +
                         '<div class="col-md-10" class="ss-record-file-metadata">' +
-                        '<p>文件大小：' + Math.ceil(record.size/1024) + 'KB</p>' +
-                        '<p>文件归属：' + record.owner + '</p>' +
-                        '<p>修改时间：' + newDate.toLocaleString() + '</p>' +
-                        '<p>在线预览：' +
-                            //'<a class="ss-file-prev" data-hdfspath="http://' + hdfsHost + ':50070/webhdfs/v1' + record.hdfsPath + '?op=OPEN">点击预览 </a>' +
-                        '<a class="ss-file-prev" data-id="' + record.id + '" data-type = "' + record.type + '">在线预览 </a>' +
-                        '&nbsp;&nbsp;下载地址：' +
-                            //'<a class="ss-file-down" data-id="' + record.id + '" data-fileName="' + record.fileName + '" data-timestamp="' + record.timestamp + '">点击下载 </a>' +
-                        '<a class="ss-file-down" data-id="' + record.id + '" data-type = "' + record.type + '">点击下载 </a>' +
-                        '</p>' +
+                        '<div class="row">' +
+                        '<div class="col-md-12">' +
+                        '文件大小：' + Math.ceil(record.size/1024) + 'KB' +
                         '</div>' +
                         '</div>' +
                         '<div class="row">' +
                         '<div class="col-md-12">' +
-                        '<p class="ss-highlight-content">' + trim(record.content,"g") + '</p>' +
+                        '文件归属：' + record.owner +
+                        '</div>' +
+                        '</div>' +
+                        '<div class="row">' +
+                        '<div class="col-md-12">' +
+                        '修改时间：' + modifyDate.toLocaleString() +
+                        '</div>' +
+                        '</div>' +
+                        '<div class="row">' +
+                        '<div class="col-md-12">' +
+                        '索引时间：' + indexDate.toLocaleString() +
+                        '</div>' +
+                        '</div>' +
+                        '<div class="row">' +
+                        '<div class="col-md-4">' +
+                        '在线预览：' +
+                        '<a class="ss-file-prev" data-id="' + record.id + '" data-type = "' + record.type + '">在线预览 </a>' +
+                        '</div>' +
+                        '<div class="col-md-4">' +
+                        '下载地址：' +
+                        '<a class="ss-file-down" data-id="' + record.id + '" data-type = "' + record.type + '">点击下载 </a>' +
+                        '</div>' +
+                        '</div>' +
+                        '</div>' +
+                        '</div>' +
+                        '<div class="row">' +
+                        '<div class="col-md-12">' +
+                        '<p>' + record.content + '</p>' +
                         '</div>' +
                         '</div>' +
                         '</div>';
                 } else if (index == "address") {
                     //通讯录
-
+                    inHtml+='<div class="ss-record-row">' +
+                        '<div class="row">' +
+                        '<div class="col-md-12">' +
+                        '<a><h4><strong><span>'+ record.chineseName +' / '+ record.englishName +' / ' + record.accountId + '</strong></h4></a>' +
+                        '</div>' +
+                        '</div>' +
+                        '<div class="row">' +
+                        '<div class="col-md-2">' +
+                        '<a>' +
+                        '<img src="./img/result_icon/address.png" class="ss-icon-md">' +
+                        '</a>' +
+                        '</div>' +
+                        '<div class="col-md-10" class="ss-record-file-metadata">' +
+                        '<div class="row">' +
+                        '<div class="col-md-4">' +
+                        '姓名：' + record.chineseName +
+                        '</div>' +
+                        '<div class="col-md-4">' +
+                        '别名：' + record.englishName +
+                        '</div>' +
+                        '<div class="col-md-4">' +
+                        '工号：' + record.accountId +
+                        '</div>' +
+                        '</div>' +
+                        '<div class="row">' +
+                        '<div class="col-md-4">' +
+                        '手机：' + record.mobilePhone +
+                        '</div>' +
+                        '<div class="col-md-4">' +
+                        '座机：' + record.fixedPhone +
+                        '</div>' +
+                        '</div>' +
+                        '<div class="row">' +
+                        '<div class="col-md-4">' +
+                        '邮箱：' + record.email +
+                        '</div>' +
+                        '<div class="col-md-4">' +
+                        'QQ：' + record.qq +
+                        '</div>' +
+                        '</div>' +
+                        '<div class="row">' +
+                        '<div class="col-md-4">' +
+                        '机构：' + record.organization +
+                        '</div>' +
+                        '<div class="col-md-4">' +
+                        '部门：' + record.department +
+                        '</div>' +
+                        '<div class="col-md-4">' +
+                        '职位：' + record.position +
+                        '</div>' +
+                        '</div>' +
+                        '<div class="row">' +
+                        '<div class="col-md-12">' +
+                        '通讯地址：' + record.address +
+                        '</div>' +
+                        '</div>' +
+                        '</div>' +
+                        '</div>' +
+                        '</div>' +
+                        '';
 
                 } else if (index == "siteNavigation") {
                     //网址导航

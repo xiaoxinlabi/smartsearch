@@ -25,14 +25,9 @@ a{
     cursor: pointer;
 }
 
-.ss-highlight-name span{
+.ss-highlight {
      background-color: yellow;
      color: teal;
- }
-
-.ss-highlight-content span{
-    background-color: yellow;
-    color: teal;
 }
 
 .ss-content-middle-right{
