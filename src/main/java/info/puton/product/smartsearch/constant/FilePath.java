@@ -11,6 +11,8 @@ public class FilePath {
 
         public final static String PDF = "cache/pdf/";
 
+
     }
+    public final static String UPLOAD = "upload/";
 
 }
