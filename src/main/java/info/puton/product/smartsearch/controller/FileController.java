@@ -32,7 +32,7 @@ public class FileController {
         // new Date()为获取当前系统时间
         String timestamp = df.format(new Date());
 //        System.out.println(timestamp);
-        String filePath = FilePath.CACHE.INITIAL+timestamp;
+        String filePath = FilePath.UPLOAD+timestamp;
         //创建你要保存的文件的路径
 //        String path = request.getSession().getServletContext().getRealPath("uploadfile");
         String path = request.getSession().getServletContext().getRealPath(filePath);
