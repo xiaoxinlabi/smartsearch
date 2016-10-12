@@ -52,7 +52,7 @@ function init(){
     });
 
 
-    $('#ss-file-facet-list').on('click','.ss-file-facet-item', function () {
+    $('.ss-file-facet-list').on('click','.ss-file-facet-item', function () {
         window.location.href='./result.html?' +
             'wd=' + $("#search-wd").val() + '&' +
             'tp=' + $(this).data('id') + '&' +
