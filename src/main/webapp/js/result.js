@@ -123,10 +123,10 @@ function getResult(keyword, type, currentPage, pageSize){
                 type = record.type;
 
                 if(index == "filefulltext"){
-
+                    //文件
                     var newDate = new Date();
                     newDate.setTime(record.lastModified);
-                    inHtml+='<div class="ss-record-list">' +
+                    inHtml+='<div class="ss-record-row">' +
                         '<div class="row">' +
                         '<div class="col-md-12">' +
                             //'<a class="ss-highlight-name ss-file-down" data-hdfspath="http://' + hdfsHost + ':50070/webhdfs/v1' + record.hdfsPath + '?op=OPEN"><h4><strong>'+ (record.highlightName ? record.highlightName:record.name) +'</strong></h4></a>' +
@@ -159,11 +159,12 @@ function getResult(keyword, type, currentPage, pageSize){
                         '</div>' +
                         '</div>' +
                         '</div>';
-
                 } else if (index == "address") {
+                    //通讯录
+
 
                 } else if (index == "siteNavigation") {
-
+                    //网址导航
                 }
 
             }

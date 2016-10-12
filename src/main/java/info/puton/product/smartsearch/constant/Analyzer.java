@@ -5,7 +5,7 @@ package info.puton.product.smartsearch.constant;
  */
 public class Analyzer {
 
-    public final static String IK = "ik_smart";
+    public final static String IK = "ik";
 
     public final static String IK_SMART = "ik_smart";
 
