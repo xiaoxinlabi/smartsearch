@@ -16,7 +16,7 @@ function init(){
         if($("#search-wd").val()!=null && $("#search-wd").val()!=""){
             window.location.href='./result.html?' +
                 'wd=' + $("#search-wd").val() + '&' +
-                'tp=' + $("#tds-file-type-selector").val() + '&' +
+                'tp=' + $("#ss-file-type-selector").val() + '&' +
                 '';
         }else{
             var options = {
@@ -29,8 +29,8 @@ function init(){
     });
 
 
-    $('.tds-file-type-item').on('click', function () {
-        $("#tds-file-type-selector").html($(this).text()+' <span class="caret"></span>')
+    $('.ss-file-type-item').on('click', function () {
+        $("#ss-file-type-selector").html($(this).text()+' <span class="caret"></span>')
             .val($(this).data('id'));
     });
 

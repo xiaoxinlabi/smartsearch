@@ -3,6 +3,7 @@ package info.puton.product.smartsearch.dao;
 import info.puton.product.smartsearch.constant.Field;
 import info.puton.product.smartsearch.constant.Index;
 import info.puton.product.smartsearch.constant.Type;
+import info.puton.product.smartsearch.model.Address;
 import info.puton.product.smartsearch.model.BaseSearchResult;
 import info.puton.product.smartsearch.model.FileFullText;
 import info.puton.product.smartsearch.model.PageModel;
@@ -45,10 +46,13 @@ public class SmartSearchDao {
         QueryBuilder qb = QueryBuilders.multiMatchQuery(
                 keyword,
                 Field.FILE_NAME,
-                Field.CONTENT);
+                Field.CONTENT,
+                Field.ENGLISH_NAME,
+                Field.CHINESE_NAME,
+                Field.MOBILE_PHONE);
         SearchRequestBuilder srb = elasticsearchTemplate
                 .getClient()
-                .prepareSearch(Index.FILE_FULL_TEXT);
+                .prepareSearch(Index.FILE_FULL_TEXT, Index.ADDRESS);
         srb.setQuery(qb);
 
         //type
@@ -67,6 +71,8 @@ public class SmartSearchDao {
         //highlight
         srb.addHighlightedField(Field.FILE_NAME);
         srb.addHighlightedField(Field.CONTENT);
+        srb.addHighlightedField(Field.ENGLISH_NAME);
+        srb.addHighlightedField(Field.CHINESE_NAME);
 //        srb.setHighlighterPhraseLimit(maxContentLength);
         srb.setHighlighterPreTags("<span>");
         srb.setHighlighterPostTags("</span>");
@@ -92,24 +98,13 @@ public class SmartSearchDao {
             String type = searchHit.getType();
             String id = searchHit.getId();
             Float score = searchHit.getScore();
-            if(type.equals(Type.DOC)
-                    || type.equals(Type.DOCX)
-                    || type.equals(Type.XLS)
-                    || type.equals(Type.XLSX)
-                    || type.equals(Type.PPT)
-                    || type.equals(Type.PPTX)
-                    || type.equals(Type.PDF)
-                    || type.equals(Type.TXT)
-                    ){
-                FileFullText result = new FileFullText();
-                result.setIndex(index);
-                result.setType(type);
-                result.setId(id);
-                result.setScore(score);
+            String owner = (String) searchHit.getSource().get("owner");
+            String group = (String) searchHit.getSource().get("group");
+            Long timestamp = (Long) searchHit.getSource().get("timestamp");
 
-                String owner = (String) searchHit.getSource().get("owner");
-                String group = (String) searchHit.getSource().get("group");
-                Long timestamp = (Long) searchHit.getSource().get("timestamp");
+            if(index.equals(Index.FILE_FULL_TEXT)){
+
+                FileFullText result = new FileFullText();
 
                 String fileName = (String) searchHit.getSource().get("fileName");
                 Long size = ((Integer) searchHit.getSource().get("size")).longValue();
@@ -130,6 +125,10 @@ public class SmartSearchDao {
                     }
                 }
 
+                result.setIndex(index);
+                result.setType(type);
+                result.setId(id);
+                result.setScore(score);
                 result.setOwner(owner);
                 result.setGroup(group);
                 result.setTimestamp(timestamp);
@@ -140,6 +139,58 @@ public class SmartSearchDao {
                 result.setContent(content);
 
                 resultList.add(result);
+            } else if(index.equals(Index.ADDRESS)) {
+
+                Address result = new Address();
+
+                String accountId = (String) searchHit.getSource().get("accountId");
+                String englishName = (String) searchHit.getSource().get("englishName");
+                String chineseName = (String) searchHit.getSource().get("chineseName");
+                String fixedPhone = (String) searchHit.getSource().get("fixedPhone");
+                String mobilePhone = (String) searchHit.getSource().get("mobilePhone");
+                String email = (String) searchHit.getSource().get("email");
+                String address = (String) searchHit.getSource().get("address");
+                String qq = (String) searchHit.getSource().get("qq");
+                String organization = (String) searchHit.getSource().get("organization");
+                String department = (String) searchHit.getSource().get("department");
+                String position = (String) searchHit.getSource().get("position");
+                String remark = (String) searchHit.getSource().get("remark");
+
+                Map<String, HighlightField> highlightFields = searchHit.highlightFields();
+                if(highlightFields.containsKey("englishName")){
+                    Text[] highlightedEnglishNames = highlightFields.get("englishName").getFragments();
+                    englishName = highlightedEnglishNames[0].toString();
+                }
+                if(highlightFields.containsKey("chineseName")){
+                    Text[] highlightedChineseNames = highlightFields.get("chineseName").getFragments();
+                    chineseName = highlightedChineseNames[0].toString();
+                } else {
+
+                }
+
+                result.setIndex(index);
+                result.setType(type);
+                result.setId(id);
+                result.setScore(score);
+                result.setOwner(owner);
+                result.setGroup(group);
+                result.setTimestamp(timestamp);
+
+                result.setAccountId(accountId);
+                result.setEnglishName(englishName);
+                result.setChineseName(chineseName);
+                result.setFixedPhone(fixedPhone);
+                result.setMobilePhone(mobilePhone);
+                result.setEmail(email);
+                result.setAddress(address);
+                result.setQq(qq);
+                result.setOrganization(organization);
+                result.setDepartment(department);
+                result.setPosition(position);
+                result.setRemark(remark);
+
+                resultList.add(result);
+
             }
         }
 

@@ -10,12 +10,10 @@ import java.util.Map;
 /**
  * Created by taoyang on 2016/9/21.
  */
-public interface SmartSearchHandler {
+public interface FileHandler {
 
     void initFile() throws Exception;
 
     void handleFile(String filePath, Map additional) throws Exception;
-
-    void handleAddress(Address address) throws Exception;
 
 }

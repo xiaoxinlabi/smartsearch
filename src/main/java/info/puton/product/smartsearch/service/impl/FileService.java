@@ -1,11 +1,10 @@
 package info.puton.product.smartsearch.service.impl;
 
-import info.puton.product.smartsearch.model.Address;
 import info.puton.product.smartsearch.model.FileFullText;
 import info.puton.product.smartsearch.service.FileExtractor;
 import info.puton.product.smartsearch.service.FileIndexer;
 import info.puton.product.smartsearch.service.FileStorage;
-import info.puton.product.smartsearch.service.SmartSearchHandler;
+import info.puton.product.smartsearch.service.FileHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +15,7 @@ import java.util.Map;
  * Created by taoyang on 2016/9/21.
  */
 @Service
-public class SmartSearchService implements SmartSearchHandler {
+public class FileService implements FileHandler {
 
     @Autowired
     FileExtractor fileExtractor;
@@ -41,8 +40,4 @@ public class SmartSearchService implements SmartSearchHandler {
         System.out.println("File handled. name:" + fileFullText.getFileName());
     }
 
-    @Override
-    public void handleAddress(Address address) throws Exception {
-
-    }
 }

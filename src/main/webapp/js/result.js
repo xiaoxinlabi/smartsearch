@@ -17,7 +17,7 @@ function init(){
         $("#search-wd").val(decodeURIComponent($_GET['wd']));
 
         if($_GET['tp']!=null && $_GET['tp']!=""){
-            $("#tds-file-type-selector").html(decodeURIComponent($_GET['tp'])+' <span class="caret"></span>')
+            $("#ss-file-type-selector").html(decodeURIComponent($_GET['tp'])+' <span class="caret"></span>')
                 .val(decodeURIComponent($_GET['tp']));
         }
         refresh();
@@ -36,23 +36,23 @@ function init(){
     });
 
 
-    $('#tds-file-list').on('click','.tds-file-prev', function () {
+    $('#ss-result-list').on('click','.ss-file-prev', function () {
 
         window.open ('./preview.html?id=' + $(this).data('id') + '&type=' + $(this).data('type'), 'newwindow', 'height=800, width=1200, top=100, left=200, toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no, status=no');
 
     });
 
-    $('#tds-file-list').on('click','.tds-file-down', function () {
+    $('#ss-result-list').on('click','.ss-file-down', function () {
         window.open ('rest/file/download?id=' + $(this).data('id') + '&type=' + $(this).data('type'), 'newwindow');
     });
 
-    $('.tds-file-type-item').on('click', function () {
-        $("#tds-file-type-selector").html($(this).text()+' <span class="caret"></span>')
+    $('.ss-file-type-item').on('click', function () {
+        $("#ss-file-type-selector").html($(this).text()+' <span class="caret"></span>')
             .val($(this).data('id'));
     });
 
 
-    $('#tds-file-facet-list').on('click','.tds-file-facet-item', function () {
+    $('#ss-file-facet-list').on('click','.ss-file-facet-item', function () {
         window.location.href='./result.html?' +
             'wd=' + $("#search-wd").val() + '&' +
             'tp=' + $(this).data('id') + '&' +
@@ -70,17 +70,17 @@ function init(){
 function restore(){
     window.location.href='./result.html?' +
         'wd=' + $("#search-wd").val() + '&' +
-        'tp=' + $("#tds-file-type-selector").val() + '&' +
+        'tp=' + $("#ss-file-type-selector").val() + '&' +
         '';
 }
 
 function refresh(){
-    getResult($("#search-wd").val(), $("#tds-file-type-selector").val(), currentPage, pageSize);
+    getResult($("#search-wd").val(), $("#ss-file-type-selector").val(), currentPage, pageSize);
 }
 
 function getResult(keyword, type, currentPage, pageSize){
 
-    $("#tds-file-type-selector").prop("disabled","disabled");
+    $("#ss-file-type-selector").prop("disabled","disabled");
     $("#search-button").button('loading');
 
     var settings = {
@@ -101,7 +101,7 @@ function getResult(keyword, type, currentPage, pageSize){
     $.ajax(settings).done(function (response) {
         if(response.success==true){
 
-            $("#tds-file-type-selector").removeProp("disabled");
+            $("#ss-file-type-selector").removeProp("disabled");
             $("#search-button").button('reset');
 
             //alert(JSON.stringify(response.data));
@@ -112,53 +112,65 @@ function getResult(keyword, type, currentPage, pageSize){
             inHtml='智搜为您找到' + count + '个相关结果';
             ssResultCount.html(inHtml);
 
-            var tdsFileList = $('#tds-file-list');
+            var tdsFileList = $('#ss-result-list');
             tdsFileList.children().remove();
             list = response.data.datas;
             inHtml='';
             for(var i =0; i<list.length; i++){
                 var record = list[i];
-                var newDate = new Date();
-                newDate.setTime(record.lastModified);
-                inHtml+='<div class="tds-file-record">' +
-                    '<div class="row">' +
-                    '<div class="col-md-12">' +
-                    //'<a class="tds-highlight-name tds-file-down" data-hdfspath="http://' + hdfsHost + ':50070/webhdfs/v1' + record.hdfsPath + '?op=OPEN"><h4><strong>'+ (record.highlightName ? record.highlightName:record.name) +'</strong></h4></a>' +
-                    '<a class="tds-highlight-name tds-file-down" data-id="' + record.id + '" data-type = "' + record.type + '"><h4><strong>'+ record.fileName +'</strong></h4></a>' +
-                    '</div>' +
-                    '</div>' +
-                    '<div class="row">' +
-                    '<div class="col-md-2">' +
-                    //'<a class="tds-file-prev" data-hdfspath="http://' + hdfsHost + ':50070/webhdfs/v1' + record.hdfsPath + '?op=OPEN">' +
-                    '<a class="tds-file-prev" data-id="' + record.id + '" data-type = "' + record.type + '">' +
-                    '<img src="./img/file_type_icon/' + typeToIcon(record.type) + '" class="tds-icon-md">' +
-                    '</a>' +
-                    '</div>' +
-                    '<div class="col-md-10" class="tds-file-record-metadata">' +
-                    '<p>文件大小：' + Math.ceil(record.size/1024) + 'KB</p>' +
-                    '<p>文件归属：' + record.owner + '</p>' +
-                    '<p>修改时间：' + newDate.toLocaleString() + '</p>' +
-                    '<p>在线预览：' +
-                    //'<a class="tds-file-prev" data-hdfspath="http://' + hdfsHost + ':50070/webhdfs/v1' + record.hdfsPath + '?op=OPEN">点击预览 </a>' +
-                    '<a class="tds-file-prev" data-id="' + record.id + '" data-type = "' + record.type + '">在线预览 </a>' +
-                    '&nbsp;&nbsp;下载地址：' +
-                    //'<a class="tds-file-down" data-id="' + record.id + '" data-fileName="' + record.fileName + '" data-timestamp="' + record.timestamp + '">点击下载 </a>' +
-                    '<a class="tds-file-down" data-id="' + record.id + '" data-type = "' + record.type + '">点击下载 </a>' +
-                    '</p>' +
-                    '</div>' +
-                    '</div>' +
-                    '<div class="row">' +
-                    '<div class="col-md-12">' +
-                    '<p class="tds-highlight-content">' + trim(record.content,"g") + '</p>' +
-                    '</div>' +
-                    '</div>' +
-                    '</div>';
+
+                index = record.index;
+                type = record.type;
+
+                if(index == "filefulltext"){
+
+                    var newDate = new Date();
+                    newDate.setTime(record.lastModified);
+                    inHtml+='<div class="ss-record-list">' +
+                        '<div class="row">' +
+                        '<div class="col-md-12">' +
+                            //'<a class="ss-highlight-name ss-file-down" data-hdfspath="http://' + hdfsHost + ':50070/webhdfs/v1' + record.hdfsPath + '?op=OPEN"><h4><strong>'+ (record.highlightName ? record.highlightName:record.name) +'</strong></h4></a>' +
+                        '<a class="ss-highlight-name ss-file-down" data-id="' + record.id + '" data-type = "' + record.type + '"><h4><strong>'+ record.fileName +'</strong></h4></a>' +
+                        '</div>' +
+                        '</div>' +
+                        '<div class="row">' +
+                        '<div class="col-md-2">' +
+                            //'<a class="ss-file-prev" data-hdfspath="http://' + hdfsHost + ':50070/webhdfs/v1' + record.hdfsPath + '?op=OPEN">' +
+                        '<a class="ss-file-prev" data-id="' + record.id + '" data-type = "' + record.type + '">' +
+                        '<img src="./img/file_type_icon/' + typeToIcon(record.type) + '" class="ss-icon-md">' +
+                        '</a>' +
+                        '</div>' +
+                        '<div class="col-md-10" class="ss-record-file-metadata">' +
+                        '<p>文件大小：' + Math.ceil(record.size/1024) + 'KB</p>' +
+                        '<p>文件归属：' + record.owner + '</p>' +
+                        '<p>修改时间：' + newDate.toLocaleString() + '</p>' +
+                        '<p>在线预览：' +
+                            //'<a class="ss-file-prev" data-hdfspath="http://' + hdfsHost + ':50070/webhdfs/v1' + record.hdfsPath + '?op=OPEN">点击预览 </a>' +
+                        '<a class="ss-file-prev" data-id="' + record.id + '" data-type = "' + record.type + '">在线预览 </a>' +
+                        '&nbsp;&nbsp;下载地址：' +
+                            //'<a class="ss-file-down" data-id="' + record.id + '" data-fileName="' + record.fileName + '" data-timestamp="' + record.timestamp + '">点击下载 </a>' +
+                        '<a class="ss-file-down" data-id="' + record.id + '" data-type = "' + record.type + '">点击下载 </a>' +
+                        '</p>' +
+                        '</div>' +
+                        '</div>' +
+                        '<div class="row">' +
+                        '<div class="col-md-12">' +
+                        '<p class="ss-highlight-content">' + trim(record.content,"g") + '</p>' +
+                        '</div>' +
+                        '</div>' +
+                        '</div>';
+
+                } else if (index == "address") {
+
+                } else if (index == "siteNavigation") {
+
+                }
 
             }
             tdsFileList.append(inHtml);
 
 
-            var element = $('#tds-result-pagination');
+            var element = $('#ss-result-pagination');
 
             var totalPages = (response.data.totalPages <= 5) ? response.data.totalPages : 5;
 
@@ -170,7 +182,7 @@ function getResult(keyword, type, currentPage, pageSize){
                 totalPages: totalPages,
                 numberOfPages : numberOfPages,
                 onPageClicked: function(e,originalEvent,type,page){
-                    getResult($("#search-wd").val(), $("#tds-file-type-selector").val(), page, pageSize);
+                    getResult($("#search-wd").val(), $("#ss-file-type-selector").val(), page, pageSize);
                     //alert("Page item clicked, type: "+type+" page: "+page);
                 }
             }
