@@ -4,10 +4,10 @@ import info.puton.product.smartsearch.constant.*;
 import info.puton.product.smartsearch.dao.ElasticSearchDao;
 import info.puton.product.smartsearch.model.Address;
 import info.puton.product.smartsearch.model.FileFullText;
+import info.puton.product.smartsearch.model.Website;
 import info.puton.product.smartsearch.service.AddressIndexer;
 import info.puton.product.smartsearch.service.FileIndexer;
-import info.puton.product.smartsearch.util.FileUtil;
-import org.elasticsearch.action.delete.DeleteResponse;
+import info.puton.product.smartsearch.service.WebsiteIndexer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +18,7 @@ import java.util.Map;
  * Created by taoyang on 2016/9/21.
  */
 @Service
-public class ElasticSearchService implements FileIndexer, AddressIndexer {
+public class ElasticSearchService implements FileIndexer, AddressIndexer, WebsiteIndexer {
 
     @Autowired
     ElasticSearchDao elasticSearchDao;
@@ -220,5 +220,55 @@ public class ElasticSearchService implements FileIndexer, AddressIndexer {
     @Override
     public void deleteAddress(String type, String id) {
         elasticSearchDao.deleteDocument(Index.ADDRESS, type, id);
+    }
+
+    @Override
+    public void initWebsite() {
+        try{
+            elasticSearchDao.deleteIndex(Index.WEBSITE);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        elasticSearchDao.createIndex(Index.WEBSITE);
+        //website
+        String websiteSource =
+                        "{\n" +
+                        "  \"properties\": {\n" +
+                        "    \"title\": {\n" +
+                        "      \"type\": \"string\",\n" +
+                        "      \"analyzer\": \"" + Analyzer.IK_SMART + "\"\n" +
+                        "    },\n" +
+                        "    \"keywords\": {\n" +
+                        "      \"type\": \"string\",\n" +
+                        "      \"analyzer\": \"" + Analyzer.IK_SMART + "\"\n" +
+                        "    },\n" +
+                        "    \"content\": {\n" +
+                        "      \"type\": \"string\",\n" +
+                        "      \"analyzer\": \"" + Analyzer.IK_SMART + "\"\n" +
+                        "    }\n" +
+                        "  }\n" +
+                        "}";
+        elasticSearchDao.createSchema(Index.WEBSITE, Type.WEBSITE, websiteSource);
+    }
+
+    @Override
+    public void addWebsite(Website website) {
+        String id = website.getId();
+        Map data = new HashMap();
+        data.put("url", website.getUrl());
+        data.put("title", website.getTitle());
+        data.put("keywords", website.getKeywords());
+        data.put("description", website.getDescription());
+        data.put("content", website.getContent());
+
+        data.put("owner", website.getOwner()!=null ? website.getOwner() : Owner.DEFAULT);
+        data.put("group", website.getGroup()!=null ? website.getGroup() : Group.DEFAULT);
+        data.put("timestamp", website.getTimestamp()!=null ? website.getTimestamp():System.currentTimeMillis());
+        elasticSearchDao.createDocument(Index.WEBSITE, Type.WEBSITE, id, data);
+    }
+
+    @Override
+    public void deleteWebsite(String type, String id) {
+        elasticSearchDao.deleteDocument(Index.WEBSITE, type, id);
     }
 }

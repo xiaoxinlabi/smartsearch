@@ -23,4 +23,6 @@ public class Type {
 
     public final static String ADDRESS = "address";
 
+    public final static String WEBSITE = "website";
+
 }

@@ -46,7 +46,7 @@ function init(){
         window.open ('rest/file/download?id=' + $(this).data('id') + '&type=' + $(this).data('type'), 'newwindow');
     });
 
-    $('.ss-file-type-item').on('click', function () {
+    $('.ss-type-item').on('click', function () {
         $("#ss-file-type-selector").html($(this).text()+' <span class="caret"></span>')
             .val($(this).data('id'));
     });
@@ -192,7 +192,7 @@ function getResult(keyword, type, currentPage, pageSize){
                         '<div class="row">' +
                         '<div class="col-md-2">' +
                         '<a>' +
-                        '<img src="./img/result_icon/address.png" class="ss-icon-md">' +
+                        '<img src="./img/type_icon/address.png" class="ss-icon-md">' +
                         '</a>' +
                         '</div>' +
                         '<div class="col-md-10" class="ss-record-file-metadata">' +
@@ -244,8 +244,11 @@ function getResult(keyword, type, currentPage, pageSize){
                         '</div>' +
                         '';
 
-                } else if (index == "siteNavigation") {
-                    //网址导航
+                } else if (index == "website") {
+                    //网站
+
+
+
                 }
 
             }

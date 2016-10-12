@@ -5,9 +5,13 @@ package info.puton.product.smartsearch.constant;
  */
 public class Field {
 
+    //file
+
     public final static String FILE_NAME = "fileName";
 
     public final static String CONTENT = "content";
+
+    //address
 
     public final static String ENGLISH_NAME = "englishName";
 
@@ -17,5 +21,7 @@ public class Field {
 
     public final static String ACCOUNT_ID = "accountId";
 
+    //website
+    public final static String TITLE = "title";
 
 }

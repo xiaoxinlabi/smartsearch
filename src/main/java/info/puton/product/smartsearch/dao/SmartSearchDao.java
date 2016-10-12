@@ -3,10 +3,7 @@ package info.puton.product.smartsearch.dao;
 import info.puton.product.smartsearch.constant.Field;
 import info.puton.product.smartsearch.constant.Index;
 import info.puton.product.smartsearch.constant.Type;
-import info.puton.product.smartsearch.model.Address;
-import info.puton.product.smartsearch.model.BaseSearchResult;
-import info.puton.product.smartsearch.model.FileFullText;
-import info.puton.product.smartsearch.model.PageModel;
+import info.puton.product.smartsearch.model.*;
 import org.elasticsearch.action.search.SearchRequestBuilder;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.common.text.Text;
@@ -50,10 +47,13 @@ public class SmartSearchDao {
                 Field.ENGLISH_NAME,
                 Field.CHINESE_NAME,
                 Field.MOBILE_PHONE,
-                Field.ACCOUNT_ID);
+                Field.TITLE);
         SearchRequestBuilder srb = elasticsearchTemplate
                 .getClient()
-                .prepareSearch(Index.FILE_FULL_TEXT, Index.ADDRESS);
+                .prepareSearch(
+                        Index.FILE_FULL_TEXT,
+                        Index.ADDRESS,
+                        Index.WEBSITE);
         srb.setQuery(qb);
 
         //type
@@ -76,6 +76,7 @@ public class SmartSearchDao {
         srb.addHighlightedField(Field.CHINESE_NAME);
         srb.addHighlightedField(Field.MOBILE_PHONE);
         srb.addHighlightedField(Field.ACCOUNT_ID);
+        srb.addHighlightedField(Field.TITLE);
 //        srb.setHighlighterPhraseLimit(maxContentLength);
         srb.setHighlighterPreTags("<span class=\"ss-highlight\">");
         srb.setHighlighterPostTags("</span>");
@@ -200,7 +201,46 @@ public class SmartSearchDao {
 
                 resultList.add(result);
 
+            } else if (index.equals(Index.WEBSITE)) {
+
+                Website result = new Website();
+
+                String url = (String) searchHit.getSource().get("url");
+                String title = (String) searchHit.getSource().get("title");
+                String keywords = (String) searchHit.getSource().get("keywords");
+                String description = (String) searchHit.getSource().get("description");
+                String content = (String) searchHit.getSource().get("content");
+
+
+                Map<String, HighlightField> highlightFields = searchHit.highlightFields();
+                if(highlightFields.containsKey("title")){
+                    Text[] highlights = highlightFields.get("title").getFragments();
+                    title = highlights[0].toString();
+                }
+                if(highlightFields.containsKey("content")){
+                    Text[] highlights = highlightFields.get("content").getFragments();
+                    content = highlights[0].toString();
+                }
+
+
+                result.setIndex(index);
+                result.setType(type);
+                result.setId(id);
+                result.setScore(score);
+                result.setOwner(owner);
+                result.setGroup(group);
+                result.setTimestamp(timestamp);
+
+                result.setUrl(url);
+                result.setTitle(title);
+                result.setKeywords(keywords);
+                result.setDescription(description);
+                result.setContent(content);
+
+                resultList.add(result);
+
             }
+
         }
 
         Long count = sr.getHits().totalHits();

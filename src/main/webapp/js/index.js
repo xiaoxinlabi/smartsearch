@@ -29,7 +29,7 @@ function init(){
     });
 
 
-    $('.ss-file-type-item').on('click', function () {
+    $('.ss-type-item').on('click', function () {
         $("#ss-file-type-selector").html($(this).text()+' <span class="caret"></span>')
             .val($(this).data('id'));
     });

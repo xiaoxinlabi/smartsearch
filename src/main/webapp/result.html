@@ -39,16 +39,17 @@
           <div class="input-group-btn">
             <button type="button" class="btn btn-primary btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="ss-file-type-selector">所有类型 <span class="caret"></span></button>
             <ul class="dropdown-menu">
-              <li class="ss-file-type-item" data-id=""><a>所有类型</a></li>
+              <li class="ss-type-item" data-id=""><a>所有类型</a></li>
               <li role="separator" class="divider"></li>
               <li class="dropdown-header">格式</li>
-              <li class="ss-file-type-item" data-id="doc"><a>.doc/.docx</a></li>
-              <li class="ss-file-type-item" data-id="ppt"><a>.ppt/.pptx</a></li>
-              <li class="ss-file-type-item" data-id="xls"><a>.xls/.xlsx</a></li>
-              <li class="ss-file-type-item" data-id="pdf"><a>.pdf</a></li>
-              <li class="ss-file-type-item" data-id="txt"><a>.txt</a></li>
+              <li class="ss-type-item" data-id="doc"><a>.doc/.docx</a></li>
+              <li class="ss-type-item" data-id="ppt"><a>.ppt/.pptx</a></li>
+              <li class="ss-type-item" data-id="xls"><a>.xls/.xlsx</a></li>
+              <li class="ss-type-item" data-id="pdf"><a>.pdf</a></li>
+              <li class="ss-type-item" data-id="txt"><a>.txt</a></li>
               <li class="dropdown-header">来源</li>
-              <li class="ss-file-type-item" data-id="address"><a>通讯录</a></li>
+              <li class="ss-type-item" data-id="address"><a>通讯录</a></li>
+              <li class="ss-type-item" data-id="website"><a>网页</a></li>
             </ul>
           </div>
 
@@ -91,7 +92,8 @@
           来源：
           <span class="ss-file-facet-list">
             <img src="./img/file_type_icon/ini.png" class="ss-icon-sm"><a class="ss-file-facet-item" data-id="">所有</a>&nbsp;
-            <img src="./img/result_icon/address.png" class="ss-icon-sm"><a class="ss-file-facet-item" data-id="address">通讯录</a>&nbsp;
+            <img src="./img/type_icon/address.png" class="ss-icon-sm"><a class="ss-file-facet-item" data-id="address">通讯录</a>&nbsp;
+            <img src="./img/file_type_icon/url.png" class="ss-icon-sm"><a class="ss-file-facet-item" data-id="website">网页</a>&nbsp;
           </span>
           <hr>
 
@@ -102,19 +104,19 @@
           <!--<div class="ss-record-row">-->
             <!--<div class="row">-->
               <!--<div class="col-md-12">-->
-                <!--<a><h4><strong><span>陶</span>阳 / taoyang / yt255014</strong></h4></a>-->
+                <!--<a><h4><strong><span class="ss-highlight">陶</span>阳 / taoyang / yt255014</strong></h4></a>-->
               <!--</div>-->
             <!--</div>-->
             <!--<div class="row">-->
               <!--<div class="col-md-2">-->
                 <!--<a>-->
-                  <!--<img src="./img/result_icon/address.png" class="ss-icon-md">-->
+                  <!--<img src="./img/type_icon/address.png" class="ss-icon-md">-->
                 <!--</a>-->
               <!--</div>-->
               <!--<div class="col-md-10" class="ss-record-file-metadata">-->
                 <!--<div class="row">-->
                   <!--<div class="col-md-4">-->
-                    <!--姓名：陶阳-->
+                    <!--姓名：<span class="ss-highlight">陶</span>阳-->
                   <!--</div>-->
                   <!--<div class="col-md-4">-->
                     <!--别名：taoyang-->

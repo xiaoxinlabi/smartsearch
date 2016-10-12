@@ -9,4 +9,6 @@ public class Index {
 
     public final static String ADDRESS = "address";
 
+    public final static String WEBSITE = "website";
+
 }
