@@ -47,6 +47,7 @@ public class SmartSearchDao {
                 Field.ENGLISH_NAME,
                 Field.CHINESE_NAME,
                 Field.MOBILE_PHONE,
+                Field.ACCOUNT_ID,
                 Field.TITLE,
                 Field.KEYWORDS,
                 Field.DESCRIPTION);
