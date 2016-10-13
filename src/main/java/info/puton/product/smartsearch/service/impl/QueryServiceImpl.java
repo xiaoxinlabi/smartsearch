@@ -21,8 +21,6 @@ public class QueryServiceImpl implements IQueryService {
     @Autowired
     SmartSearchDao smartSearchDao;
 
-
-
     public PageModel<BaseSearchResult> queryResult(String keyword, String type, Integer currentPage, Integer pageSize) {
 
         //params

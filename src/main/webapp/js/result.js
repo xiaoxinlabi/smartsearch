@@ -121,13 +121,13 @@ function getResult(keyword, type, currentPage, pageSize){
 
                 index = record.index;
                 type = record.type;
+                indexDate = new Date();
+                indexDate.setTime(record.timestamp);
 
                 if(index == "filefulltext"){
                     //文件
                     modifyDate = new Date();
                     modifyDate.setTime(record.lastModified);
-                    indexDate = new Date();
-                    indexDate.setTime(record.timestamp);
                     inHtml+='<div class="ss-record-row">' +
                         '<div class="row">' +
                         '<div class="col-md-12">' +
@@ -276,7 +276,7 @@ function getResult(keyword, type, currentPage, pageSize){
                         '</div>' +
                         '<div class="row">' +
                         '<div class="col-md-12">' +
-                        '索引时间：' + record.timestamp +
+                        '索引时间：' + indexDate.toLocaleString() +
                         '</div>' +
                         '</div>' +
                         '<div class="row">' +

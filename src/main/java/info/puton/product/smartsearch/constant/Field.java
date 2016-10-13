@@ -24,4 +24,8 @@ public class Field {
     //website
     public final static String TITLE = "title";
 
+    public final static String KEYWORDS = "keywords";
+
+    public final static String DESCRIPTION = "description";
+
 }

@@ -47,7 +47,9 @@ public class SmartSearchDao {
                 Field.ENGLISH_NAME,
                 Field.CHINESE_NAME,
                 Field.MOBILE_PHONE,
-                Field.TITLE);
+                Field.TITLE,
+                Field.KEYWORDS,
+                Field.DESCRIPTION);
         SearchRequestBuilder srb = elasticsearchTemplate
                 .getClient()
                 .prepareSearch(
@@ -77,6 +79,8 @@ public class SmartSearchDao {
         srb.addHighlightedField(Field.MOBILE_PHONE);
         srb.addHighlightedField(Field.ACCOUNT_ID);
         srb.addHighlightedField(Field.TITLE);
+        srb.addHighlightedField(Field.KEYWORDS);
+        srb.addHighlightedField(Field.DESCRIPTION);
 //        srb.setHighlighterPhraseLimit(maxContentLength);
         srb.setHighlighterPreTags("<span class=\"ss-highlight\">");
         srb.setHighlighterPostTags("</span>");
@@ -217,11 +221,18 @@ public class SmartSearchDao {
                     Text[] highlights = highlightFields.get("title").getFragments();
                     title = highlights[0].toString();
                 }
+                if(highlightFields.containsKey("keywords")){
+                    Text[] highlights = highlightFields.get("keywords").getFragments();
+                    keywords = highlights[0].toString();
+                }
+                if(highlightFields.containsKey("description")){
+                    Text[] highlights = highlightFields.get("description").getFragments();
+                    description = highlights[0].toString();
+                }
                 if(highlightFields.containsKey("content")){
                     Text[] highlights = highlightFields.get("content").getFragments();
                     content = highlights[0].toString();
                 }
-
 
                 result.setIndex(index);
                 result.setType(type);
