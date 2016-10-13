@@ -246,8 +246,55 @@ function getResult(keyword, type, currentPage, pageSize){
 
                 } else if (index == "website") {
                     //网站
-
-
+                    inHtml+='<div class="ss-record-row">' +
+                        '<div class="row">' +
+                        '<div class="col-md-12">' +
+                        '<a href="' + record.url + '"><h4><strong>' + record.title + '</strong></h4></a>' +
+                        '</div>' +
+                        '</div>' +
+                        '<div class="row">' +
+                        '<div class="col-md-2">' +
+                        '<a>' +
+                        '<img src="./img/file_type_icon/url.png" class="ss-icon-md">' +
+                        '</a>' +
+                        '</div>' +
+                        '<div class="col-md-10" class="ss-record-file-metadata">' +
+                        '<div class="row">' +
+                        '<div class="col-md-12">' +
+                        '标题：' + record.title +
+                        '</div>' +
+                        '</div>' +
+                        '<div class="row">' +
+                        '<div class="col-md-12">' +
+                        '关键字：' + record.keywords +
+                        '</div>' +
+                        '</div>' +
+                        '<div class="row">' +
+                        '<div class="col-md-12">' +
+                        '描述：' + record.description +
+                        '</div>' +
+                        '</div>' +
+                        '<div class="row">' +
+                        '<div class="col-md-12">' +
+                        '索引时间：' + record.timestamp +
+                        '</div>' +
+                        '</div>' +
+                        '<div class="row">' +
+                        '<div class="col-md-12">' +
+                        '链接：<a href="' + record.url + '">点击访问</a>' +
+                        '</div>' +
+                        '</div>' +
+                        '</div>' +
+                        '<div class="row">' +
+                        '<div class="col-md-12">' +
+                        '<p>' +
+                        record.content +
+                        '</p>' +
+                        '</div>' +
+                        '</div>' +
+                        '</div>' +
+                        '</div>' +
+                        '';
 
                 }
 
