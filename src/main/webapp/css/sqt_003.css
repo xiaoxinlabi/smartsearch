@@ -498,43 +498,43 @@ body.modal-open {
   .panel-form .panel-body-user {
     display: flex;
     padding: 40px 40px 0; }
-    .panel-form .panel-body-user #apply {
+    .panel-form .panel-body-user .apply {
       font-size: 14px;
       width: 100%; }
-      .panel-form .panel-body-user #apply #formHead > label {
+      .panel-form .panel-body-user .apply #formHead > label {
         width: 100%; }
-      .panel-form .panel-body-user #apply #formHead img {
+      .panel-form .panel-body-user .apply #formHead img {
         max-width: 100%; }
-      .panel-form .panel-body-user #apply #formHead #downLoad {
+      .panel-form .panel-body-user .apply #formHead #downLoad {
         margin-top: 20px;
         color: #666666;
         font-size: 12px; }
-        .panel-form .panel-body-user #apply #formHead #downLoad div {
+        .panel-form .panel-body-user .apply #formHead #downLoad div {
           display: flex;
           align-items: center; }
-          .panel-form .panel-body-user #apply #formHead #downLoad div label {
+          .panel-form .panel-body-user .apply #formHead #downLoad div label {
             display: inline-block;
             max-width: calc(100% - 32px);
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap; }
-          .panel-form .panel-body-user #apply #formHead #downLoad div .fa-download {
+          .panel-form .panel-body-user .apply #formHead #downLoad div .fa-download {
             text-decoration: none;
             color: #666666; }
-            .panel-form .panel-body-user #apply #formHead #downLoad div .fa-download:hover {
+            .panel-form .panel-body-user .apply #formHead #downLoad div .fa-download:hover {
               color: #f5bc21; }
-      .panel-form .panel-body-user #apply #formHead label {
+      .panel-form .panel-body-user .apply #formHead label {
         margin-bottom: 0; }
-        .panel-form .panel-body-user #apply #formHead label * {
+        .panel-form .panel-body-user .apply #formHead label * {
           max-width: 100%; }
-      .panel-form .panel-body-user #apply #formHead hr {
+      .panel-form .panel-body-user .apply #formHead hr {
         margin-top: 30px;
         margin-bottom: 30px;
         color: #eaeaea;
         background-color: #eaeaea; }
-      .panel-form .panel-body-user #apply #formAudit {
+      .panel-form .panel-body-user .apply #formAudit {
         position: relative; }
-        .panel-form .panel-body-user #apply #formAudit .slide-left {
+        .panel-form .panel-body-user .apply #formAudit .slide-left {
           position: absolute;
           width: 20px;
           height: 40px;
@@ -544,15 +544,15 @@ body.modal-open {
           border-radius: 3px 0 0 3px;
           z-index: 1;
           cursor: pointer; }
-          .panel-form .panel-body-user #apply #formAudit .slide-left:hover {
+          .panel-form .panel-body-user .apply #formAudit .slide-left:hover {
             color: #f5bc21; }
-          .panel-form .panel-body-user #apply #formAudit .slide-left .slide-left-wrap {
+          .panel-form .panel-body-user .apply #formAudit .slide-left .slide-left-wrap {
             display: flex;
             justify-content: center;
             align-items: center;
             width: 18px;
             height: 38px; }
-        .panel-form .panel-body-user #apply #formAudit .slide-right {
+        .panel-form .panel-body-user .apply #formAudit .slide-right {
           position: absolute;
           right: 0;
           bottom: 0;
@@ -564,19 +564,19 @@ body.modal-open {
           border-radius: 0 3px 3px 0;
           z-index: 1;
           cursor: pointer; }
-          .panel-form .panel-body-user #apply #formAudit .slide-right:hover {
+          .panel-form .panel-body-user .apply #formAudit .slide-right:hover {
             color: #f5bc21; }
-          .panel-form .panel-body-user #apply #formAudit .slide-right .slide-right-wrap {
+          .panel-form .panel-body-user .apply #formAudit .slide-right .slide-right-wrap {
             display: flex;
             justify-content: center;
             align-items: center;
             width: 18px;
             height: 38px; }
-        .panel-form .panel-body-user #apply #formAudit #auditDiv {
+        .panel-form .panel-body-user .apply #formAudit #auditDiv {
           height: 40px;
           border: 1px solid #e6e6e6;
           border-radius: 3px; }
-          .panel-form .panel-body-user #apply #formAudit #auditDiv .audit-div-after::after {
+          .panel-form .panel-body-user .apply #formAudit #auditDiv .audit-div-after::after {
             content: '\e64f';
             font-family: iconfont;
             display: inline-flex;
@@ -592,7 +592,7 @@ body.modal-open {
             top: 10px;
             right: -10px;
             z-index: 1; }
-          .panel-form .panel-body-user #apply #formAudit #auditDiv .audit-div {
+          .panel-form .panel-body-user .apply #formAudit #auditDiv .audit-div {
             display: inline-block;
             width: 16.6667%;
             -moz-transition: width .3s;
@@ -603,16 +603,16 @@ body.modal-open {
             /* Opera */
             transition: width .3s;
             height: 38px; }
-            .panel-form .panel-body-user #apply #formAudit #auditDiv .audit-div .bk-grey {
+            .panel-form .panel-body-user .apply #formAudit #auditDiv .audit-div .bk-grey {
               background-color: #f7f7f7 !important; }
-            .panel-form .panel-body-user #apply #formAudit #auditDiv .audit-div .dropdown-btn {
+            .panel-form .panel-body-user .apply #formAudit #auditDiv .audit-div .dropdown-btn {
               width: 100%;
               height: 38px;
               font-size: 12px;
               background-color: white;
               border: none;
               padding: 0; }
-              .panel-form .panel-body-user #apply #formAudit #auditDiv .audit-div .dropdown-btn span {
+              .panel-form .panel-body-user .apply #formAudit #auditDiv .audit-div .dropdown-btn span {
                 display: inline-flex;
                 max-width: 78px;
                 font-size: 12px;
@@ -626,13 +626,13 @@ body.modal-open {
                 -o-transition: width .15s;
                 /* Opera */
                 transition: width .15s; }
-            .panel-form .panel-body-user #apply #formAudit #auditDiv .audit-div .dropdown-menu {
+            .panel-form .panel-body-user .apply #formAudit #auditDiv .audit-div .dropdown-menu {
               margin-top: 5px;
               border: 1px solid #e6e6e6;
               box-shadow: 0 2px 5px -1px #dfdfdf;
               border-radius: 3px;
               min-width: 120px; }
-              .panel-form .panel-body-user #apply #formAudit #auditDiv .audit-div .dropdown-menu li {
+              .panel-form .panel-body-user .apply #formAudit #auditDiv .audit-div .dropdown-menu li {
                 font-size: 12px;
                 width: 100%;
                 display: inline-block;
@@ -643,34 +643,34 @@ body.modal-open {
                 white-space: nowrap;
                 vertical-align: middle;
                 line-height: 30px; }
-                .panel-form .panel-body-user #apply #formAudit #auditDiv .audit-div .dropdown-menu li:hover {
+                .panel-form .panel-body-user .apply #formAudit #auditDiv .audit-div .dropdown-menu li:hover {
                   background-color: #f7f7f7; }
-      .panel-form .panel-body-user #apply .form-question {
+      .panel-form .panel-body-user .apply .form-question {
         margin-right: -15px;
         margin-left: -15px; }
-        .panel-form .panel-body-user #apply .form-question .form-group {
+        .panel-form .panel-body-user .apply .form-question .form-group {
           margin-top: 30px !important; }
-          .panel-form .panel-body-user #apply .form-question .form-group .popover.fade.bottom.in {
+          .panel-form .panel-body-user .apply .form-question .form-group .popover.fade.bottom.in {
             left: calc(50% - 360px) !important;
             width: 180px;
             padding: 10px !important;
             border: 1px solid rgba(0, 0, 0, 0.2);
             border-radius: 5px;
             box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); }
-            .panel-form .panel-body-user #apply .form-question .form-group .popover.fade.bottom.in .arrow {
+            .panel-form .panel-body-user .apply .form-question .form-group .popover.fade.bottom.in .arrow {
               border-width: 5px;
               left: 20px;
               margin-top: -35px; }
-          .panel-form .panel-body-user #apply .form-question .form-group .question-title {
+          .panel-form .panel-body-user .apply .form-question .form-group .question-title {
             width: 100%; }
-            .panel-form .panel-body-user #apply .form-question .form-group .question-title .necessary {
+            .panel-form .panel-body-user .apply .form-question .form-group .question-title .necessary {
               margin-left: 5px; }
-            .panel-form .panel-body-user #apply .form-question .form-group .question-title .tip {
+            .panel-form .panel-body-user .apply .form-question .form-group .question-title .tip {
               font-size: 12px;
               color: #999999;
               margin-bottom: 0;
               float: right; }
-          .panel-form .panel-body-user #apply .form-question .form-group .form-control-select {
+          .panel-form .panel-body-user .apply .form-question .form-group .form-control-select {
             height: 34px;
             background: url(../../assets/images/down-arrow-light.png) 99%/4% no-repeat transparent;
             -moz-transition: width .4s;
@@ -680,52 +680,52 @@ body.modal-open {
             -o-transition: width .4s;
             /* Opera */
             transition: width .4s; }
-          .panel-form .panel-body-user #apply .form-question .form-group .other-select {
+          .panel-form .panel-body-user .apply .form-question .form-group .other-select {
             margin-left: 10px;
             width: calc(50% - 10px); }
-          .panel-form .panel-body-user #apply .form-question .form-group .form-control-user {
+          .panel-form .panel-body-user .apply .form-question .form-group .form-control-user {
             width: 100%; }
-          .panel-form .panel-body-user #apply .form-question .form-group .question-content .simditor .simditor-wrapper .simditor-body {
+          .panel-form .panel-body-user .apply .form-question .form-group .question-content .simditor .simditor-wrapper .simditor-body {
             padding: 15px;
             min-height: 180px; }
-            .panel-form .panel-body-user #apply .form-question .form-group .question-content .simditor .simditor-wrapper .simditor-body p {
+            .panel-form .panel-body-user .apply .form-question .form-group .question-content .simditor .simditor-wrapper .simditor-body p {
               margin-bottom: 5px; }
-            .panel-form .panel-body-user #apply .form-question .form-group .question-content .simditor .simditor-wrapper .simditor-body ul, .panel-form .panel-body-user #apply .form-question .form-group .question-content .simditor .simditor-wrapper .simditor-body ol {
+            .panel-form .panel-body-user .apply .form-question .form-group .question-content .simditor .simditor-wrapper .simditor-body ul, .panel-form .panel-body-user .apply .form-question .form-group .question-content .simditor .simditor-wrapper .simditor-body ol {
               margin: 5px 0; }
-            .panel-form .panel-body-user #apply .form-question .form-group .question-content .simditor .simditor-wrapper .simditor-body img {
+            .panel-form .panel-body-user .apply .form-question .form-group .question-content .simditor .simditor-wrapper .simditor-body img {
               max-width: calc(100% - 10px);
               height: 100%; }
-          .panel-form .panel-body-user #apply .form-question .form-group .question-content .simditor .link-popover {
+          .panel-form .panel-body-user .apply .form-question .form-group .question-content .simditor .link-popover {
             padding-bottom: 5px; }
-            .panel-form .panel-body-user #apply .form-question .form-group .question-content .simditor .link-popover .link-settings .settings-field .link-text, .panel-form .panel-body-user #apply .form-question .form-group .question-content .simditor .link-popover .link-settings .settings-field .link-url {
+            .panel-form .panel-body-user .apply .form-question .form-group .question-content .simditor .link-popover .link-settings .settings-field .link-text, .panel-form .panel-body-user .apply .form-question .form-group .question-content .simditor .link-popover .link-settings .settings-field .link-url {
               height: 31px;
               border: 1px solid #e6e6e6;
               padding-left: 5px; }
-            .panel-form .panel-body-user #apply .form-question .form-group .question-content .simditor .link-popover .link-settings .settings-field .link-target {
+            .panel-form .panel-body-user .apply .form-question .form-group .question-content .simditor .link-popover .link-settings .settings-field .link-target {
               width: 200px;
               height: 31px;
               border: 1px solid #e6e6e6;
               border-radius: 0px;
               padding: 0; }
-          .panel-form .panel-body-user #apply .form-question .form-group .question-content .simditor .image-popover {
+          .panel-form .panel-body-user .apply .form-question .form-group .question-content .simditor .image-popover {
             padding-bottom: 5px; }
-            .panel-form .panel-body-user #apply .form-question .form-group .question-content .simditor .image-popover .link-settings .settings-field .times {
+            .panel-form .panel-body-user .apply .form-question .form-group .question-content .simditor .image-popover .link-settings .settings-field .times {
               margin-right: 1px; }
-            .panel-form .panel-body-user #apply .form-question .form-group .question-content .simditor .image-popover .link-settings .settings-field .image-src, .panel-form .panel-body-user #apply .form-question .form-group .question-content .simditor .image-popover .link-settings .settings-field .image-alt, .panel-form .panel-body-user #apply .form-question .form-group .question-content .simditor .image-popover .link-settings .settings-field .image-size {
+            .panel-form .panel-body-user .apply .form-question .form-group .question-content .simditor .image-popover .link-settings .settings-field .image-src, .panel-form .panel-body-user .apply .form-question .form-group .question-content .simditor .image-popover .link-settings .settings-field .image-alt, .panel-form .panel-body-user .apply .form-question .form-group .question-content .simditor .image-popover .link-settings .settings-field .image-size {
               height: 31px;
               border: 1px solid #e6e6e6;
               padding-left: 5px; }
-          .panel-form .panel-body-user #apply .form-question .form-group .question-content label {
+          .panel-form .panel-body-user .apply .form-question .form-group .question-content label {
             width: 100%; }
-            .panel-form .panel-body-user #apply .form-question .form-group .question-content label .question-choice-cross {
+            .panel-form .panel-body-user .apply .form-question .form-group .question-content label .question-choice-cross {
               display: inline-block;
               width: 100%;
               white-space: nowrap;
               margin-bottom: 0; }
-              .panel-form .panel-body-user #apply .form-question .form-group .question-content label .question-choice-cross .other {
+              .panel-form .panel-body-user .apply .form-question .form-group .question-content label .question-choice-cross .other {
                 margin-left: 10px;
                 width: calc(100% - 71px); }
-          .panel-form .panel-body-user #apply .form-question .form-group .question-content .upload-picture-default {
+          .panel-form .panel-body-user .apply .form-question .form-group .question-content .upload-picture-default {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -737,9 +737,9 @@ body.modal-open {
             color: #999999;
             cursor: pointer;
             position: relative; }
-            .panel-form .panel-body-user #apply .form-question .form-group .question-content .upload-picture-default:hover {
+            .panel-form .panel-body-user .apply .form-question .form-group .question-content .upload-picture-default:hover {
               background-color: #f7f7f7; }
-            .panel-form .panel-body-user #apply .form-question .form-group .question-content .upload-picture-default .progress-bar {
+            .panel-form .panel-body-user .apply .form-question .form-group .question-content .upload-picture-default .progress-bar {
               height: 8px;
               width: 0;
               background-color: #7ed1a5;
@@ -747,10 +747,10 @@ body.modal-open {
               left: 0;
               bottom: 0;
               border-radius: 2px; }
-            .panel-form .panel-body-user #apply .form-question .form-group .question-content .upload-picture-default .iconfont-img {
+            .panel-form .panel-body-user .apply .form-question .form-group .question-content .upload-picture-default .iconfont-img {
               font-size: 75px;
               z-index: 1; }
-          .panel-form .panel-body-user #apply .form-question .form-group .question-content .upload-picture-success {
+          .panel-form .panel-body-user .apply .form-question .form-group .question-content .upload-picture-success {
             border: 1px solid #e6e6e6;
             border-radius: 3px;
             width: 175px;
@@ -758,7 +758,7 @@ body.modal-open {
             margin-bottom: 0;
             background-position: 0 0;
             position: relative; }
-            .panel-form .panel-body-user #apply .form-question .form-group .question-content .upload-picture-success .iconfont-top {
+            .panel-form .panel-body-user .apply .form-question .form-group .question-content .upload-picture-success .iconfont-top {
               position: absolute;
               top: 10px;
               right: 10px;
@@ -770,7 +770,7 @@ body.modal-open {
               font-size: 12px;
               line-height: 16px;
               cursor: pointer; }
-            .panel-form .panel-body-user #apply .form-question .form-group .question-content .upload-picture-success .text-right-bottom {
+            .panel-form .panel-body-user .apply .form-question .form-group .question-content .upload-picture-success .text-right-bottom {
               position: absolute;
               bottom: 10px;
               right: 10px;
@@ -780,7 +780,7 @@ body.modal-open {
               opacity: 0.7;
               border-radius: 2px;
               cursor: pointer; }
-          .panel-form .panel-body-user #apply .form-question .form-group .question-content .upload-file-default {
+          .panel-form .panel-body-user .apply .form-question .form-group .question-content .upload-file-default {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -792,9 +792,9 @@ body.modal-open {
             margin-bottom: 0;
             color: #999999;
             position: relative; }
-            .panel-form .panel-body-user #apply .form-question .form-group .question-content .upload-file-default:hover {
+            .panel-form .panel-body-user .apply .form-question .form-group .question-content .upload-file-default:hover {
               background-color: #f7f7f7; }
-            .panel-form .panel-body-user #apply .form-question .form-group .question-content .upload-file-default .progress-bar {
+            .panel-form .panel-body-user .apply .form-question .form-group .question-content .upload-file-default .progress-bar {
               height: 8px;
               width: 0;
               background-color: #7ed1a5;
@@ -802,12 +802,12 @@ body.modal-open {
               left: 0;
               bottom: 0;
               border-radius: 2px; }
-            .panel-form .panel-body-user #apply .form-question .form-group .question-content .upload-file-default .iconfont-add {
+            .panel-form .panel-body-user .apply .form-question .form-group .question-content .upload-file-default .iconfont-add {
               z-index: 1; }
-            .panel-form .panel-body-user #apply .form-question .form-group .question-content .upload-file-default .text-add {
+            .panel-form .panel-body-user .apply .form-question .form-group .question-content .upload-file-default .text-add {
               margin-left: 10px;
               z-index: 1; }
-          .panel-form .panel-body-user #apply .form-question .form-group .question-content .upload-file-success {
+          .panel-form .panel-body-user .apply .form-question .form-group .question-content .upload-file-success {
             display: flex;
             align-items: center;
             width: 175px;
@@ -817,23 +817,23 @@ body.modal-open {
             margin-bottom: 0;
             background-color: #f7f7f7;
             position: relative; }
-            .panel-form .panel-body-user #apply .form-question .form-group .question-content .upload-file-success .file-left {
+            .panel-form .panel-body-user .apply .form-question .form-group .question-content .upload-file-success .file-left {
               color: #f5bc21;
               display: inline-flex;
               align-items: center;
               margin-left: 10px; }
-              .panel-form .panel-body-user #apply .form-question .form-group .question-content .upload-file-success .file-left .iconfont-left {
+              .panel-form .panel-body-user .apply .form-question .form-group .question-content .upload-file-success .file-left .iconfont-left {
                 font-size: 35px; }
-            .panel-form .panel-body-user #apply .form-question .form-group .question-content .upload-file-success .file-right {
+            .panel-form .panel-body-user .apply .form-question .form-group .question-content .upload-file-success .file-right {
               margin-left: 5px;
               display: flex; }
-              .panel-form .panel-body-user #apply .form-question .form-group .question-content .upload-file-success .file-right #textFileTitle {
+              .panel-form .panel-body-user .apply .form-question .form-group .question-content .upload-file-success .file-right #textFileTitle {
                 overflow: hidden;
                 text-overflow: ellipsis;
                 max-width: 95px;
                 white-space: nowrap;
                 font-size: 12px; }
-            .panel-form .panel-body-user #apply .form-question .form-group .question-content .upload-file-success .iconfont-right {
+            .panel-form .panel-body-user .apply .form-question .form-group .question-content .upload-file-success .iconfont-right {
               position: absolute;
               right: 10px;
               background-color: black;
@@ -844,34 +844,34 @@ body.modal-open {
               font-size: 12px;
               line-height: 16px;
               cursor: pointer; }
-          .panel-form .panel-body-user #apply .form-question .form-group .question-content .align-center {
+          .panel-form .panel-body-user .apply .form-question .form-group .question-content .align-center {
             display: flex;
             align-items: center; }
-          .panel-form .panel-body-user #apply .form-question .form-group .question-content input[type=radio], .panel-form .panel-body-user #apply .form-question .form-group .question-content input[type=checkbox] {
+          .panel-form .panel-body-user .apply .form-question .form-group .question-content input[type=radio], .panel-form .panel-body-user .apply .form-question .form-group .question-content input[type=checkbox] {
             margin: 0 8px 0 10px; }
-        .panel-form .panel-body-user #apply .form-question #formButton {
+        .panel-form .panel-body-user .apply .form-question #formButton {
           margin-top: 40px; }
-          .panel-form .panel-body-user #apply .form-question #formButton .form-group-submit {
+          .panel-form .panel-body-user .apply .form-question #formButton .form-group-submit {
             text-align: center;
             display: flex;
             justify-content: center; }
-            .panel-form .panel-body-user #apply .form-question #formButton .form-group-submit .sqt-btn-user {
+            .panel-form .panel-body-user .apply .form-question #formButton .form-group-submit .sqt-btn-user {
               width: 150px;
               height: 35px; }
-              .panel-form .panel-body-user #apply .form-question #formButton .form-group-submit .sqt-btn-user:focus {
+              .panel-form .panel-body-user .apply .form-question #formButton .form-group-submit .sqt-btn-user:focus {
                 color: white; }
-      .panel-form .panel-body-user #apply #formOff {
+      .panel-form .panel-body-user .apply #formOff {
         display: flex;
         justify-content: center; }
-        .panel-form .panel-body-user #apply #formOff .form-off-wrap .form-off-svg {
+        .panel-form .panel-body-user .apply #formOff .form-off-wrap .form-off-svg {
           display: flex;
           justify-content: center; }
-        .panel-form .panel-body-user #apply #formOff .form-off-wrap .form-off-sorry {
+        .panel-form .panel-body-user .apply #formOff .form-off-wrap .form-off-sorry {
           font-size: 16px;
           font-weight: 600;
           text-align: center;
           margin-top: 20px; }
-        .panel-form .panel-body-user #apply #formOff .form-off-wrap .form-off-please {
+        .panel-form .panel-body-user .apply #formOff .form-off-wrap .form-off-please {
           font-size: 14px;
           text-align: center; }
   .panel-form .panel-foot-user {

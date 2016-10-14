@@ -11,16 +11,29 @@ function submitFile() {
 }
 
 function uploadFile(){
-    $("#ss-upload").addClass("active");
-    $("#ss-input").removeClass("active");
-    $("#ss-upload-div").show();
-    $("#ss-input-div").hide();
+    $("#ss-file").addClass("active");
+    $("#ss-address").removeClass("active");
+    $("#ss-website").removeClass("active");
+    $("#ss-file-div").show();
+    $("#ss-address-div").hide();
+    $("#ss-website-div").hide();
 }
 
 function inputAddress(){
-    $("#ss-input").addClass("active");
-    $("#ss-upload").removeClass("active");
-    $("#ss-input-div").show();
-    $("#ss-upload-div").hide();
+    $("#ss-address").addClass("active");
+    $("#ss-file").removeClass("active");
+    $("#ss-website").removeClass("active");
+    $("#ss-address-div").show();
+    $("#ss-file-div").hide();
+    $("#ss-website-div").hide();
 
+}
+
+function addWebsite(){
+    $("#ss-website").addClass("active");
+    $("#ss-file").removeClass("active");
+    $("#ss-address").removeClass("active");
+    $("#ss-website-div").show();
+    $("#ss-address-div").hide();
+    $("#ss-file-div").hide();
 }
