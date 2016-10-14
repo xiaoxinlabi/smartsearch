@@ -24,7 +24,7 @@ public class AddressController {
     AddressIndexer addressIndexer;
 
     @ResponseBody
-    @RequestMapping(value = "/insert",method = RequestMethod.GET)
+    @RequestMapping(value = "/inputAddress",method = RequestMethod.GET)
     public Map inputAdressBook(
               @RequestParam(value = "accountId", required = false) String accountId
             , @RequestParam(value = "englishName", required = false) String englishName
@@ -55,7 +55,6 @@ public class AddressController {
             addressModel.setDepartment(department);
             addressModel.setPosition(position);
             addressModel.setRemark(remark);
-            System.out.println(addressModel);
             addressIndexer.addAddress(addressModel);
             result.put("status","success");
             result.put("detail",addressModel.getChineseName());
