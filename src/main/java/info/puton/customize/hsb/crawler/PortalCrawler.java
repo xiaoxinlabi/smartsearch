@@ -14,9 +14,13 @@ import us.codecraft.webmagic.processor.PageProcessor;
 import us.codecraft.webmagic.scheduler.QueueScheduler;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by taoyang on 2016/10/17.
@@ -27,18 +31,31 @@ public class PortalCrawler implements PageProcessor {
     private String userid = "wushuang";
     private String password = "11111111";
 
+    private Boolean crawlForAll;
+    private String crawlDate;
+
+    public void setCrawlForAll(Boolean crawlForAll) {
+        this.crawlForAll = crawlForAll;
+    }
+
+    public void setCrawlDate(String crawlDate) {
+        this.crawlDate = crawlDate;
+    }
+
     private Site site;
 
     private LoginMocker loginMocker = new LoginMocker();
 
     public void findNextPage(Page page){
-        //下一翻页（如果有）
-        String nextPageXPath1 = "//*[@id=\"mainContent\"]/table/tbody/tr/td/table/tbody/tr/td/div/div/div/div[2]/span[3]/a/@href";
-        String nextPageXPath2 = "//*[@id=\"mainContent\"]/table/tbody/tr/td[2]/table/tbody/tr/td/div/div/div/div[2]/span[3]/a";
-        String nextPageLink1 = page.getHtml().xpath(nextPageXPath1).get();
-        String nextPageLink2 = page.getHtml().xpath(nextPageXPath2).get();
-        page.addTargetRequest(nextPageLink1);
-        page.addTargetRequest(nextPageLink2);
+        if(crawlForAll){
+            //下一翻页（如果有）
+            String nextPageXPath1 = "//*[@id=\"mainContent\"]/table/tbody/tr/td/table/tbody/tr/td/div/div/div/div[2]/span[3]/a/@href";
+            String nextPageXPath2 = "//*[@id=\"mainContent\"]/table/tbody/tr/td[2]/table/tbody/tr/td/div/div/div/div[2]/span[3]/a";
+            String nextPageLink1 = page.getHtml().xpath(nextPageXPath1).get();
+            String nextPageLink2 = page.getHtml().xpath(nextPageXPath2).get();
+            page.addTargetRequest(nextPageLink1);
+            page.addTargetRequest(nextPageLink2);
+        }
     }
 
     public void findNextSide(Page page){
@@ -63,6 +80,19 @@ public class PortalCrawler implements PageProcessor {
 //            String keywords = page.getHtml().xpath("/html/head/meta[@name=\"keywords\"]/@content").toString();
         String description = page.getHtml().css("#mainContent > table > tbody > tr > td > table > tbody > tr:nth-child(2) > td > div > div > div > p > script").get();
         description = description.substring(description.indexOf("str=\"")+5,description.indexOf("\";"));
+//        System.out.println(description);
+
+        if(!crawlForAll){
+            Pattern p = Pattern.compile("[0-9]{4}\\-[0-9]{2}\\-[0-9]{2}");
+            Matcher m = p.matcher(description);
+            while (m.find()){
+                String postDate = m.group();
+                if(!postDate.equals(crawlDate)){
+                    return;
+                }
+            }
+        }
+
         String content = page.getHtml().css("#mainContent > table > tbody > tr > td > table > tbody > tr:nth-child(3)").xpath("allText()").get();
         content = content
                 .replaceAll("\\n+", " ")
@@ -130,12 +160,39 @@ public class PortalCrawler implements PageProcessor {
         return site;
     }
 
+    public static void crawlForAll(String... urls){
+
+        PortalCrawler portalCrawler = new PortalCrawler();
+        portalCrawler.setCrawlForAll(true);
+
+        Spider spider = Spider.create(portalCrawler);
+        spider.addPipeline(new PortalPipeline());
+        spider.thread(5);
+        spider.setScheduler(new QueueScheduler().setDuplicateRemover(new CustomKeyDuplicateRemover()));
+        spider.addUrl(urls);
+        spider.run();
+    }
+
+    public static void crawlByDate(String date, String... urls){
+
+        PortalCrawler portalCrawler = new PortalCrawler();
+        portalCrawler.setCrawlForAll(false);
+        portalCrawler.setCrawlDate(date);
+        Spider spider = Spider.create(portalCrawler);
+        spider.addPipeline(new PortalPipeline());
+        spider.thread(5);
+        spider.setScheduler(new QueueScheduler().setDuplicateRemover(new CustomKeyDuplicateRemover()));
+        spider.addUrl(urls);
+        spider.run();
+    }
+
     public static void main(String[] args) {
 
         String[] urls = {
+
 //                "http://portal.hsbank.com/wps/myportal/tupianxinwen",//图片新闻
 //                "http://portal.hsbank.com/wps/myportal/tongzhigonggao",//通知公告
-//                "http://portal.hsbank.com/wps/myportal/huihangdongtai",//徽行要闻
+                "http://portal.hsbank.com/wps/myportal/huihangdongtai",//徽行要闻
 //                "http://portal.hsbank.com/wps/myportal/lingdaoricheng",//领导动态
 //                "http://portal.hsbank.com/wps/myportal/xinxikuaibao",//信息快递
 //                "http://portal.hsbank.com/wps/myportal/bumenzhuanlan",//部门专栏
@@ -147,7 +204,7 @@ public class PortalCrawler implements PageProcessor {
 //                "http://portal.hsbank.com/wps/myportal/gaigetuijinnian",//改革推进年
 //                "http://portal.hsbank.com/wps/myportal/liangxueyizuo",//“两学一做”学习教育
 //                "http://portal.hsbank.com/wps/myportal/puhuijinrong",//普惠金融
-                "http://portal.hsbank.com/wps/myportal/826gongcheng",//“826”工程
+//                "http://portal.hsbank.com/wps/myportal/826gongcheng",//“826”工程
 //                "http://portal.hsbank.com/wps/myportal/heguijianshenian",//合规建设年
 //                "http://portal.hsbank.com/wps/myportal/heguineikongxinxifabu",//内控体系建设
 //                "http://portal.hsbank.com/wps/myportal/baomixuanchuanjiaoyu",//保密宣传教育
@@ -158,12 +215,10 @@ public class PortalCrawler implements PageProcessor {
 
         };
 
-        Spider spider = Spider.create(new PortalCrawler());
-        spider.addPipeline(new PortalPipeline());
-        spider.thread(5);
-        spider.setScheduler(new QueueScheduler().setDuplicateRemover(new CustomKeyDuplicateRemover()));
-        spider.addUrl(urls);
-        spider.run();
+        crawlForAll(urls);
+
+//        crawlByDate("2016-10-18",urls);
+
     }
 
 }
