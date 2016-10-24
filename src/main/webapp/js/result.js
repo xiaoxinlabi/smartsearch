@@ -5,6 +5,9 @@
 // 分页功能
 var currentPage = 1, pageSize = 5;
 
+//最大显示摘要
+var maxHighlightedSize = 250;
+
 $(function(){
 
     init();
@@ -17,7 +20,7 @@ function init(){
         $("#search-wd").val(decodeURIComponent($_GET['wd']));
 
         if($_GET['tp']!=null && $_GET['tp']!=""){
-            $("#ss-file-type-selector").html(decodeURIComponent($_GET['tp'])+' <span class="caret"></span>')
+            $("#ss-file-type-selector").html(typeToName(decodeURIComponent($_GET['tp']))+' <span class="caret"></span>')
                 .val(decodeURIComponent($_GET['tp']));
         }
         refresh();
@@ -124,6 +127,8 @@ function getResult(keyword, type, currentPage, pageSize){
                 indexDate = new Date();
                 indexDate.setTime(record.timestamp);
 
+                content = record.content.length <= maxHighlightedSize ? record.content : record.content.substring(0,200)
+
                 if(index == "filefulltext"){
                     //文件
                     modifyDate = new Date();
@@ -139,7 +144,7 @@ function getResult(keyword, type, currentPage, pageSize){
                         '<div class="col-md-2">' +
                             //'<a class="ss-file-prev" data-hdfspath="http://' + hdfsHost + ':50070/webhdfs/v1' + record.hdfsPath + '?op=OPEN">' +
                         '<a class="ss-file-prev" data-id="' + record.id + '" data-type = "' + record.type + '">' +
-                        '<img src="./img/file_type_icon/' + typeToIcon(record.type) + '" class="ss-icon-md">' +
+                        '<img src="./img/' + typeToIcon(record.type) + '" class="ss-icon-md">' +
                         '</a>' +
                         '</div>' +
                         '<div class="col-md-10" class="ss-record-file-metadata">' +
@@ -177,7 +182,7 @@ function getResult(keyword, type, currentPage, pageSize){
                         '</div>' +
                         '<div class="row">' +
                         '<div class="col-md-12">' +
-                        '<p>' + record.content + '</p>' +
+                        '<p>' + content + '</p>' +
                         '</div>' +
                         '</div>' +
                         '</div>';
@@ -259,26 +264,28 @@ function getResult(keyword, type, currentPage, pageSize){
                         '</a>' +
                         '</div>' +
                         '<div class="col-md-10" class="ss-record-file-metadata">' +
-                        '<div class="row">' +
-                        '<div class="col-md-12">' +
-                        '标题：' + record.title +
-                        '</div>' +
-                        '</div>' +
-                        '<div class="row">' +
-                        '<div class="col-md-12">' +
-                        '关键字：' + record.keywords +
-                        '</div>' +
-                        '</div>' +
+                        //'<div class="row">' +
+                        //'<div class="col-md-12">' +
+                        //'标题：' + record.title +
+                        //'</div>' +
+                        //'</div>' +
+                        //'<div class="row">' +
+                        //'<div class="col-md-12">' +
+                        //'关键字：' + record.keywords +
+                        //'</div>' +
+                        //'</div>' +
                         '<div class="row">' +
                         '<div class="col-md-12">' +
                         '描述：' + record.description +
                         '</div>' +
                         '</div>' +
+                        '<p>' +
                         '<div class="row">' +
                         '<div class="col-md-12">' +
                         '索引时间：' + indexDate.toLocaleString() +
                         '</div>' +
                         '</div>' +
+                        '<p>' +
                         '<div class="row">' +
                         '<div class="col-md-12">' +
                         '链接：<a href="' + record.url + '">点击访问</a>' +
@@ -288,7 +295,7 @@ function getResult(keyword, type, currentPage, pageSize){
                         '<div class="row">' +
                         '<div class="col-md-12">' +
                         '<p>' +
-                        record.content +
+                         content +
                         '</p>' +
                         '</div>' +
                         '</div>' +
@@ -331,23 +338,52 @@ function typeToIcon(filetype){
 
     switch(filetype){
         case "txt":
-            return "text.png";
+            return "file_type_icon/text.png";
         case "doc":
-            return "doc.png";
+            return "file_type_icon/doc.png";
         case "docx":
-            return "docx.png";
+            return "file_type_icon/docx.png";
         case "xls":
-            return "xls.png";
+            return "file_type_icon/xls.png";
         case "xlsx":
-            return "xlsx.png";
+            return "file_type_icon/xlsx.png";
         case "ppt":
-            return "ppt.png";
+            return "file_type_icon/ppt.png";
         case "pptx":
-            return "pptx.png";
+            return "file_type_icon/pptx.png";
         case "pdf":
-            return "pdf.png";
+            return "file_type_icon/pdf.png";
+        case "address":
+            return "type_icon/address.png";
+        case "website":
+            return "file_type_icon/url.png";
+        case "file":
+            return "type_icon/file.png";
         default :
-            return "ini.png";
+            return "type_icon/all.png";
+    }
+
+}
+
+function typeToName(filetype){
+
+    switch(filetype){
+        case "txt":
+            return "txt";
+        case "doc":
+            return "doc(x)";
+        case "ppt":
+            return "ppt(x)";
+        case "xls":
+            return "xls(x)";
+        case "pdf":
+            return "pdf";
+        case "address":
+            return "通讯录";
+        case "website":
+            return "网页";
+        default :
+            return "所有类型";
     }
 
 }

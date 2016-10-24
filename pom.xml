@@ -55,6 +55,7 @@
     <hbase.version>0.98.6-hadoop2</hbase.version>
     <hdfs.version>2.2.0</hdfs.version>
     <guava.version>19.0</guava.version>
+    <quartz.version>2.2.3</quartz.version>
 
   </properties>
 
@@ -209,6 +210,18 @@
       <groupId>com.google.guava</groupId>
       <artifactId>guava</artifactId>
       <version>${guava.version}</version>
+    </dependency>
+
+    <!-- Quartz -->
+    <dependency>
+      <groupId>org.quartz-scheduler</groupId>
+      <artifactId>quartz</artifactId>
+      <version>${quartz.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.quartz-scheduler</groupId>
+      <artifactId>quartz-jobs</artifactId>
+      <version>${quartz.version}</version>
     </dependency>
 
   </dependencies>

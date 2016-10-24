@@ -5,6 +5,8 @@ package info.puton.product.smartsearch.constant;
  */
 public class Type {
 
+    public final static String FILE = "file";
+
     public final static String TXT = "txt";
 
     public final static String DOC = "doc";

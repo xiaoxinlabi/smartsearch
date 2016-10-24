@@ -32,6 +32,8 @@ public class SmartSearchDao {
     @Value("#{settings['maxHighlightedSize']}")
     private Integer maxHighlightedSize;
 
+    private String[] allFileTypes = {Type.DOC, Type.DOCX, Type.XLS, Type.XLSX, Type.PPT, Type.PPTX, Type.PDF, Type.TXT};
+
     public PageModel<BaseSearchResult> queryResult(Map params){
 
         String keyword = (String) params.get("keyword");
@@ -61,7 +63,9 @@ public class SmartSearchDao {
 
         //type
         if(filterType!=null && !"".equals(filterType)){
-            if(filterType.equals(Type.DOC)){
+            if(filterType.equals(Type.FILE)){
+                srb.setTypes(allFileTypes);
+            } else if(filterType.equals(Type.DOC)){
                 srb.setTypes(Type.DOC, Type.DOCX);
             } else if(filterType.equals(Type.XLS)){
                 srb.setTypes(Type.XLS, Type.XLSX);

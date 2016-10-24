@@ -23,12 +23,12 @@ public class WebsiteIndexerTest extends TestSupport {
     @Test
     public void testAddWebsite() throws Exception {
         Website website = new Website();
-        website.setId("ifhug");
-        website.setUrl("http://ifhug.com");
-        website.setTitle("i站");
-        website.setKeywords("i站,ifhug,朋友圈,家,世界");
-        website.setDescription("i站-朋友圈改变世界");
-        website.setContent("巴拉巴拉巴拉巴拉咕噜咕噜咕噜咕噜");
+        website.setId("puton");
+        website.setUrl("http://puton.info");
+        website.setTitle("扑通");
+        website.setKeywords("扑通,puton");
+        website.setDescription("puton-心跳的声音");
+        website.setContent("扑通扑通扑通扑通扑通扑通扑通扑通扑通扑通扑通扑通");
         websiteIndexer.addWebsite(website);
     }
 

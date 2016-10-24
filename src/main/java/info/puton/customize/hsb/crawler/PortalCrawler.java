@@ -7,6 +7,8 @@ import info.puton.product.smartsearch.model.Website;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.Spider;
@@ -14,8 +16,6 @@ import us.codecraft.webmagic.processor.PageProcessor;
 import us.codecraft.webmagic.scheduler.QueueScheduler;
 
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -25,7 +25,11 @@ import java.util.regex.Pattern;
 /**
  * Created by taoyang on 2016/10/17.
  */
+@Component
 public class PortalCrawler implements PageProcessor {
+
+    @Autowired
+    PortalPipeline portalPipeline;
 
     private String host = "http://portal.hsbank.com";
     private String userid = "wushuang";
@@ -160,65 +164,28 @@ public class PortalCrawler implements PageProcessor {
         return site;
     }
 
-    public static void crawlForAll(String... urls){
+    public void crawlForAll(String... urls){
 
-        PortalCrawler portalCrawler = new PortalCrawler();
-        portalCrawler.setCrawlForAll(true);
+        setCrawlForAll(true);
 
-        Spider spider = Spider.create(portalCrawler);
-        spider.addPipeline(new PortalPipeline());
+        Spider spider = Spider.create(this);
+        spider.addPipeline(portalPipeline);
         spider.thread(5);
         spider.setScheduler(new QueueScheduler().setDuplicateRemover(new CustomKeyDuplicateRemover()));
         spider.addUrl(urls);
         spider.run();
     }
 
-    public static void crawlByDate(String date, String... urls){
+    public void crawlByDate(String date, String... urls){
 
-        PortalCrawler portalCrawler = new PortalCrawler();
-        portalCrawler.setCrawlForAll(false);
-        portalCrawler.setCrawlDate(date);
-        Spider spider = Spider.create(portalCrawler);
-        spider.addPipeline(new PortalPipeline());
+        setCrawlForAll(false);
+        setCrawlDate(date);
+        Spider spider = Spider.create(this);
+        spider.addPipeline(portalPipeline);
         spider.thread(5);
         spider.setScheduler(new QueueScheduler().setDuplicateRemover(new CustomKeyDuplicateRemover()));
         spider.addUrl(urls);
         spider.run();
-    }
-
-    public static void main(String[] args) {
-
-        String[] urls = {
-
-//                "http://portal.hsbank.com/wps/myportal/tupianxinwen",//图片新闻
-//                "http://portal.hsbank.com/wps/myportal/tongzhigonggao",//通知公告
-                "http://portal.hsbank.com/wps/myportal/huihangdongtai",//徽行要闻
-//                "http://portal.hsbank.com/wps/myportal/lingdaoricheng",//领导动态
-//                "http://portal.hsbank.com/wps/myportal/xinxikuaibao",//信息快递
-//                "http://portal.hsbank.com/wps/myportal/bumenzhuanlan",//部门专栏
-//                "http://portal.hsbank.com/wps/myportal/zuixinjianbao",//最新简报
-//                "http://portal.hsbank.com/wps/myportal/gongzuojiaoliu",//工作交流
-//                "http://portal.hsbank.com/wps/myportal/qiyewenhuajianshe",//企业文化建设
-
-//                "http://portal.hsbank.com/wps/myportal/420xiangmu",//“四二〇”项目
-//                "http://portal.hsbank.com/wps/myportal/gaigetuijinnian",//改革推进年
-//                "http://portal.hsbank.com/wps/myportal/liangxueyizuo",//“两学一做”学习教育
-//                "http://portal.hsbank.com/wps/myportal/puhuijinrong",//普惠金融
-//                "http://portal.hsbank.com/wps/myportal/826gongcheng",//“826”工程
-//                "http://portal.hsbank.com/wps/myportal/heguijianshenian",//合规建设年
-//                "http://portal.hsbank.com/wps/myportal/heguineikongxinxifabu",//内控体系建设
-//                "http://portal.hsbank.com/wps/myportal/baomixuanchuanjiaoyu",//保密宣传教育
-//                "http://portal.hsbank.com/wps/myportal/dangqunluxian",//党的群众路线教育实践活动
-//                "http://portal.hsbank.com/wps/myportal/wangdianzhuanxingzhuanti",//网点转型专题
-//                "http://portal.hsbank.com/wps/myportal/sanyansanshi",//“三严三实”专题教育
-//                "http://portal.hsbank.com/wps/myportal/lianggeyipizhuanxianghuodong",//“两个一批”专项活动
-
-        };
-
-        crawlForAll(urls);
-
-//        crawlByDate("2016-10-18",urls);
-
     }
 
 }
