@@ -57,7 +57,7 @@ public class AddressController {
             addressModel.setRemark(remark);
             addressIndexer.addAddress(addressModel);
             result.put("status","success");
-            result.put("detail",addressModel.getChineseName());
+            result.put("detail",addressModel);
         }catch (Exception e){
             result.put("status","error");
             e.printStackTrace();
