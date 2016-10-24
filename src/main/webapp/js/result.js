@@ -127,7 +127,9 @@ function getResult(keyword, type, currentPage, pageSize){
                 indexDate = new Date();
                 indexDate.setTime(record.timestamp);
 
-                content = record.content.length <= maxHighlightedSize ? record.content : record.content.substring(0,200)
+                if(record.content){
+                    content = record.content.length <= maxHighlightedSize ? record.content : record.content.substring(0,200)
+                }
 
                 if(index == "filefulltext"){
                     //文件
