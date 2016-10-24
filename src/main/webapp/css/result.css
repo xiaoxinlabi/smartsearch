@@ -26,8 +26,9 @@ a{
 }
 
 .ss-highlight {
-     background-color: yellow;
-     color: teal;
+     /*background-color: yellow;*/
+     /*color: teal;*/
+    color:#B41116
 }
 
 .ss-content-middle-right{

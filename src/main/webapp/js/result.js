@@ -184,7 +184,9 @@ function getResult(keyword, type, currentPage, pageSize){
                         '</div>' +
                         '<div class="row">' +
                         '<div class="col-md-12">' +
-                        '<p>' + content + '</p>' +
+                        '<p>' +
+                         content +
+                        '</p>' +
                         '</div>' +
                         '</div>' +
                         '</div>';
@@ -294,12 +296,12 @@ function getResult(keyword, type, currentPage, pageSize){
                         '</div>' +
                         '</div>' +
                         '</div>' +
+                        '</div>' +
                         '<div class="row">' +
                         '<div class="col-md-12">' +
                         '<p>' +
                          content +
                         '</p>' +
-                        '</div>' +
                         '</div>' +
                         '</div>' +
                         '</div>' +
