@@ -16,13 +16,14 @@ import java.util.Map;
  * Created by Pauline on 16/10/13.
  */
 @Controller
+@RequestMapping(value="/website")
 public class WebsiteController {
     @Autowired
     WebsiteIndexer websiteIndexer;
 
     @ResponseBody
-    @RequestMapping(value="/addWebsite",method = RequestMethod.GET)
-    public Map addWebsite(
+    @RequestMapping(value="/add",method = RequestMethod.POST)
+    public Map add(
              @RequestParam(value="url",required = false)String url
             ,@RequestParam(value="title",required = false)String title
             ,@RequestParam(value="keywords",required = false)String keywords

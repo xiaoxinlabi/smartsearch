@@ -12,6 +12,4 @@ public interface WebsiteIndexer {
 
     void addWebsite(Website website);
 
-    void deleteWebsite(String type, String id);
-
 }

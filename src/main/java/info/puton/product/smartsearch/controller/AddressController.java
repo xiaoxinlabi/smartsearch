@@ -19,13 +19,14 @@ import java.util.Objects;
  */
 
 @Controller
+@RequestMapping(value="/address")
 public class AddressController {
     @Autowired
     AddressIndexer addressIndexer;
 
     @ResponseBody
-    @RequestMapping(value = "/inputAddress",method = RequestMethod.GET)
-    public Map inputAdressBook(
+    @RequestMapping(value = "/add",method = RequestMethod.POST)
+    public Map addAdress(
               @RequestParam(value = "accountId", required = false) String accountId
             , @RequestParam(value = "englishName", required = false) String englishName
             , @RequestParam(value = "chineseName", required = false) String chineseName

@@ -6,6 +6,7 @@ import info.puton.product.smartsearch.model.Address;
 import info.puton.product.smartsearch.model.FileFullText;
 import info.puton.product.smartsearch.model.Website;
 import info.puton.product.smartsearch.service.AddressIndexer;
+import info.puton.product.smartsearch.service.BaseIndexer;
 import info.puton.product.smartsearch.service.FileIndexer;
 import info.puton.product.smartsearch.service.WebsiteIndexer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,7 @@ import java.util.Map;
  * Created by taoyang on 2016/9/21.
  */
 @Service
-public class ElasticSearchService implements FileIndexer, AddressIndexer, WebsiteIndexer {
+public class ElasticSearchService implements BaseIndexer, FileIndexer, AddressIndexer, WebsiteIndexer {
 
     @Autowired
     ElasticSearchDao elasticSearchDao;
@@ -169,11 +170,6 @@ public class ElasticSearchService implements FileIndexer, AddressIndexer, Websit
     }
 
     @Override
-    public void deleteFile(String type, String id) {
-        elasticSearchDao.deleteDocument(Index.FILE_FULL_TEXT, type, id);
-    }
-
-    @Override
     public void initAddress() {
         try{
             elasticSearchDao.deleteIndex(Index.ADDRESS);
@@ -215,11 +211,6 @@ public class ElasticSearchService implements FileIndexer, AddressIndexer, Websit
         data.put("group", address.getGroup()!=null ? address.getGroup() : Group.DEFAULT);
         data.put("timestamp", address.getTimestamp()!=null ? address.getTimestamp():System.currentTimeMillis());
         elasticSearchDao.createDocument(Index.ADDRESS, Type.ADDRESS, id, data);
-    }
-
-    @Override
-    public void deleteAddress(String type, String id) {
-        elasticSearchDao.deleteDocument(Index.ADDRESS, type, id);
     }
 
     @Override
@@ -270,7 +261,12 @@ public class ElasticSearchService implements FileIndexer, AddressIndexer, Websit
     }
 
     @Override
-    public void deleteWebsite(String type, String id) {
-        elasticSearchDao.deleteDocument(Index.WEBSITE, type, id);
+    public void deleteIndex(String index) {
+        elasticSearchDao.deleteIndex(index);
+    }
+
+    @Override
+    public void deleteDocument(String index, String type, String id) {
+        elasticSearchDao.deleteDocument(index, type, id);
     }
 }

@@ -38,6 +38,18 @@ function init(){
         }
     });
 
+    $('#ss-result-list').on('click','.ss-record-index-debug', function () {
+
+        alert($(this).closest('.dropdown-menu').data('id'));
+
+    });
+
+    $('#ss-result-list').on('click','.ss-record-index-delete', function () {
+        index = $(this).closest('.dropdown-menu').data('index');
+        type = $(this).closest('.dropdown-menu').data('type');
+        id = $(this).closest('.dropdown-menu').data('id');
+        deleteIndex(index, type, id);
+    });
 
     $('#ss-result-list').on('click','.ss-file-prev', function () {
 
@@ -124,10 +136,26 @@ function getResult(keyword, type, currentPage, pageSize){
 
                 index = record.index;
                 type = record.type;
+                id = record.id;
                 indexDate = new Date();
                 indexDate.setTime(record.timestamp);
 
-                if(record.content){
+                indexOperateHtml =
+                    '<div class="col-md-4">' +
+                    '<div class="dropdown pull-right ss-record-manage">' +
+                    '<button class="btn btn-danger btn-xs dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">' +
+                    '管理' +
+                    '<span class="caret"></span>' +
+                    '</button>' +
+                    '<ul class="dropdown-menu" data-index="' + index + '" data-id="' + id + '" data-type = "' + type + '">' +
+                    '<li><a class="ss-record-index-debug">定位</a></li>' +
+                    '<li><a class="ss-record-index-delete">删除</a></li>' +
+                    '</ul>' +
+                    '</div>' +
+                    '</div>' +
+                    '';
+
+                if(record.content!=null){
                     content = record.content.length <= maxHighlightedSize ? record.content : record.content.substring(0,200)
                 }
 
@@ -137,10 +165,11 @@ function getResult(keyword, type, currentPage, pageSize){
                     modifyDate.setTime(record.lastModified);
                     inHtml+='<div class="ss-record-row">' +
                         '<div class="row">' +
-                        '<div class="col-md-12">' +
+                        '<div class="col-md-8">' +
                             //'<a class="ss-file-down" data-hdfspath="http://' + hdfsHost + ':50070/webhdfs/v1' + record.hdfsPath + '?op=OPEN"><h4><strong>'+ (record.highlightName ? record.highlightName:record.name) +'</strong></h4></a>' +
                         '<a class="ss-file-down" data-id="' + record.id + '" data-type = "' + record.type + '"><h4><strong>'+ record.fileName +'</strong></h4></a>' +
                         '</div>' +
+                        indexOperateHtml +
                         '</div>' +
                         '<div class="row">' +
                         '<div class="col-md-2">' +
@@ -194,9 +223,10 @@ function getResult(keyword, type, currentPage, pageSize){
                     //通讯录
                     inHtml+='<div class="ss-record-row">' +
                         '<div class="row">' +
-                        '<div class="col-md-12">' +
+                        '<div class="col-md-8">' +
                         '<a><h4><strong><span>'+ record.chineseName +' / '+ record.englishName +' / ' + record.accountId + '</strong></h4></a>' +
                         '</div>' +
+                        indexOperateHtml +
                         '</div>' +
                         '<div class="row">' +
                         '<div class="col-md-2">' +
@@ -257,9 +287,10 @@ function getResult(keyword, type, currentPage, pageSize){
                     //网站
                     inHtml+='<div class="ss-record-row">' +
                         '<div class="row">' +
-                        '<div class="col-md-12">' +
+                        '<div class="col-md-8">' +
                         '<a href="' + record.url + '"><h4><strong>' + record.title + '</strong></h4></a>' +
                         '</div>' +
+                        indexOperateHtml +
                         '</div>' +
                         '<div class="row">' +
                         '<div class="col-md-2">' +
@@ -335,7 +366,32 @@ function getResult(keyword, type, currentPage, pageSize){
         }
     });
 
+}
 
+function deleteIndex(index, type, id){
+
+    $("#ss-file-type-selector").prop("disabled","disabled");
+    $("#search-button").button('loading');
+
+    var settings = {
+        "async": true,
+        "url": "rest/index/delete",
+        "method": "POST",
+        "headers": {
+            "cache-control": "no-cache"
+        },
+        "data":{
+            index:index,
+            type:type,
+            id:id
+        }
+    };
+
+    $.ajax(settings).done(function (response) {
+        if (response.success == true) {
+            setTimeout("location.reload();",1000);
+        }
+    });
 }
 
 function typeToIcon(filetype){

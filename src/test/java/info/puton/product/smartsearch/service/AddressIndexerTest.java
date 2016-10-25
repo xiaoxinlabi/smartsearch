@@ -39,8 +39,4 @@ public class AddressIndexerTest extends TestSupport {
         addressIndexer.addAddress(address);
     }
 
-    @Test
-    public void testDeleteAddress() throws Exception {
-
-    }
 }

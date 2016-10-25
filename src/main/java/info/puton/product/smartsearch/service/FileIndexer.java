@@ -13,6 +13,4 @@ public interface FileIndexer {
 
     void addFile(FileFullText fileFullText);
 
-    void deleteFile(String type, String id);
-
 }

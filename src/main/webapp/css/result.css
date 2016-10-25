@@ -21,6 +21,19 @@
     margin-left: 100px;
 }
 
+.ss-record-manage{
+    text-align: center;
+}
+
+.ss-record-manage > ul{
+    min-width: 100%;
+}
+
+.ss-record-manage > ul > li{
+    text-align: center;
+    height: 100%;
+}
+
 a{
     cursor: pointer;
 }

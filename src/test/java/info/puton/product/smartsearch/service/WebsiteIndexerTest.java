@@ -32,8 +32,4 @@ public class WebsiteIndexerTest extends TestSupport {
         websiteIndexer.addWebsite(website);
     }
 
-    @Test
-    public void testDeleteWebsite() throws Exception {
-
-    }
 }

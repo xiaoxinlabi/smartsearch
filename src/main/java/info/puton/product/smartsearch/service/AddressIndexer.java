@@ -12,6 +12,4 @@ public interface AddressIndexer {
 
     void addAddress(Address address);
 
-    void deleteAddress(String type, String id);
-
 }
