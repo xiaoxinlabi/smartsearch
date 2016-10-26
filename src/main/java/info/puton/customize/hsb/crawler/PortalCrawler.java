@@ -25,7 +25,7 @@ import java.util.regex.Pattern;
 /**
  * Created by taoyang on 2016/10/17.
  */
-@Component
+@Component()
 public class PortalCrawler implements PageProcessor {
 
     @Autowired
@@ -177,6 +177,8 @@ public class PortalCrawler implements PageProcessor {
     }
 
     public void crawlByDate(String date, String... urls){
+
+        System.out.println("crawling for " + date);
 
         setCrawlForAll(false);
         setCrawlDate(date);

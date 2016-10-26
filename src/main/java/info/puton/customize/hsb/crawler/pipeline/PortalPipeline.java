@@ -12,7 +12,7 @@ import us.codecraft.webmagic.pipeline.Pipeline;
 /**
  * Created by taoyang on 2016/10/17.
  */
-@Component
+@Component()
 public class PortalPipeline implements Pipeline {
 
     @Autowired

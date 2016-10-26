@@ -10,8 +10,7 @@
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
-            classpath:spring/context.spring.xml
-            classpath:spring/es.spring.xml
+            classpath:spring/*.spring.xml
         </param-value>
     </context-param>
     <listener>
@@ -40,7 +39,9 @@
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>classpath:spring/servlet.spring.xml</param-value>
+            <param-value>
+                classpath:spring/*.spring.xml
+            </param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
