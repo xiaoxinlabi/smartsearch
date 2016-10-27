@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <script src="assets/js/jquery.min.js" type="text/javascript"></script>
+        <script src="js/common.js" type="text/javascript"></script>
+        <script>
+            $(function(){
+                $("input[name='backurl']").val($_GET['backurl']);
+            });
+        </script>
+    </head>
+    <body>
+
+    <h1>login page</h1>
+    <form action="rest/user/login" method="post">
+        <label>User Name</label>
+        <input tyep="text" name="username" maxLength="40" />
+        <label>Password</label>
+        <input type="password" name="password" />
+        <input type="hidden" name="backurl"/>
+        <input type="submit" value="login" />
+    </form>
+    </body>
+
+</html>

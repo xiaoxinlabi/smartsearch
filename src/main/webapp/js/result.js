@@ -10,7 +10,7 @@ var maxHighlightedSize = 250;
 
 $(function(){
 
-    init();
+    //init();
 
 });
 
@@ -333,7 +333,6 @@ function getResult(keyword, type, currentPage, pageSize){
                         '<p>' +
                          content +
                         '</p>' +
-                        '</div>' +
                         '</div>' +
                         '</div>' +
                         '';

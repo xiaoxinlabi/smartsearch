@@ -1,0 +1,12 @@
+.pa-headbar{
+    padding-bottom: 6px;
+    border-bottom: 1px solid #cccccc;
+    overflow:hidden;
+}
+
+.pa-headbar-left{
+    float: left;
+}
+.pa-headbar-right{
+    float: right;
+}

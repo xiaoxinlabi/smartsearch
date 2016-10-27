@@ -23,7 +23,11 @@
 <body>
 
   <div class="container ss-content-all">
-    
+
+    <div class="row">
+      <iframe id="headbar" onload="init()" src="headbar.jsp" width="100%" height="50px" frameborder="0" scrolling="no"></iframe>
+    </div>
+
     <div class="row ss-content-top">
 
       <div class="col-md-1">
@@ -102,7 +106,6 @@
         </div>
 
         <div id="ss-result-list">
-
           <!--<div class="ss-record-row">-->
             <!--<div class="row">-->
               <!--<div class="col-md-12">-->
@@ -212,81 +215,75 @@
             <!--</div>-->
           <!--</div>-->
 
-          <div class="ss-record-row">
-            <div class="row">
-              <div class="col-md-8">
-                <a class="ss-file-down" data-id="74b61df0-45e7-4c0d-b9d7-adedae2e4d09" data-type = "doc"><h4><strong>4-中期检查 优秀<span>项目</span>推荐表.doc</strong></h4></a>
-              </div>
+          <!--<div class="ss-record-row">-->
+            <!--<div class="row">-->
+              <!--<div class="col-md-8">-->
+                <!--<a class="ss-file-down" data-id="74b61df0-45e7-4c0d-b9d7-adedae2e4d09" data-type = "doc"><h4><strong>4-中期检查 优秀<span>项目</span>推荐表.doc</strong></h4></a>-->
+              <!--</div>-->
 
 
-              <div class="col-md-4">
-                <div class="dropdown pull-right ss-record-manage">
-                  <button class="btn btn-danger btn-xs dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-                    管理
-                    <span class="caret"></span>
-                  </button>
-                  <ul class="dropdown-menu" data-index="filefulltext" data-id="74b61df0-45e7-4c0d-b9d7-adedae2e4d09" data-type = "doc">
-                    <li><a class="ss-record-index-debug">定位</a></li>
-                    <li><a class="ss-record-index-delete">删除</a></li>
-                  </ul>
-                </div>
-              </div>
+              <!--<div class="col-md-4">-->
+                <!--<div class="dropdown pull-right ss-record-manage">-->
+                  <!--<button class="btn btn-danger btn-xs dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">-->
+                    <!--管理-->
+                    <!--<span class="caret"></span>-->
+                  <!--</button>-->
+                  <!--<ul class="dropdown-menu" data-index="filefulltext" data-id="74b61df0-45e7-4c0d-b9d7-adedae2e4d09" data-type = "doc">-->
+                    <!--<li><a class="ss-record-index-debug">定位</a></li>-->
+                    <!--<li><a class="ss-record-index-delete">删除</a></li>-->
+                  <!--</ul>-->
+                <!--</div>-->
+              <!--</div>-->
 
 
-            </div>
-            <div class="row">
-              <div class="col-md-2">
-                <a class="ss-file-prev" data-id="74b61df0-45e7-4c0d-b9d7-adedae2e4d09" data-type = "doc">
-                  <img src="./img/file_type_icon/doc.png" class="ss-icon-md">
-                </a>
-              </div>
-              <div class="col-md-10" class="ss-record-file-metadata">
-                <div class="row">
-                  <div class="col-md-12">文件大小：21KB</div>
-                </div>
-                <div class="row">
-                  <div class="col-md-12">文件归属：public</div>
-                </div>
-                <div class="row">
-                  <div class="col-md-12">修改时间：2015/11/30 上午12:10:32</div>
-                </div>
-                <div class="row">
-                  <div class="col-md-12">索引时间：2016/10/12 上午9:54:47</div>
-                </div>
-                <div class="row">
-                  <div class="col-md-4">
-                    在线预览：<a class="ss-file-prev" data-id="74b61df0-45e7-4c0d-b9d7-adedae2e4d09" data-type = "doc">在线预览 </a>
-                  </div>
-                  <div class="col-md-4">
-                    下载地址：<a class="ss-file-down" data-id="74b61df0-45e7-4c0d-b9d7-adedae2e4d09" data-type = "doc">点击下载 </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                <p>
-                  “大学生创新创业训练计划”优秀<span>项目</span>推荐表项目编号201410251056所属学院理学院项目名称微信公众平台下网路辅助教学研究指导教师赵宏庆项目负责人陶阳<span>项目</span>组成员陶阳、季骏豪<span>项目</span>已取得的成果（如论文、专利、竞赛等）业务上“教师无关、课程无关、学生无关、参数可配”、设计上“高内聚、低耦合、可扩展、易维护”的微信公众号教学辅助管理平台（产品）<span>项目</span>实施过程中值得推荐
-                </p>
-              </div>
-            </div>
-          </div>
-
+            <!--</div>-->
+            <!--<div class="row">-->
+              <!--<div class="col-md-2">-->
+                <!--<a class="ss-file-prev" data-id="74b61df0-45e7-4c0d-b9d7-adedae2e4d09" data-type = "doc">-->
+                  <!--<img src="./img/file_type_icon/doc.png" class="ss-icon-md">-->
+                <!--</a>-->
+              <!--</div>-->
+              <!--<div class="col-md-10" class="ss-record-file-metadata">-->
+                <!--<div class="row">-->
+                  <!--<div class="col-md-12">文件大小：21KB</div>-->
+                <!--</div>-->
+                <!--<div class="row">-->
+                  <!--<div class="col-md-12">文件归属：public</div>-->
+                <!--</div>-->
+                <!--<div class="row">-->
+                  <!--<div class="col-md-12">修改时间：2015/11/30 上午12:10:32</div>-->
+                <!--</div>-->
+                <!--<div class="row">-->
+                  <!--<div class="col-md-12">索引时间：2016/10/12 上午9:54:47</div>-->
+                <!--</div>-->
+                <!--<div class="row">-->
+                  <!--<div class="col-md-4">-->
+                    <!--在线预览：<a class="ss-file-prev" data-id="74b61df0-45e7-4c0d-b9d7-adedae2e4d09" data-type = "doc">在线预览 </a>-->
+                  <!--</div>-->
+                  <!--<div class="col-md-4">-->
+                    <!--下载地址：<a class="ss-file-down" data-id="74b61df0-45e7-4c0d-b9d7-adedae2e4d09" data-type = "doc">点击下载 </a>-->
+                  <!--</div>-->
+                <!--</div>-->
+              <!--</div>-->
+            <!--</div>-->
+            <!--<div class="row">-->
+              <!--<div class="col-md-12">-->
+                <!--<p>-->
+                  <!--“大学生创新创业训练计划”优秀<span>项目</span>推荐表项目编号201410251056所属学院理学院项目名称微信公众平台下网路辅助教学研究指导教师赵宏庆项目负责人陶阳<span>项目</span>组成员陶阳、季骏豪<span>项目</span>已取得的成果（如论文、专利、竞赛等）业务上“教师无关、课程无关、学生无关、参数可配”、设计上“高内聚、低耦合、可扩展、易维护”的微信公众号教学辅助管理平台（产品）<span>项目</span>实施过程中值得推荐-->
+                <!--</p>-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
         </div>
-
         <div>
           <ul id='ss-result-pagination'>
-
           </ul>
         </div>
-
-
       </div>
 
     </div>
 
     <div class="row ss-content-bottom">
-
     </div>
 
   </div>
