@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+
 /**
  * Created by taoyang on 2016/10/27.
  */
@@ -23,34 +26,31 @@ public class UserController {
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String login(
             @RequestParam(value = "username") String username
-            , @RequestParam(value = "password") String password
-            , @RequestParam(value = "backurl", required = false) String backurl) {
-
-            Subject subject = SecurityUtils.getSubject();
+            , @RequestParam(value = "password") String password) {
+        Subject subject = SecurityUtils.getSubject();
             if (subject.isAuthenticated()) {
                 System.out.println("already");
-                return "redirect:"+ ((backurl==null || "".equals(backurl)) ? successUrl : backurl );
+                return "redirect:"+ successUrl;
             } else {
                 try{
                     subject.login(new UsernamePasswordToken(username, password));
                     //TODO
 //                final User userInfo = userService.selectByUsername(user.getUsername());
 //                request.getSession().setAttribute("userInfo", userInfo);
-                return "redirect:" + ((backurl==null || "".equals(backurl)) ? successUrl : backurl );
+                return "redirect:" + successUrl;
                 } catch (AuthenticationException e) {
                     //TODO
-                    return "redirect:/simple-login.html?backurl=" +  ((backurl==null || "".equals(backurl)) ? successUrl : backurl );
+                    return "redirect:/simple-login.html";
                 }
             }
 
     }
 
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
-    public String logout(@RequestParam(value = "backurl", required = false) String backurl) {
-        // 登出操作
+    public String logout() {
         Subject subject = SecurityUtils.getSubject();
         subject.logout();
-        return "redirect:/simple-login.html?backurl=" +  ((backurl==null || "".equals(backurl)) ? successUrl : backurl );
+        return "redirect:/index.html";
     }
 
 

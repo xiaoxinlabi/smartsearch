@@ -22,18 +22,16 @@
         <script>
             $(document).ready(function(){
 
-                var backurl = window.parent.location.href;
-
                 $("a.index").on("click",function(){
                     window.parent.location="index.html";
                 })
 
                 $("a.login").on("click",function(){
-                    window.parent.location="simple-login.html?backurl=" + backurl;
+                    window.parent.location="simple-login.html";
                 })
 
                 $("a.logout").on("click",function(){
-                    window.parent.location="rest/user/logout?backurl=" + backurl;
+                    window.parent.location="rest/user/logout";
                 })
 
                 $("a.sysmgr").on("click",function(){
