@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/login.css">
+    <title></title>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+            <!--<form class="form-horizontal" action="rest/login" method="post">-->
+            <form class="form-horizontal">
+                <span class="heading">用户登录</span>
+                <div class="form-group">
+                    <input type="name" name="username" class="form-control" id="username" placeholder="用户名" required="required" >
+                    <i class="fa fa-user icon-user"></i>
+                </div>
+                <div class="form-group help">
+                    <input type="password" name="password" class="form-control" id="password" placeholder="密　码" required="required">
+                    <i class="fa fa-lock"></i>
+                </div>
+                <div class="form-group">
+                    <div class="main-checkbox">
+                        <input type="checkbox" value="None" id="checkbox1" name="check"/>
+                        <label for="checkbox1"></label>
+                    </div>
+                    <span class="text">记住我</span>
+                    <div type="submit" class="btn btn-default" onclick="submit();">登录</div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script src="assets/js/jquery.js"></script>
+<script>
+    function submit(){
+        var param = {
+            username: $("#username").val(),
+            password: $("#password").val()
+        };
+        $.ajax({
+            type: "post",
+            url:  "rest/login.json",
+            data: param,
+            dataType: "json",
+            success: function(data) {
+                alert("调用成功");
+                if(data.success == false){
+                    alert(data.errorMsg);
+                }else{
+                    //登录成功
+                    window.location.href =  "admin.html";
+                }
+            },
+            error: function() {
+                alert("调用失败....");
+            }
+        });
+    }
+</script>
