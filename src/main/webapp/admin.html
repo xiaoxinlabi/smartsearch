@@ -42,7 +42,7 @@
                 <li id="ss-index"><a href="#">索引管理</a></li>
             </ul>
         </div>
-        
+
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main ss-panel" id="ss-file-panel">
             <!--<h1 class="page-header">文件上传</h1>-->
             <h1>文件上传</h1>
@@ -57,8 +57,9 @@
 
 
         </div>
-        
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main ss-panel" id="ss-address-panel" style="display: none;">
+
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main ss-panel" id="ss-address-panel"
+             style="display: none;">
             <!--<h1 class="page-header">通讯录录入</h1>-->
             <h1>通讯录录入</h1>
 
@@ -152,7 +153,8 @@
                             <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 m-none"
                                  data-anstype="2" data-innertype="textArea">
                                 <label class="mt-none mb-xs p-none question-title">备注</label>
-                                <textarea class="form-control-user question-content sqt-textarea-normal" cols="30" name="remark" rows="2"></textarea>
+                                <textarea class="form-control-user question-content sqt-textarea-normal" cols="30"
+                                          name="remark" rows="2"></textarea>
                             </div>
                         </div>
                         <div class="inputs">
@@ -170,7 +172,8 @@
 
         </div>
 
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main ss-panel" id="ss-website-panel" style="display: none">
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main ss-panel" id="ss-website-panel"
+             style="display: none">
             <h1>网址导航添加</h1>
 
             <section class="panel p-none m-none panel-form" id="formSection1">
@@ -201,7 +204,8 @@
                                 <input class="form-control-user question-content sqt-input-normal" name="keywords"
                                        type="text">
                             </div>
-                            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 m-none" data-anstype="2" data-innertype="textArea">
+                            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 m-none" data-anstype="2"
+                                 data-innertype="textArea">
                                 <label class="mt-none mb-xs p-none question-title">描述</label>
                                 <textarea class="form-control-user question-content sqt-textarea-normal" cols="30"
                                           name="description" rows="2"></textarea>
@@ -217,83 +221,85 @@
                             <input type="submit" name="submit" value="提交" class="ss-submit">
                             <input type="reset" name="reset" value="重置" class="ss-submit">
                         </div>
-                        </div>
-                    </form>
-                </div>
-                <!--<div class="panel-foot-user ">-->
-                <!--<div class="panel-foot-wrap p-none text-center ">-->
-                <!--由<span class="brand-user" onclick="goHome()"></span>-->
-                <!--</div>-->
-                <!--</div>-->
-            </section>
-
+                </form>
         </div>
-
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main ss-panel" id="ss-index-panel" style="display: none">
-            <h1>索引管理</h1>
-
-            <section class="panel p-none m-none panel-form" id="formSection2">
-
-                <div class="panel-body-user">
-                    <!-- 表格 -->
-                    <form class="form-horizontal pt-none apply" enctype="multipart/form-data" action="rest/website/add"
-                          method="post">
-                        <div class="p-none"></div>
-                        <div class="form-question p-none">
-                            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 m-none height"
-                                 data-innertype="text">
-                                <label class="mt-none mb-xs p-none question-title">网站链接
-                                    <span class="necessary text-danger">*</span>
-                                </label>
-                                <input class="form-control-user question-content sqt-input-normal" name="url"
-                                       required="required" type="text">
-                            </div>
-                            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 m-none height"
-                                 data-innertype="text">
-                                <label class="mt-none mb-xs p-none question-title">标题
-                                </label>
-                                <input class="form-control-user question-content sqt-input-normal" name="title"
-                                       type="text">
-                            </div>
-                            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 m-none height"
-                                 data-innertype="text">
-                                <label class="mt-none mb-xs p-none question-title">关键字</label>
-                                <input class="form-control-user question-content sqt-input-normal" name="keywords"
-                                       type="text">
-                            </div>
-                            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 m-none" data-anstype="2" data-innertype="textArea">
-                                <label class="mt-none mb-xs p-none question-title">描述</label>
-                                <textarea class="form-control-user question-content sqt-textarea-normal" cols="30"
-                                          name="description" rows="2"></textarea>
-                            </div>
-                            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 m-none"
-                                 data-anstype="2" data-innertype="textArea"><label
-                                    class="mt-none mb-xs p-none question-title">内容</label>
-                                <textarea class="form-control-user question-content sqt-textarea-normal" cols="30"
-                                          name="content" rows="2"></textarea>
-                            </div>
-                        </div>
-                        <div class="inputs">
-                            <input type="submit" name="submit" value="提交" class="ss-submit">
-                            <input type="reset" name="reset" value="重置" class="ss-submit">
-                        </div>
-                    </form>
-                </div>
-                <!--<div class="panel-foot-user ">-->
-                <!--<div class="panel-foot-wrap p-none text-center ">-->
-                <!--由<span class="brand-user" onclick="goHome()"></span>-->
-                <!--</div>-->
-                <!--</div>-->
-            </section>
-
-        </div>
+        <!--<div class="panel-foot-user ">-->
+        <!--<div class="panel-foot-wrap p-none text-center ">-->
+        <!--由<span class="brand-user" onclick="goHome()"></span>-->
+        <!--</div>-->
+        <!--</div>-->
+        </section>
 
     </div>
+
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main ss-panel" id="ss-index-panel"
+         style="display: none">
+        <h1>索引管理</h1>
+
+        <section class="panel p-none m-none panel-form" id="formSection2">
+
+            <div class="panel-body-user">
+                <!-- 表格 -->
+                <form class="form-horizontal pt-none apply" enctype="multipart/form-data" action="rest/website/add"
+                      method="post">
+                    <div class="p-none"></div>
+                    <div class="form-question p-none">
+                        <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 m-none height"
+                             data-innertype="text">
+                            <label class="mt-none mb-xs p-none question-title">网站链接
+                                <span class="necessary text-danger">*</span>
+                            </label>
+                            <input class="form-control-user question-content sqt-input-normal" name="url"
+                                   required="required" type="text">
+                        </div>
+                        <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 m-none height"
+                             data-innertype="text">
+                            <label class="mt-none mb-xs p-none question-title">标题
+                            </label>
+                            <input class="form-control-user question-content sqt-input-normal" name="title"
+                                   type="text">
+                        </div>
+                        <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 m-none height"
+                             data-innertype="text">
+                            <label class="mt-none mb-xs p-none question-title">关键字</label>
+                            <input class="form-control-user question-content sqt-input-normal" name="keywords"
+                                   type="text">
+                        </div>
+                        <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 m-none" data-anstype="2"
+                             data-innertype="textArea">
+                            <label class="mt-none mb-xs p-none question-title">描述</label>
+                                <textarea class="form-control-user question-content sqt-textarea-normal" cols="30"
+                                          name="description" rows="2"></textarea>
+                        </div>
+                        <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 m-none"
+                             data-anstype="2" data-innertype="textArea"><label
+                                class="mt-none mb-xs p-none question-title">内容</label>
+                                <textarea class="form-control-user question-content sqt-textarea-normal" cols="30"
+                                          name="content" rows="2"></textarea>
+                        </div>
+                    </div>
+                    <div class="inputs">
+                        <input type="submit" name="submit" value="提交" class="ss-submit">
+                        <input type="reset" name="reset" value="重置" class="ss-submit">
+                    </div>
+                </form>
+            </div>
+            <!--<div class="panel-foot-user ">-->
+            <!--<div class="panel-foot-wrap p-none text-center ">-->
+            <!--由<span class="brand-user" onclick="goHome()"></span>-->
+            <!--</div>-->
+            <!--</div>-->
+        </section>
+
+    </div>
+
+</div>
 </div>
 <style>
     .inputs {
         text-align: center;
     }
+
     .ss-submit {
         margin-top: 30px;
         margin-right: 20px;
