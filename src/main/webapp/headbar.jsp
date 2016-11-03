@@ -27,7 +27,7 @@
                 })
 
                 $("a.login").on("click",function(){
-                    window.parent.location="simple-login.html";
+                    window.parent.location="login.html";
                 })
 
                 $("a.logout").on("click",function(){

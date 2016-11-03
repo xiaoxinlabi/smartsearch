@@ -1,7 +1,6 @@
-package info.puton.customize.hsb.schedule.job;
+package info.puton.customize.hsb.scheduler.job;
 
 import info.puton.customize.hsb.crawler.PortalCrawler;
-import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 import org.springframework.beans.factory.annotation.Autowired;

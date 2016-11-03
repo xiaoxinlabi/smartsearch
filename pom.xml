@@ -56,8 +56,39 @@
     <hdfs.version>2.2.0</hdfs.version>
     <guava.version>19.0</guava.version>
     <quartz.version>2.2.3</quartz.version>
+    <jstl.version>1.2</jstl.version>
+    <shiro.version>1.3.2</shiro.version>
+    <axis2.version>1.7.4</axis2.version>
 
   </properties>
+
+
+  <repositories>
+    <repository>
+      <id>apache</id>
+      <url>http://repo.maven.apache.org/maven2</url>
+    </repository>
+    <repository>
+      <id>mvnrepository</id>
+      <url>http://mvnrepository.com/</url>
+    </repository>
+    <repository>
+      <id>sonatype</id>
+      <url>http://repository.sonatype.org/content/groups/public/</url>
+    </repository>
+    <repository>
+      <id>ibiblio</id>
+      <url>http://mirrors.ibiblio.org/pub/mirrors/maven2/org/acegisecurity/</url>
+    </repository>
+    <repository>
+      <id>java</id>
+      <url>https://maven.java.net/content/repositories/public/</url>
+    </repository>
+    <repository>
+      <id>jboss</id>
+      <url>http://repository.jboss.org/nexus/content/groups/public/</url>
+    </repository>
+  </repositories>
 
   <dependencies>
 
@@ -88,9 +119,17 @@
 
     <!-- servlet -->
     <dependency>
-        <groupId>javax.servlet</groupId>
-        <artifactId>javax.servlet-api</artifactId>
-        <version>3.1.0</version>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>3.1.0</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <!-- jstl -->
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>jstl</artifactId>
+      <version>${jstl.version}</version>
     </dependency>
 
     <!-- Spring -->
@@ -145,14 +184,14 @@
       <scope>test</scope>
     </dependency>
 
-    <!-- HBase-->
+    <!-- HBase -->
     <dependency>
       <groupId>org.apache.hbase</groupId>
       <artifactId>hbase-client</artifactId>
       <version>${hbase.version}</version>
     </dependency>
 
-    <!-- HDFS-->
+    <!-- HDFS -->
     <dependency>
       <groupId>org.apache.hadoop</groupId>
       <artifactId>hadoop-hdfs</artifactId>
@@ -223,27 +262,79 @@
       <artifactId>quartz-jobs</artifactId>
       <version>${quartz.version}</version>
     </dependency>
-    <!-- Spring 整合Shiro需要的依赖 -->
+
+    <!-- Shiro -->
     <dependency>
       <groupId>org.apache.shiro</groupId>
       <artifactId>shiro-core</artifactId>
-      <version>1.2.1</version>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.shiro</groupId>
-      <artifactId>shiro-web</artifactId>
-      <version>1.2.1</version>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.shiro</groupId>
-      <artifactId>shiro-ehcache</artifactId>
-      <version>1.2.1</version>
+      <version>${shiro.version}</version>
     </dependency>
     <dependency>
       <groupId>org.apache.shiro</groupId>
       <artifactId>shiro-spring</artifactId>
-      <version>1.2.1</version>
+      <version>${shiro.version}</version>
     </dependency>
+    <dependency>
+      <groupId>org.apache.shiro</groupId>
+      <artifactId>shiro-web</artifactId>
+      <version>${shiro.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.shiro</groupId>
+      <artifactId>shiro-ehcache</artifactId>
+      <version>${shiro.version}</version>
+    </dependency>
+
+    <!-- axis2 -->
+    <!--<dependency>-->
+      <!--<groupId>org.apache.axis2</groupId>-->
+      <!--<artifactId>axis2</artifactId>-->
+      <!--<version>${axis2.version}</version>-->
+      <!--<type>pom</type>-->
+    <!--</dependency>-->
+    <!--<dependency>-->
+      <!--<groupId>org.apache.axis2</groupId>-->
+      <!--<artifactId>axis2-adb</artifactId>-->
+      <!--<version>${axis2.version}</version>-->
+    <!--</dependency>-->
+    <!--<dependency>-->
+      <!--<groupId>org.apache.axis2</groupId>-->
+      <!--<artifactId>axis2-java2wsdl</artifactId>-->
+      <!--<version>${axis2.version}</version>-->
+    <!--</dependency>-->
+    <!--<dependency>-->
+      <!--<groupId>org.apache.axis2</groupId>-->
+      <!--<artifactId>axis2-json</artifactId>-->
+      <!--<version>${axis2.version}</version>-->
+    <!--</dependency>-->
+    <!--<dependency>-->
+      <!--<groupId>org.apache.axis2</groupId>-->
+      <!--<artifactId>axis2-kernel</artifactId>-->
+      <!--<version>${axis2.version}</version>-->
+    <!--</dependency>-->
+    <!--<dependency>-->
+      <!--<groupId>org.apache.axis2</groupId>-->
+      <!--<artifactId>axis2-transport-http</artifactId>-->
+      <!--<version>${axis2.version}</version>-->
+    <!--</dependency>-->
+    <!--<dependency>-->
+      <!--<groupId>org.apache.axis2</groupId>-->
+      <!--<artifactId>axis2-transport-local</artifactId>-->
+      <!--<version>${axis2.version}</version>-->
+    <!--</dependency>-->
+    <!--<dependency>-->
+      <!--<groupId>org.apache.axis2</groupId>-->
+      <!--<artifactId>axis2-xmlbeans</artifactId>-->
+      <!--<version>${axis2.version}</version>-->
+    <!--</dependency>-->
+    <!--<dependency>-->
+      <!--<groupId>org.apache.axis2</groupId>-->
+      <!--<artifactId>org.apache.axis2.osgi</artifactId>-->
+      <!--<version>${axis2.version}</version>-->
+    <!--</dependency>-->
+
+    <!-- axis2 -->
+
   </dependencies>
 
   <build>
@@ -269,6 +360,26 @@
           <skipTests>${skipTests}</skipTests>
         </configuration>
       </plugin>
+
+      <!--<plugin>-->
+        <!--<groupId>org.apache.axis2</groupId>-->
+        <!--<artifactId>axis2-wsdl2code-maven-plugin</artifactId>-->
+        <!--<version>${axis2.version}</version>-->
+        <!--<executions>-->
+          <!--<execution>-->
+            <!--<goals>-->
+              <!--<goal>wsdl2code</goal>-->
+            <!--</goals>-->
+            <!--<configuration>-->
+              <!--<packageName>info.puton.customize.hsb.axis.service</packageName>-->
+              <!--<wsdlFile>http://zhoa.hsbank.com/oa2/searchdb.nsf/doSearchService?WSDL</wsdlFile>-->
+              <!--<databindingName>xmlbeans</databindingName>-->
+              <!--<namespaceToPackages>urn:DefaultNamespace=info.puton.customize.hsb.axis</namespaceToPackages>-->
+            <!--</configuration>-->
+          <!--</execution>-->
+        <!--</executions>-->
+      <!--</plugin>-->
+
     </plugins>
 
     <resources>
@@ -280,6 +391,9 @@
         </includes>
         <filtering>true</filtering>
       </resource>
+      <!--<resource>-->
+        <!--<directory>target/generated-sources/axis2/wsdl2code/resources</directory>-->
+      <!--</resource>-->
     </resources>
   </build>
 

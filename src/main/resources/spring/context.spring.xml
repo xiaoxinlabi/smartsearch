@@ -38,6 +38,5 @@
             </list>
         </property>
     </bean>
-    <!-- 继承自AuthorizingRealm的自定义Realm,即指定Shiro验证用户登录的类为自定义的ShiroDbRealm.java -->
-    <!--<bean id="myRealm" class="info.puton.product.smartsearch.shiro.realm.MyShiroRealm"/>-->
+
 </beans>
