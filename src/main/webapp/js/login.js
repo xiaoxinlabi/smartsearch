@@ -12,7 +12,7 @@ function submit() {
         success: function (data) {
             if (data.status == "success") {
                 window.location.href = "index.html";
-            } else if (data.status = "error") {
+            } else if (data.status == "error") {
                 alert("用户名或密码错误!");
             }
         },
