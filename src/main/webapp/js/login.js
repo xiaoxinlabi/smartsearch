@@ -6,12 +6,12 @@ function submit() {
     };
     $.ajax({
         type: "post",
-        url: "rest/login",
+        url: "rest/user/login",
         data: param,
         dataType: "json",
         success: function (data) {
             if (data.status == "success") {
-                window.location.href = "admin.html";
+                window.location.href = "index.html";
             } else if (data.status = "error") {
                 alert("用户名或密码错误!");
             }

@@ -3,6 +3,7 @@ package info.puton.product.smartsearch.controller;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.subject.Subject;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,7 +17,12 @@ import java.util.Map;
  * Created by Pauline on 16/11/1.
  */
 @Controller
-public class LoginController {
+@RequestMapping(value="/user")
+public class UserController {
+
+    @Value("#{settings['successUrl']}")
+    private String successUrl;
+
     @ResponseBody
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public Map checkLogin(HttpServletRequest request) {
@@ -40,6 +46,14 @@ public class LoginController {
         }
         return result;
     }
+
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public String logout() {
+        Subject subject = SecurityUtils.getSubject();
+        subject.logout();
+        return "redirect:/index.html";
+    }
+
 }
 
 
