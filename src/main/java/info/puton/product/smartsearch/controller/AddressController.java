@@ -26,7 +26,7 @@ public class AddressController {
 
     @ResponseBody
     @RequestMapping(value = "/add",method = RequestMethod.POST)
-    public Map addAdress(
+    public Map addAddress(
               @RequestParam(value = "accountId", required = false) String accountId
             , @RequestParam(value = "englishName", required = false) String englishName
             , @RequestParam(value = "chineseName", required = false) String chineseName
