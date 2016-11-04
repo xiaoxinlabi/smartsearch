@@ -286,53 +286,32 @@
     </dependency>
 
     <!-- axis2 -->
-    <!--<dependency>-->
-      <!--<groupId>org.apache.axis2</groupId>-->
-      <!--<artifactId>axis2</artifactId>-->
-      <!--<version>${axis2.version}</version>-->
-      <!--<type>pom</type>-->
-    <!--</dependency>-->
-    <!--<dependency>-->
-      <!--<groupId>org.apache.axis2</groupId>-->
-      <!--<artifactId>axis2-adb</artifactId>-->
-      <!--<version>${axis2.version}</version>-->
-    <!--</dependency>-->
-    <!--<dependency>-->
-      <!--<groupId>org.apache.axis2</groupId>-->
-      <!--<artifactId>axis2-java2wsdl</artifactId>-->
-      <!--<version>${axis2.version}</version>-->
-    <!--</dependency>-->
-    <!--<dependency>-->
-      <!--<groupId>org.apache.axis2</groupId>-->
-      <!--<artifactId>axis2-json</artifactId>-->
-      <!--<version>${axis2.version}</version>-->
-    <!--</dependency>-->
-    <!--<dependency>-->
-      <!--<groupId>org.apache.axis2</groupId>-->
-      <!--<artifactId>axis2-kernel</artifactId>-->
-      <!--<version>${axis2.version}</version>-->
-    <!--</dependency>-->
-    <!--<dependency>-->
-      <!--<groupId>org.apache.axis2</groupId>-->
-      <!--<artifactId>axis2-transport-http</artifactId>-->
-      <!--<version>${axis2.version}</version>-->
-    <!--</dependency>-->
-    <!--<dependency>-->
-      <!--<groupId>org.apache.axis2</groupId>-->
-      <!--<artifactId>axis2-transport-local</artifactId>-->
-      <!--<version>${axis2.version}</version>-->
-    <!--</dependency>-->
-    <!--<dependency>-->
-      <!--<groupId>org.apache.axis2</groupId>-->
-      <!--<artifactId>axis2-xmlbeans</artifactId>-->
-      <!--<version>${axis2.version}</version>-->
-    <!--</dependency>-->
-    <!--<dependency>-->
-      <!--<groupId>org.apache.axis2</groupId>-->
-      <!--<artifactId>org.apache.axis2.osgi</artifactId>-->
-      <!--<version>${axis2.version}</version>-->
-    <!--</dependency>-->
-
+    <dependency>
+      <groupId>org.apache.axis2</groupId>
+      <artifactId>axis2</artifactId>
+      <version>${axis2.version}</version>
+      <type>pom</type>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.axis2</groupId>
+      <artifactId>axis2-adb</artifactId>
+      <version>${axis2.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.axis2</groupId>
+      <artifactId>axis2-kernel</artifactId>
+      <version>${axis2.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.axis2</groupId>
+      <artifactId>axis2-xmlbeans</artifactId>
+      <version>${axis2.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.axis2</groupId>
+      <artifactId>org.apache.axis2.osgi</artifactId>
+      <version>${axis2.version}</version>
+    </dependency>
     <!-- axis2 -->
 
   </dependencies>
@@ -361,25 +340,6 @@
         </configuration>
       </plugin>
 
-      <!--<plugin>-->
-        <!--<groupId>org.apache.axis2</groupId>-->
-        <!--<artifactId>axis2-wsdl2code-maven-plugin</artifactId>-->
-        <!--<version>${axis2.version}</version>-->
-        <!--<executions>-->
-          <!--<execution>-->
-            <!--<goals>-->
-              <!--<goal>wsdl2code</goal>-->
-            <!--</goals>-->
-            <!--<configuration>-->
-              <!--<packageName>info.puton.customize.hsb.axis.service</packageName>-->
-              <!--<wsdlFile>http://zhoa.hsbank.com/oa2/searchdb.nsf/doSearchService?WSDL</wsdlFile>-->
-              <!--<databindingName>xmlbeans</databindingName>-->
-              <!--<namespaceToPackages>urn:DefaultNamespace=info.puton.customize.hsb.axis</namespaceToPackages>-->
-            <!--</configuration>-->
-          <!--</execution>-->
-        <!--</executions>-->
-      <!--</plugin>-->
-
     </plugins>
 
     <resources>
@@ -391,9 +351,6 @@
         </includes>
         <filtering>true</filtering>
       </resource>
-      <!--<resource>-->
-        <!--<directory>target/generated-sources/axis2/wsdl2code/resources</directory>-->
-      <!--</resource>-->
     </resources>
   </build>
 
