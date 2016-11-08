@@ -1,115 +1,55 @@
 
 /**
- * GETDOCINFOBYUNID.java
+ * GETDOCINFOBYUNIDResponse.java
  *
  * This file was auto-generated from WSDL
  * by the Apache Axis2 version: 1.6.2  Built on : Apr 17, 2012 (05:34:40 IST)
  */
 
             
-                package info.puton.customize.hsb.axis;
+                package info.puton.customize.hsb.webservice.axis;
             
 
             /**
-            *  GETDOCINFOBYUNID bean class
+            *  GETDOCINFOBYUNIDResponse bean class
             */
             @SuppressWarnings({"unchecked","unused"})
         
-        public  class GETDOCINFOBYUNID
+        public  class GETDOCINFOBYUNIDResponse
         implements org.apache.axis2.databinding.ADBBean{
         
                 public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName(
                 "urn:DefaultNamespace",
-                "GETDOCINFOBYUNID",
+                "GETDOCINFOBYUNIDResponse",
                 "ns1");
 
             
 
                         /**
-                        * field for DBNAME
+                        * field for GETDOCINFOBYUNIDReturn
                         */
 
                         
-                                    protected String localDBNAME ;
+                                    protected String localGETDOCINFOBYUNIDReturn ;
                                 
 
                            /**
                            * Auto generated getter method
                            * @return java.lang.String
                            */
-                           public  String getDBNAME(){
-                               return localDBNAME;
+                           public  String getGETDOCINFOBYUNIDReturn(){
+                               return localGETDOCINFOBYUNIDReturn;
                            }
 
                            
                         
                             /**
                                * Auto generated setter method
-                               * @param param DBNAME
+                               * @param param GETDOCINFOBYUNIDReturn
                                */
-                               public void setDBNAME(String param){
+                               public void setGETDOCINFOBYUNIDReturn(String param){
                             
-                                            this.localDBNAME=param;
-                                    
-
-                               }
-                            
-
-                        /**
-                        * field for UNID
-                        */
-
-                        
-                                    protected String localUNID ;
-                                
-
-                           /**
-                           * Auto generated getter method
-                           * @return java.lang.String
-                           */
-                           public  String getUNID(){
-                               return localUNID;
-                           }
-
-                           
-                        
-                            /**
-                               * Auto generated setter method
-                               * @param param UNID
-                               */
-                               public void setUNID(String param){
-                            
-                                            this.localUNID=param;
-                                    
-
-                               }
-                            
-
-                        /**
-                        * field for DATESTR
-                        */
-
-                        
-                                    protected String localDATESTR ;
-                                
-
-                           /**
-                           * Auto generated getter method
-                           * @return java.lang.String
-                           */
-                           public  String getDATESTR(){
-                               return localDATESTR;
-                           }
-
-                           
-                        
-                            /**
-                               * Auto generated setter method
-                               * @param param DATESTR
-                               */
-                               public void setDATESTR(String param){
-                            
-                                            this.localDATESTR=param;
+                                            this.localGETDOCINFOBYUNIDReturn=param;
                                     
 
                                }
@@ -163,11 +103,11 @@
                    String namespacePrefix = registerPrefix(xmlWriter,"urn:DefaultNamespace");
                    if ((namespacePrefix != null) && (namespacePrefix.trim().length() > 0)){
                        writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","type",
-                           namespacePrefix+":GETDOCINFOBYUNID",
+                           namespacePrefix+":GETDOCINFOBYUNIDResponse",
                            xmlWriter);
                    } else {
                        writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","type",
-                           "GETDOCINFOBYUNID",
+                           "GETDOCINFOBYUNIDResponse",
                            xmlWriter);
                    }
 
@@ -175,10 +115,10 @@
                    }
                
                                     namespace = "";
-                                    writeStartElement(null, namespace, "DBNAME", xmlWriter);
+                                    writeStartElement(null, namespace, "GETDOCINFOBYUNIDReturn", xmlWriter);
                              
 
-                                          if (localDBNAME==null){
+                                          if (localGETDOCINFOBYUNIDReturn==null){
                                               // write the nil attribute
                                               
                                                      writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","nil","1",xmlWriter);
@@ -186,43 +126,7 @@
                                           }else{
 
                                         
-                                                   xmlWriter.writeCharacters(localDBNAME);
-                                            
-                                          }
-                                    
-                                   xmlWriter.writeEndElement();
-                             
-                                    namespace = "";
-                                    writeStartElement(null, namespace, "UNID", xmlWriter);
-                             
-
-                                          if (localUNID==null){
-                                              // write the nil attribute
-                                              
-                                                     writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","nil","1",xmlWriter);
-                                                  
-                                          }else{
-
-                                        
-                                                   xmlWriter.writeCharacters(localUNID);
-                                            
-                                          }
-                                    
-                                   xmlWriter.writeEndElement();
-                             
-                                    namespace = "";
-                                    writeStartElement(null, namespace, "DATESTR", xmlWriter);
-                             
-
-                                          if (localDATESTR==null){
-                                              // write the nil attribute
-                                              
-                                                     writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","nil","1",xmlWriter);
-                                                  
-                                          }else{
-
-                                        
-                                                   xmlWriter.writeCharacters(localDATESTR);
+                                                   xmlWriter.writeCharacters(localGETDOCINFOBYUNIDReturn);
                                             
                                           }
                                     
@@ -414,22 +318,10 @@
 
                 
                                       elementList.add(new javax.xml.namespace.QName("",
-                                                                      "DBNAME"));
+                                                                      "GETDOCINFOBYUNIDReturn"));
                                  
-                                         elementList.add(localDBNAME==null?null:
-                                         org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localDBNAME));
-                                    
-                                      elementList.add(new javax.xml.namespace.QName("",
-                                                                      "UNID"));
-                                 
-                                         elementList.add(localUNID==null?null:
-                                         org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localUNID));
-                                    
-                                      elementList.add(new javax.xml.namespace.QName("",
-                                                                      "DATESTR"));
-                                 
-                                         elementList.add(localDATESTR==null?null:
-                                         org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localDATESTR));
+                                         elementList.add(localGETDOCINFOBYUNIDReturn==null?null:
+                                         org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localGETDOCINFOBYUNIDReturn));
                                     
 
                 return new org.apache.axis2.databinding.utils.reader.ADBXMLStreamReaderImpl(qName, elementList.toArray(), attribList.toArray());
@@ -455,9 +347,9 @@
         * Postcondition: If this object is an element, the reader is positioned at its end element
         *                If this object is a complex type, the reader is positioned at the end element of its outer element
         */
-        public static GETDOCINFOBYUNID parse(javax.xml.stream.XMLStreamReader reader) throws Exception{
-            GETDOCINFOBYUNID object =
-                new GETDOCINFOBYUNID();
+        public static GETDOCINFOBYUNIDResponse parse(javax.xml.stream.XMLStreamReader reader) throws Exception{
+            GETDOCINFOBYUNIDResponse object =
+                new GETDOCINFOBYUNIDResponse();
 
             int event;
             String nillableValue = null;
@@ -481,10 +373,10 @@
 
                     String type = fullTypeName.substring(fullTypeName.indexOf(":")+1);
                     
-                            if (!"GETDOCINFOBYUNID".equals(type)){
+                            if (!"GETDOCINFOBYUNIDResponse".equals(type)){
                                 //find namespace for the prefix
                                 String nsUri = reader.getNamespaceContext().getNamespaceURI(nsPrefix);
-                                return (GETDOCINFOBYUNID)ExtensionMapper.getTypeObject(
+                                return (GETDOCINFOBYUNIDResponse)ExtensionMapper.getTypeObject(
                                      nsUri,type,reader);
                               }
                         
@@ -509,7 +401,7 @@
                                     
                                     while (!reader.isStartElement() && !reader.isEndElement()) reader.next();
                                 
-                                    if (reader.isStartElement() && new javax.xml.namespace.QName("","DBNAME").equals(reader.getName())){
+                                    if (reader.isStartElement() && new javax.xml.namespace.QName("","GETDOCINFOBYUNIDReturn").equals(reader.getName())){
                                 
                                        nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance","nil");
                                        if (!"true".equals(nillableValue) && !"1".equals(nillableValue)){
@@ -517,65 +409,7 @@
 
                                     String content = reader.getElementText();
                                     
-                                              object.setDBNAME(
-                                                    org.apache.axis2.databinding.utils.ConverterUtil.convertToString(content));
-                                            
-                                       } else {
-                                           
-                                           
-                                           reader.getElementText(); // throw away text nodes if any.
-                                       }
-                                      
-                                        reader.next();
-                                    
-                              }  // End of if for expected property start element
-                                
-                                else{
-                                    // A start element we are not expecting indicates an invalid parameter was passed
-                                    throw new org.apache.axis2.databinding.ADBException("Unexpected subelement " + reader.getName());
-                                }
-                            
-                                    
-                                    while (!reader.isStartElement() && !reader.isEndElement()) reader.next();
-                                
-                                    if (reader.isStartElement() && new javax.xml.namespace.QName("","UNID").equals(reader.getName())){
-                                
-                                       nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance","nil");
-                                       if (!"true".equals(nillableValue) && !"1".equals(nillableValue)){
-                                    
-
-                                    String content = reader.getElementText();
-                                    
-                                              object.setUNID(
-                                                    org.apache.axis2.databinding.utils.ConverterUtil.convertToString(content));
-                                            
-                                       } else {
-                                           
-                                           
-                                           reader.getElementText(); // throw away text nodes if any.
-                                       }
-                                      
-                                        reader.next();
-                                    
-                              }  // End of if for expected property start element
-                                
-                                else{
-                                    // A start element we are not expecting indicates an invalid parameter was passed
-                                    throw new org.apache.axis2.databinding.ADBException("Unexpected subelement " + reader.getName());
-                                }
-                            
-                                    
-                                    while (!reader.isStartElement() && !reader.isEndElement()) reader.next();
-                                
-                                    if (reader.isStartElement() && new javax.xml.namespace.QName("","DATESTR").equals(reader.getName())){
-                                
-                                       nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance","nil");
-                                       if (!"true".equals(nillableValue) && !"1".equals(nillableValue)){
-                                    
-
-                                    String content = reader.getElementText();
-                                    
-                                              object.setDATESTR(
+                                              object.setGETDOCINFOBYUNIDReturn(
                                                     org.apache.axis2.databinding.utils.ConverterUtil.convertToString(content));
                                             
                                        } else {

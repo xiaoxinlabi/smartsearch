@@ -57,7 +57,7 @@
             <param-name>contextConfigLocation</param-name>
             <param-value>
                 classpath:spring/servlet.spring.xml
-                classpath:spring/crawler.hsb.spring.xml
+                classpath:spring/context.hsb.spring.xml
                 classpath:spring/schedule.hsb.spring.xml
             </param-value>
         </init-param>

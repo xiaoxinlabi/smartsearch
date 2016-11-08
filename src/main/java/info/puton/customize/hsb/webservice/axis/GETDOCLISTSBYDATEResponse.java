@@ -1,55 +1,55 @@
 
 /**
- * GETDOCINFOBYUNIDResponse.java
+ * GETDOCLISTSBYDATEResponse.java
  *
  * This file was auto-generated from WSDL
  * by the Apache Axis2 version: 1.6.2  Built on : Apr 17, 2012 (05:34:40 IST)
  */
 
             
-                package info.puton.customize.hsb.axis;
+                package info.puton.customize.hsb.webservice.axis;
             
 
             /**
-            *  GETDOCINFOBYUNIDResponse bean class
+            *  GETDOCLISTSBYDATEResponse bean class
             */
             @SuppressWarnings({"unchecked","unused"})
         
-        public  class GETDOCINFOBYUNIDResponse
+        public  class GETDOCLISTSBYDATEResponse
         implements org.apache.axis2.databinding.ADBBean{
         
                 public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName(
                 "urn:DefaultNamespace",
-                "GETDOCINFOBYUNIDResponse",
+                "GETDOCLISTSBYDATEResponse",
                 "ns1");
 
             
 
                         /**
-                        * field for GETDOCINFOBYUNIDReturn
+                        * field for GETDOCLISTSBYDATEReturn
                         */
 
                         
-                                    protected String localGETDOCINFOBYUNIDReturn ;
+                                    protected String localGETDOCLISTSBYDATEReturn ;
                                 
 
                            /**
                            * Auto generated getter method
                            * @return java.lang.String
                            */
-                           public  String getGETDOCINFOBYUNIDReturn(){
-                               return localGETDOCINFOBYUNIDReturn;
+                           public  String getGETDOCLISTSBYDATEReturn(){
+                               return localGETDOCLISTSBYDATEReturn;
                            }
 
                            
                         
                             /**
                                * Auto generated setter method
-                               * @param param GETDOCINFOBYUNIDReturn
+                               * @param param GETDOCLISTSBYDATEReturn
                                */
-                               public void setGETDOCINFOBYUNIDReturn(String param){
+                               public void setGETDOCLISTSBYDATEReturn(String param){
                             
-                                            this.localGETDOCINFOBYUNIDReturn=param;
+                                            this.localGETDOCLISTSBYDATEReturn=param;
                                     
 
                                }
@@ -103,11 +103,11 @@
                    String namespacePrefix = registerPrefix(xmlWriter,"urn:DefaultNamespace");
                    if ((namespacePrefix != null) && (namespacePrefix.trim().length() > 0)){
                        writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","type",
-                           namespacePrefix+":GETDOCINFOBYUNIDResponse",
+                           namespacePrefix+":GETDOCLISTSBYDATEResponse",
                            xmlWriter);
                    } else {
                        writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","type",
-                           "GETDOCINFOBYUNIDResponse",
+                           "GETDOCLISTSBYDATEResponse",
                            xmlWriter);
                    }
 
@@ -115,10 +115,10 @@
                    }
                
                                     namespace = "";
-                                    writeStartElement(null, namespace, "GETDOCINFOBYUNIDReturn", xmlWriter);
+                                    writeStartElement(null, namespace, "GETDOCLISTSBYDATEReturn", xmlWriter);
                              
 
-                                          if (localGETDOCINFOBYUNIDReturn==null){
+                                          if (localGETDOCLISTSBYDATEReturn==null){
                                               // write the nil attribute
                                               
                                                      writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","nil","1",xmlWriter);
@@ -126,7 +126,7 @@
                                           }else{
 
                                         
-                                                   xmlWriter.writeCharacters(localGETDOCINFOBYUNIDReturn);
+                                                   xmlWriter.writeCharacters(localGETDOCLISTSBYDATEReturn);
                                             
                                           }
                                     
@@ -318,10 +318,10 @@
 
                 
                                       elementList.add(new javax.xml.namespace.QName("",
-                                                                      "GETDOCINFOBYUNIDReturn"));
+                                                                      "GETDOCLISTSBYDATEReturn"));
                                  
-                                         elementList.add(localGETDOCINFOBYUNIDReturn==null?null:
-                                         org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localGETDOCINFOBYUNIDReturn));
+                                         elementList.add(localGETDOCLISTSBYDATEReturn==null?null:
+                                         org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localGETDOCLISTSBYDATEReturn));
                                     
 
                 return new org.apache.axis2.databinding.utils.reader.ADBXMLStreamReaderImpl(qName, elementList.toArray(), attribList.toArray());
@@ -347,9 +347,9 @@
         * Postcondition: If this object is an element, the reader is positioned at its end element
         *                If this object is a complex type, the reader is positioned at the end element of its outer element
         */
-        public static GETDOCINFOBYUNIDResponse parse(javax.xml.stream.XMLStreamReader reader) throws Exception{
-            GETDOCINFOBYUNIDResponse object =
-                new GETDOCINFOBYUNIDResponse();
+        public static GETDOCLISTSBYDATEResponse parse(javax.xml.stream.XMLStreamReader reader) throws Exception{
+            GETDOCLISTSBYDATEResponse object =
+                new GETDOCLISTSBYDATEResponse();
 
             int event;
             String nillableValue = null;
@@ -373,10 +373,10 @@
 
                     String type = fullTypeName.substring(fullTypeName.indexOf(":")+1);
                     
-                            if (!"GETDOCINFOBYUNIDResponse".equals(type)){
+                            if (!"GETDOCLISTSBYDATEResponse".equals(type)){
                                 //find namespace for the prefix
                                 String nsUri = reader.getNamespaceContext().getNamespaceURI(nsPrefix);
-                                return (GETDOCINFOBYUNIDResponse)ExtensionMapper.getTypeObject(
+                                return (GETDOCLISTSBYDATEResponse)ExtensionMapper.getTypeObject(
                                      nsUri,type,reader);
                               }
                         
@@ -401,7 +401,7 @@
                                     
                                     while (!reader.isStartElement() && !reader.isEndElement()) reader.next();
                                 
-                                    if (reader.isStartElement() && new javax.xml.namespace.QName("","GETDOCINFOBYUNIDReturn").equals(reader.getName())){
+                                    if (reader.isStartElement() && new javax.xml.namespace.QName("","GETDOCLISTSBYDATEReturn").equals(reader.getName())){
                                 
                                        nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance","nil");
                                        if (!"true".equals(nillableValue) && !"1".equals(nillableValue)){
@@ -409,7 +409,7 @@
 
                                     String content = reader.getElementText();
                                     
-                                              object.setGETDOCINFOBYUNIDReturn(
+                                              object.setGETDOCLISTSBYDATEReturn(
                                                     org.apache.axis2.databinding.utils.ConverterUtil.convertToString(content));
                                             
                                        } else {

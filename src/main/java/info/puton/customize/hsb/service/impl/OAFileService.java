@@ -1,47 +1,43 @@
-package info.puton.customize.hsb.fetcher;
+package info.puton.customize.hsb.service.impl;
 
-import info.puton.customize.hsb.axis.*;
-
-import org.apache.axis2.transport.http.HTTPConstants;
+import info.puton.customize.hsb.fetcher.OAFileFetcher;
+import info.puton.customize.hsb.service.OAFileHandler;
+import info.puton.customize.hsb.webservice.OAFileClient;
+import info.puton.product.smartsearch.service.FileHandler;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.rmi.RemoteException;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
- * Created by taoyang on 2016/11/1.
+ * Created by taoyang on 2016/11/4.
  */
-public class FileFetcher {
+@Service
+public class OAFileService implements OAFileHandler {
 
-    static long timeOutInMilliSeconds = 20000;
+    private String host = "http://zhoa.hsbank.com/";
 
-    static String wsdlUrl = "http://zhoa.hsbank.com/oa2/searchdb.nsf/doSearchService?WSDL";
+    @Value("#{settings['oaFileLandingPath']}")
+    private String oaFileLandingPath;
 
-    public static String getDocListJsonByDate(String date) throws RemoteException {
-        DoSearchServiceStub searchServiceStub = new DoSearchServiceStub();
-        searchServiceStub._getServiceClient().getOptions().setTimeOutInMilliSeconds(timeOutInMilliSeconds);
-        searchServiceStub._getServiceClient().getOptions().setProperty(HTTPConstants.CHUNKED,false);
-        GETDOCLISTSBYDATE getdoclistsbydate = new GETDOCLISTSBYDATE();
-        getdoclistsbydate.setDATESTR(date);
-        GETDOCLISTSBYDATEResponse getdoclistsbydateResponse = searchServiceStub.gETDOCLISTSBYDATE(getdoclistsbydate);
-        String docListJson = getdoclistsbydateResponse.getGETDOCLISTSBYDATEReturn();
-        return docListJson;
-    }
+    @Autowired
+    OAFileClient oaFileClient;
 
-    public static String getDocInfoJsonByUnid(String dateStr,String dbName, String docUnid) throws RemoteException {
-        DoSearchServiceStub searchServiceStub = new DoSearchServiceStub();
-        searchServiceStub._getServiceClient().getOptions().setTimeOutInMilliSeconds(timeOutInMilliSeconds);
-        searchServiceStub._getServiceClient().getOptions().setProperty(HTTPConstants.CHUNKED,false);
-        GETDOCINFOBYUNID getdocinfobyunid = new GETDOCINFOBYUNID();
-        getdocinfobyunid.setDATESTR(dateStr);
-        getdocinfobyunid.setDBNAME(dbName);
-        getdocinfobyunid.setUNID(docUnid);
-        GETDOCINFOBYUNIDResponse getdocinfobyunidresponse = searchServiceStub.gETDOCINFOBYUNID(getdocinfobyunid);
-        String docInfoJson = getdocinfobyunidresponse.getGETDOCINFOBYUNIDReturn();
-        return docInfoJson;
-    }
+    @Autowired
+    OAFileFetcher oaFileFetcher;
 
-    public static void handleDocListJson(String docListJson, String dateStr) throws RemoteException {
+    @Autowired
+    FileHandler fileHandler;
+
+    @Override
+    public void handleDocListJson(String docListJson, String dateStr) throws RemoteException {
         /*
         {
             Result: {
@@ -70,12 +66,13 @@ public class FileFetcher {
             JSONObject record = list.getJSONObject(i);
             String dbName = record.getString("DbName");
             String docUnid = record.getString("DocUnid");
-            String docInfoJson = getDocInfoJsonByUnid(dateStr, dbName, docUnid);
-            handleDocInfoJson(docInfoJson);
+            String docInfoJson = oaFileClient.getDocInfoJsonByUnid(dateStr, dbName, docUnid);
+            handleDocInfoJson(docInfoJson, dateStr);
         }
     }
 
-    public static void handleDocInfoJson(String docInfoJson){
+    @Override
+    public void handleDocInfoJson(String docInfoJson, String dateStr) {
         /*
         {
             Result: {
@@ -106,24 +103,44 @@ public class FileFetcher {
         JSONObject result = jsonObject.getJSONObject("Result");
         String id = result.getString("Id");
         String readers = result.getString("Readers");
-        System.out.println(id);
-        System.out.println(readers);
+//        System.out.println("id : " + id);
+//        System.out.println("readers : " + readers);
         JSONArray attachs = result.getJSONArray("attachs");
         for (int i = 0; i < attachs.length(); i++) {
             JSONObject file = attachs.getJSONObject(i);
             String name = file.getString("Name");
-            String url = file.getString("url");
-            System.out.println(name);
-            System.out.println(url);
+            String url = host + file.getString("url");
+//            System.out.println("name : " + name);
+//            System.out.println("url : " + url);
+            String oaFileLocation = oaFileLandingPath + "/" + dateStr;
+            try {
+                oaFileFetcher.download(url, oaFileLocation);
+                String oaFilePath = oaFileLocation + "/" + name;
+                Map additional = new HashMap<>();
+                String fileKey = DigestUtils.md5Hex(id+name);
+                additional.put("fileKey", fileKey);
+                additional.put("owner",readers);
+                fileHandler.handleFile(oaFilePath, additional);
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
         }
 
     }
 
-    public static void main(String[] args) throws RemoteException {
-        String dateStr = "2015-11-27";
-        String docListJson = getDocListJsonByDate(dateStr);
-        handleDocListJson(docListJson, dateStr);
+    @Override
+    public void handleFile(String dateStr) {
+
+        String docListJson = null;
+        try {
+            docListJson = oaFileClient.getDocListJsonByDate(dateStr);
+            handleDocListJson(docListJson, dateStr);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
 
     }
-
 }

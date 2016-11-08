@@ -28,6 +28,10 @@ import java.util.*;
  */
 public class LoginMocker {
 
+    private String host = "http://portal.hsbank.com";
+    private String userid = "wushuang";
+    private String password = "11111111";
+
     /**
      * 根据URL获得所有的html信息
      * @param url
@@ -45,10 +49,19 @@ public class LoginMocker {
         return html;
     }
 
-    public Map getCookie(String url, Map params) throws IOException {
+    public Map getCookie() throws IOException {
+
+        String loginPageHtml = getHtmlByUrl(host + "/wps/myportal/");
+        Document doc = Jsoup.parse(loginPageHtml);
+        Element form = doc.select("body > form").first();
+        String url = form.attr("action");
+        Map params = new HashMap();
+        params.put("userid",userid);
+        params.put("password",password);
+
         Map resultMap = new HashMap();
         CloseableHttpClient httpclient = HttpClients.createDefault();
-        HttpPost httpPost = new HttpPost(url);
+        HttpPost httpPost = new HttpPost(host + url);
         List<NameValuePair> nvps = new ArrayList<>();
         Set<String> keySet = params.keySet();
         for(String key : keySet) {
@@ -60,10 +73,9 @@ public class LoginMocker {
         CookieStore cookieStore = new BasicCookieStore();
         context.setCookieStore(cookieStore);
 
-        CloseableHttpResponse response = httpclient.execute(httpPost,context);
+        CloseableHttpResponse response = httpclient.execute(httpPost, context);
         HttpEntity entity = response.getEntity();
         String html = EntityUtils.toString(entity);
-//        System.out.println(html);
         cookieStore = context.getCookieStore();
         List<Cookie> cookies = cookieStore.getCookies();
         for (Cookie cookie : cookies) {
@@ -76,28 +88,12 @@ public class LoginMocker {
     }
 
     public static void main(String[] args) {
-
         LoginMocker loginMocker = new LoginMocker();
-
-        String host = "http://portal.hsbank.com";
-
         try {
-            String html = loginMocker.getHtmlByUrl(host+"/wps/myportal/");
-            Document doc = Jsoup.parse(html);
-            Element form = doc.select("body > form").first();
-            String url = form.attr("action");
-//            System.out.println(url);
-
-            Map params = new HashMap();
-            params.put("userid","wushuang");
-            params.put("password","11111111");
-            loginMocker.getCookie(host+url,params);
-
-
+            loginMocker.getCookie();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
 }

@@ -1,55 +1,115 @@
 
 /**
- * GETDOCLISTSBYDATEResponse.java
+ * GETDOCINFOBYUNID.java
  *
  * This file was auto-generated from WSDL
  * by the Apache Axis2 version: 1.6.2  Built on : Apr 17, 2012 (05:34:40 IST)
  */
 
             
-                package info.puton.customize.hsb.axis;
+                package info.puton.customize.hsb.webservice.axis;
             
 
             /**
-            *  GETDOCLISTSBYDATEResponse bean class
+            *  GETDOCINFOBYUNID bean class
             */
             @SuppressWarnings({"unchecked","unused"})
         
-        public  class GETDOCLISTSBYDATEResponse
+        public  class GETDOCINFOBYUNID
         implements org.apache.axis2.databinding.ADBBean{
         
                 public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName(
                 "urn:DefaultNamespace",
-                "GETDOCLISTSBYDATEResponse",
+                "GETDOCINFOBYUNID",
                 "ns1");
 
             
 
                         /**
-                        * field for GETDOCLISTSBYDATEReturn
+                        * field for DBNAME
                         */
 
                         
-                                    protected String localGETDOCLISTSBYDATEReturn ;
+                                    protected String localDBNAME ;
                                 
 
                            /**
                            * Auto generated getter method
                            * @return java.lang.String
                            */
-                           public  String getGETDOCLISTSBYDATEReturn(){
-                               return localGETDOCLISTSBYDATEReturn;
+                           public  String getDBNAME(){
+                               return localDBNAME;
                            }
 
                            
                         
                             /**
                                * Auto generated setter method
-                               * @param param GETDOCLISTSBYDATEReturn
+                               * @param param DBNAME
                                */
-                               public void setGETDOCLISTSBYDATEReturn(String param){
+                               public void setDBNAME(String param){
                             
-                                            this.localGETDOCLISTSBYDATEReturn=param;
+                                            this.localDBNAME=param;
+                                    
+
+                               }
+                            
+
+                        /**
+                        * field for UNID
+                        */
+
+                        
+                                    protected String localUNID ;
+                                
+
+                           /**
+                           * Auto generated getter method
+                           * @return java.lang.String
+                           */
+                           public  String getUNID(){
+                               return localUNID;
+                           }
+
+                           
+                        
+                            /**
+                               * Auto generated setter method
+                               * @param param UNID
+                               */
+                               public void setUNID(String param){
+                            
+                                            this.localUNID=param;
+                                    
+
+                               }
+                            
+
+                        /**
+                        * field for DATESTR
+                        */
+
+                        
+                                    protected String localDATESTR ;
+                                
+
+                           /**
+                           * Auto generated getter method
+                           * @return java.lang.String
+                           */
+                           public  String getDATESTR(){
+                               return localDATESTR;
+                           }
+
+                           
+                        
+                            /**
+                               * Auto generated setter method
+                               * @param param DATESTR
+                               */
+                               public void setDATESTR(String param){
+                            
+                                            this.localDATESTR=param;
                                     
 
                                }
@@ -103,11 +163,11 @@
                    String namespacePrefix = registerPrefix(xmlWriter,"urn:DefaultNamespace");
                    if ((namespacePrefix != null) && (namespacePrefix.trim().length() > 0)){
                        writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","type",
-                           namespacePrefix+":GETDOCLISTSBYDATEResponse",
+                           namespacePrefix+":GETDOCINFOBYUNID",
                            xmlWriter);
                    } else {
                        writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","type",
-                           "GETDOCLISTSBYDATEResponse",
+                           "GETDOCINFOBYUNID",
                            xmlWriter);
                    }
 
@@ -115,10 +175,10 @@
                    }
                
                                     namespace = "";
-                                    writeStartElement(null, namespace, "GETDOCLISTSBYDATEReturn", xmlWriter);
+                                    writeStartElement(null, namespace, "DBNAME", xmlWriter);
                              
 
-                                          if (localGETDOCLISTSBYDATEReturn==null){
+                                          if (localDBNAME==null){
                                               // write the nil attribute
                                               
                                                      writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","nil","1",xmlWriter);
@@ -126,7 +186,43 @@
                                           }else{
 
                                         
-                                                   xmlWriter.writeCharacters(localGETDOCLISTSBYDATEReturn);
+                                                   xmlWriter.writeCharacters(localDBNAME);
+                                            
+                                          }
+                                    
+                                   xmlWriter.writeEndElement();
+                             
+                                    namespace = "";
+                                    writeStartElement(null, namespace, "UNID", xmlWriter);
+                             
+
+                                          if (localUNID==null){
+                                              // write the nil attribute
+                                              
+                                                     writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","nil","1",xmlWriter);
+                                                  
+                                          }else{
+
+                                        
+                                                   xmlWriter.writeCharacters(localUNID);
+                                            
+                                          }
+                                    
+                                   xmlWriter.writeEndElement();
+                             
+                                    namespace = "";
+                                    writeStartElement(null, namespace, "DATESTR", xmlWriter);
+                             
+
+                                          if (localDATESTR==null){
+                                              // write the nil attribute
+                                              
+                                                     writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","nil","1",xmlWriter);
+                                                  
+                                          }else{
+
+                                        
+                                                   xmlWriter.writeCharacters(localDATESTR);
                                             
                                           }
                                     
@@ -318,10 +414,22 @@
 
                 
                                       elementList.add(new javax.xml.namespace.QName("",
-                                                                      "GETDOCLISTSBYDATEReturn"));
+                                                                      "DBNAME"));
                                  
-                                         elementList.add(localGETDOCLISTSBYDATEReturn==null?null:
-                                         org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localGETDOCLISTSBYDATEReturn));
+                                         elementList.add(localDBNAME==null?null:
+                                         org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localDBNAME));
+                                    
+                                      elementList.add(new javax.xml.namespace.QName("",
+                                                                      "UNID"));
+                                 
+                                         elementList.add(localUNID==null?null:
+                                         org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localUNID));
+                                    
+                                      elementList.add(new javax.xml.namespace.QName("",
+                                                                      "DATESTR"));
+                                 
+                                         elementList.add(localDATESTR==null?null:
+                                         org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localDATESTR));
                                     
 
                 return new org.apache.axis2.databinding.utils.reader.ADBXMLStreamReaderImpl(qName, elementList.toArray(), attribList.toArray());
@@ -347,9 +455,9 @@
         * Postcondition: If this object is an element, the reader is positioned at its end element
         *                If this object is a complex type, the reader is positioned at the end element of its outer element
         */
-        public static GETDOCLISTSBYDATEResponse parse(javax.xml.stream.XMLStreamReader reader) throws Exception{
-            GETDOCLISTSBYDATEResponse object =
-                new GETDOCLISTSBYDATEResponse();
+        public static GETDOCINFOBYUNID parse(javax.xml.stream.XMLStreamReader reader) throws Exception{
+            GETDOCINFOBYUNID object =
+                new GETDOCINFOBYUNID();
 
             int event;
             String nillableValue = null;
@@ -373,10 +481,10 @@
 
                     String type = fullTypeName.substring(fullTypeName.indexOf(":")+1);
                     
-                            if (!"GETDOCLISTSBYDATEResponse".equals(type)){
+                            if (!"GETDOCINFOBYUNID".equals(type)){
                                 //find namespace for the prefix
                                 String nsUri = reader.getNamespaceContext().getNamespaceURI(nsPrefix);
-                                return (GETDOCLISTSBYDATEResponse)ExtensionMapper.getTypeObject(
+                                return (GETDOCINFOBYUNID)ExtensionMapper.getTypeObject(
                                      nsUri,type,reader);
                               }
                         
@@ -401,7 +509,7 @@
                                     
                                     while (!reader.isStartElement() && !reader.isEndElement()) reader.next();
                                 
-                                    if (reader.isStartElement() && new javax.xml.namespace.QName("","GETDOCLISTSBYDATEReturn").equals(reader.getName())){
+                                    if (reader.isStartElement() && new javax.xml.namespace.QName("","DBNAME").equals(reader.getName())){
                                 
                                        nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance","nil");
                                        if (!"true".equals(nillableValue) && !"1".equals(nillableValue)){
@@ -409,7 +517,65 @@
 
                                     String content = reader.getElementText();
                                     
-                                              object.setGETDOCLISTSBYDATEReturn(
+                                              object.setDBNAME(
+                                                    org.apache.axis2.databinding.utils.ConverterUtil.convertToString(content));
+                                            
+                                       } else {
+                                           
+                                           
+                                           reader.getElementText(); // throw away text nodes if any.
+                                       }
+                                      
+                                        reader.next();
+                                    
+                              }  // End of if for expected property start element
+                                
+                                else{
+                                    // A start element we are not expecting indicates an invalid parameter was passed
+                                    throw new org.apache.axis2.databinding.ADBException("Unexpected subelement " + reader.getName());
+                                }
+                            
+                                    
+                                    while (!reader.isStartElement() && !reader.isEndElement()) reader.next();
+                                
+                                    if (reader.isStartElement() && new javax.xml.namespace.QName("","UNID").equals(reader.getName())){
+                                
+                                       nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance","nil");
+                                       if (!"true".equals(nillableValue) && !"1".equals(nillableValue)){
+                                    
+
+                                    String content = reader.getElementText();
+                                    
+                                              object.setUNID(
+                                                    org.apache.axis2.databinding.utils.ConverterUtil.convertToString(content));
+                                            
+                                       } else {
+                                           
+                                           
+                                           reader.getElementText(); // throw away text nodes if any.
+                                       }
+                                      
+                                        reader.next();
+                                    
+                              }  // End of if for expected property start element
+                                
+                                else{
+                                    // A start element we are not expecting indicates an invalid parameter was passed
+                                    throw new org.apache.axis2.databinding.ADBException("Unexpected subelement " + reader.getName());
+                                }
+                            
+                                    
+                                    while (!reader.isStartElement() && !reader.isEndElement()) reader.next();
+                                
+                                    if (reader.isStartElement() && new javax.xml.namespace.QName("","DATESTR").equals(reader.getName())){
+                                
+                                       nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance","nil");
+                                       if (!"true".equals(nillableValue) && !"1".equals(nillableValue)){
+                                    
+
+                                    String content = reader.getElementText();
+                                    
+                                              object.setDATESTR(
                                                     org.apache.axis2.databinding.utils.ConverterUtil.convertToString(content));
                                             
                                        } else {

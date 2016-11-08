@@ -1,29 +1,59 @@
 
 /**
- * GETDELECTDOCLISTS.java
+ * GETDELECTDOCLISTSResponse.java
  *
  * This file was auto-generated from WSDL
  * by the Apache Axis2 version: 1.6.2  Built on : Apr 17, 2012 (05:34:40 IST)
  */
 
             
-                package info.puton.customize.hsb.axis;
+                package info.puton.customize.hsb.webservice.axis;
             
 
             /**
-            *  GETDELECTDOCLISTS bean class
+            *  GETDELECTDOCLISTSResponse bean class
             */
             @SuppressWarnings({"unchecked","unused"})
         
-        public  class GETDELECTDOCLISTS
+        public  class GETDELECTDOCLISTSResponse
         implements org.apache.axis2.databinding.ADBBean{
         
                 public static final javax.xml.namespace.QName MY_QNAME = new javax.xml.namespace.QName(
                 "urn:DefaultNamespace",
-                "GETDELECTDOCLISTS",
+                "GETDELECTDOCLISTSResponse",
                 "ns1");
 
             
+
+                        /**
+                        * field for GETDELECTDOCLISTSReturn
+                        */
+
+                        
+                                    protected String localGETDELECTDOCLISTSReturn ;
+                                
+
+                           /**
+                           * Auto generated getter method
+                           * @return java.lang.String
+                           */
+                           public  String getGETDELECTDOCLISTSReturn(){
+                               return localGETDELECTDOCLISTSReturn;
+                           }
+
+                           
+                        
+                            /**
+                               * Auto generated setter method
+                               * @param param GETDELECTDOCLISTSReturn
+                               */
+                               public void setGETDELECTDOCLISTSReturn(String param){
+                            
+                                            this.localGETDELECTDOCLISTSReturn=param;
+                                    
+
+                               }
+                            
 
      
      
@@ -73,17 +103,35 @@
                    String namespacePrefix = registerPrefix(xmlWriter,"urn:DefaultNamespace");
                    if ((namespacePrefix != null) && (namespacePrefix.trim().length() > 0)){
                        writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","type",
-                           namespacePrefix+":GETDELECTDOCLISTS",
+                           namespacePrefix+":GETDELECTDOCLISTSResponse",
                            xmlWriter);
                    } else {
                        writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","type",
-                           "GETDELECTDOCLISTS",
+                           "GETDELECTDOCLISTSResponse",
                            xmlWriter);
                    }
 
                
                    }
                
+                                    namespace = "";
+                                    writeStartElement(null, namespace, "GETDELECTDOCLISTSReturn", xmlWriter);
+                             
+
+                                          if (localGETDELECTDOCLISTSReturn==null){
+                                              // write the nil attribute
+                                              
+                                                     writeAttribute("xsi","http://www.w3.org/2001/XMLSchema-instance","nil","1",xmlWriter);
+                                                  
+                                          }else{
+
+                                        
+                                                   xmlWriter.writeCharacters(localGETDELECTDOCLISTSReturn);
+                                            
+                                          }
+                                    
+                                   xmlWriter.writeEndElement();
+                             
                     xmlWriter.writeEndElement();
                
 
@@ -269,6 +317,12 @@
                  java.util.ArrayList attribList = new java.util.ArrayList();
 
                 
+                                      elementList.add(new javax.xml.namespace.QName("",
+                                                                      "GETDELECTDOCLISTSReturn"));
+                                 
+                                         elementList.add(localGETDELECTDOCLISTSReturn==null?null:
+                                         org.apache.axis2.databinding.utils.ConverterUtil.convertToString(localGETDELECTDOCLISTSReturn));
+                                    
 
                 return new org.apache.axis2.databinding.utils.reader.ADBXMLStreamReaderImpl(qName, elementList.toArray(), attribList.toArray());
             
@@ -293,9 +347,9 @@
         * Postcondition: If this object is an element, the reader is positioned at its end element
         *                If this object is a complex type, the reader is positioned at the end element of its outer element
         */
-        public static GETDELECTDOCLISTS parse(javax.xml.stream.XMLStreamReader reader) throws Exception{
-            GETDELECTDOCLISTS object =
-                new GETDELECTDOCLISTS();
+        public static GETDELECTDOCLISTSResponse parse(javax.xml.stream.XMLStreamReader reader) throws Exception{
+            GETDELECTDOCLISTSResponse object =
+                new GETDELECTDOCLISTSResponse();
 
             int event;
             String nillableValue = null;
@@ -319,10 +373,10 @@
 
                     String type = fullTypeName.substring(fullTypeName.indexOf(":")+1);
                     
-                            if (!"GETDELECTDOCLISTS".equals(type)){
+                            if (!"GETDELECTDOCLISTSResponse".equals(type)){
                                 //find namespace for the prefix
                                 String nsUri = reader.getNamespaceContext().getNamespaceURI(nsPrefix);
-                                return (GETDELECTDOCLISTS)ExtensionMapper.getTypeObject(
+                                return (GETDELECTDOCLISTSResponse)ExtensionMapper.getTypeObject(
                                      nsUri,type,reader);
                               }
                         
@@ -343,7 +397,36 @@
                 
                     
                     reader.next();
-                  
+                
+                                    
+                                    while (!reader.isStartElement() && !reader.isEndElement()) reader.next();
+                                
+                                    if (reader.isStartElement() && new javax.xml.namespace.QName("","GETDELECTDOCLISTSReturn").equals(reader.getName())){
+                                
+                                       nillableValue = reader.getAttributeValue("http://www.w3.org/2001/XMLSchema-instance","nil");
+                                       if (!"true".equals(nillableValue) && !"1".equals(nillableValue)){
+                                    
+
+                                    String content = reader.getElementText();
+                                    
+                                              object.setGETDELECTDOCLISTSReturn(
+                                                    org.apache.axis2.databinding.utils.ConverterUtil.convertToString(content));
+                                            
+                                       } else {
+                                           
+                                           
+                                           reader.getElementText(); // throw away text nodes if any.
+                                       }
+                                      
+                                        reader.next();
+                                    
+                              }  // End of if for expected property start element
+                                
+                                else{
+                                    // A start element we are not expecting indicates an invalid parameter was passed
+                                    throw new org.apache.axis2.databinding.ADBException("Unexpected subelement " + reader.getName());
+                                }
+                              
                             while (!reader.isStartElement() && !reader.isEndElement())
                                 reader.next();
                             

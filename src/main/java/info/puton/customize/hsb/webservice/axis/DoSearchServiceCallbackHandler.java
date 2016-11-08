@@ -6,7 +6,7 @@
  * by the Apache Axis2 version: 1.6.2  Built on : Apr 17, 2012 (05:33:49 IST)
  */
 
-    package info.puton.customize.hsb.axis;
+    package info.puton.customize.hsb.webservice.axis;
 
     /**
      *  DoSearchServiceCallbackHandler Callback class, Users can extend this class and implement

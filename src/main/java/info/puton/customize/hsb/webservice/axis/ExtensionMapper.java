@@ -7,7 +7,7 @@
  */
 
         
-            package info.puton.customize.hsb.axis;
+            package info.puton.customize.hsb.webservice.axis;
         
             /**
             *  ExtensionMapper class

@@ -10,6 +10,11 @@
     ">
 
     <!-- 扫描component -->
+    <context:component-scan base-package="info.puton.customize.hsb.service"/>
     <context:component-scan base-package="info.puton.customize.hsb.crawler"/>
+    <context:component-scan base-package="info.puton.customize.hsb.fetcher"/>
+    <context:component-scan base-package="info.puton.customize.hsb.mocker"/>
+    <context:component-scan base-package="info.puton.customize.hsb.scheduler"/>
+    <context:component-scan base-package="info.puton.customize.hsb.webservice"/>
 
 </beans>

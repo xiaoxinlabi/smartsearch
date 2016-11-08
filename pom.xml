@@ -354,4 +354,28 @@
     </resources>
   </build>
 
+  <profiles>
+
+    <profile>
+      <id>develop</id>
+      <properties>
+        <oaFileLandingPath>E://tmp/smartsearch/hsb</oaFileLandingPath>
+
+      </properties>
+
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+
+    </profile>
+
+    <profile>
+      <id>vm</id>
+      <properties>
+        <oaFileLandingPath>E://tmp/smartsearch/hsb</oaFileLandingPath>
+      </properties>
+    </profile>
+
+  </profiles>
+
 </project>

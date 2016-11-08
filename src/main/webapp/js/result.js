@@ -184,11 +184,11 @@ function getResult(keyword, type, currentPage, pageSize){
                         '文件大小：' + Math.ceil(record.size/1024) + 'KB' +
                         '</div>' +
                         '</div>' +
-                        '<div class="row">' +
-                        '<div class="col-md-12">' +
-                        '文件归属：' + record.owner +
-                        '</div>' +
-                        '</div>' +
+                        //'<div class="row">' +
+                        //'<div class="col-md-12">' +
+                        //'文件归属：' + record.owner +
+                        //'</div>' +
+                        //'</div>' +
                         '<div class="row">' +
                         '<div class="col-md-12">' +
                         '修改时间：' + modifyDate.toLocaleString() +
@@ -199,16 +199,16 @@ function getResult(keyword, type, currentPage, pageSize){
                         '索引时间：' + indexDate.toLocaleString() +
                         '</div>' +
                         '</div>' +
-                        '<div class="row">' +
-                        '<div class="col-md-4">' +
-                        '在线预览：' +
-                        '<a class="ss-file-prev" data-id="' + record.id + '" data-type = "' + record.type + '">在线预览 </a>' +
-                        '</div>' +
-                        '<div class="col-md-4">' +
-                        '下载地址：' +
-                        '<a class="ss-file-down" data-id="' + record.id + '" data-type = "' + record.type + '">点击下载 </a>' +
-                        '</div>' +
-                        '</div>' +
+                        //'<div class="row">' +
+                        //'<div class="col-md-4">' +
+                        //'在线预览：' +
+                        //'<a class="ss-file-prev" data-id="' + record.id + '" data-type = "' + record.type + '">在线预览 </a>' +
+                        //'</div>' +
+                        //'<div class="col-md-4">' +
+                        //'下载地址：' +
+                        //'<a class="ss-file-down" data-id="' + record.id + '" data-type = "' + record.type + '">点击下载 </a>' +
+                        //'</div>' +
+                        //'</div>' +
                         '</div>' +
                         '</div>' +
                         '<div class="row">' +

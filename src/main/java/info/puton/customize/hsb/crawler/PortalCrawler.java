@@ -31,10 +31,6 @@ public class PortalCrawler implements PageProcessor {
     @Autowired
     PortalPipeline portalPipeline;
 
-    private String host = "http://portal.hsbank.com";
-    private String userid = "wushuang";
-    private String password = "11111111";
-
     private Boolean crawlForAll;
     private String crawlDate;
 
@@ -145,15 +141,9 @@ public class PortalCrawler implements PageProcessor {
             site = Site.me()
                     .setRetryTimes(3)
                     .setSleepTime(1000);
-            String html = loginMocker.getHtmlByUrl(host+"/wps/myportal/");
-            Document doc = Jsoup.parse(html);
-            Element form = doc.select("body > form").first();
-            String url = form.attr("action");
-//            System.out.println(url);
-            Map params = new HashMap();
-            params.put("userid",userid);
-            params.put("password",password);
-            Map cookieMap = loginMocker.getCookie(host+url,params);
+
+//            Map cookieMap = loginMocker.getCookie(host+url,params);
+            Map cookieMap = loginMocker.getCookie();
             Set<String> keySet = cookieMap.keySet();
             for (String name : keySet) {
                 site = site.addCookie(name, (String) cookieMap.get(name));

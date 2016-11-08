@@ -36,7 +36,10 @@ public class TikaService implements FileExtractor {
     @Override
     public FileFullText extract(File file, Map additional) throws TikaException, SAXException, IOException {
         FileFullText fileFullText = new FileFullText();
-        String fileKey = UUID.randomUUID().toString();
+        String fileKey = (String) additional.get("fileKey");
+        if (fileKey==null && "".equals(fileKey)){
+            fileKey = UUID.randomUUID().toString();
+        }
         fileFullText.setId(fileKey);//id
         fileFullText.setOwner((String) additional.get("owner"));//owner
         fileFullText.setGroup((String) additional.get("group"));//group
