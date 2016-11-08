@@ -13,6 +13,7 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.cookie.BasicClientCookie;
 import org.apache.http.util.EntityUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
@@ -28,19 +29,14 @@ import java.util.Set;
 @Component
 public class OAFileFetcher {
 
+    @Autowired
+    LoginMocker loginMocker;
+
     private String domain = "zhoa.hsbank.com";
 
     private Map cookieMap;
 
     public static final int cache = 10 * 1024;
-
-    public OAFileFetcher() throws IOException {
-
-        LoginMocker loginMocker = new LoginMocker();
-
-        this.cookieMap = loginMocker.getCookie();
-
-    }
 
     public void download(String url, String filePath) throws IOException {
 
@@ -49,6 +45,13 @@ public class OAFileFetcher {
 
         HttpClientContext context = HttpClientContext.create();
         CookieStore cookieStore = new BasicCookieStore();
+
+        if(cookieMap==null){
+            cookieMap = loginMocker.getCookie();
+        }else{
+            System.out.println("cookie已经存在");
+        }
+
         Set<String> keySet = cookieMap.keySet();
         for (String name : keySet) {
             BasicClientCookie cookie = new BasicClientCookie(name, (String) cookieMap.get(name));

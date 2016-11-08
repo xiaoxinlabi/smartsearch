@@ -11,7 +11,7 @@
 
     <!-- 扫描component -->
     <context:component-scan base-package="info.puton.customize.hsb.scheduler" />
-    <context:component-scan base-package="info.puton.customize.hsb.scheduler.job" />
+    <context:component-scan base-package="info.puton.customize.hsb.crawler"/>
 
     <!-- Quartz -->
 

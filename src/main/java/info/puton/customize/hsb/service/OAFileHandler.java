@@ -1,6 +1,5 @@
 package info.puton.customize.hsb.service;
 
-import java.io.IOException;
 import java.rmi.RemoteException;
 
 /**

@@ -25,11 +25,14 @@ import java.util.regex.Pattern;
 /**
  * Created by taoyang on 2016/10/17.
  */
-@Component()
+@Component
 public class PortalCrawler implements PageProcessor {
 
     @Autowired
     PortalPipeline portalPipeline;
+
+    @Autowired
+    LoginMocker loginMocker;
 
     private Boolean crawlForAll;
     private String crawlDate;
@@ -43,8 +46,6 @@ public class PortalCrawler implements PageProcessor {
     }
 
     private Site site;
-
-    private LoginMocker loginMocker = new LoginMocker();
 
     public void findNextPage(Page page){
         if(crawlForAll){
@@ -88,7 +89,10 @@ public class PortalCrawler implements PageProcessor {
             while (m.find()){
                 String postDate = m.group();
                 if(!postDate.equals(crawlDate)){
+//                    System.out.println(postDate+"非当天");
                     return;
+                }else{
+                    System.out.println(postDate+"找到当天");
                 }
             }
         }
@@ -142,7 +146,6 @@ public class PortalCrawler implements PageProcessor {
                     .setRetryTimes(3)
                     .setSleepTime(1000);
 
-//            Map cookieMap = loginMocker.getCookie(host+url,params);
             Map cookieMap = loginMocker.getCookie();
             Set<String> keySet = cookieMap.keySet();
             for (String name : keySet) {

@@ -16,7 +16,7 @@ public class OAFileHandlerTest extends TestSupport {
 
     @Test
     public void testPrepareFile() throws Exception {
-        String dateStr = "2015-11-27";
+        String dateStr = "";
         oaFileHandler.handleFile(dateStr);
     }
 }

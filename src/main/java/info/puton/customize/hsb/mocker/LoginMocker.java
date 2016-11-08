@@ -9,7 +9,6 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.protocol.HttpClientContext;
 import org.apache.http.cookie.Cookie;
-import org.apache.http.impl.client.AbstractHttpClient;
 import org.apache.http.impl.client.BasicCookieStore;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
@@ -18,14 +17,15 @@ import org.apache.http.util.EntityUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.util.*;
 
 /**
  * Created by taoyang on 2016/10/17.
  */
+@Component
 public class LoginMocker {
 
     private String host = "http://portal.hsbank.com";
@@ -85,15 +85,6 @@ public class LoginMocker {
         EntityUtils.consume(entity);
         response.close();
         return resultMap;
-    }
-
-    public static void main(String[] args) {
-        LoginMocker loginMocker = new LoginMocker();
-        try {
-            loginMocker.getCookie();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
 }
