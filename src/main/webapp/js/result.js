@@ -5,16 +5,24 @@
 // 分页功能
 var currentPage = 1, pageSize = 5;
 
-//最大显示摘要
+// 最大显示摘要
 var maxHighlightedSize = 250;
+
+// 权限控制
+var user = '';
+var role = '';
 
 $(function(){
 
+    //headbar onload已经调用
     //init();
 
 });
 
 function init(){
+
+    user = $("#headbar").contents().find("#user").text();
+    role = $("#headbar").contents().find("#role").text();
 
     if($_GET['wd']!=null && $_GET['wd']!=""){
         $("#search-wd").val(decodeURIComponent($_GET['wd']));
@@ -127,6 +135,12 @@ function getResult(keyword, type, currentPage, pageSize){
             inHtml='智搜为您找到' + count + '个相关结果';
             ssResultCount.html(inHtml);
 
+            if(role.indexOf("admin") != -1){
+                buttonStyle = '';
+            }else{
+                buttonStyle = 'style="display: none"';
+            }
+
             var tdsFileList = $('#ss-result-list');
             tdsFileList.children().remove();
             list = response.data.datas;
@@ -142,7 +156,7 @@ function getResult(keyword, type, currentPage, pageSize){
 
                 indexOperateHtml =
                     '<div class="col-md-4">' +
-                    '<div class="dropdown pull-right ss-record-manage">' +
+                    '<div class="dropdown pull-right ss-record-manage" ' + buttonStyle + ' >' +
                     '<button class="btn btn-danger btn-xs dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">' +
                     '管理' +
                     '<span class="caret"></span>' +
@@ -388,8 +402,11 @@ function deleteIndex(index, type, id){
 
     $.ajax(settings).done(function (response) {
         if (response.success == true) {
-            setTimeout("location.reload();",1000);
+            alert("删除成功，稍后生效。");
+        } else{
+            alert("没有相关权限！");
         }
+        setTimeout("location.reload();",1000);
     });
 }
 

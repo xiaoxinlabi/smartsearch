@@ -16,7 +16,11 @@ public class myRealm extends AuthorizingRealm {
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
         String username = String.valueOf(principalCollection.getPrimaryPrincipal());
         //TODO
-        info.addStringPermission("admin:visit");
+        if(username.equals("admin")){
+            info.addStringPermission("sysmgr:visit");
+            info.addStringPermission("index:delete");
+            info.addRole("admin");
+        }
         return info;
     }
 

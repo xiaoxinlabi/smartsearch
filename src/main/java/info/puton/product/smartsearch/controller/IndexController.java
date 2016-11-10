@@ -20,7 +20,7 @@ public class IndexController {
     @Autowired
     BaseIndexer baseIndexer;
 
-    @RequestMapping(value = "/delete",method = RequestMethod.POST)
+    @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public ActionResult delete(
             @RequestParam(value="index",defaultValue="") String index
             , @RequestParam(value="type",defaultValue="") String type

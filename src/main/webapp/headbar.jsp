@@ -61,11 +61,11 @@
 
                 欢迎 <shiro:principal/>,
 
-                <shiro:hasPermission name="admin:visit">
+                <shiro:hasPermission name="sysmgr:visit">
                     <a class="sysmgr"> 系统管理</a>
                 </shiro:hasPermission>
 
-                <shiro:hasPermission name="develop:visit">
+                <shiro:hasPermission name="about:visit">
                     <a class="about"> 关于</a>
                 </shiro:hasPermission>
 
@@ -80,5 +80,16 @@
         </span>
 
     </div>
+
+    <div id="user" style="display: none">
+        <shiro:principal/>
+    </div>
+
+    <div id="role" style="display: none">
+        <shiro:hasRole name="admin">admin,</shiro:hasRole>
+    </div>
+
+    </body>
+
 </body>
 </html>
