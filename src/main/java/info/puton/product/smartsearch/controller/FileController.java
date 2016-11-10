@@ -2,6 +2,7 @@ package info.puton.product.smartsearch.controller;
 
 import info.puton.product.smartsearch.constant.FilePath;
 import info.puton.product.smartsearch.model.ActionResult;
+import info.puton.product.smartsearch.service.FileHandler;
 import info.puton.product.smartsearch.service.FileStorage;
 import info.puton.product.smartsearch.service.IConvertService;
 import info.puton.product.smartsearch.util.ServletUtils;
@@ -34,6 +35,9 @@ import java.util.Map;
 public class FileController {
 
     @Autowired
+    FileHandler fileHandler;
+
+    @Autowired
     FileStorage fileStorage;
 
     @Autowired
@@ -41,8 +45,7 @@ public class FileController {
 
     @RequestMapping(value = "/upload", method = RequestMethod.POST)
     public String upload(@RequestParam(value = "file") MultipartFile file,
-            HttpServletRequest request, ModelMap model) {
-        System.out.println("开始");
+            HttpServletRequest request) {
         //设置日期格式
         SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd");
         // new Date()为获取当前系统时间
@@ -55,23 +58,27 @@ public class FileController {
         //获取该文件的文件名
         String fileName = file.getOriginalFilename();
 
-        System.out.println(path);
-        System.out.println(fileName);
+//        System.out.println(path);
+//        System.out.println(fileName);
         File targetFile = new File(path, fileName);
         System.out.println(targetFile);
         if (!targetFile.exists()) {
             targetFile.mkdirs();
         }
-        // 保存
+        // 临时保存
         try {
             file.transferTo(targetFile);
+            //全文处理
+            Map additional = new HashMap();
+            fileHandler.handleFile(targetFile.getPath(), additional);
+            targetFile.delete();
+            return "redirect:/admin.html?status=ok";
         } catch (Exception e) {
             e.printStackTrace();
+            targetFile.delete();
+            return "redirect:/admin.html?status=error";
         }
-        //将该文件的路径给客户端，让其可以请求该文件
-//        model.addAttribute("fileUrl", request.getContextPath() + "/uploadfile/"+ fileName);
-        model.addAttribute("fileUrl", request.getContextPath() + filePath + fileName);
-        return "redirect:/list.html?status=OK";
+
     }
 
     public File prepareIniCache(String iniCacheDir, String id, String type){

@@ -13,14 +13,11 @@ $(function(){
 
     })
 
-
+    var status = $_GET['status'];
+    if(status=='ok'){
+        alert("操作成功!");
+    } else if (status=='error'){
+        alert("操作失败!");
+    }
 
 });
-
-function submitFile() {
-    //if (document.getElementById('file').value == '') {
-    //    alert("请选择文件!");
-    //} else {
-    //    document.forms["form"].submit();
-    //}
-}
