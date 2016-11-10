@@ -191,4 +191,16 @@ public class FileController {
         return result;
 
     }
+
+    @ResponseBody
+    @RequestMapping(value = "/init", method = RequestMethod.POST)
+    public ActionResult init(){
+        try {
+            fileHandler.initFile();
+            return new ActionResult(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ActionResult(false);
+        }
+    }
 }

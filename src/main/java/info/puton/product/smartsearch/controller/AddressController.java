@@ -67,4 +67,12 @@ public class AddressController {
         }
 
     }
+
+    @ResponseBody
+    @RequestMapping(value = "/init", method = RequestMethod.POST)
+    public ActionResult init(){
+        addressIndexer.initAddress();
+        return new ActionResult(true);
+    }
+
 }

@@ -1,5 +1,6 @@
 package info.puton.product.smartsearch.controller;
 
+import info.puton.product.smartsearch.model.ActionResult;
 import info.puton.product.smartsearch.model.Website;
 import info.puton.product.smartsearch.service.WebsiteIndexer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,4 +49,12 @@ public class WebsiteController {
             return result;
         }
     }
+
+    @ResponseBody
+    @RequestMapping(value = "/init", method = RequestMethod.POST)
+    public ActionResult init(){
+        websiteIndexer.initWebsite();
+        return new ActionResult(true);
+    }
+
 }

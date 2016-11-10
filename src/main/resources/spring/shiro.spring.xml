@@ -17,6 +17,7 @@
                 <!-- 指定资源需要认证 -->
                 /admin.html = authc
                 /rest/index/delete = authc, perms[index:delete]
+                /rest/**/init = authc, perms[index:delete]
                 <!-- 静态资源允许访问 -->
                 <!--/assets/** = anon-->
                 <!--/common/** = anon-->
