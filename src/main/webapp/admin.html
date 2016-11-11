@@ -30,10 +30,11 @@
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
-                <li id="ss-file" class="active"><a href="#">文件上传</a></li>
-                <li id="ss-address"><a href="#">通讯录录入</a></li>
-                <li id="ss-website"><a href="#">网址导航添加</a></li>
+                <li id="ss-file" class="active"><a href="#">文件管理</a></li>
+                <li id="ss-address"><a href="#">通讯录管理</a></li>
+                <li id="ss-website"><a href="#">网址导航管理</a></li>
                 <li id="ss-index"><a href="#">索引管理</a></li>
+                <li id="ss-cache"><a href="#">缓存管理</a></li>
             </ul>
         </div>
 
@@ -224,9 +225,6 @@
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main ss-panel" id="ss-index-panel"
              style="display: none">
             <h1>索引管理</h1>
-
-
-
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">索引初始化</h3>
@@ -240,6 +238,26 @@
                             <button type="button" class="btn btn-default ss-index-init-btn" data-type="website">网址/页面初始化</button>
                             <button type="button" class="btn btn-default ss-index-init-btn" data-type="xxx">内控合规初始化</button>
                         </div>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main ss-panel" id="ss-cache-panel"
+             style="display: none">
+            <h1>缓存管理</h1>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">缓存清空</h3>
+                </div>
+                <div class="panel-body">
+                    <p>（警告：这将影响首次下载/预览速度）</p>
+                    <p>
+                    <div class="btn-group ss-cache-clear-list">
+                        <button type="button" class="btn btn-default ss-cache-clear-btn" data-type="ini">下载缓存清空</button>
+                        <button type="button" class="btn btn-default ss-cache-clear-btn" data-type="pdf">预览缓存清空</button>
+                    </div>
                     </p>
                 </div>
             </div>
