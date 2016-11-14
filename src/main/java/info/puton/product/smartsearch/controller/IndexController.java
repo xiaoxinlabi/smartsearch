@@ -3,23 +3,22 @@ package info.puton.product.smartsearch.controller;
 import info.puton.product.smartsearch.model.ActionResult;
 import info.puton.product.smartsearch.service.BaseIndexer;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 
 
 /**
  * Created by taoyang on 11/5/15.
  */
 
-@RestController
+@Controller
 @RequestMapping(value="/index")
 public class IndexController {
 
     @Autowired
     BaseIndexer baseIndexer;
 
+    @ResponseBody
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public ActionResult delete(
             @RequestParam(value="index",defaultValue="") String index

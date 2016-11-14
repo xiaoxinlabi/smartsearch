@@ -3,22 +3,21 @@ package info.puton.product.smartsearch.controller;
 import info.puton.product.smartsearch.model.ActionResult;
 import info.puton.product.smartsearch.service.IQueryService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 
 
 /**
  * Created by taoyang on 11/5/15.
  */
 
-@RestController
+@Controller
 public class QueryController {
 
     @Autowired
     IQueryService qs;
 
+    @ResponseBody
     @RequestMapping(value = "/query",method = RequestMethod.GET)
     public ActionResult query(@RequestParam(value="keyword",defaultValue="") String keyword
             ,@RequestParam(value="type",defaultValue="") String type
