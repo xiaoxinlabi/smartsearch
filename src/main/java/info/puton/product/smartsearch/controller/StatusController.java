@@ -29,17 +29,8 @@ public class StatusController {
         } catch (Exception e){
             e.printStackTrace();
             statusResult.setStatus(Status.ERROR);
-            statusResult.setDescription("智搜查询服务异常："+e.getMessage());
+            statusResult.setDescription("智搜查询服务异常："+e.getLocalizedMessage());
         }
-        return statusResult;
-    }
-
-    @ResponseBody
-    @RequestMapping(value="/index")
-    public StatusResult index(){
-        StatusResult statusResult = new StatusResult();
-        statusResult.setStatus(Status.OK);
-        statusResult.setDescription("智搜索引服务正常");
         return statusResult;
     }
 
