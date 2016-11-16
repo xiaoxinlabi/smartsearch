@@ -340,6 +340,24 @@
         </configuration>
       </plugin>
 
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <configuration>
+          <archive>
+            <addMavenDescriptor>false</addMavenDescriptor>
+          </archive>
+          <warName>smartsearch</warName>
+          <webResources>
+            <resource>
+              <directory>src/main/resources/${package.environment}</directory>
+              <targetPath>WEB-INF/classes</targetPath>
+              <filtering>true</filtering>
+            </resource>
+          </webResources>
+        </configuration>
+      </plugin>
+
     </plugins>
 
     <resources>
@@ -357,22 +375,26 @@
   <profiles>
 
     <profile>
-      <id>develop</id>
+      <id>dev</id>
       <properties>
-        <oaFileLandingPath>E://tmp/smartsearch/hsb</oaFileLandingPath>
-
+        <package.environment>dev</package.environment>
       </properties>
-
       <activation>
         <activeByDefault>true</activeByDefault>
       </activation>
-
     </profile>
 
     <profile>
-      <id>vm</id>
+      <id>test</id>
       <properties>
-        <oaFileLandingPath>E://tmp/smartsearch/hsb</oaFileLandingPath>
+        <package.environment>test</package.environment>
+      </properties>
+    </profile>
+
+    <profile>
+      <id>prod</id>
+      <properties>
+        <package.environment>prod</package.environment>
       </properties>
     </profile>
 
