@@ -14,8 +14,9 @@ var role = '';
 
 $(function(){
 
-    //headbar onload已经调用
-    //init();
+    $("#headbar").contents().ready(function(){
+        init();
+    });
 
 });
 

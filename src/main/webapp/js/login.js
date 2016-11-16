@@ -1,4 +1,10 @@
 
+$(function(){
+    $("#ss-login-btn").on("click",function(){
+        submit();
+    });
+});
+
 function submit() {
     var param = {
         username: $("#username").val(),
