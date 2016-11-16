@@ -1,14 +1,17 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="http://v3.bootcss.com/favicon.ico">
     <!-- Bootstrap core CSS -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/bootstrap.css" rel="stylesheet">
     <link href="assets/css/dashboard.css" rel="stylesheet">
     <link rel="stylesheet" href="css/sqt_003.css">
-    <link rel="stylesheet" href="css/admin.css">
     <title>智搜管理后台</title>
 </head>
 
@@ -17,8 +20,8 @@
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header">
-            <img src="custom/hsb/img/hsb1.jpg" style="margin-left: -15px" />
-            <span class="ss-head-title">智搜管理后台</span>
+            <a class="navbar-brand" href="#">智搜管理后台</a>
+            <a class="navbar-brand" href="index.html" style="font-size: 15px;padding: 16px 13px;">智搜首页</a>
         </div>
         <iframe src="admin-headbar.jsp" frameborder="0" scrolling="no" style="float:right;height: 50px;"></iframe>
     </div>
@@ -28,11 +31,10 @@
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
-                <li id="ss-file" class="active"><a href="#">文件管理</a></li>
-                <li id="ss-address"><a href="#">通讯录管理</a></li>
-                <li id="ss-website"><a href="#">网址导航管理</a></li>
+                <li id="ss-file" class="active"><a href="#">文件上传</a></li>
+                <li id="ss-address"><a href="#">通讯录录入</a></li>
+                <li id="ss-website"><a href="#">网址导航添加</a></li>
                 <li id="ss-index"><a href="#">索引管理</a></li>
-                <li id="ss-cache"><a href="#">缓存管理</a></li>
             </ul>
         </div>
 
@@ -223,42 +225,61 @@
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main ss-panel" id="ss-index-panel"
              style="display: none">
             <h1>索引管理</h1>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">索引初始化</h3>
-                </div>
-                <div class="panel-body">
-                    <p>（警告：这将删除所有相关类型索引）</p>
-                    <p>
-                        <div class="btn-group ss-index-init-list">
-                            <button type="button" class="btn btn-default ss-index-init-btn" data-type="file">文件附件初始化</button>
-                            <button type="button" class="btn btn-default ss-index-init-btn" data-type="address">通讯录初始化</button>
-                            <button type="button" class="btn btn-default ss-index-init-btn" data-type="website">网址/页面初始化</button>
-                            <button type="button" class="btn btn-default ss-index-init-btn" data-type="xxx">内控合规初始化</button>
+
+            <section class="panel p-none m-none panel-form" id="formSection2">
+
+                <div class="panel-body-user">
+                    <!-- 表格 -->
+                    <form class="form-horizontal pt-none apply" enctype="multipart/form-data" action="rest/website/add"
+                          method="post">
+                        <div class="p-none"></div>
+                        <div class="form-question p-none">
+                            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 m-none height"
+                                 data-innertype="text">
+                                <label class="mt-none mb-xs p-none question-title">网站链接
+                                    <span class="necessary text-danger">*</span>
+                                </label>
+                                <input class="form-control-user question-content sqt-input-normal" name="url"
+                                       required="required" type="text">
+                            </div>
+                            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 m-none height"
+                                 data-innertype="text">
+                                <label class="mt-none mb-xs p-none question-title">标题
+                                </label>
+                                <input class="form-control-user question-content sqt-input-normal" name="title"
+                                       type="text">
+                            </div>
+                            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 m-none height"
+                                 data-innertype="text">
+                                <label class="mt-none mb-xs p-none question-title">关键字</label>
+                                <input class="form-control-user question-content sqt-input-normal" name="keywords"
+                                       type="text">
+                            </div>
+                            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 m-none" data-anstype="2"
+                                 data-innertype="textArea">
+                                <label class="mt-none mb-xs p-none question-title">描述</label>
+                                <textarea class="form-control-user question-content sqt-textarea-normal" cols="30"
+                                          name="description" rows="2"></textarea>
+                            </div>
+                            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 m-none"
+                                 data-anstype="2" data-innertype="textArea"><label
+                                    class="mt-none mb-xs p-none question-title">内容</label>
+                                <textarea class="form-control-user question-content sqt-textarea-normal" cols="30"
+                                          name="content" rows="2"></textarea>
+                            </div>
                         </div>
-                    </p>
+                        <div class="inputs">
+                            <input type="submit" name="submit" value="提交" class="ss-submit">
+                            <input type="reset" name="reset" value="重置" class="ss-submit">
+                        </div>
+                    </form>
                 </div>
-            </div>
-
-        </div>
-
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main ss-panel" id="ss-cache-panel"
-             style="display: none">
-            <h1>缓存管理</h1>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">缓存清空</h3>
-                </div>
-                <div class="panel-body">
-                    <p>（警告：这将影响首次下载/预览速度）</p>
-                    <p>
-                    <div class="btn-group ss-cache-clear-list">
-                        <button type="button" class="btn btn-default ss-cache-clear-btn" data-type="ini">下载缓存清空</button>
-                        <button type="button" class="btn btn-default ss-cache-clear-btn" data-type="pdf">预览缓存清空</button>
-                    </div>
-                    </p>
-                </div>
-            </div>
+                <!--<div class="panel-foot-user ">-->
+                <!--<div class="panel-foot-wrap p-none text-center ">-->
+                <!--由<span class="brand-user" onclick="goHome()"></span>-->
+                <!--</div>-->
+                <!--</div>-->
+            </section>
 
         </div>
 
@@ -301,7 +322,6 @@
 <script src="assets/js/docs.js"></script>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
-<script src="js/common.js"></script>
 <script src="js/admin.js"></script>
 </body>
 </html>
