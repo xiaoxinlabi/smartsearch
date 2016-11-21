@@ -354,16 +354,19 @@ function getResult(keyword, type, currentPage, pageSize){
             }
             tdsFileList.append(inHtml);
 
-
             var element = $('#ss-result-pagination');
-
             var totalPages = (response.data.totalPages <= 5) ? response.data.totalPages : 5;
-
             var numberOfPages = (response.data.totalPages <= 5) ? response.data.totalPages : 5;
+            var currentPage = response.data.current;
+            if(count==0){
+                currentPage=1;
+                totalPages=1;
+                numberOfPages=1;
+            }
 
             var options = {
                 bootstrapMajorVersion:3,
-                currentPage: response.data.current,
+                currentPage: currentPage,
                 totalPages: totalPages,
                 numberOfPages : numberOfPages,
                 onPageClicked: function(e,originalEvent,type,page){
