@@ -61,4 +61,9 @@ public class HBaseService implements FileStorage {
         FileUtils.writeByteArrayToFile(file, data);
     }
 
+    @Override
+    public void deleteFile(String key) throws Exception {
+        hbd.deleteRow(TABLE.FILE, key);
+    }
+
 }
