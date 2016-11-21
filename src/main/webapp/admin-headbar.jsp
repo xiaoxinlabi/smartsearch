@@ -24,20 +24,18 @@
             font-size: 18px;
             line-height: 20px
         }
+        body{
+            background-color:#222;
+        }
     </style>
 </head>
 <body>
     <div>
         <span class="pa-headbar-right">
-
             <shiro:user>
-
                 欢迎 <shiro:principal/>,
                 <a class="logout"> 退出</a>
-
             </shiro:user>
-
-
         </span>
     </div>
 <script src="assets/js/jquery.min.js"></script>
