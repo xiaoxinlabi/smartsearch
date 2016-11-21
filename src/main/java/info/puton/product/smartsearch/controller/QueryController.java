@@ -23,6 +23,7 @@ public class QueryController {
             ,@RequestParam(value="type",defaultValue="") String type
             ,@RequestParam(value="currentPage",defaultValue= "1") Integer currentPage
             ,@RequestParam(value="pageSize",defaultValue="10") Integer pageSize){
+
         return new ActionResult(qs.queryResult(keyword, type, currentPage, pageSize));
     }
 

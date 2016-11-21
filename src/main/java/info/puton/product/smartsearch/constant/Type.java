@@ -27,4 +27,8 @@ public class Type {
 
     public final static String WEBSITE = "website";
 
+    public final static String LAW = "law";
+
+    public final static String LAW_ITEM = "law_item";
+
 }

@@ -4,6 +4,8 @@ import info.puton.product.smartsearch.constant.Field;
 import info.puton.product.smartsearch.constant.Index;
 import info.puton.product.smartsearch.constant.Type;
 import info.puton.product.smartsearch.model.*;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
 import org.elasticsearch.action.search.SearchRequestBuilder;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.common.text.Text;
@@ -35,6 +37,15 @@ public class SmartSearchDao {
     private String[] allFileTypes = {Type.DOC, Type.DOCX, Type.XLS, Type.XLSX, Type.PPT, Type.PPTX, Type.PDF, Type.TXT};
 
     public PageModel<BaseSearchResult> queryResult(Map params){
+
+        //auth
+        String permissions = "read,";
+        Subject currentUser = SecurityUtils.getSubject();
+        if(currentUser.isAuthenticated()){
+            if(currentUser.getPrincipal().toString().equals("admin")){
+                permissions+="write,";
+            }
+        }
 
         String keyword = (String) params.get("keyword");
         String filterType = (String) params.get("type");
@@ -151,6 +162,9 @@ public class SmartSearchDao {
                 result.setLastModified(lastModified);
                 result.setContent(content);
 
+                //auth
+                result.setPermissions(permissions);
+
                 resultList.add(result);
             } else if(index.equals(Index.ADDRESS)) {
 
@@ -208,6 +222,9 @@ public class SmartSearchDao {
                 result.setPosition(position);
                 result.setRemark(remark);
 
+                //auth
+                result.setPermissions(permissions);
+
                 resultList.add(result);
 
             } else if (index.equals(Index.WEBSITE)) {
@@ -252,6 +269,9 @@ public class SmartSearchDao {
                 result.setKeywords(keywords);
                 result.setDescription(description);
                 result.setContent(content);
+
+                //auth
+                result.setPermissions(permissions);
 
                 resultList.add(result);
 

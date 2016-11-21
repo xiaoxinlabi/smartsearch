@@ -8,22 +8,15 @@ var currentPage = 1, pageSize = 5;
 // 最大显示摘要
 var maxHighlightedSize = 250;
 
-// 权限控制
-var user = '';
-var role = '';
-
 $(function(){
 
-    $("#headbar").contents().ready(function(){
-        init();
-    });
+    init();
 
 });
 
 function init(){
 
-    user = $("#headbar").contents().find("#user").text();
-    role = $("#headbar").contents().find("#role").text();
+    //user = $("#headbar").contents().find("#user").text();
 
     if($_GET['wd']!=null && $_GET['wd']!=""){
         $("#search-wd").val(decodeURIComponent($_GET['wd']));
@@ -136,18 +129,22 @@ function getResult(keyword, type, currentPage, pageSize){
             inHtml='智搜为您找到' + count + '个相关结果';
             ssResultCount.html(inHtml);
 
-            if(role.indexOf("admin") != -1){
-                buttonStyle = '';
-            }else{
-                buttonStyle = 'style="display: none"';
-            }
-
             var tdsFileList = $('#ss-result-list');
             tdsFileList.children().remove();
             list = response.data.datas;
             inHtml='';
             for(var i =0; i<list.length; i++){
                 var record = list[i];
+
+                //auth
+                indexOperateItemHtml = '';
+                permissions = record.permissions;
+                if(permissions.indexOf("read") != -1){
+                    indexOperateItemHtml += '<li><a class="ss-record-index-debug">定位</a></li>';
+                }
+                if(permissions.indexOf("write") != -1){
+                    indexOperateItemHtml += '<li><a class="ss-record-index-delete">删除</a></li>';
+                }
 
                 index = record.index;
                 type = record.type;
@@ -157,14 +154,14 @@ function getResult(keyword, type, currentPage, pageSize){
 
                 indexOperateHtml =
                     '<div class="col-md-4">' +
-                    '<div class="dropdown pull-right ss-record-manage" ' + buttonStyle + ' >' +
+                    //'<div class="dropdown pull-right ss-record-manage" ' + buttonStyle + ' >' +
+                    '<div class="dropdown pull-right ss-record-manage" >' +
                     '<button class="btn btn-danger btn-xs dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">' +
                     '管理' +
                     '<span class="caret"></span>' +
                     '</button>' +
                     '<ul class="dropdown-menu" data-index="' + index + '" data-id="' + id + '" data-type = "' + type + '">' +
-                    '<li><a class="ss-record-index-debug">定位</a></li>' +
-                    '<li><a class="ss-record-index-delete">删除</a></li>' +
+                    indexOperateItemHtml +
                     '</ul>' +
                     '</div>' +
                     '</div>' +

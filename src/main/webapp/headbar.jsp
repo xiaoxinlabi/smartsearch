@@ -85,10 +85,6 @@
         <shiro:principal/>
     </div>
 
-    <div id="role" style="display: none">
-        <shiro:hasRole name="admin">admin,</shiro:hasRole>
-    </div>
-
     </body>
 
 </body>

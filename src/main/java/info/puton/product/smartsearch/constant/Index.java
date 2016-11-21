@@ -11,4 +11,6 @@ public class Index {
 
     public final static String WEBSITE = "website";
 
+    public final static String RDBMS = "rdbms";
+
 }

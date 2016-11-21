@@ -19,6 +19,8 @@ public class BaseSearchResult {
 
     private String group;
 
+    private String permissions;
+
     public String getIndex() {
         return index;
     }
@@ -75,6 +77,14 @@ public class BaseSearchResult {
         this.group = group;
     }
 
+    public String getPermissions() {
+        return permissions;
+    }
+
+    public void setPermissions(String permissions) {
+        this.permissions = permissions;
+    }
+
     public BaseSearchResult() {
     }
 
@@ -88,6 +98,7 @@ public class BaseSearchResult {
                 ", timestamp=" + timestamp +
                 ", owner='" + owner + '\'' +
                 ", group='" + group + '\'' +
+                ", permissions='" + permissions + '\'' +
                 '}';
     }
 }

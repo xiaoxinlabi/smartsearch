@@ -5,10 +5,7 @@ import info.puton.product.smartsearch.dao.ElasticSearchDao;
 import info.puton.product.smartsearch.model.Address;
 import info.puton.product.smartsearch.model.FileFullText;
 import info.puton.product.smartsearch.model.Website;
-import info.puton.product.smartsearch.service.AddressIndexer;
-import info.puton.product.smartsearch.service.BaseIndexer;
-import info.puton.product.smartsearch.service.FileIndexer;
-import info.puton.product.smartsearch.service.WebsiteIndexer;
+import info.puton.product.smartsearch.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +16,7 @@ import java.util.Map;
  * Created by taoyang on 2016/9/21.
  */
 @Service
-public class ElasticSearchService implements BaseIndexer, FileIndexer, AddressIndexer, WebsiteIndexer {
+public class ElasticSearchService implements BaseIndexer, FileIndexer, AddressIndexer, WebsiteIndexer, RdbmsIndexer {
 
     @Autowired
     ElasticSearchDao elasticSearchDao;
@@ -268,5 +265,45 @@ public class ElasticSearchService implements BaseIndexer, FileIndexer, AddressIn
     @Override
     public void deleteDocument(String index, String type, String id) {
         elasticSearchDao.deleteDocument(index, type, id);
+    }
+
+    @Override
+    public void initRdbms() {
+        try{
+            elasticSearchDao.deleteIndex(Index.RDBMS);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        elasticSearchDao.createIndex(Index.RDBMS);
+        //law
+        String lawSource =
+                "{\n" +
+                        "  \"properties\": {\n" +
+                        "    \"LAWNAME\": {\n" +
+                        "      \"type\": \"string\",\n" +
+                        "      \"analyzer\": \"" + Analyzer.IK_SMART + "\"\n" +
+                        "    },\n" +
+                        "    \"REMARK\": {\n" +
+                        "      \"type\": \"string\",\n" +
+                        "      \"analyzer\": \"" + Analyzer.IK_SMART + "\"\n" +
+                        "    }\n" +
+                        "  }\n" +
+                        "}";
+        elasticSearchDao.createSchema(Index.RDBMS, Type.LAW, lawSource);
+        //lawItem
+        String lawItemSource =
+                "{\n" +
+                        "  \"properties\": {\n" +
+                        "    \"itemtitle\": {\n" +
+                        "      \"type\": \"string\",\n" +
+                        "      \"analyzer\": \"" + Analyzer.IK_SMART + "\"\n" +
+                        "    },\n" +
+                        "    \"itemcontent\": {\n" +
+                        "      \"type\": \"string\",\n" +
+                        "      \"analyzer\": \"" + Analyzer.IK_SMART + "\"\n" +
+                        "    }\n" +
+                        "  }\n" +
+                        "}";
+        elasticSearchDao.createSchema(Index.RDBMS, Type.LAW_ITEM, lawItemSource);
     }
 }
