@@ -206,7 +206,7 @@ public class ElasticSearchService implements BaseIndexer, FileIndexer, AddressIn
         data.put("remark", address.getRemark());
 
         data.put("owner", address.getOwner()!=null ? address.getOwner() : Owner.DEFAULT);
-        data.put("group", address.getGroup()!=null ? address.getGroup() : Group.DEFAULT);
+        data.put("group", address.getGroup()!=null ? address.getGroup() : Group.PUBLIC);
         data.put("timestamp", address.getTimestamp()!=null ? address.getTimestamp():System.currentTimeMillis());
         elasticSearchDao.createDocument(Index.ADDRESS, Type.ADDRESS, id, data);
     }
@@ -253,7 +253,7 @@ public class ElasticSearchService implements BaseIndexer, FileIndexer, AddressIn
         data.put("content", website.getContent());
 
         data.put("owner", website.getOwner()!=null ? website.getOwner() : Owner.DEFAULT);
-        data.put("group", website.getGroup()!=null ? website.getGroup() : Group.DEFAULT);
+        data.put("group", website.getGroup()!=null ? website.getGroup() : Group.PUBLIC);
         data.put("timestamp", website.getTimestamp()!=null ? website.getTimestamp():System.currentTimeMillis());
         elasticSearchDao.createDocument(Index.WEBSITE, Type.WEBSITE, id, data);
     }

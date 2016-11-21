@@ -24,9 +24,8 @@ public class AddressController {
     @Autowired
     AddressIndexer addressIndexer;
 
-    @ResponseBody
     @RequestMapping(value = "/add",method = RequestMethod.POST)
-    public Map addAddress(
+    public String addAddress(
               @RequestParam(value = "accountId", required = false) String accountId
             , @RequestParam(value = "englishName", required = false) String englishName
             , @RequestParam(value = "chineseName", required = false) String chineseName
@@ -40,7 +39,6 @@ public class AddressController {
             , @RequestParam(value = "position", required = false) String position
             , @RequestParam(value = "remark", required = false) String remark
     ){
-        Map result =new HashMap();
         try{
             Address addressModel = new Address();
             addressModel.setAccountId(accountId);
@@ -57,13 +55,10 @@ public class AddressController {
             addressModel.setPosition(position);
             addressModel.setRemark(remark);
             addressIndexer.addAddress(addressModel);
-            result.put("status","success");
-            result.put("detail",addressModel);
+            return "redirect:/admin.html?status=ok";
         }catch (Exception e){
-            result.put("status","error");
             e.printStackTrace();
-        }finally {
-            return result;
+            return "redirect:/admin.html?status=error";
         }
 
     }

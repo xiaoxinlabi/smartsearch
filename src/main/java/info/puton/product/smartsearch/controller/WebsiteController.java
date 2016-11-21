@@ -22,16 +22,14 @@ public class WebsiteController {
     @Autowired
     WebsiteIndexer websiteIndexer;
 
-    @ResponseBody
     @RequestMapping(value="/add",method = RequestMethod.POST)
-    public Map add(
+    public String add(
              @RequestParam(value="url",required = false)String url
             ,@RequestParam(value="title",required = false)String title
             ,@RequestParam(value="keywords",required = false)String keywords
             ,@RequestParam(value="description",required = false)String description
             ,@RequestParam(value="content",required = false)String content
     ){
-        Map result = new HashMap();
         try{
             Website websiteModel = new Website();
             websiteModel.setUrl(url);
@@ -40,13 +38,10 @@ public class WebsiteController {
             websiteModel.setDescription(description);
             websiteModel.setContent(content);
             websiteIndexer.addWebsite(websiteModel);
-            result.put("status", "success");
-            result.put("detail",websiteModel.getUrl());
+            return "redirect:/admin.html?status=ok";
         }catch (Exception e){
-            result.put("status","error");
             e.printStackTrace();
-        }finally {
-            return result;
+            return "redirect:/admin.html?status=error";
         }
     }
 
