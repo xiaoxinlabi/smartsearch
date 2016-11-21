@@ -2,9 +2,8 @@
 <html lang="en">
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="http://v3.bootcss.com/favicon.ico">
@@ -17,7 +16,7 @@
 
 <body>
 
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header">
             <a class="navbar-brand" href="#">智搜管理后台</a>
@@ -25,7 +24,7 @@
         </div>
         <iframe src="admin-headbar.jsp" frameborder="0" scrolling="no" style="float:right;height: 50px;"></iframe>
     </div>
-</nav>
+</div>
 
 <div class="container-fluid">
     <div class="row">
@@ -44,7 +43,6 @@
 
             <form name="form" action="rest/file/upload" method="post" enctype="multipart/form-data"
                   class="navbar-form">
-                <!--<h1 class="title">文件上传</h1>-->
                 <input type="file" name="file" class="form-control" id="file" style="margin-top:30px;"
                        required="required">
                 <input type="submit" value="上传" class="form-control" style="margin-left:30px;margin-top:30px;">
@@ -58,19 +56,12 @@
             <!--<h1 class="page-header">通讯录录入</h1>-->
             <h1>通讯录录入</h1>
 
-            <section class="panel p-none m-none panel-form" id="formSection">
-                <!--<div class="panel-head-user">-->
-                <!--<div class="panel-head-foot">-->
-                <!--<div class="panel-head-foot-wrap">-->
-                <!--<span class="panel-title" id="formTitle" data-toggle="tooltip" data-original-title="员工信息登记">员工信息登记</span>-->
-                <!--</div>-->
-                <!--</div>-->
-                <!--</div>-->
+            <div class="panel p-none m-none panel-form" id="formSection">
                 <div class="panel-body-user">
                     <!-- 表格 -->
                     <form class="form-horizontal pt-none apply" enctype="multipart/form-data" action="rest/address/add"
                           method="post">
-                        <div id="formAudit" class="p-none"></div>
+                        <!--<div id="formAudit" class="p-none"></div>-->
                         <div id="formQuestion" class="form-question p-none">
                             <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 m-none height"
                                  data-innertype="text">
@@ -97,7 +88,7 @@
                                 <label class="mt-none mb-xs p-none question-title">固定电话</label>
                                 <input class="form-control-user question-content sqt-input-normal number"
                                        name="fixedPhone"
-                                       maxlength="6" minlength="13" type="text">
+                                       maxlength="20" minlength="20" type="text">
                             </div>
                             <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 m-none height"
                                  data-innertype="phone">
@@ -158,12 +149,7 @@
                         </div>
                     </form>
                 </div>
-                <!--<div class="panel-foot-user ">-->
-                <!--<div class="panel-foot-wrap p-none text-center ">-->
-                <!--由<span class="brand-user" onclick="goHome()"></span>-->
-                <!--</div>-->
-                <!--</div>-->
-            </section>
+            </div>
 
         </div>
 
@@ -171,7 +157,7 @@
              style="display: none">
             <h1>网址导航添加</h1>
 
-            <section class="panel p-none m-none panel-form" id="formSection1">
+            <div class="panel p-none m-none panel-form" id="formSection1">
 
                 <div class="panel-body-user">
                     <!-- 表格 -->
@@ -218,7 +204,7 @@
                         </div>
                     </form>
                 </div>
-            </section>
+            </div>
 
         </div>
 
@@ -226,7 +212,7 @@
              style="display: none">
             <h1>索引管理</h1>
 
-            <section class="panel p-none m-none panel-form" id="formSection2">
+            <div class="panel p-none m-none panel-form" id="formSection2">
 
                 <div class="panel-body-user">
                     <!-- 表格 -->
@@ -274,39 +260,17 @@
                         </div>
                     </form>
                 </div>
-                <!--<div class="panel-foot-user ">-->
-                <!--<div class="panel-foot-wrap p-none text-center ">-->
-                <!--由<span class="brand-user" onclick="goHome()"></span>-->
-                <!--</div>-->
-                <!--</div>-->
-            </section>
+            </div>
 
         </div>
 
     </div>
 </div>
 <style>
-    .inputs {
-        text-align: center;
-    }
 
-    .ss-submit {
-        margin-top: 30px;
-        margin-right: 20px;
-        padding: 7px 15px;
-        background-color: #3c6db0;
-        text-align: center;
-        border-radius: 5px;
-        overflow: hidden;
-        min-width: 80px;
-        border: none;
-        color: #FFF;
-        box-shadow: 1px 1px 1px rgba(75, 75, 75, 0.3);
-    }
 </style>
 
-<!--[if lt IE 9]>
-<!--<script src="../../assets/js/ie8-responsive-file-warning.js"></script>--><![endif]-->
+
 <script src="assets/js/ie-emulation-modes-warning.js"></script>
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -314,11 +278,15 @@
 <script src="assets/js/html5shiv.min.js"></script>
 <script src="assets/js/respond.min.js"></script>
 <![endif]-->
+<!--[if lt IE 9]>
+<script src="http://bootstrap.evget.com/assets/js/ie8-responsive-file-warning.js"></script>
+<![endif]-->
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="assets/js/jquery.js"></script>
 <script src="assets/js/bootstrap.js"></script>
+<!--<script src="assets/js/modernizr.js"></script>-->
 <script src="assets/js/docs.js"></script>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
