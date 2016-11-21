@@ -24,6 +24,9 @@
             font-size: 18px;
             line-height: 20px
         }
+        body{
+            background-color:#222;
+        }
     </style>
 </head>
 <body>
