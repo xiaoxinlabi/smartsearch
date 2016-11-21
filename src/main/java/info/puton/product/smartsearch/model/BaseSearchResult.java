@@ -15,6 +15,8 @@ public class BaseSearchResult {
 
     private Long timestamp;
 
+    private String origin;
+
     private String owner;
 
     private String group;
@@ -61,6 +63,14 @@ public class BaseSearchResult {
         this.timestamp = timestamp;
     }
 
+    public String getOrigin() {
+        return origin;
+    }
+
+    public void setOrigin(String origin) {
+        this.origin = origin;
+    }
+
     public String getOwner() {
         return owner;
     }
@@ -96,6 +106,7 @@ public class BaseSearchResult {
                 ", id='" + id + '\'' +
                 ", score=" + score +
                 ", timestamp=" + timestamp +
+                ", origin='" + origin + '\'' +
                 ", owner='" + owner + '\'' +
                 ", group='" + group + '\'' +
                 ", permissions='" + permissions + '\'' +

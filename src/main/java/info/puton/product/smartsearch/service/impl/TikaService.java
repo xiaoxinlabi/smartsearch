@@ -36,15 +36,20 @@ public class TikaService implements FileExtractor {
     @Override
     public FileFullText extract(File file, Map additional) throws TikaException, SAXException, IOException {
         FileFullText fileFullText = new FileFullText();
-        String fileKey;
         if (additional.containsKey("fileKey")){
-            fileKey = (String) additional.get("fileKey");
+            fileFullText.setId((String) additional.get("fileKey"));
         }else{
-            fileKey = UUID.randomUUID().toString();
+            fileFullText.setId(UUID.randomUUID().toString());
         }
-        fileFullText.setId(fileKey);//id
-        fileFullText.setOwner((String) additional.get("owner"));//owner
-        fileFullText.setGroup((String) additional.get("group"));//group
+        if (additional.containsKey("origin")){
+            fileFullText.setOrigin((String) additional.get("origin"));//origin
+        }
+        if (additional.containsKey("owner")){
+            fileFullText.setOwner((String) additional.get("owner"));//owner
+        }
+        if (additional.containsKey("group")){
+            fileFullText.setGroup((String) additional.get("group"));//group
+        }
         fileFullText.setTimestamp(System.currentTimeMillis());//timestamp
 
         fileFullText.setFileName(file.getName());//fileName
@@ -76,7 +81,7 @@ public class TikaService implements FileExtractor {
                 .replaceAll("\\t+", " ")
                 .replaceAll("\\s+", " ");
         fileFullText.setContent(content);//content
-        System.out.println("Metadata extracted. fileKey:" + fileKey);
+        System.out.println("Metadata extracted. fileKey:" + fileFullText.getId());
         return fileFullText;
     }
 }

@@ -6,6 +6,8 @@ import info.puton.product.smartsearch.service.FileHandler;
 import info.puton.product.smartsearch.service.FileStorage;
 import info.puton.product.smartsearch.service.IConvertService;
 import info.puton.product.smartsearch.util.ServletUtils;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -70,6 +72,11 @@ public class FileController {
             file.transferTo(targetFile);
             //全文处理
             Map additional = new HashMap();
+            Subject currentUser = SecurityUtils.getSubject();
+            if(currentUser.isAuthenticated()){
+                String user = currentUser.getPrincipal().toString();
+                additional.put("origin", user+"上传");
+            }
             fileHandler.handleFile(targetFile.getPath(), additional);
             targetFile.delete();
             return "redirect:/admin.html?status=ok";
