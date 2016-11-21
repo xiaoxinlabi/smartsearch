@@ -1,6 +1,7 @@
 package info.puton.product.smartsearch.controller;
 
 import info.puton.product.smartsearch.constant.FilePath;
+import info.puton.product.smartsearch.constant.Origin;
 import info.puton.product.smartsearch.model.ActionResult;
 import info.puton.product.smartsearch.service.FileHandler;
 import info.puton.product.smartsearch.service.FileStorage;
@@ -75,7 +76,11 @@ public class FileController {
             Subject currentUser = SecurityUtils.getSubject();
             if(currentUser.isAuthenticated()){
                 String user = currentUser.getPrincipal().toString();
-                additional.put("origin", user+"上传");
+                String owner = "";
+                //TODO public or private
+                owner += (user+";");
+                additional.put("origin", Origin.UPLOAD);
+                additional.put("owner", owner);
             }
             fileHandler.handleFile(targetFile.getPath(), additional);
             targetFile.delete();

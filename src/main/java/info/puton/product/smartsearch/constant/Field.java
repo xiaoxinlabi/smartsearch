@@ -5,6 +5,14 @@ package info.puton.product.smartsearch.constant;
  */
 public class Field {
 
+    //common
+
+    public final static String ORIGIN = "origin";
+
+    public final static String OWNER = "owner";
+
+    public final static String GROUP = "group";
+
     //file
 
     public final static String FILE_NAME = "fileName";

@@ -7,4 +7,8 @@ public class Owner {
 
     public final static String DEFAULT = "default";
 
+    public final static String PUBLIC = "public";
+
+    public final static String PRIVATE = "private";
+
 }

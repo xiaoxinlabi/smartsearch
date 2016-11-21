@@ -20,6 +20,9 @@ public class myRealm extends AuthorizingRealm {
             info.addStringPermission("sysmgr:visit");
             info.addStringPermission("index:delete");
             info.addRole("admin");
+        } else {
+            info.addStringPermission("sysmgr:visit");
+            info.addRole("user");
         }
         return info;
     }
@@ -36,7 +39,14 @@ public class myRealm extends AuthorizingRealm {
         if(username.equals("admin") && password.equals("teradata")){
             SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(username, password, getName());
             return info;
-        } else{
+        } else if(username.equals("taoyang") && password.equals("teradata")){
+            SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(username, password, getName());
+            return info;
+        } else if(username.equals("pauline") && password.equals("teradata")){
+            SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(username, password, getName());
+            return info;
+        }
+        else{
             throw new AuthenticationException("用户名或密码错误.");
         }
     }

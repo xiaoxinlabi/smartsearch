@@ -1,6 +1,7 @@
 package info.puton.product.smartsearch.dao;
 
 import info.puton.product.smartsearch.constant.Field;
+import info.puton.product.smartsearch.constant.Group;
 import info.puton.product.smartsearch.constant.Index;
 import info.puton.product.smartsearch.constant.Type;
 import info.puton.product.smartsearch.model.*;
@@ -9,6 +10,7 @@ import org.apache.shiro.subject.Subject;
 import org.elasticsearch.action.search.SearchRequestBuilder;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.common.text.Text;
+import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.SearchHit;
@@ -38,23 +40,15 @@ public class SmartSearchDao {
 
     public PageModel<BaseSearchResult> queryResult(Map params){
 
-        //auth
-        String permissions = "read,";
-        Subject currentUser = SecurityUtils.getSubject();
-        if(currentUser.isAuthenticated()){
-            if(currentUser.getPrincipal().toString().equals("admin")){
-                permissions+="write,";
-            }
-        }
-
         String keyword = (String) params.get("keyword");
         String filterType = (String) params.get("type");
         Integer currentPage = (Integer) params.get("currentPage");
         Integer pageSize = (Integer) params.get("pageSize");
 
         //query
-        QueryBuilder qb = QueryBuilders.multiMatchQuery(
+        QueryBuilder qbRelative = QueryBuilders.multiMatchQuery(
                 keyword,
+                Field.ORIGIN,
                 Field.FILE_NAME,
                 Field.CONTENT,
                 Field.ENGLISH_NAME,
@@ -64,12 +58,31 @@ public class SmartSearchDao {
                 Field.TITLE,
                 Field.KEYWORDS,
                 Field.DESCRIPTION);
+
+        QueryBuilder qbPublic = QueryBuilders.matchPhraseQuery(Field.GROUP, Group.PUBLIC);
+        BoolQueryBuilder bqb = QueryBuilders.boolQuery().must(qbRelative);
+        //auth
+        BoolQueryBuilder bqb_auth =  QueryBuilders.boolQuery().should(qbPublic);
+        String permissions = "read;";
+        Subject currentUser = SecurityUtils.getSubject();
+        if(currentUser.isAuthenticated()){
+            if(currentUser.getPrincipal().toString().equals("admin")){
+                permissions+="write;";
+            }
+            QueryBuilder qbUser = QueryBuilders.matchPhraseQuery(Field.OWNER, currentUser.getPrincipal().toString());
+            bqb_auth = bqb_auth.should(qbUser);
+        }
+        bqb = bqb.must(bqb_auth);
+        
+        QueryBuilder qb = bqb;
+
         SearchRequestBuilder srb = elasticsearchTemplate
                 .getClient()
                 .prepareSearch(
                         Index.FILE_FULL_TEXT,
                         Index.ADDRESS,
-                        Index.WEBSITE);
+                        Index.WEBSITE,
+                        Index.RDBMS);
         srb.setQuery(qb);
 
         //type
@@ -88,6 +101,7 @@ public class SmartSearchDao {
         }
 
         //highlight
+        srb.addHighlightedField(Field.ORIGIN);
         srb.addHighlightedField(Field.FILE_NAME);
         srb.addHighlightedField(Field.CONTENT);
         srb.addHighlightedField(Field.ENGLISH_NAME);
@@ -126,6 +140,14 @@ public class SmartSearchDao {
             String group = (String) searchHit.getSource().get("group");
             Long timestamp = (Long) searchHit.getSource().get("timestamp");
 
+            String origin = (String) searchHit.getSource().get("origin");
+            Map<String, HighlightField> highlightFields = searchHit.highlightFields();
+
+            if(highlightFields.containsKey("origin")){
+                Text[] highlights = highlightFields.get("origin").getFragments();
+                origin = highlights[0].toString();
+            }
+
             if(index.equals(Index.FILE_FULL_TEXT)){
 
                 FileFullText result = new FileFullText();
@@ -135,7 +157,6 @@ public class SmartSearchDao {
                 Long lastModified = (Long) searchHit.getSource().get("lastModified");
 
                 String content = (String) searchHit.getSource().get("content");
-                Map<String, HighlightField> highlightFields = searchHit.highlightFields();
                 if(highlightFields.containsKey("fileName")){
                     Text[] highlights = highlightFields.get("fileName").getFragments();
                     fileName = highlights[0].toString();
@@ -156,6 +177,7 @@ public class SmartSearchDao {
                 result.setOwner(owner);
                 result.setGroup(group);
                 result.setTimestamp(timestamp);
+                result.setOrigin(origin);
 
                 result.setFileName(fileName);
                 result.setSize(size);
@@ -183,7 +205,6 @@ public class SmartSearchDao {
                 String position = (String) searchHit.getSource().get("position");
                 String remark = (String) searchHit.getSource().get("remark");
 
-                Map<String, HighlightField> highlightFields = searchHit.highlightFields();
                 if(highlightFields.containsKey("englishName")){
                     Text[] highlights = highlightFields.get("englishName").getFragments();
                     englishName = highlights[0].toString();
@@ -208,6 +229,7 @@ public class SmartSearchDao {
                 result.setOwner(owner);
                 result.setGroup(group);
                 result.setTimestamp(timestamp);
+                result.setOrigin(origin);
 
                 result.setAccountId(accountId);
                 result.setEnglishName(englishName);
@@ -237,8 +259,6 @@ public class SmartSearchDao {
                 String description = (String) searchHit.getSource().get("description");
                 String content = (String) searchHit.getSource().get("content");
 
-
-                Map<String, HighlightField> highlightFields = searchHit.highlightFields();
                 if(highlightFields.containsKey("title")){
                     Text[] highlights = highlightFields.get("title").getFragments();
                     title = highlights[0].toString();
@@ -263,6 +283,7 @@ public class SmartSearchDao {
                 result.setOwner(owner);
                 result.setGroup(group);
                 result.setTimestamp(timestamp);
+                result.setOrigin(origin);
 
                 result.setUrl(url);
                 result.setTitle(title);

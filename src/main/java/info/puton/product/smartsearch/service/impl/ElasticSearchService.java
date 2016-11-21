@@ -162,6 +162,7 @@ public class ElasticSearchService implements BaseIndexer, FileIndexer, AddressIn
         data.put("owner", fileFullText.getOwner()!=null ? fileFullText.getOwner() : Owner.DEFAULT);
         data.put("group", fileFullText.getGroup()!=null ? fileFullText.getGroup() : Group.DEFAULT);
         data.put("timestamp", fileFullText.getTimestamp()!=null ? fileFullText.getTimestamp():System.currentTimeMillis());
+        data.put("origin", fileFullText.getOrigin()!=null ? fileFullText.getOrigin() : Origin.DEFAULT);
         String type = fileFullText.getType();
         elasticSearchDao.createDocument(Index.FILE_FULL_TEXT, type, id, data);
     }
