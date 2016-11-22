@@ -3,7 +3,7 @@
  */
 
 // 分页功能
-var currentPage = 1, pageSize = 5;
+var currentPage = 1, pageSize = 10;
 
 // 最大显示摘要
 var maxHighlightedSize = 250;
@@ -178,55 +178,15 @@ function getResult(keyword, type, currentPage, pageSize){
                     inHtml+='<div class="ss-record-row">' +
                         '<div class="row">' +
                         '<div class="col-md-8">' +
-                            //'<a class="ss-file-down" data-hdfspath="http://' + hdfsHost + ':50070/webhdfs/v1' + record.hdfsPath + '?op=OPEN"><h4><strong>'+ (record.highlightName ? record.highlightName:record.name) +'</strong></h4></a>' +
-                        '<a class="ss-file-down" data-id="' + record.id + '" data-type = "' + record.type + '"><h4><strong>'+ record.fileName +'</strong></h4></a>' +
+                        '<img src="./img/' + typeToIcon(record.type) + '" class="ss-icon-sm">' +
+                        '<a class="ss-result-row-title ss-file-prev" data-id="' + record.id + '" data-type = "' + record.type + '">'+ record.fileName +'</a>' +
                         '</div>' +
                         indexOperateHtml +
                         '</div>' +
                         '<div class="row">' +
-                        '<div class="col-md-2">' +
-                            //'<a class="ss-file-prev" data-hdfspath="http://' + hdfsHost + ':50070/webhdfs/v1' + record.hdfsPath + '?op=OPEN">' +
-                        '<a class="ss-file-prev" data-id="' + record.id + '" data-type = "' + record.type + '">' +
-                        '<img src="./img/' + typeToIcon(record.type) + '" class="ss-icon-md">' +
-                        '</a>' +
-                        '</div>' +
-                        '<div class="col-md-10" class="ss-record-file-metadata">' +
-                        '<div class="row">' +
-                        '<div class="col-md-12">' +
-                        '文件大小：' + Math.ceil(record.size/1024) + 'KB' +
-                        '</div>' +
-                        '</div>' +
-                        //'<div class="row">' +
-                        //'<div class="col-md-12">' +
-                        //'文件归属：' + record.owner +
-                        //'</div>' +
-                        //'</div>' +
-                        '<div class="row">' +
-                        '<div class="col-md-12">' +
-                        '修改时间：' + modifyDate.toLocaleString() +
-                        '</div>' +
-                        '</div>' +
-                        '<div class="row">' +
-                        '<div class="col-md-12">' +
-                        '索引时间：' + indexDate.toLocaleString() +
-                        '</div>' +
-                        '</div>' +
-                        //'<div class="row">' +
-                        //'<div class="col-md-4">' +
-                        //'在线预览：' +
-                        //'<a class="ss-file-prev" data-id="' + record.id + '" data-type = "' + record.type + '">在线预览 </a>' +
-                        //'</div>' +
-                        //'<div class="col-md-4">' +
-                        //'下载地址：' +
-                        //'<a class="ss-file-down" data-id="' + record.id + '" data-type = "' + record.type + '">点击下载 </a>' +
-                        //'</div>' +
-                        //'</div>' +
-                        '</div>' +
-                        '</div>' +
-                        '<div class="row">' +
                         '<div class="col-md-12">' +
                         '<p>' +
-                         content +
+                        "..." + content + "..."
                         '</p>' +
                         '</div>' +
                         '</div>' +
@@ -236,17 +196,13 @@ function getResult(keyword, type, currentPage, pageSize){
                     inHtml+='<div class="ss-record-row">' +
                         '<div class="row">' +
                         '<div class="col-md-8">' +
-                        '<a><h4><strong><span>'+ record.chineseName +' / '+ record.englishName +' / ' + record.accountId + '</strong></h4></a>' +
+                        '<img src="./img/type_icon/address.png" class="ss-icon-sm">' +
+                        '<a class="ss-result-row-title">'+ record.chineseName +' / '+ record.englishName +' / ' + record.accountId + '</a>' +
                         '</div>' +
                         indexOperateHtml +
                         '</div>' +
                         '<div class="row">' +
-                        '<div class="col-md-2">' +
-                        '<a>' +
-                        '<img src="./img/type_icon/address.png" class="ss-icon-md">' +
-                        '</a>' +
-                        '</div>' +
-                        '<div class="col-md-10" class="ss-record-file-metadata">' +
+                        '<div class="col-md-12">' +
                         '<div class="row">' +
                         '<div class="col-md-4">' +
                         '姓名：' + record.chineseName +
@@ -300,50 +256,15 @@ function getResult(keyword, type, currentPage, pageSize){
                     inHtml+='<div class="ss-record-row">' +
                         '<div class="row">' +
                         '<div class="col-md-8">' +
-                        '<a href="' + record.url + '"><h4><strong>' + record.title + '</strong></h4></a>' +
+                        '<img src="./img/file_type_icon/url.png" class="ss-icon-sm">' +
+                        '<a href="' + record.url + '" class="ss-result-row-title">' + record.title + '</a>' +
                         '</div>' +
                         indexOperateHtml +
                         '</div>' +
                         '<div class="row">' +
-                        '<div class="col-md-2">' +
-                        '<a>' +
-                        '<img src="./img/file_type_icon/url.png" class="ss-icon-md">' +
-                        '</a>' +
-                        '</div>' +
-                        '<div class="col-md-10" class="ss-record-file-metadata">' +
-                        //'<div class="row">' +
-                        //'<div class="col-md-12">' +
-                        //'标题：' + record.title +
-                        //'</div>' +
-                        //'</div>' +
-                        //'<div class="row">' +
-                        //'<div class="col-md-12">' +
-                        //'关键字：' + record.keywords +
-                        //'</div>' +
-                        //'</div>' +
-                        '<div class="row">' +
-                        '<div class="col-md-12">' +
-                        '描述：' + record.description +
-                        '</div>' +
-                        '</div>' +
-                        '<p>' +
-                        '<div class="row">' +
-                        '<div class="col-md-12">' +
-                        '索引时间：' + indexDate.toLocaleString() +
-                        '</div>' +
-                        '</div>' +
-                        '<p>' +
-                        '<div class="row">' +
-                        '<div class="col-md-12">' +
-                        '链接：<a href="' + record.url + '">点击访问</a>' +
-                        '</div>' +
-                        '</div>' +
-                        '</div>' +
-                        '</div>' +
-                        '<div class="row">' +
                         '<div class="col-md-12">' +
                         '<p>' +
-                         content +
+                        "..." + content + "..."
                         '</p>' +
                         '</div>' +
                         '</div>' +
@@ -455,6 +376,8 @@ function typeToName(filetype){
             return "xls(x)";
         case "pdf":
             return "pdf";
+        case "file":
+            return "文件";
         case "address":
             return "通讯录";
         case "website":

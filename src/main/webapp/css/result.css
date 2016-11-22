@@ -10,6 +10,7 @@
 .ss-icon-sm{
     height: 20px;
     width: 20px;
+    vertical-align:middle;
 }
 
 .ss-icon-md{
@@ -17,8 +18,11 @@
     height: auto;
 }
 
-.ss-record-file-metadata{
-    margin-left: 100px;
+.ss-result-row-title{
+    vertical-align: middle;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: underline;
 }
 
 .ss-record-manage{
@@ -42,18 +46,4 @@ a{
      /*background-color: yellow;*/
      /*color: teal;*/
     color:#B41116
-}
-
-.ss-content-middle-right{
-    margin-top: 55px;
-    border-left: 1px solid #cccccc;
-}
-
-@media screen and (max-width: 991px) {
-
-    .ss-content-middle-right{
-        margin-top: 0px;
-        border-left: 0px;
-    }
-
 }
