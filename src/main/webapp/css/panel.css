@@ -90,10 +90,10 @@ html, body {
 
 .panel-form {
     background-color: #fff;
-    box-shadow: 0px 3px 5px 0px #dfdfdf;
+    box-shadow: 0px 3px 5px 3px #dfdfdf;
     /*box-shadow: 0px 3px 5px 0px #ffff00;*/
     border-radius: 2px 2px 2px 2px;
-    position:relative;
+    position: relative;
     behavior: url(css/PIE.htc);
     z-index: 10;
     /*display :inline-block;*/
@@ -152,7 +152,7 @@ html, body {
 .ss-submit {
     margin-top: 30px;
     margin-right: 20px;
-    padding: 7px 15px;
+    /*padding: 7px 15px;*/
     background-color: #3c6db0;
     text-align: center;
     border-radius: 5px;
@@ -165,5 +165,7 @@ html, body {
     behavior: url(css/PIE.htc);
 }
 
-
-
+input {
+    line-height: 34px;
+    height: 34px;
+}
