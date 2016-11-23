@@ -1,10 +1,7 @@
 package info.puton.product.smartsearch.dao;
 
 import org.apache.hadoop.conf.Configuration;
-import org.apache.hadoop.hbase.HBaseConfiguration;
-import org.apache.hadoop.hbase.HColumnDescriptor;
-import org.apache.hadoop.hbase.HTableDescriptor;
-import org.apache.hadoop.hbase.TableName;
+import org.apache.hadoop.hbase.*;
 import org.apache.hadoop.hbase.client.*;
 import org.apache.hadoop.hbase.filter.Filter;
 import org.apache.hadoop.hbase.util.Bytes;
@@ -31,6 +28,15 @@ public class HBaseDao {
             System.exit(0);
         }
         else {
+            if(tableName.contains(":")){
+                String[] arr = tableName.split(":");
+                String namespace = arr[0];
+                try{
+                    admin.createNamespace(NamespaceDescriptor.create(namespace).build());
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
             HTableDescriptor tableDesc = new HTableDescriptor(TableName.valueOf(tableName));
             tableDesc.addFamily(new HColumnDescriptor(columnFamily));
             admin.createTable(tableDesc);

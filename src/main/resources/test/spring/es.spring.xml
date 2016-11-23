@@ -7,7 +7,7 @@
         http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <elasticsearch:transport-client id="client" cluster-nodes="38.62.56.33:9300,38.62.56.34:9300,38.62.56.35:9300,38.62.56.36:9300,38.62.56.37:9300,38.62.56.38:9300,38.62.56.39:9300,38.62.56.40:9300" cluster-name="elasticsearch1" />
+    <elasticsearch:transport-client id="client" cluster-nodes="tdhdn1:9300,tdhdn2:9300,tdhdn3:9300,tdhdn4:9300,tdhdn5:9300,tdhdn6:9300,tdhdn7:9300,tdhdn8:9300" cluster-name="elasticsearch1" client-transport-sniff="false" client-transport-ping-timeout="10s" />
 
     <bean name="elasticsearchTemplate" class="org.springframework.data.elasticsearch.core.ElasticsearchTemplate">
         <constructor-arg name="client" ref="client"/>

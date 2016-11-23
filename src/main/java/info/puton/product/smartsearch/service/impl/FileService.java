@@ -28,8 +28,8 @@ public class FileService implements FileHandler {
 
     @Override
     public void initFile() throws Exception {
-        fileStorage.initFile();
         fileIndexer.initFile();
+        fileStorage.initFile();
     }
 
     @Override

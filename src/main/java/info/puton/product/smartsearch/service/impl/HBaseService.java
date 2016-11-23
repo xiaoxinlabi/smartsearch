@@ -19,7 +19,7 @@ public class HBaseService implements FileStorage {
     HBaseDao hbd;
 
     static class TABLE {
-        static String FILE = "file_tb";
+        static String FILE = "oa:file_tb";
     }
 
     static class COLUMN_FAMILY {

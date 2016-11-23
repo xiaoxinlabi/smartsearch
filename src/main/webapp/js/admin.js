@@ -31,7 +31,7 @@ $(function(){
 
     $("#submit-address").on('click',function(){
         if($("#accountId").val()!=null && $("#accountId").val()!=""){
-            document.forms["form-address"].submit();
+            $("#form-address").submit();
         }else{
             var options = {
                 content : '请填写账号ID!',
@@ -43,7 +43,7 @@ $(function(){
 
     $("#submit-website").on('click',function(){
         if($("#url").val()!=null && $("#url").val()!=""){
-            document.forms["form-website"].submit();
+            $("#form-website").submit();
         }else{
             var options = {
                 content : '请填写网址链接!',
