@@ -28,15 +28,16 @@ public class HBaseDao {
             System.exit(0);
         }
         else {
-            if(tableName.contains(":")){
-                String[] arr = tableName.split(":");
-                String namespace = arr[0];
-                try{
-                    admin.createNamespace(NamespaceDescriptor.create(namespace).build());
-                }catch (Exception e){
-                    e.printStackTrace();
-                }
-            }
+//            if(tableName.contains(":")){
+//                String[] arr = tableName.split(":");
+//                String namespace = arr[0];
+//                try{
+//                    admin.createNamespace(NamespaceDescriptor.create(namespace).build());
+//                }catch (Exception e){
+//                    e.printStackTrace();
+//                }
+//            }
+            System.out.println("没有表，所以要新建");
             HTableDescriptor tableDesc = new HTableDescriptor(TableName.valueOf(tableName));
             tableDesc.addFamily(new HColumnDescriptor(columnFamily));
             admin.createTable(tableDesc);

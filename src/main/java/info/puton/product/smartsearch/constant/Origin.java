@@ -7,6 +7,8 @@ public class Origin {
 
     public final static String DEFAULT = "default";
 
-    public final static String UPLOAD = "用户上传";
+    public final static String UPLOAD = "upload";
+
+    public final static String PORTAL = "portal";
 
 }
