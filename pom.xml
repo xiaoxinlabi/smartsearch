@@ -282,13 +282,6 @@
             <addMavenDescriptor>false</addMavenDescriptor>
           </archive>
           <warName>smartsearch</warName>
-          <webResources>
-            <resource>
-              <directory>src/main/resources/${package.environment}</directory>
-              <targetPath>WEB-INF/classes</targetPath>
-              <filtering>true</filtering>
-            </resource>
-          </webResources>
         </configuration>
       </plugin>
 
@@ -298,10 +291,19 @@
       <resource>
         <directory>src/main/resources</directory>
         <includes>
-          <include>**/*.properties</include>
-          <include>**/*.xml</include>
+          <include>public/*</include>
         </includes>
-        <filtering>true</filtering>
+        <excludes>
+          <exclude>dev/*</exclude>
+          <exclude>test/*</exclude>
+          <exclude>prod/*</exclude>
+        </excludes>
+      </resource>
+      <resource>
+        <directory>src/main/resources/${package.environment}</directory>
+      </resource>
+      <resource>
+        <directory>src/main/resources/public</directory>
       </resource>
     </resources>
   </build>

@@ -16,8 +16,6 @@ $(function(){
 
 function init(){
 
-    //user = $("#headbar").contents().find("#user").text();
-
     if($_GET['wd']!=null && $_GET['wd']!=""){
         $("#search-wd").val(decodeURIComponent($_GET['wd']));
 
