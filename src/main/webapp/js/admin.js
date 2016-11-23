@@ -29,6 +29,30 @@ $(function(){
         deleteCache($(this).data("type"));
     });
 
+    $("#submit-address").on('click',function(){
+        if($("#accountId").val()!=null && $("#accountId").val()!=""){
+            document.forms["form-address"].submit();
+        }else{
+            var options = {
+                content : '请填写账号ID!',
+                placement : 'bottom'
+            };
+            $("#accountId").popover(options).popover('show');
+        }
+    });
+
+    $("#submit-website").on('click',function(){
+        if($("#url").val()!=null && $("#url").val()!=""){
+            document.forms["form-website"].submit();
+        }else{
+            var options = {
+                content : '请填写网址链接!',
+                placement : 'bottom'
+            };
+            $("#url").popover(options).popover('show');
+        }
+    });
+
 });
 
 function initIndex(type){

@@ -16,7 +16,7 @@
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header">
-            <img src="custom/hsb/img/hsb1.jpg" style="margin-left: -15px" />
+            <!--<img src="custom/hsb/img/hsb1.jpg" style="margin-left: -15px" />-->
             <a class="navbar-brand" href="#">智搜管理后台</a>
             <a class="navbar-brand" href="index.html" style="font-size: 15px;padding: 16px 13px;">智搜首页</a>
         </div>
@@ -58,7 +58,7 @@
             <div class="panel p-none m-none panel-form" id="formSection">
                 <div class="panel-body-user">
                     <!-- 表格 -->
-                    <form class="form-horizontal pt-none apply" enctype="multipart/form-data" action="rest/address/add"
+                    <form class="form-horizontal pt-none apply" id="form-address" enctype="multipart/form-data" action="rest/address/add"
                           method="post">
                         <!--<div id="formAudit" class="p-none"></div>-->
                         <div id="formQuestion" class="form-question p-none">
@@ -67,8 +67,10 @@
                                 <label class="mt-none mb-xs p-none question-title">账号ID
                                     <span class="necessary text-danger">*</span>
                                 </label>
-                                <input class="form-control-user question-content sqt-input-normal" name="accountId"
-                                       required="required" type="text">
+                                <input class="form-control-user question-content sqt-input-normal" id="accountId" name="accountId"
+                                       type="text">
+                                       <!--required="required" type="text">-->
+
                             </div>
                             <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 m-none height"
                                  data-innertype="text">
@@ -143,7 +145,7 @@
                             </div>
                         </div>
                         <div class="inputs">
-                            <input type="submit" name="submit" value="提交" class="ss-submit">
+                            <input type="button" name="submit" value="提交" class="ss-submit" id="submit-address">
                             <input type="reset" name="reset" value="重置" class="ss-submit">
                         </div>
                     </form>
@@ -160,7 +162,7 @@
 
                 <div class="panel-body-user">
                     <!-- 表格 -->
-                    <form class="form-horizontal pt-none apply" enctype="multipart/form-data" action="rest/website/add"
+                    <form class="form-horizontal pt-none apply" id="form-website" enctype="multipart/form-data" action="rest/website/add"
                           method="post">
                         <div class="p-none"></div>
                         <div class="form-question p-none">
@@ -169,7 +171,7 @@
                                 <label class="mt-none mb-xs p-none question-title">网站链接
                                     <span class="necessary text-danger">*</span>
                                 </label>
-                                <input class="form-control-user question-content sqt-input-normal" name="url"
+                                <input class="form-control-user question-content sqt-input-normal" id="url" name="url"
                                        required="required" type="text">
                             </div>
                             <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 m-none height"
@@ -198,7 +200,7 @@
                             </div>
                         </div>
                         <div class="inputs">
-                            <input type="submit" name="submit" value="提交" class="ss-submit">
+                            <input type="button" name="submit" value="提交" class="ss-submit" id="submit-website">
                             <input type="reset" name="reset" value="重置" class="ss-submit">
                         </div>
                     </form>
