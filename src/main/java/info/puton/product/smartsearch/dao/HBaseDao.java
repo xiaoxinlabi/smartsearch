@@ -23,6 +23,7 @@ public class HBaseDao {
      */
     public void createTable(String tableName, String columnFamily) throws Exception {
         HBaseAdmin admin = new HBaseAdmin(conf);
+        //卡在这里
         if(admin.tableExists(tableName)) {
             System.out.println("Table exists!");
             System.exit(0);

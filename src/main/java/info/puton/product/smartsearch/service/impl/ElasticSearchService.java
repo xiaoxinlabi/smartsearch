@@ -278,23 +278,12 @@ public class ElasticSearchService implements BaseIndexer, FileIndexer, AddressIn
         elasticSearchDao.createIndex(Index.RDBMS);
         //law
         String lawSource =
-                "{\n" +
+                        "{\n" +
                         "  \"properties\": {\n" +
-                        "    \"LAWNAME\": {\n" +
+                        "    \"lawname\": {\n" +
                         "      \"type\": \"string\",\n" +
                         "      \"analyzer\": \"" + Analyzer.IK_SMART + "\"\n" +
                         "    },\n" +
-                        "    \"REMARK\": {\n" +
-                        "      \"type\": \"string\",\n" +
-                        "      \"analyzer\": \"" + Analyzer.IK_SMART + "\"\n" +
-                        "    }\n" +
-                        "  }\n" +
-                        "}";
-        elasticSearchDao.createSchema(Index.RDBMS, Type.LAW, lawSource);
-        //lawItem
-        String lawItemSource =
-                "{\n" +
-                        "  \"properties\": {\n" +
                         "    \"itemtitle\": {\n" +
                         "      \"type\": \"string\",\n" +
                         "      \"analyzer\": \"" + Analyzer.IK_SMART + "\"\n" +
@@ -305,6 +294,6 @@ public class ElasticSearchService implements BaseIndexer, FileIndexer, AddressIn
                         "    }\n" +
                         "  }\n" +
                         "}";
-        elasticSearchDao.createSchema(Index.RDBMS, Type.LAW_ITEM, lawItemSource);
+        elasticSearchDao.createSchema(Index.RDBMS, Type.LAW, lawSource);
     }
 }

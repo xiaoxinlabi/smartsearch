@@ -57,7 +57,10 @@ public class SmartSearchDao {
                 Field.ACCOUNT_ID,
                 Field.TITLE,
                 Field.KEYWORDS,
-                Field.DESCRIPTION);
+                Field.DESCRIPTION,
+                Field.LAW_NAME,
+                Field.ITEM_TITLE,
+                Field.ITEM_CONTENT);
 
         QueryBuilder qbPublic = QueryBuilders.matchPhraseQuery(Field.GROUP, Group.PUBLIC);
         BoolQueryBuilder bqb = QueryBuilders.boolQuery().must(qbRelative);
@@ -111,6 +114,9 @@ public class SmartSearchDao {
         srb.addHighlightedField(Field.TITLE);
         srb.addHighlightedField(Field.KEYWORDS);
         srb.addHighlightedField(Field.DESCRIPTION);
+        srb.addHighlightedField(Field.LAW_NAME);
+        srb.addHighlightedField(Field.ITEM_TITLE);
+        srb.addHighlightedField(Field.ITEM_CONTENT);
 //        srb.setHighlighterPhraseLimit(maxContentLength);
         srb.setHighlighterPreTags("<span class=\"ss-highlight\">");
         srb.setHighlighterPostTags("</span>");
@@ -289,6 +295,48 @@ public class SmartSearchDao {
                 result.setTitle(title);
                 result.setKeywords(keywords);
                 result.setDescription(description);
+                result.setContent(content);
+
+                //auth
+                result.setPermissions(permissions);
+
+                resultList.add(result);
+
+            } else if (index.equals(Index.RDBMS)) {
+
+                Law result = new Law();
+
+                String lawname = (String) searchHit.getSource().get("lawname");
+                String itemtitle = (String) searchHit.getSource().get("itemtitle");
+                String itemcontent = (String) searchHit.getSource().get("itemcontent");
+                String content = (String) searchHit.getSource().get("itemcontent");
+
+                if(highlightFields.containsKey("lawname")){
+                    Text[] highlights = highlightFields.get("lawname").getFragments();
+                    lawname = highlights[0].toString();
+                }
+                if(highlightFields.containsKey("itemtitle")){
+                    Text[] highlights = highlightFields.get("itemtitle").getFragments();
+                    itemtitle = highlights[0].toString();
+                }
+                if(highlightFields.containsKey("itemcontent")){
+                    Text[] highlights = highlightFields.get("itemcontent").getFragments();
+                    content = highlights[0].toString();
+                }
+
+                result.setIndex(index);
+                result.setType(type);
+                result.setId(id);
+                result.setScore(score);
+                result.setOwner(owner);
+                result.setGroup(group);
+                result.setTimestamp(timestamp);
+                result.setOrigin(origin);
+
+                result.setId(id);
+                result.setLawname(lawname);
+                result.setItemtitle(itemtitle);
+                result.setItemcontent(itemcontent);
                 result.setContent(content);
 
                 //auth

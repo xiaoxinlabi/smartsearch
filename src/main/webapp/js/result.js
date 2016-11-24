@@ -151,7 +151,7 @@ function getResult(keyword, type, currentPage, pageSize){
                 indexDate.setTime(record.timestamp);
 
                 indexOperateHtml =
-                    '<div class="col-md-4">' +
+                    '<div class="col-md-1">' +
                     //'<div class="dropdown pull-right ss-record-manage" ' + buttonStyle + ' >' +
                     '<div class="dropdown pull-right ss-record-manage" >' +
                     '<button class="btn btn-danger btn-xs dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">' +
@@ -166,7 +166,9 @@ function getResult(keyword, type, currentPage, pageSize){
                     '';
 
                 if(record.content!=null){
-                    content = record.content.length <= maxHighlightedSize ? record.content : record.content.substring(0,200)
+                    content = record.content.length <= maxHighlightedSize ? "..." + record.content + "..." : record.content.substring(0,maxHighlightedSize)
+                }else{
+                    content = ""
                 }
 
                 if(index == "filefulltext"){
@@ -175,7 +177,7 @@ function getResult(keyword, type, currentPage, pageSize){
                     modifyDate.setTime(record.lastModified);
                     inHtml+='<div class="ss-record-row">' +
                         '<div class="row">' +
-                        '<div class="col-md-8">' +
+                        '<div class="col-md-11">' +
                         '<img src="./img/' + typeToIcon(record.type) + '" class="ss-icon-sm">' +
                         '<a class="ss-result-row-title ss-file-prev" data-id="' + record.id + '" data-type = "' + record.type + '">'+ record.fileName +'</a>' +
                         '</div>' +
@@ -184,7 +186,7 @@ function getResult(keyword, type, currentPage, pageSize){
                         '<div class="row">' +
                         '<div class="col-md-12">' +
                         '<p>' +
-                        "..." + content + "..."
+                        content
                         '</p>' +
                         '</div>' +
                         '</div>' +
@@ -193,7 +195,7 @@ function getResult(keyword, type, currentPage, pageSize){
                     //通讯录
                     inHtml+='<div class="ss-record-row">' +
                         '<div class="row">' +
-                        '<div class="col-md-8">' +
+                        '<div class="col-md-11">' +
                         '<img src="./img/type_icon/address.png" class="ss-icon-sm">' +
                         '<a class="ss-result-row-title">'+ record.chineseName +' / '+ record.englishName +' / ' + record.accountId + '</a>' +
                         '</div>' +
@@ -253,7 +255,7 @@ function getResult(keyword, type, currentPage, pageSize){
                     //网站
                     inHtml+='<div class="ss-record-row">' +
                         '<div class="row">' +
-                        '<div class="col-md-8">' +
+                        '<div class="col-md-11">' +
                         '<img src="./img/file_type_icon/url.png" class="ss-icon-sm">' +
                         '<a href="' + record.url + '" class="ss-result-row-title">' + record.title + '</a>' +
                         '</div>' +
@@ -262,7 +264,26 @@ function getResult(keyword, type, currentPage, pageSize){
                         '<div class="row">' +
                         '<div class="col-md-12">' +
                         '<p>' +
-                        "..." + content + "..."
+                        content
+                        '</p>' +
+                        '</div>' +
+                        '</div>' +
+                        '';
+
+                } else if (index == "rdbms") {
+                    //关系型库
+                    inHtml+='<div class="ss-record-row">' +
+                        '<div class="row">' +
+                        '<div class="col-md-11">' +
+                        '<img src="./img/file_type_icon/readme.png" class="ss-icon-sm">' +
+                        '<a class="ss-result-row-title">' + record.lawname + '</a>' +
+                        '</div>' +
+                        indexOperateHtml +
+                        '</div>' +
+                        '<div class="row">' +
+                        '<div class="col-md-12">' +
+                        '<p>' +
+                        content
                         '</p>' +
                         '</div>' +
                         '</div>' +
@@ -355,6 +376,8 @@ function typeToIcon(filetype){
             return "file_type_icon/url.png";
         case "file":
             return "type_icon/file.png";
+        case "law":
+            return "file_type_icon/readme.png";
         default :
             return "type_icon/all.png";
     }
@@ -380,6 +403,8 @@ function typeToName(filetype){
             return "通讯录";
         case "website":
             return "网页";
+        case "law":
+            return "内控合规";
         default :
             return "所有类型";
     }

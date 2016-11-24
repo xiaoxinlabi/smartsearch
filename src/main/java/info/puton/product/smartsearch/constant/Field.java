@@ -36,4 +36,11 @@ public class Field {
 
     public final static String DESCRIPTION = "description";
 
+    //law
+    public final static String LAW_NAME = "lawname";
+
+    public final static String ITEM_TITLE = "itemtitle";
+
+    public final static String ITEM_CONTENT = "itemcontent";
+
 }
