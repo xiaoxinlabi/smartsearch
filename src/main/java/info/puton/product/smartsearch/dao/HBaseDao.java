@@ -13,7 +13,15 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class HBaseDao {
 
-    static Configuration conf = HBaseConfiguration.create();
+    Configuration conf;
+
+    public HBaseDao() {
+        Configuration HBASE_CONFIG = new Configuration();
+        HBASE_CONFIG.addResource("hadoop/core-site.xml");
+        HBASE_CONFIG.addResource("hadoop/hdfs-site.xml");
+        HBASE_CONFIG.addResource("hadoop/hbase-site.xml");
+        conf = HBaseConfiguration.create(HBASE_CONFIG);
+    }
 
     /**
      * create a table :table_name(columnFamily)
@@ -23,7 +31,6 @@ public class HBaseDao {
      */
     public void createTable(String tableName, String columnFamily) throws Exception {
         HBaseAdmin admin = new HBaseAdmin(conf);
-        //卡在这里
         if(admin.tableExists(tableName)) {
             System.out.println("Table exists!");
             System.exit(0);
@@ -38,7 +45,6 @@ public class HBaseDao {
 //                    e.printStackTrace();
 //                }
 //            }
-            System.out.println("没有表，所以要新建");
             HTableDescriptor tableDesc = new HTableDescriptor(TableName.valueOf(tableName));
             tableDesc.addFamily(new HColumnDescriptor(columnFamily));
             admin.createTable(tableDesc);
@@ -284,7 +290,7 @@ public class HBaseDao {
 
         HBaseDao hbd = new HBaseDao();
 
-        HTable table = new HTable(conf, "test_tb");
+        HTable table = new HTable(hbd.conf, "test_tb");
 //        ResultScanner rs = hbd.scanRange("test_tb", "2013-07-10*", "2013-07-11*");
         ResultScanner rs = hbd.scanRange("test_tb", "100001", "100004");
 //        ResultScanner rs = hbd.scanAll("test_tb");
