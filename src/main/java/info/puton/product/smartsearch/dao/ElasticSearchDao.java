@@ -4,6 +4,7 @@ import org.elasticsearch.action.admin.indices.create.CreateIndexResponse;
 import org.elasticsearch.action.admin.indices.delete.DeleteIndexResponse;
 import org.elasticsearch.action.admin.indices.mapping.put.PutMappingResponse;
 import org.elasticsearch.action.delete.DeleteResponse;
+import org.elasticsearch.action.get.GetResponse;
 import org.elasticsearch.action.index.IndexResponse;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.index.query.QueryBuilder;
@@ -53,6 +54,12 @@ public class ElasticSearchDao {
     public void deleteDocument(String index, String type, String id){
         DeleteResponse response = elasticsearchTemplate.getClient().prepareDelete(index, type, id).get();
         System.out.println("Index deleted. id:" + response.getId());
+    }
+
+    public Map getDocument(String index, String type, String id){
+        GetResponse response = elasticsearchTemplate.getClient().prepareGet(index, type, id).get();
+        Map source = response.getSourceAsMap();
+        return source;
     }
 
 }

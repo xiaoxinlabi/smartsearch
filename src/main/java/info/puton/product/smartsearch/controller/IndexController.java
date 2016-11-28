@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 
 /**
  * Created by taoyang on 11/5/15.
@@ -38,6 +40,16 @@ public class IndexController {
             }
         }
         return new ActionResult(true);
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/get", method = RequestMethod.GET)
+    public ActionResult get(
+            @RequestParam(value="index",defaultValue="") String index
+            , @RequestParam(value="type",defaultValue="") String type
+            , @RequestParam(value="id",defaultValue="") String id){
+        Map source= baseIndexer.getDocument(index, type, id);
+        return new ActionResult(source);
     }
 
 }

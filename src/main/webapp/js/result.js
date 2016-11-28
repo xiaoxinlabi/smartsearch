@@ -53,7 +53,7 @@ function init(){
 
     $('#ss-result-list').on('click','.ss-file-prev', function () {
 
-        window.open ('./preview.html?id=' + $(this).data('id') + '&type=' + $(this).data('type'), 'newwindow', 'height=800, width=1200, top=100, left=200, toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no, status=no');
+        window.open ('./file-preview.html?id=' + $(this).data('id') + '&type=' + $(this).data('type'), 'newwindow', 'height=800, width=1200, top=100, left=200, toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no, status=no');
 
     });
 
@@ -257,7 +257,7 @@ function getResult(keyword, type, currentPage, pageSize){
                         '<div class="row">' +
                         '<div class="col-md-11">' +
                         '<img src="./img/file_type_icon/url.png" class="ss-icon-sm">' +
-                        '<a href="' + record.url + '" class="ss-result-row-title">' + record.title + '</a>' +
+                        '<a href="' + record.url + '" target = "_blank" class="ss-result-row-title">' + record.title + '</a>' +
                         '</div>' +
                         indexOperateHtml +
                         '</div>' +
@@ -276,13 +276,14 @@ function getResult(keyword, type, currentPage, pageSize){
                         '<div class="row">' +
                         '<div class="col-md-11">' +
                         '<img src="./img/file_type_icon/readme.png" class="ss-icon-sm">' +
-                        '<a class="ss-result-row-title">' + record.lawname + '</a>' +
+                        '<a class="ss-result-row-title" href="./law-preview.html?index='+ record.index + '&type='+ record.type + '&id='+ record.id + '" target="_blank">' + record.lawname + '</a>' +
                         '</div>' +
                         indexOperateHtml +
                         '</div>' +
                         '<div class="row">' +
                         '<div class="col-md-12">' +
                         '<p>' +
+                        record.itemtitle + '<br>' +
                         content
                         '</p>' +
                         '</div>' +

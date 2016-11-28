@@ -5,7 +5,10 @@ import org.apache.hadoop.hbase.*;
 import org.apache.hadoop.hbase.client.*;
 import org.apache.hadoop.hbase.filter.Filter;
 import org.apache.hadoop.hbase.util.Bytes;
+import org.apache.hadoop.security.UserGroupInformation;
 import org.springframework.stereotype.Repository;
+
+import java.io.IOException;
 
 /**
  * Created by taoyang on 2016/9/19.
@@ -21,6 +24,14 @@ public class HBaseDao {
         HBASE_CONFIG.addResource("hadoop/hdfs-site.xml");
         HBASE_CONFIG.addResource("hadoop/hbase-site.xml");
         conf = HBaseConfiguration.create(HBASE_CONFIG);
+        try {
+            UserGroupInformation.setConfiguration(conf);
+            UserGroupInformation.loginUserFromKeytab(
+                    "hstdh",
+                    "hadoop/hstdh.keytab");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -36,15 +47,15 @@ public class HBaseDao {
             System.exit(0);
         }
         else {
-//            if(tableName.contains(":")){
-//                String[] arr = tableName.split(":");
-//                String namespace = arr[0];
-//                try{
-//                    admin.createNamespace(NamespaceDescriptor.create(namespace).build());
-//                }catch (Exception e){
-//                    e.printStackTrace();
-//                }
-//            }
+            if(tableName.contains(":")){
+                String[] arr = tableName.split(":");
+                String namespace = arr[0];
+                try{
+                    admin.createNamespace(NamespaceDescriptor.create(namespace).build());
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
             HTableDescriptor tableDesc = new HTableDescriptor(TableName.valueOf(tableName));
             tableDesc.addFamily(new HColumnDescriptor(columnFamily));
             admin.createTable(tableDesc);
