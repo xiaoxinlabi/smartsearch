@@ -42,9 +42,11 @@
 
             <form name="form" action="rest/file/upload" method="post" enctype="multipart/form-data"
                   class="navbar-form">
-                <input type="file" name="file" class="form-control" id="file" style="margin-top:30px;"
-                       required="required">
-                <input type="submit" value="上传" class="form-control" style="margin-left:30px;margin-top:30px;">
+                <div id="ss-file-upload">
+                    <input type="file" name="file" class="form-control ss-file-upload-input" id="file" required="required">
+                    <input type="submit" value="上传" class="form-control ss-file-upload-input" >
+                    <input type="checkbox" name="group" value="public" class="ss-file-upload-input">共享
+                </div>
             </form>
 
 
@@ -260,9 +262,6 @@
 <!--[if lt IE 9]>
 <script src="assets/js/html5shiv.min.js"></script>
 <script src="assets/js/respond.min.js"></script>
-<![endif]-->
-<!--[if lt IE 9]>
-<script src="http://bootstrap.evget.com/assets/js/ie8-responsive-file-warning.js"></script>
 <![endif]-->
 <!-- Bootstrap core JavaScript
 ================================================== -->

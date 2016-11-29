@@ -1,6 +1,7 @@
 package info.puton.product.smartsearch.controller;
 
 import info.puton.product.smartsearch.constant.FilePath;
+import info.puton.product.smartsearch.constant.Group;
 import info.puton.product.smartsearch.constant.Origin;
 import info.puton.product.smartsearch.model.ActionResult;
 import info.puton.product.smartsearch.service.FileHandler;
@@ -48,7 +49,8 @@ public class FileController {
 
     @RequestMapping(value = "/upload", method = RequestMethod.POST)
     public String upload(@RequestParam(value = "file") MultipartFile file,
-            HttpServletRequest request) {
+                         @RequestParam(value = "group", defaultValue = Group.DEFAULT) String group,
+                         HttpServletRequest request) {
         //设置日期格式
         SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd");
         // new Date()为获取当前系统时间
@@ -77,7 +79,9 @@ public class FileController {
             if(currentUser.isAuthenticated()){
                 String user = currentUser.getPrincipal().toString();
                 String owner = "";
-                //TODO public or private
+                if(group.equals(Group.PUBLIC)){
+                    additional.put("group", Group.PUBLIC);
+                }
                 owner += (user+";");
                 additional.put("origin", Origin.UPLOAD);
                 additional.put("owner", owner);
