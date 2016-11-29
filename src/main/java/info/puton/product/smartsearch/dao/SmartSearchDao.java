@@ -68,7 +68,7 @@ public class SmartSearchDao {
         BoolQueryBuilder bqb_auth =  QueryBuilders.boolQuery().should(qbPublic);
         String permissions = "read;";
         Subject currentUser = SecurityUtils.getSubject();
-        if(currentUser.isAuthenticated()){
+        if(currentUser.isAuthenticated() || currentUser.isRemembered()){
             if(currentUser.getPrincipal().toString().equals("admin")){
                 permissions+="write;";
             }
