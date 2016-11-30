@@ -54,7 +54,6 @@ public class SmartSearchDao {
                 Field.ENGLISH_NAME,
                 Field.CHINESE_NAME,
                 Field.MOBILE_PHONE,
-                Field.ACCOUNT_ID,
                 Field.TITLE,
                 Field.KEYWORDS,
                 Field.DESCRIPTION,
@@ -110,7 +109,6 @@ public class SmartSearchDao {
         srb.addHighlightedField(Field.ENGLISH_NAME);
         srb.addHighlightedField(Field.CHINESE_NAME);
         srb.addHighlightedField(Field.MOBILE_PHONE);
-        srb.addHighlightedField(Field.ACCOUNT_ID);
         srb.addHighlightedField(Field.TITLE);
         srb.addHighlightedField(Field.KEYWORDS);
         srb.addHighlightedField(Field.DESCRIPTION);
@@ -223,10 +221,6 @@ public class SmartSearchDao {
                 if(highlightFields.containsKey("mobilePhone")){
                     Text[] highlights = highlightFields.get("mobilePhone").getFragments();
                     mobilePhone = highlights[0].toString();
-                }
-                if(highlightFields.containsKey("accountId")){
-                    Text[] highlights = highlightFields.get("accountId").getFragments();
-                    accountId = highlights[0].toString();
                 }
 
                 result.setIndex(index);
