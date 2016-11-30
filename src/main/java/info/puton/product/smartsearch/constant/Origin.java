@@ -11,4 +11,6 @@ public class Origin {
 
     public final static String PORTAL = "portal";
 
+    public final static String ADDRESS = "address";
+
 }

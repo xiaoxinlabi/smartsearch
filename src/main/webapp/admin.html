@@ -56,107 +56,135 @@
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main ss-panel" id="ss-address-panel"
              style="display: none;">
             <!--<h1 class="page-header">通讯录录入</h1>-->
-            <h1>通讯录录入</h1>
+            <!--<h1>通讯录录入</h1>-->
 
-            <div class="panel p-none m-none panel-form" id="formSection">
-                <div class="panel-body-user">
-                    <!-- 表格 -->
-                    <form class="form-horizontal pt-none apply" id="form-address" enctype="multipart/form-data" action="rest/address/add"
-                          method="post">
-                        <!--<div id="formAudit" class="p-none"></div>-->
-                        <div id="formQuestion" class="form-question p-none">
-                            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 m-none height"
-                                 data-innertype="text">
-                                <label class="mt-none mb-xs p-none question-title">账号ID
-                                    <span class="necessary text-danger">*</span>
-                                </label>
-                                <input class="form-control-user question-content sqt-input-normal" id="accountId" name="accountId"
-                                       type="text">
-                                       <!--required="required" type="text">-->
+            <ul id="myTab" class="nav nav-tabs">
+                <li class="active">
+                    <a href="#addAddress" data-toggle="tab">
+                        通讯录新增
+                    </a>
+                </li>
+                <li>
+                    <a href="#uploadAddress" data-toggle="tab">
+                        通讯录导入
+                    </a>
+                </li>
+            </ul>
+            <div id="myTabContent" class="tab-content">
+                <div class="tab-pane fade in active" id="addAddress">
 
-                            </div>
-                            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 m-none height"
-                                 data-innertype="text">
-                                <label class="mt-none mb-xs p-none question-title">英文名</label>
-                                <input class="form-control-user question-content sqt-input-normal" name="englishName"
-                                       type="text">
-                            </div>
-                            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 m-none height"
-                                 data-innertype="text">
-                                <label class="mt-none mb-xs p-none question-title">中文名</label>
-                                <input class="form-control-user question-content sqt-input-normal" name="chineseName"
-                                       type="text">
-                            </div>
-                            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 m-none height"
-                                 data-innertype="phone">
-                                <label class="mt-none mb-xs p-none question-title">固定电话</label>
-                                <input class="form-control-user question-content sqt-input-normal number"
-                                       name="fixedPhone"
-                                       maxlength="20" minlength="20" type="text">
-                            </div>
-                            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 m-none height"
-                                 data-innertype="phone">
-                                <label class="mt-none mb-xs p-none question-title">手机号码</label>
-                                <input class="form-control-user question-content sqt-input-normal number"
-                                       name="mobilePhone"
-                                       maxlength="11" minlength="11" type="text">
-                            </div>
-                            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 m-none height"
-                                 data-innertype="phone">
-                                <label class="mt-none mb-xs p-none question-title">传真</label>
-                                <input class="form-control-user question-content sqt-input-normal number"
-                                       name="fax"
-                                       maxlength="20" minlength="20" type="text">
-                            </div>
-                            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 m-none height"
-                                 data-anstype="1" data-innertype="email">
-                                <label class="mt-none mb-xs p-none question-title">个人邮箱</label>
-                                <input class="form-control-user question-content sqt-input-normal email" name="email"
-                                       email="true" autocomplete="off" type="email">
-                            </div>
-                            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 m-none height"
-                                 data-anstype="1" data-innertype="text">
-                                <label class="mt-none mb-xs p-none question-title">家庭地址</label>
-                                <input class="form-control-user question-content sqt-input-normal" name="address"
-                                       type="text">
-                            </div>
+                    <div class="panel p-none m-none panel-form" id="formSection">
+                        <div class="panel-body-user">
+                            <!-- 表格 -->
+                            <form class="form-horizontal pt-none apply" id="form-address" enctype="multipart/form-data" action="rest/address/add"
+                                  method="post">
+                                <!--<div id="formAudit" class="p-none"></div>-->
+                                <div id="formQuestion" class="form-question p-none">
+                                    <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 m-none height"
+                                         data-innertype="text">
+                                        <label class="mt-none mb-xs p-none question-title">账号ID
+                                            <span class="necessary text-danger">*</span>
+                                        </label>
+                                        <input class="form-control-user question-content sqt-input-normal" id="accountId" name="accountId"
+                                               type="text">
+                                        <!--required="required" type="text">-->
 
-                            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 m-none height"
-                                 data-innertype="phone">
-                                <label class="mt-none mb-xs p-none question-title">qq</label>
-                                <input class="form-control-user question-content sqt-input-normal number" name="qq"
-                                       maxlength="20" minlength="3" type="text">
-                            </div>
+                                    </div>
+                                    <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 m-none height"
+                                         data-innertype="text">
+                                        <label class="mt-none mb-xs p-none question-title">英文名</label>
+                                        <input class="form-control-user question-content sqt-input-normal" name="englishName"
+                                               type="text">
+                                    </div>
+                                    <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 m-none height"
+                                         data-innertype="text">
+                                        <label class="mt-none mb-xs p-none question-title">中文名</label>
+                                        <input class="form-control-user question-content sqt-input-normal" name="chineseName"
+                                               type="text">
+                                    </div>
+                                    <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 m-none height"
+                                         data-innertype="phone">
+                                        <label class="mt-none mb-xs p-none question-title">固定电话</label>
+                                        <input class="form-control-user question-content sqt-input-normal number"
+                                               name="fixedPhone"
+                                               maxlength="20" minlength="20" type="text">
+                                    </div>
+                                    <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 m-none height"
+                                         data-innertype="phone">
+                                        <label class="mt-none mb-xs p-none question-title">手机号码</label>
+                                        <input class="form-control-user question-content sqt-input-normal number"
+                                               name="mobilePhone"
+                                               maxlength="11" minlength="11" type="text">
+                                    </div>
+                                    <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 m-none height"
+                                         data-innertype="phone">
+                                        <label class="mt-none mb-xs p-none question-title">传真</label>
+                                        <input class="form-control-user question-content sqt-input-normal number"
+                                               name="fax"
+                                               maxlength="20" minlength="20" type="text">
+                                    </div>
+                                    <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 m-none height"
+                                         data-anstype="1" data-innertype="email">
+                                        <label class="mt-none mb-xs p-none question-title">个人邮箱</label>
+                                        <input class="form-control-user question-content sqt-input-normal email" name="email"
+                                               email="true" autocomplete="off" type="email">
+                                    </div>
+                                    <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 m-none height"
+                                         data-anstype="1" data-innertype="text">
+                                        <label class="mt-none mb-xs p-none question-title">家庭地址</label>
+                                        <input class="form-control-user question-content sqt-input-normal" name="address"
+                                               type="text">
+                                    </div>
 
-                            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 m-none height"
-                                 data-innertype="text">
-                                <label class="mt-none mb-xs p-none question-title">机构</label>
-                                <input class="form-control-user question-content sqt-input-normal" name="organizetion"
-                                       type="text">
-                            </div>
+                                    <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 m-none height"
+                                         data-innertype="phone">
+                                        <label class="mt-none mb-xs p-none question-title">qq</label>
+                                        <input class="form-control-user question-content sqt-input-normal number" name="qq"
+                                               maxlength="20" minlength="3" type="text">
+                                    </div>
 
-                            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 m-none height"
-                                 data-innertype="text">
-                                <label class="mt-none mb-xs p-none question-title">部门</label>
-                                <input class="form-control-user question-content sqt-input-normal" name="department"
-                                       type="text">
-                            </div>
-                            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 m-none height"
-                                 data-anstype="1" data-innertype="text">
-                                <label class="mt-none mb-xs p-none question-title">职位</label>
-                                <input class="form-control-user question-content sqt-input-normal" name="position"
-                                       type="text">
-                            </div>
-                            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 m-none"
-                                 data-anstype="2" data-innertype="textArea">
-                                <label class="mt-none mb-xs p-none question-title">备注</label>
+                                    <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 m-none height"
+                                         data-innertype="text">
+                                        <label class="mt-none mb-xs p-none question-title">机构</label>
+                                        <input class="form-control-user question-content sqt-input-normal" name="organizetion"
+                                               type="text">
+                                    </div>
+
+                                    <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 m-none height"
+                                         data-innertype="text">
+                                        <label class="mt-none mb-xs p-none question-title">部门</label>
+                                        <input class="form-control-user question-content sqt-input-normal" name="department"
+                                               type="text">
+                                    </div>
+                                    <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 m-none height"
+                                         data-anstype="1" data-innertype="text">
+                                        <label class="mt-none mb-xs p-none question-title">职位</label>
+                                        <input class="form-control-user question-content sqt-input-normal" name="position"
+                                               type="text">
+                                    </div>
+                                    <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 m-none"
+                                         data-anstype="2" data-innertype="textArea">
+                                        <label class="mt-none mb-xs p-none question-title">备注</label>
                                 <textarea class="form-control-user question-content sqt-textarea-normal" cols="30"
                                           name="remark" rows="2"></textarea>
-                            </div>
+                                    </div>
+                                </div>
+                                <div class="inputs">
+                                    <input type="button" value="提交" class="ss-submit" id="submit-address">
+                                    <input type="reset" name="reset" value="重置" class="ss-submit">
+                                </div>
+                            </form>
                         </div>
-                        <div class="inputs">
-                            <input type="button" value="提交" class="ss-submit" id="submit-address">
-                            <input type="reset" name="reset" value="重置" class="ss-submit">
+                    </div>
+
+                </div>
+                <div class="tab-pane fade" id="uploadAddress">
+                    <form name="form" action="rest/address/upload" method="post" enctype="multipart/form-data"
+                          class="navbar-form">
+                        <div id="ss-address-upload">
+                            <input type="file" name="file" class="form-control ss-file-upload-input" required="required">
+                            <input type="submit" value="上传" class="form-control ss-file-upload-input" >
+                            &nbsp;&nbsp;<a href="resource/template/address.xlsx">下载模板</a>
                         </div>
                     </form>
                 </div>

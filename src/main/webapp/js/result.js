@@ -197,7 +197,8 @@ function getResult(keyword, type, currentPage, pageSize){
                         '<div class="row">' +
                         '<div class="col-md-11">' +
                         '<img src="./img/type_icon/address.png" class="ss-icon-sm">' +
-                        '<a class="ss-result-row-title">'+ record.chineseName +' / '+ record.englishName +' / ' + record.accountId + '</a>' +
+                        //'<a class="ss-result-row-title">'+ record.chineseName +' / '+ record.englishName +' / ' + record.accountId + '</a>' +
+                        '<a class="ss-result-row-title">'+ record.chineseName +' / '+ record.englishName +
                         '</div>' +
                         indexOperateHtml +
                         '</div>' +
@@ -210,9 +211,9 @@ function getResult(keyword, type, currentPage, pageSize){
                         '<div class="col-md-4">' +
                         '别名：' + record.englishName +
                         '</div>' +
-                        '<div class="col-md-4">' +
-                        '工号：' + record.accountId +
-                        '</div>' +
+                        //'<div class="col-md-4">' +
+                        //'工号：' + record.accountId +
+                        //'</div>' +
                         '</div>' +
                         '<div class="row">' +
                         '<div class="col-md-4">' +
