@@ -31,6 +31,7 @@ public class AddressController {
             , @RequestParam(value = "chineseName", required = false) String chineseName
             , @RequestParam(value = "fixedPhone", required = false) String fixedPhone
             , @RequestParam(value = "mobilePhone", required = false) String mobilePhone
+            , @RequestParam(value = "fax", required = false) String fax
             , @RequestParam(value = "email", required = false) String email
             , @RequestParam(value = "address", required = false) String address
             , @RequestParam(value = "qq", required = false) String qq
@@ -47,6 +48,7 @@ public class AddressController {
             addressModel.setChineseName(chineseName);
             addressModel.setFixedPhone(fixedPhone);
             addressModel.setMobilePhone(mobilePhone);
+            addressModel.setFax(fax);
             addressModel.setEmail(email);
             addressModel.setAddress(address);
             addressModel.setQq(qq);

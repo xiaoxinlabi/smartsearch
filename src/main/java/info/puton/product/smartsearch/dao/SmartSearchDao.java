@@ -203,6 +203,7 @@ public class SmartSearchDao {
                 String chineseName = (String) searchHit.getSource().get("chineseName");
                 String fixedPhone = (String) searchHit.getSource().get("fixedPhone");
                 String mobilePhone = (String) searchHit.getSource().get("mobilePhone");
+                String fax = (String) searchHit.getSource().get("fax");
                 String email = (String) searchHit.getSource().get("email");
                 String address = (String) searchHit.getSource().get("address");
                 String qq = (String) searchHit.getSource().get("qq");
@@ -242,6 +243,7 @@ public class SmartSearchDao {
                 result.setChineseName(chineseName);
                 result.setFixedPhone(fixedPhone);
                 result.setMobilePhone(mobilePhone);
+                result.setFax(fax);
                 result.setEmail(email);
                 result.setAddress(address);
                 result.setQq(qq);

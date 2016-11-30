@@ -221,15 +221,18 @@ function getResult(keyword, type, currentPage, pageSize){
                         '<div class="col-md-4">' +
                         '座机：' + record.fixedPhone +
                         '</div>' +
-                        '</div>' +
-                        '<div class="row">' +
                         '<div class="col-md-4">' +
-                        '邮箱：' + record.email +
-                        '</div>' +
-                        '<div class="col-md-4">' +
-                        'QQ：' + record.qq +
+                        '传真：' + record.fax +
                         '</div>' +
                         '</div>' +
+                        //'<div class="row">' +
+                        //'<div class="col-md-4">' +
+                        //'邮箱：' + record.email +
+                        //'</div>' +
+                        //'<div class="col-md-4">' +
+                        //'QQ：' + record.qq +
+                        //'</div>' +
+                        //'</div>' +
                         '<div class="row">' +
                         '<div class="col-md-4">' +
                         '机构：' + record.organization +

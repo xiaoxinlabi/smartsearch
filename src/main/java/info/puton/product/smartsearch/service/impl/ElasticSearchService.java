@@ -197,6 +197,7 @@ public class ElasticSearchService implements BaseIndexer, FileIndexer, AddressIn
         data.put("chineseName", address.getChineseName());
         data.put("fixedPhone", address.getFixedPhone());
         data.put("mobilePhone", address.getMobilePhone());
+        data.put("fax", address.getFax());
         data.put("email", address.getEmail());
         data.put("address", address.getAddress());
         data.put("qq", address.getQq());

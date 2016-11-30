@@ -15,6 +15,8 @@ public class Address extends BaseSearchResult {
 
     private String mobilePhone; //手机
 
+    private String fax; //传真
+
     private String email; //邮箱
 
     private String address; //地址
@@ -67,6 +69,14 @@ public class Address extends BaseSearchResult {
 
     public void setMobilePhone(String mobilePhone) {
         this.mobilePhone = mobilePhone;
+    }
+
+    public String getFax() {
+        return fax;
+    }
+
+    public void setFax(String fax) {
+        this.fax = fax;
     }
 
     public String getEmail() {
@@ -136,6 +146,7 @@ public class Address extends BaseSearchResult {
                 ", chineseName='" + chineseName + '\'' +
                 ", fixedPhone='" + fixedPhone + '\'' +
                 ", mobilePhone='" + mobilePhone + '\'' +
+                ", fax='" + fax + '\'' +
                 ", email='" + email + '\'' +
                 ", address='" + address + '\'' +
                 ", qq='" + qq + '\'' +
