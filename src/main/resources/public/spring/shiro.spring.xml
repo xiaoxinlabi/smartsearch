@@ -51,11 +51,14 @@
     <!-- Realm自定义实现 -->
     <bean id="myRealm" class="info.puton.product.smartsearch.security.myRealm">
     </bean>
+    <bean id="oaRealm" class="info.puton.custom.hsb.security.oaRealm">
+    </bean>
 
     <!-- 安全管理器 -->
     <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
         <property name="realms">
             <list>
+                <ref bean="oaRealm"/>
                 <ref bean="myRealm"/>
             </list>
         </property>

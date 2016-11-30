@@ -3,6 +3,7 @@ package info.puton.custom.hsb.mocker;
 import org.apache.http.HttpEntity;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.CookieStore;
+import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -120,23 +121,19 @@ public class LoginMocker {
         context.setCookieStore(cookieStore);
 
         CloseableHttpResponse response = httpclient.execute(httpPost, context);
-        HttpEntity entity = response.getEntity();
-        String html = EntityUtils.toString(entity);
-        cookieStore = context.getCookieStore();
-        List<Cookie> cookies = cookieStore.getCookies();
-        for (Cookie cookie : cookies) {
-            resultMap.put(cookie.getName(),cookie.getValue());
-            System.out.println(cookie.getName()+":"+cookie.getValue());
-        }
-        EntityUtils.consume(entity);
+        String status = response.getStatusLine().toString();
         response.close();
-        return true;
+        if (status.contains("302")){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     public static void main(String[] args) {
         LoginMocker loginMocker = new LoginMocker();
         try {
-            loginMocker.valid("wangyusu","password");
+            System.out.println(loginMocker.valid("wangyusu","password"));
         } catch (IOException e) {
             e.printStackTrace();
         }

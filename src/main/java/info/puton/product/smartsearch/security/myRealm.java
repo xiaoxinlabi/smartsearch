@@ -15,7 +15,6 @@ public class myRealm extends AuthorizingRealm {
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
         String username = String.valueOf(principalCollection.getPrimaryPrincipal());
-        //TODO
         if(username.equals("admin")){
             info.addStringPermission("sysmgr:visit");
             info.addStringPermission("index:delete");
@@ -36,18 +35,18 @@ public class myRealm extends AuthorizingRealm {
 
         String password = new String(token.getPassword());
 
-        if(username.equals("admin") && password.equals("teradata")){
+        if(username.equals("admin") && password.equals("admin")){
             SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(username, password, getName());
             return info;
-        } else if(username.equals("taoyang") && password.equals("teradata")){
+        } else if(username.equals("taoyang") && password.equals("taoyang")){
             SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(username, password, getName());
             return info;
-        } else if(username.equals("pauline") && password.equals("teradata")){
+        } else if(username.equals("pauline") && password.equals("pauline")){
             SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(username, password, getName());
             return info;
         }
         else{
-            throw new AuthenticationException("用户名或密码错误.");
+            throw new AuthenticationException("智搜用户名或密码错误！");
         }
     }
 }

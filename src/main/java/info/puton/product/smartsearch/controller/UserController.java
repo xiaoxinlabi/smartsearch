@@ -29,8 +29,6 @@ public class UserController {
         Map<String, Object> result = new HashMap<String, Object>();
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        System.out.println(username);
-        System.out.println(password);
         Subject currentUser = SecurityUtils.getSubject();
         UsernamePasswordToken token = new UsernamePasswordToken(username, password);
         token.setRememberMe(true);
@@ -40,7 +38,7 @@ public class UserController {
 //            return "redirect:/admin.html";
         } catch (Exception e) {
             result.put("status", "error");
-            e.printStackTrace();
+            result.put("detail", e.getLocalizedMessage());
             token.clear();
 //            return "redirect:/login.html";
         }

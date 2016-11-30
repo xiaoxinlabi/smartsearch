@@ -22,13 +22,13 @@ function submit() {
         dataType: "json",
         success: function (data) {
             if ($("#username").val() == "") {
-                alert("用户名不能为空!");
+                alert("用户名不能为空！");
             } else if ($("#password").val() == "") {
-                alert("密码不能为空!");
+                alert("密码不能为空！");
             } else if (data.status == "success") {
                 window.location.href = "index.html";
             } else if (data.status == "error") {
-                alert("用户名或密码错误!");
+                alert("用户名或密码错误！");
             }
         },
         error: function () {
