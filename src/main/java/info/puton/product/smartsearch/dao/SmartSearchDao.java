@@ -54,6 +54,8 @@ public class SmartSearchDao {
                 Field.ENGLISH_NAME,
                 Field.CHINESE_NAME,
                 Field.MOBILE_PHONE,
+                Field.FIXED_PHONE,
+                Field.FAX,
                 Field.TITLE,
                 Field.KEYWORDS,
                 Field.DESCRIPTION,
@@ -109,6 +111,8 @@ public class SmartSearchDao {
         srb.addHighlightedField(Field.ENGLISH_NAME);
         srb.addHighlightedField(Field.CHINESE_NAME);
         srb.addHighlightedField(Field.MOBILE_PHONE);
+        srb.addHighlightedField(Field.FIXED_PHONE);
+        srb.addHighlightedField(Field.FAX);
         srb.addHighlightedField(Field.TITLE);
         srb.addHighlightedField(Field.KEYWORDS);
         srb.addHighlightedField(Field.DESCRIPTION);
@@ -221,6 +225,14 @@ public class SmartSearchDao {
                 if(highlightFields.containsKey("mobilePhone")){
                     Text[] highlights = highlightFields.get("mobilePhone").getFragments();
                     mobilePhone = highlights[0].toString();
+                }
+                if(highlightFields.containsKey("fixedPhone")){
+                    Text[] highlights = highlightFields.get("fixedPhone").getFragments();
+                    fixedPhone = highlights[0].toString();
+                }
+                if(highlightFields.containsKey("fax")){
+                    Text[] highlights = highlightFields.get("fax").getFragments();
+                    fax = highlights[0].toString();
                 }
 
                 result.setIndex(index);

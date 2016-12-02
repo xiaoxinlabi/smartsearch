@@ -27,6 +27,10 @@ public class Field {
 
     public final static String MOBILE_PHONE = "mobilePhone";
 
+    public final static String FIXED_PHONE = "fixedPhone";
+
+    public final static String FAX = "fax";
+
     public final static String ACCOUNT_ID = "accountId";
 
     //website
