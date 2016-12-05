@@ -82,6 +82,7 @@ public class TikaService implements FileExtractor {
                 .replaceAll("\\s+", " ");
         fileFullText.setContent(content);//content
         System.out.println("Metadata extracted. fileKey:" + fileFullText.getId());
+        stream.close();
         return fileFullText;
     }
 }
