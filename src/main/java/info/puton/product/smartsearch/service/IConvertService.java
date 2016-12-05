@@ -1,5 +1,6 @@
 package info.puton.product.smartsearch.service;
 
+import java.io.IOException;
 import java.net.ConnectException;
 
 /**
@@ -7,6 +8,6 @@ import java.net.ConnectException;
  */
 public interface IConvertService {
 
-    void doc2pdf(String docPath, String pdfPath) throws ConnectException;
+    void doc2pdf(String docPath, String pdfPath) throws IOException;
 
 }

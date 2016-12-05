@@ -194,7 +194,7 @@ public class FileController {
                 e.printStackTrace();
             } catch (Exception e) {
                 result.put("status","error");
-                result.put("description","文件类型不兼容");
+                result.put("description","文件异常或类型不兼容");
             }
         }else {
             System.out.println(pdfFileLocation+" 文件已存在");
