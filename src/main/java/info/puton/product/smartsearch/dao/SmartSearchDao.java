@@ -71,13 +71,19 @@ public class SmartSearchDao {
         Subject currentUser = SecurityUtils.getSubject();
         if(currentUser.isAuthenticated() || currentUser.isRemembered()){
             if(currentUser.getPrincipal().toString().equals("admin")){
+                //admin
                 permissions+="write;";
+            }else{
+                //user
+                QueryBuilder qbUser = QueryBuilders.matchPhraseQuery(Field.OWNER, currentUser.getPrincipal().toString());
+                bqb_auth = bqb_auth.should(qbUser);
+                bqb = bqb.must(bqb_auth);
             }
-            QueryBuilder qbUser = QueryBuilders.matchPhraseQuery(Field.OWNER, currentUser.getPrincipal().toString());
-            bqb_auth = bqb_auth.should(qbUser);
+        } else{
+            //guest
+            bqb = bqb.must(bqb_auth);
         }
-        bqb = bqb.must(bqb_auth);
-        
+
         QueryBuilder qb = bqb;
 
         SearchRequestBuilder srb = elasticsearchTemplate

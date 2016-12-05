@@ -121,9 +121,9 @@ public class LoginMocker {
         context.setCookieStore(cookieStore);
 
         CloseableHttpResponse response = httpclient.execute(httpPost, context);
-        String status = response.getStatusLine().toString();
+        int statusCode = response.getStatusLine().getStatusCode();
         response.close();
-        if (status.contains("302")){
+        if (statusCode == 302){
             return true;
         }else{
             return false;
