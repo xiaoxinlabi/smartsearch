@@ -149,21 +149,23 @@ function getResult(keyword, type, currentPage, pageSize){
                 id = record.id;
                 indexDate = new Date();
                 indexDate.setTime(record.timestamp);
-
-                indexOperateHtml =
-                    '<div class="col-md-1">' +
-                    //'<div class="dropdown pull-right ss-record-manage" ' + buttonStyle + ' >' +
-                    '<div class="dropdown pull-right ss-record-manage" >' +
-                    '<button class="btn btn-danger btn-xs dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">' +
-                    '管理' +
-                    '<span class="caret"></span>' +
-                    '</button>' +
-                    '<ul class="dropdown-menu" data-index="' + index + '" data-id="' + id + '" data-type = "' + type + '">' +
-                    indexOperateItemHtml +
-                    '</ul>' +
-                    '</div>' +
-                    '</div>' +
-                    '';
+                indexOperateHtml = "";
+                if(permissions.indexOf("write") != -1){
+                    indexOperateHtml =
+                        '<div class="col-md-1">' +
+                            //'<div class="dropdown pull-right ss-record-manage" ' + buttonStyle + ' >' +
+                        '<div class="dropdown pull-right ss-record-manage" >' +
+                        '<button class="btn btn-danger btn-xs dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">' +
+                        '管理' +
+                        '<span class="caret"></span>' +
+                        '</button>' +
+                        '<ul class="dropdown-menu" data-index="' + index + '" data-id="' + id + '" data-type = "' + type + '">' +
+                        indexOperateItemHtml +
+                        '</ul>' +
+                        '</div>' +
+                        '</div>' +
+                        '';
+                }
 
                 if(record.content!=null){
                     content = record.content.length <= maxHighlightedSize ? "..." + record.content + "..." : record.content.substring(0,maxHighlightedSize)
