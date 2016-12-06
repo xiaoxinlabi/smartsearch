@@ -48,8 +48,17 @@ public class AddressService implements AddressHandler {
             String areaCode = ExcelUtil.getStringValue(row.getCell(6));
             String fax = ExcelUtil.getStringValue(row.getCell(7));
             String addrezz = ExcelUtil.getStringValue(row.getCell(8));
-            fixedPhone = areaCode + "-" + fixedPhone;
-            fax = areaCode + "-" + fax;
+            if(areaCode!=null && fixedPhone!=null){
+                fixedPhone = areaCode + "-" + fixedPhone;
+            } else{
+                fixedPhone = null;
+            }
+            if(areaCode!=null && fax!=null){
+                fax = areaCode + "-" + fax;
+            } else{
+                fax = null;
+            }
+
             String englishName = PinYinUtil.converterToSpell(chineseName);
             String firstSpell = PinYinUtil.converterToFirstSpell(chineseName);
             String id = firstSpell + mobilePhone;

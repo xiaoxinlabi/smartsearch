@@ -200,7 +200,7 @@ function getResult(keyword, type, currentPage, pageSize){
                         '<div class="col-md-11">' +
                         '<img src="./img/type_icon/address.png" class="ss-icon-sm">' +
                         //'<a class="ss-result-row-title">'+ record.chineseName +' / '+ record.englishName +' / ' + record.accountId + '</a>' +
-                        '<a class="ss-result-row-title">'+ record.chineseName +' / '+ record.englishName +
+                        '<a class="ss-result-row-title">'+ record.chineseName +' / '+ record.englishName + '</a>' +
                         '</div>' +
                         indexOperateHtml +
                         '</div>' +
@@ -210,7 +210,7 @@ function getResult(keyword, type, currentPage, pageSize){
                         '<div class="col-md-4">' +
                         '姓名：' + record.chineseName +
                         '</div>' +
-                        '<div class="col-md-4">' +
+                        '<div class="col-md-8">' +
                         '别名：' + record.englishName +
                         '</div>' +
                         //'<div class="col-md-4">' +
@@ -219,13 +219,13 @@ function getResult(keyword, type, currentPage, pageSize){
                         '</div>' +
                         '<div class="row">' +
                         '<div class="col-md-4">' +
-                        '手机：' + record.mobilePhone +
+                        '手机：' + (record.mobilePhone!=null ? record.mobilePhone : "") +
                         '</div>' +
                         '<div class="col-md-4">' +
-                        '座机：' + record.fixedPhone +
+                        '座机：' + (record.fixedPhone!=null ? record.fixedPhone : "") +
                         '</div>' +
                         '<div class="col-md-4">' +
-                        '传真：' + record.fax +
+                        '传真：' + (record.fax!=null ? record.fax : "") +
                         '</div>' +
                         '</div>' +
                         //'<div class="row">' +
@@ -244,7 +244,7 @@ function getResult(keyword, type, currentPage, pageSize){
                         '部门：' + record.department +
                         '</div>' +
                         '<div class="col-md-4">' +
-                        '职位：' + record.position +
+                        '职位：' + (record.position!=null ? record.position : "") +
                         '</div>' +
                         '</div>' +
                         '<div class="row">' +

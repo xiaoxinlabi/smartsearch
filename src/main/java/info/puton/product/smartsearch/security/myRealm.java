@@ -38,14 +38,13 @@ public class myRealm extends AuthorizingRealm {
         if(username.equals("admin") && password.equals("admin")){
             SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(username, password, getName());
             return info;
-        } else if(username.equals("taoyang") && password.equals("taoyang")){
+        } else if(username.equals("user1") && password.equals("user1")){
             SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(username, password, getName());
             return info;
-        } else if(username.equals("pauline") && password.equals("pauline")){
+        } else if(username.equals("user2") && password.equals("user2")){
             SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(username, password, getName());
             return info;
-        }
-        else{
+        } else{
             throw new AuthenticationException("智搜用户名或密码错误！");
         }
     }
