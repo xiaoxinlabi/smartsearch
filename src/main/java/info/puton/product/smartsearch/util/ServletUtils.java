@@ -29,7 +29,7 @@ public class ServletUtils {
             }
             response.setHeader("Content-Disposition", "attachment; filename=\"" + encodedfileName + "\"");
 
-            System.out.println(encodedfileName);
+//            System.out.println(encodedfileName);
 
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();

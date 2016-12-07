@@ -43,7 +43,8 @@ public class HBaseDao {
     public void createTable(String tableName, String columnFamily) throws Exception {
         HBaseAdmin admin = new HBaseAdmin(conf);
         if(admin.tableExists(tableName)) {
-            System.out.println("Table exists!");
+//            System.out.println("Table exists!");
+            admin.close();
             System.exit(0);
         }
         else {
@@ -59,7 +60,7 @@ public class HBaseDao {
             HTableDescriptor tableDesc = new HTableDescriptor(TableName.valueOf(tableName));
             tableDesc.addFamily(new HColumnDescriptor(columnFamily));
             admin.createTable(tableDesc);
-            System.out.println("Table created. tableName:" + tableName);
+//            System.out.println("Table created. tableName:" + tableName);
         }
         admin.close();
     }
@@ -76,7 +77,7 @@ public class HBaseDao {
             try {
                 admin.disableTable(tableName);
                 admin.deleteTable(tableName);
-                System.out.println("Table deleted. tableName:" + tableName);
+//                System.out.println("Table deleted. tableName:" + tableName);
             } catch (Exception e) {
                 // TODO: handle exception
                 e.printStackTrace();
@@ -101,7 +102,7 @@ public class HBaseDao {
         Put p1 = new Put(Bytes.toBytes(rowKey));
         p1.add(Bytes.toBytes(columnFamily), Bytes.toBytes(qualifier), data);
         table.put(p1);
-        System.out.println("Cell put. rowKey:" + rowKey);
+//        System.out.println("Cell put. rowKey:" + rowKey);
         table.close();
     }
 
@@ -154,7 +155,7 @@ public class HBaseDao {
     public Result getRow(HTable table, String rowKey) throws Exception {
         Get get = new Get(Bytes.toBytes(rowKey));
         Result result = table.get(get);
-        System.out.println("Get: "+result);
+//        System.out.println("Get: "+result);
         table.close();
         return result;
     }
@@ -213,7 +214,7 @@ public class HBaseDao {
     public void deleteRow(HTable table, String rowKey) throws Exception {
         Delete delete = new Delete(Bytes.toBytes(rowKey));
         table.delete(delete);
-        System.out.println("Delete row: "+rowKey);
+//        System.out.println("Delete row: "+rowKey);
         table.close();
     }
 

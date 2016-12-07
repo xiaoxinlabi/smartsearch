@@ -69,9 +69,9 @@ public class TikaService implements FileExtractor {
         Metadata metadata = new Metadata();
         InputStream stream = TikaInputStream.get(file.toPath());
         parser.parse(stream, handler, metadata, parseContext);
-        for (String name : metadata.names()) {
-            System.out.println(name + ":" + metadata.get(name));
-        }
+//        for (String name : metadata.names()) {
+//            System.out.println(name + ":" + metadata.get(name));
+//        }
         Long lastModified = file.lastModified();
         fileFullText.setLastModified(lastModified);//lastModified
         String content = handler.toString();
@@ -81,7 +81,7 @@ public class TikaService implements FileExtractor {
                 .replaceAll("\\t+", " ")
                 .replaceAll("\\s+", " ");
         fileFullText.setContent(content);//content
-        System.out.println("Metadata extracted. fileKey:" + fileFullText.getId());
+//        System.out.println("Metadata extracted. fileKey:" + fileFullText.getId());
         stream.close();
         return fileFullText;
     }

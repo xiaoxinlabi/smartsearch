@@ -28,7 +28,7 @@ public class ElasticSearchDao {
     public void createIndex(String index){
         CreateIndexResponse response = elasticsearchTemplate.getClient().admin().indices().prepareCreate(index)
                 .get();
-        System.out.println("Index created. index:" + index);
+//        System.out.println("Index created. index:" + index);
     }
 
     public void createSchema(String index, String type, String source){
@@ -36,24 +36,24 @@ public class ElasticSearchDao {
                 .setType(type)
                 .setSource(source)
                 .get();
-        System.out.println("Schema created. index:" + index + " type:" + type);
+//        System.out.println("Schema created. index:" + index + " type:" + type);
     }
 
     public void deleteIndex(String index){
         DeleteIndexResponse response = elasticsearchTemplate.getClient().admin().indices().prepareDelete(index).get();
-        System.out.println("Index deleted. index:" + index);
+//        System.out.println("Index deleted. index:" + index);
     }
 
     public void createDocument(String index, String type, String id, Map data){
         IndexResponse response = elasticsearchTemplate.getClient().prepareIndex(index, type, id)
                 .setSource(data)
                 .get();
-        System.out.println("Index created. id:" + response.getId());
+//        System.out.println("Index created. id:" + response.getId());
     }
 
     public void deleteDocument(String index, String type, String id){
         DeleteResponse response = elasticsearchTemplate.getClient().prepareDelete(index, type, id).get();
-        System.out.println("Index deleted. id:" + response.getId());
+//        System.out.println("Index deleted. id:" + response.getId());
     }
 
     public Map getDocument(String index, String type, String id){

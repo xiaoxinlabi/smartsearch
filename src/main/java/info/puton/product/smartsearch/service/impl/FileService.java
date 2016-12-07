@@ -40,7 +40,7 @@ public class FileService implements FileHandler {
         FileFullText fileFullText = fileExtractor.extract(new File(filePath), additional);
         fileStorage.putFile(filePath, fileFullText.getId());
         fileIndexer.addFile(fileFullText);
-        System.out.println("File handled. name:" + fileFullText.getFileName());
+        System.out.println("File handled. Name: " + fileFullText.getFileName());
     }
 
 }

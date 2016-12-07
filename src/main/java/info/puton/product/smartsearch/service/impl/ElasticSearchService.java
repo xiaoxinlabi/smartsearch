@@ -274,7 +274,7 @@ public class ElasticSearchService implements BaseIndexer, FileIndexer, AddressIn
     @Override
     public void addWebsite(Website website) {
         String id = website.getId();
-        System.out.println("id:" + id);
+//        System.out.println("id:" + id);
 
         Map data = new HashMap();
         data.put("url", website.getUrl());

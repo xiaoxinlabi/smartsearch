@@ -66,7 +66,7 @@ public class FileController {
 //        System.out.println(path);
 //        System.out.println(fileName);
         File targetFile = new File(path, fileName);
-        System.out.println(targetFile);
+//        System.out.println(targetFile);
         if (!targetFile.exists()) {
             targetFile.mkdirs();
         }
@@ -102,7 +102,7 @@ public class FileController {
         if(!iniCacheFile.exists()) {
             iniCacheFile.mkdirs();
         }else{
-            System.out.println(iniCacheDir+" 目录已存在");
+//            System.out.println(iniCacheDir+" 目录已存在");
         }
 
         String iniFileName = id + "." + type;
@@ -116,7 +116,7 @@ public class FileController {
                 e.printStackTrace();
             }
         }else {
-            System.out.println(iniFileLocation+" 文件已存在");
+//            System.out.println(iniFileLocation+" 文件已存在");
         }
 
         return iniFile;
@@ -175,7 +175,7 @@ public class FileController {
         if(!pdfCacheFile.exists()) {
             pdfCacheFile.mkdirs();
         }else{
-            System.out.println(pdfCacheDir+" 目录已存在");
+//            System.out.println(pdfCacheDir+" 目录已存在");
         }
 
 
@@ -197,7 +197,7 @@ public class FileController {
                 result.put("description","文件异常或类型不兼容");
             }
         }else {
-            System.out.println(pdfFileLocation+" 文件已存在");
+//            System.out.println(pdfFileLocation+" 文件已存在");
         }
 
         result.put("status","ok");
