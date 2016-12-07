@@ -1,6 +1,8 @@
 body{
     background-image: url("../custom/hsb/img/bg1.jpg");
     background-size: 100%;
+    /*filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/custom/hsb/img/bg1.jpg', sizingMethod='scale');*/
+    /*-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/custom/hsb/img/bg1.jpg', sizingMethod='scale')";*/
 }
 
 .ss-icon-sm{

@@ -1,20 +1,10 @@
 package info.puton.custom.hsb.mocker;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.CookieStore;
-import org.apache.http.client.config.RequestConfig;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.client.protocol.HttpClientContext;
-import org.apache.http.cookie.Cookie;
-import org.apache.http.impl.client.BasicCookieStore;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
-import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.util.EntityUtils;
+import org.apache.commons.httpclient.HttpClient;
+import org.apache.commons.httpclient.HttpMethod;
+import org.apache.commons.httpclient.NameValuePair;
+import org.apache.commons.httpclient.methods.GetMethod;
+import org.apache.commons.httpclient.methods.PostMethod;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -47,82 +37,42 @@ public class LoginMocker {
      * @return
      */
     public String getHtmlByUrl(String url) throws IOException {
-        CloseableHttpClient httpclient = HttpClients.createDefault();
-        HttpGet httpGet = new HttpGet(url);
-        CloseableHttpResponse response = httpclient.execute(httpGet);
-//        System.out.println(response.getStatusLine());
-        HttpEntity entity = response.getEntity();
-        String html = EntityUtils.toString(entity);
-        EntityUtils.consume(entity);
-        response.close();
+        HttpClient client = new HttpClient();
+        // 设置代理服务器地址和端口
+        //client.getHostConfiguration().setProxy("proxy_host_addr",proxy_port);
+        // 使用 GET 方法 ，如果服务器需要通过 HTTPS 连接，那只需要将下面 URL 中的 http 换成 https
+        HttpMethod method=new GetMethod(url);
+        //使用POST方法
+        //HttpMethod method = new PostMethod("http://java.sun.com");
+        client.executeMethod(method);
+        //打印服务器返回的状态
+//        System.out.println(method.getStatusLine());
+        //打印返回的信息
+//        System.out.println(method.getResponseBodyAsString());
+        String html = method.getResponseBodyAsString();
+        //释放连接
+        method.releaseConnection();
         return html;
     }
 
-    public Map getCookie() throws IOException {
-
-        String loginPageHtml = getHtmlByUrl(host + "/wps/myportal/");
-        Document doc = Jsoup.parse(loginPageHtml);
-        Element form = doc.select("body > form").first();
-        String url = form.attr("action");
-        Map params = new HashMap();
-        params.put("userid",userid);
-        params.put("password",password);
-
-        Map resultMap = new HashMap();
-        CloseableHttpClient httpclient = HttpClients.createDefault();
-        HttpPost httpPost = new HttpPost(host + url);
-        List<NameValuePair> nvps = new ArrayList<>();
-        Set<String> keySet = params.keySet();
-        for(String key : keySet) {
-            nvps.add(new BasicNameValuePair(key, params.get(key).toString()));
-        }
-        HttpEntity httpEntity = new UrlEncodedFormEntity(nvps);
-        httpPost.setEntity(httpEntity);
-        HttpClientContext context = HttpClientContext.create();
-        CookieStore cookieStore = new BasicCookieStore();
-        context.setCookieStore(cookieStore);
-
-        CloseableHttpResponse response = httpclient.execute(httpPost, context);
-        HttpEntity entity = response.getEntity();
-        String html = EntityUtils.toString(entity);
-        cookieStore = context.getCookieStore();
-        List<Cookie> cookies = cookieStore.getCookies();
-        for (Cookie cookie : cookies) {
-            resultMap.put(cookie.getName(),cookie.getValue());
-            System.out.println(cookie.getName()+":"+cookie.getValue());
-        }
-        EntityUtils.consume(entity);
-        response.close();
-        return resultMap;
-    }
 
     public boolean valid(String userid, String password) throws IOException {
 
         String loginPageHtml = getHtmlByUrl(host + "/wps/myportal/");
+
         Document doc = Jsoup.parse(loginPageHtml);
         Element form = doc.select("body > form").first();
         String url = form.attr("action");
-        Map params = new HashMap();
-        params.put("userid",userid);
-        params.put("password",password);
 
-        Map resultMap = new HashMap();
-        CloseableHttpClient httpclient = HttpClients.createDefault();
-        HttpPost httpPost = new HttpPost(host + url);
-        List<NameValuePair> nvps = new ArrayList<>();
-        Set<String> keySet = params.keySet();
-        for(String key : keySet) {
-            nvps.add(new BasicNameValuePair(key, params.get(key).toString()));
-        }
-        HttpEntity httpEntity = new UrlEncodedFormEntity(nvps);
-        httpPost.setEntity(httpEntity);
-        HttpClientContext context = HttpClientContext.create();
-        CookieStore cookieStore = new BasicCookieStore();
-        context.setCookieStore(cookieStore);
-
-        CloseableHttpResponse response = httpclient.execute(httpPost, context);
-        int statusCode = response.getStatusLine().getStatusCode();
-        response.close();
+        HttpMethod method=new PostMethod(host + url);
+        NameValuePair nvp1 = new NameValuePair( "userid" , userid );
+        NameValuePair nvp2 = new NameValuePair( "password" , password );
+        NameValuePair[] nvps = {nvp1,nvp2};
+        method.setQueryString(nvps);
+        HttpClient client = new HttpClient();
+        client.executeMethod(method);
+        int statusCode = method.getStatusCode();
+        method.releaseConnection();
         if (statusCode == 302){
             return true;
         }else{
@@ -133,6 +83,7 @@ public class LoginMocker {
     public static void main(String[] args) {
         LoginMocker loginMocker = new LoginMocker();
         try {
+//            System.out.println(loginMocker.getHtmlByUrl("http://portal.hsbank.com/wps/myportal/"));
             System.out.println(loginMocker.valid("wangyusu","password"));
         } catch (IOException e) {
             e.printStackTrace();

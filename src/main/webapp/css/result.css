@@ -58,7 +58,8 @@ hr{
 }
 
 .ss-file-facet-list{
-    margin-top: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 a{
@@ -70,7 +71,7 @@ a{
 }
 
 #ss-result-list{
-    margin-top: 10px;
+    margin-top: 15px;
     font-size: small;
 }
 
