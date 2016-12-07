@@ -124,7 +124,7 @@ function getResult(keyword, type, currentPage, pageSize){
             var ssResultCount = $('#ss-result-count');
             ssResultCount.children().remove();
             var count = response.data.count;
-            inHtml='智搜为您找到' + count + '个相关结果';
+            inHtml='为您找到相关结果约' + count + '个';
             ssResultCount.html(inHtml);
 
             var tdsFileList = $('#ss-result-list');
@@ -167,28 +167,35 @@ function getResult(keyword, type, currentPage, pageSize){
                         '';
                 }
 
-                if(record.content!=null){
-                    content = record.content.length <= maxHighlightedSize ? "..." + record.content + "..." : record.content.substring(0,maxHighlightedSize)
+                if(record.content!=null && record.content!="null" && record.content!=""){
+                    content = record.content.length <= maxHighlightedSize ? record.content + "..." : record.content.substring(0,maxHighlightedSize) + "...";
                 }else{
-                    content = ""
+                    content = "";
                 }
 
                 if(index == "filefulltext"){
                     //文件
                     modifyDate = new Date();
                     modifyDate.setTime(record.lastModified);
+
+                    if(record.type == "txt" || record.type == "doc" || record.type == "docx" || record.type == "xls" || record.type == "xlsx" || record.type == "ppt" || record.type == "pptx" || record.type == "pdf"){
+                        titleLink = '<a class="ss-result-row-title ss-file-prev" data-id="' + record.id + '" data-type = "' + record.type + '">'+ record.fileName +'</a>';
+                    }else{
+                        titleLink = '<a class="ss-result-row-title ss-file-down" data-id="' + record.id + '" data-type = "' + record.type + '">'+ record.fileName +'</a>';
+                    }
+
                     inHtml+='<div class="ss-record-row">' +
                         '<div class="row">' +
                         '<div class="col-md-11">' +
                         '<img src="./img/' + typeToIcon(record.type) + '" class="ss-icon-sm">' +
-                        '<a class="ss-result-row-title ss-file-prev" data-id="' + record.id + '" data-type = "' + record.type + '">'+ record.fileName +'</a>' +
+                        titleLink +
                         '</div>' +
                         indexOperateHtml +
                         '</div>' +
                         '<div class="row">' +
                         '<div class="col-md-12">' +
-                        '<p>' +
-                        content
+                        '<p class="ss-result-row-content">' +
+                        content +
                         '</p>' +
                         '</div>' +
                         '</div>' +
@@ -198,7 +205,7 @@ function getResult(keyword, type, currentPage, pageSize){
                     inHtml+='<div class="ss-record-row">' +
                         '<div class="row">' +
                         '<div class="col-md-11">' +
-                        '<img src="./img/type_icon/address.png" class="ss-icon-sm">' +
+                        '<img src="./img/' + typeToIcon(record.type) + '" class="ss-icon-sm">' +
                         //'<a class="ss-result-row-title">'+ record.chineseName +' / '+ record.englishName +' / ' + record.accountId + '</a>' +
                         '<a class="ss-result-row-title">'+ record.chineseName +' / '+ record.englishName + '</a>' +
                         '</div>' +
@@ -262,15 +269,15 @@ function getResult(keyword, type, currentPage, pageSize){
                     inHtml+='<div class="ss-record-row">' +
                         '<div class="row">' +
                         '<div class="col-md-11">' +
-                        '<img src="./img/file_type_icon/url.png" class="ss-icon-sm">' +
+                        '<img src="./img/' + typeToIcon(record.type) + '" class="ss-icon-sm">' +
                         '<a href="' + record.url + '" target = "_blank" class="ss-result-row-title">' + record.title + '</a>' +
                         '</div>' +
                         indexOperateHtml +
                         '</div>' +
                         '<div class="row">' +
                         '<div class="col-md-12">' +
-                        '<p>' +
-                        content
+                        '<p class="ss-result-row-content">' +
+                        content +
                         '</p>' +
                         '</div>' +
                         '</div>' +
@@ -288,9 +295,9 @@ function getResult(keyword, type, currentPage, pageSize){
                         '</div>' +
                         '<div class="row">' +
                         '<div class="col-md-12">' +
-                        '<p>' +
+                        '<p class="ss-result-row-content">' +
                         record.itemtitle + '<br>' +
-                        content
+                        content +
                         '</p>' +
                         '</div>' +
                         '</div>' +
@@ -362,31 +369,35 @@ function typeToIcon(filetype){
 
     switch(filetype){
         case "txt":
-            return "file_type_icon/text.png";
+            return "type_icon/txt.png";
         case "doc":
-            return "file_type_icon/doc.png";
+            return "type_icon/doc.png";
         case "docx":
-            return "file_type_icon/docx.png";
+            return "type_icon/docx.png";
         case "xls":
-            return "file_type_icon/xls.png";
+            return "type_icon/xls.png";
         case "xlsx":
-            return "file_type_icon/xlsx.png";
+            return "type_icon/xlsx.png";
         case "ppt":
-            return "file_type_icon/ppt.png";
+            return "type_icon/ppt.png";
         case "pptx":
-            return "file_type_icon/pptx.png";
+            return "type_icon/pptx.png";
         case "pdf":
-            return "file_type_icon/pdf.png";
+            return "type_icon/pdf.png";
+        case "gd":
+            return "type_icon/gd.png";
+        case "gw":
+            return "type_icon/gd.png";
         case "address":
             return "type_icon/address.png";
         case "website":
-            return "file_type_icon/url.png";
+            return "type_icon/web.png";
         case "file":
             return "type_icon/file.png";
         case "law":
             return "file_type_icon/readme.png";
         default :
-            return "type_icon/all.png";
+            return "type_icon/file.png";
     }
 
 }
@@ -403,7 +414,11 @@ function typeToName(filetype){
         case "xls":
             return "xls(x)";
         case "pdf":
-            return "pdf";
+            return "pdf"
+        case "gd":
+            return "gd/gw";
+        case "gw":
+            return "gd/gw";
         case "file":
             return "文件";
         case "address":

@@ -1,4 +1,8 @@
 @charset "UTF-8";
+body{
+    background-image: url("../custom/hsb/img/bg1.jpg");
+    background-size: 100%;
+}
 /* CSS Document */
 .form-bg {
     background: #00b4ef;

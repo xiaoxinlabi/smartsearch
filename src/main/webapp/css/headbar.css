@@ -6,7 +6,10 @@
 
 .pa-headbar-left{
     float: left;
+    vertical-align: middle;
 }
+
 .pa-headbar-right{
     float: right;
+    vertical-align: middle;
 }

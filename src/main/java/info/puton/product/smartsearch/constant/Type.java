@@ -23,6 +23,10 @@ public class Type {
 
     public final static String PDF = "pdf";
 
+    public final static String GD = "gd";
+
+    public final static String GW = "gw";
+
     public final static String ADDRESS = "address";
 
     public final static String WEBSITE = "website";

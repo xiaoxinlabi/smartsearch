@@ -47,12 +47,14 @@
         </script>
 
     </head>
-    <body>
+
+    <body style="background-color: transparent">
 
     <div class="pa-headbar">
 
         <span class="pa-headbar-left">
-            <a class="index">首页</a>
+            <%--<a class="index">首页</a>--%>
+            <a class="index"><img src="custom/hsb/img/hsb4.png" width="280px" height="35px"></a>
         </span>
 
         <span class="pa-headbar-right">
@@ -86,6 +88,4 @@
     </div>
 
     </body>
-
-</body>
 </html>

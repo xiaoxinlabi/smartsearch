@@ -36,7 +36,9 @@ public class SmartSearchDao {
     @Value("#{settings['maxHighlightedSize']}")
     private Integer maxHighlightedSize;
 
-    private String[] allFileTypes = {Type.DOC, Type.DOCX, Type.XLS, Type.XLSX, Type.PPT, Type.PPTX, Type.PDF, Type.TXT};
+    private String[] allIndexTypes = {Index.FILE_FULL_TEXT, Index.ADDRESS, Index.WEBSITE, Index.RDBMS};
+
+    private String[] allFileTypes = {Type.DOC, Type.DOCX, Type.XLS, Type.XLSX, Type.PPT, Type.PPTX, Type.PDF, Type.TXT, Type.GD, Type.GW};
 
     public PageModel<BaseSearchResult> queryResult(Map params){
 
@@ -88,27 +90,26 @@ public class SmartSearchDao {
 
         SearchRequestBuilder srb = elasticsearchTemplate
                 .getClient()
-                .prepareSearch(
-                        Index.FILE_FULL_TEXT,
-                        Index.ADDRESS,
-                        Index.WEBSITE,
-                        Index.RDBMS);
-        srb.setQuery(qb);
+                .prepareSearch(allIndexTypes);
 
         //type
         if(filterType!=null && !"".equals(filterType)){
             if(filterType.equals(Type.FILE)){
-                srb.setTypes(allFileTypes);
+                srb = elasticsearchTemplate.getClient().prepareSearch(Index.FILE_FULL_TEXT);
             } else if(filterType.equals(Type.DOC)){
                 srb.setTypes(Type.DOC, Type.DOCX);
             } else if(filterType.equals(Type.XLS)){
                 srb.setTypes(Type.XLS, Type.XLSX);
             } else if(filterType.equals(Type.PPT)){
                 srb.setTypes(Type.PPT, Type.PPTX);
+            } else if(filterType.equals(Type.GD)){
+                srb.setTypes(Type.GD, Type.GW);
             } else {
                 srb.setTypes(filterType);
             }
         }
+
+        srb.setQuery(qb);
 
         //highlight
         srb.addHighlightedField(Field.ORIGIN);

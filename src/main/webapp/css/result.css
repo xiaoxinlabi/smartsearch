@@ -8,8 +8,8 @@
 /*}*/
 
 .ss-icon-sm{
-    height: 20px;
-    width: 20px;
+    height: 15px;
+    width: 15px;
     vertical-align:middle;
 }
 
@@ -20,9 +20,16 @@
 
 .ss-result-row-title{
     vertical-align: middle;
-    font-size: 18px;
-    font-weight: bold;
-    text-decoration: underline;
+    font-weight: 400;
+    font-size: medium;
+}
+
+.body{
+    vertical-align: middle;
+    color: #555;
+    font-weight: 400;
+    font-size: small;
+    font-family: "宋体";
 }
 
 .ss-record-manage{
@@ -38,12 +45,52 @@
     height: 100%;
 }
 
+#ss-result-count{
+    color: #999;
+    margin-top: 10px;
+    margin-bottom: 8px;
+    font-size: small;
+}
+
+hr{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.ss-file-facet-list{
+    margin-top: 5px;
+}
+
 a{
     cursor: pointer;
 }
 
+.ss-file-facet-list a{
+    color: #555;
+}
+
+#ss-result-list{
+    margin-top: 10px;
+    font-size: small;
+}
+
+a.ss-result-row-title{
+    color: -webkit-link;
+    text-decoration: underline;
+}
+
+.ss-record-row{
+    margin-bottom: 10px;
+}
+
+.ss-result-row-content{
+    margin-top: 5px;
+}
+
+.ss-record-row .ss-icon-sm{
+    margin-right: 5px;
+}
+
 .ss-highlight {
-     /*background-color: yellow;*/
-     /*color: teal;*/
-    color:#B41116
+    color:#C00
 }

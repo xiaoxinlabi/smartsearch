@@ -35,7 +35,7 @@ public class ElasticSearchService implements BaseIndexer, FileIndexer, AddressIn
                         "  \"properties\": {\n" +
                         "    \"fileName\": {\n" +
                         "      \"type\": \"string\",\n" +
-                        "      \"analyzer\": \"" + Analyzer.IK_SMART + "\"\n" +
+                        "      \"analyzer\": \"" + Analyzer.IK + "\"\n" +
                         "    },\n" +
                         "    \"content\": {\n" +
                         "      \"type\": \"string\",\n" +
@@ -50,7 +50,7 @@ public class ElasticSearchService implements BaseIndexer, FileIndexer, AddressIn
                         "  \"properties\": {\n" +
                         "    \"fileName\": {\n" +
                         "      \"type\": \"string\",\n" +
-                        "      \"analyzer\": \"" + Analyzer.IK_SMART + "\"\n" +
+                        "      \"analyzer\": \"" + Analyzer.IK + "\"\n" +
                         "    },\n" +
                         "    \"content\": {\n" +
                         "      \"type\": \"string\",\n" +
@@ -65,7 +65,7 @@ public class ElasticSearchService implements BaseIndexer, FileIndexer, AddressIn
                         "  \"properties\": {\n" +
                         "    \"fileName\": {\n" +
                         "      \"type\": \"string\",\n" +
-                        "      \"analyzer\": \"" + Analyzer.IK_SMART + "\"\n" +
+                        "      \"analyzer\": \"" + Analyzer.IK + "\"\n" +
                         "    },\n" +
                         "    \"content\": {\n" +
                         "      \"type\": \"string\",\n" +
@@ -80,7 +80,7 @@ public class ElasticSearchService implements BaseIndexer, FileIndexer, AddressIn
                         "  \"properties\": {\n" +
                         "    \"fileName\": {\n" +
                         "      \"type\": \"string\",\n" +
-                        "      \"analyzer\": \"" + Analyzer.IK_SMART + "\"\n" +
+                        "      \"analyzer\": \"" + Analyzer.IK + "\"\n" +
                         "    },\n" +
                         "    \"content\": {\n" +
                         "      \"type\": \"string\",\n" +
@@ -95,7 +95,7 @@ public class ElasticSearchService implements BaseIndexer, FileIndexer, AddressIn
                         "  \"properties\": {\n" +
                         "    \"fileName\": {\n" +
                         "      \"type\": \"string\",\n" +
-                        "      \"analyzer\": \"" + Analyzer.IK_SMART + "\"\n" +
+                        "      \"analyzer\": \"" + Analyzer.IK + "\"\n" +
                         "    },\n" +
                         "    \"content\": {\n" +
                         "      \"type\": \"string\",\n" +
@@ -110,7 +110,7 @@ public class ElasticSearchService implements BaseIndexer, FileIndexer, AddressIn
                         "  \"properties\": {\n" +
                         "    \"fileName\": {\n" +
                         "      \"type\": \"string\",\n" +
-                        "      \"analyzer\": \"" + Analyzer.IK_SMART + "\"\n" +
+                        "      \"analyzer\": \"" + Analyzer.IK + "\"\n" +
                         "    },\n" +
                         "    \"content\": {\n" +
                         "      \"type\": \"string\",\n" +
@@ -125,7 +125,7 @@ public class ElasticSearchService implements BaseIndexer, FileIndexer, AddressIn
                         "  \"properties\": {\n" +
                         "    \"fileName\": {\n" +
                         "      \"type\": \"string\",\n" +
-                        "      \"analyzer\": \"" + Analyzer.IK_SMART + "\"\n" +
+                        "      \"analyzer\": \"" + Analyzer.IK + "\"\n" +
                         "    },\n" +
                         "    \"content\": {\n" +
                         "      \"type\": \"string\",\n" +
@@ -140,7 +140,7 @@ public class ElasticSearchService implements BaseIndexer, FileIndexer, AddressIn
                         "  \"properties\": {\n" +
                         "    \"fileName\": {\n" +
                         "      \"type\": \"string\",\n" +
-                        "      \"analyzer\": \"" + Analyzer.IK_SMART + "\"\n" +
+                        "      \"analyzer\": \"" + Analyzer.IK + "\"\n" +
                         "    },\n" +
                         "    \"content\": {\n" +
                         "      \"type\": \"string\",\n" +
@@ -149,6 +149,36 @@ public class ElasticSearchService implements BaseIndexer, FileIndexer, AddressIn
                         "  }\n" +
                         "}";
         elasticSearchDao.createSchema(Index.FILE_FULL_TEXT, Type.PDF, pdfSource);
+        //gd
+        String gdSource =
+                "{\n" +
+                        "  \"properties\": {\n" +
+                        "    \"fileName\": {\n" +
+                        "      \"type\": \"string\",\n" +
+                        "      \"analyzer\": \"" + Analyzer.IK + "\"\n" +
+                        "    },\n" +
+                        "    \"content\": {\n" +
+                        "      \"type\": \"string\",\n" +
+                        "      \"analyzer\": \"" + Analyzer.IK_SMART + "\"\n" +
+                        "    }\n" +
+                        "  }\n" +
+                        "}";
+        elasticSearchDao.createSchema(Index.FILE_FULL_TEXT, Type.GD, gdSource);
+        //gw
+        String gwSource =
+                "{\n" +
+                        "  \"properties\": {\n" +
+                        "    \"fileName\": {\n" +
+                        "      \"type\": \"string\",\n" +
+                        "      \"analyzer\": \"" + Analyzer.IK + "\"\n" +
+                        "    },\n" +
+                        "    \"content\": {\n" +
+                        "      \"type\": \"string\",\n" +
+                        "      \"analyzer\": \"" + Analyzer.IK_SMART + "\"\n" +
+                        "    }\n" +
+                        "  }\n" +
+                        "}";
+        elasticSearchDao.createSchema(Index.FILE_FULL_TEXT, Type.GW, gdSource);
     }
 
     @Override

@@ -21,8 +21,6 @@ import java.util.Map;
 @Service
 public class FileService implements FileHandler {
 
-    private String[] allFileTypes = {Type.DOC, Type.DOCX, Type.XLS, Type.XLSX, Type.PPT, Type.PPTX, Type.PDF, Type.TXT};
-
     @Autowired
     FileExtractor fileExtractor;
 
@@ -41,16 +39,10 @@ public class FileService implements FileHandler {
     @Override
     public void handleFile(String filePath, Map additional) throws Exception {
         String suffix = FileUtil.getFileSuffix(filePath);
-        if(Arrays.asList(allFileTypes).contains(suffix.toLowerCase())){
-            FileFullText fileFullText = fileExtractor.extract(new File(filePath), additional);
-            fileStorage.putFile(filePath, fileFullText.getId());
-            fileIndexer.addFile(fileFullText);
-            System.out.println("File handled. name:" + fileFullText.getFileName());
-        } else {
-            System.out.println("File ignored :" + filePath);
-            throw new FileException("不支持该文件类型！");
-        }
-
+        FileFullText fileFullText = fileExtractor.extract(new File(filePath), additional);
+        fileStorage.putFile(filePath, fileFullText.getId());
+        fileIndexer.addFile(fileFullText);
+        System.out.println("File handled. name:" + fileFullText.getFileName());
     }
 
 }
