@@ -102,6 +102,7 @@ public class HBaseDao {
         p1.add(Bytes.toBytes(columnFamily), Bytes.toBytes(qualifier), data);
         table.put(p1);
         System.out.println("Cell put. rowKey:" + rowKey);
+        table.close();
     }
 
     /**
@@ -154,6 +155,7 @@ public class HBaseDao {
         Get get = new Get(Bytes.toBytes(rowKey));
         Result result = table.get(get);
         System.out.println("Get: "+result);
+        table.close();
         return result;
     }
 
@@ -212,6 +214,7 @@ public class HBaseDao {
         Delete delete = new Delete(Bytes.toBytes(rowKey));
         table.delete(delete);
         System.out.println("Delete row: "+rowKey);
+        table.close();
     }
 
     /**

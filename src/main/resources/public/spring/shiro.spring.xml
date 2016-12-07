@@ -15,7 +15,7 @@
         <property name="filterChainDefinitions">
             <value>
                 <!-- 指定资源需要认证 -->
-                /admin.html = authc
+                /admin.jsp = authc
                 /rest/index/delete = user, perms[index:delete]
                 /rest/**/init = authc, perms[index:delete]
                 <!-- 静态资源允许访问 -->

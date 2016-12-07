@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -9,7 +12,7 @@
     <link href="assets/css/bootstrap.css" rel="stylesheet">
     <link href="assets/css/dashboard.css" rel="stylesheet">
     <link href="css/panel.css" rel="stylesheet" >
-    <title>智搜管理后台</title>
+    <title>管理后台</title>
 </head>
 
 <body>
@@ -18,7 +21,7 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <!--<img src="custom/hsb/img/hsb4.png" style="margin-left: -15px" />-->
-            <a class="navbar-brand" href="#">智搜管理后台</a>
+            <a class="navbar-brand" href="#">智能检索管理后台</a>
             <a class="navbar-brand" href="index.html" style="font-size: 15px;padding: 16px 13px;">返回首页</a>
         </div>
         <iframe src="admin-headbar.jsp" frameborder="0" scrolling="no" style="float:right;height: 50px;"></iframe>
@@ -29,14 +32,25 @@
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
-                <li id="ss-file" class="active"><a href="#">文件管理</a></li>
-                <li id="ss-address"><a href="#">通讯录管理</a></li>
-                <li id="ss-website"><a href="#">网址导航管理</a></li>
-                <li id="ss-index"><a href="#">索引管理</a></li>
-                <li id="ss-cache"><a href="#">缓存管理</a></li>
+                <shiro:hasPermission name="file:manage">
+                    <li id="ss-file" class="active"><a href="#">文件管理</a></li>
+                </shiro:hasPermission>
+                <shiro:hasPermission name="address:manage">
+                    <li id="ss-address"><a href="#">通讯录管理</a></li>
+                </shiro:hasPermission>
+                <shiro:hasPermission name="website:manage">
+                    <li id="ss-website"><a href="#">网址导航管理</a></li>
+                </shiro:hasPermission>
+                <shiro:hasPermission name="index:manage">
+                    <li id="ss-index"><a href="#">索引管理</a></li>
+                </shiro:hasPermission>
+                <shiro:hasPermission name="cache:manage">
+                    <li id="ss-cache"><a href="#">缓存管理</a></li>
+                </shiro:hasPermission>
             </ul>
         </div>
 
+        <shiro:hasPermission name="file:manage">
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main ss-panel" id="ss-file-panel">
             <!--<h1 class="page-header">文件上传</h1>-->
             <h1>文件上传</h1>
@@ -52,7 +66,9 @@
 
 
         </div>
+        </shiro:hasPermission>
 
+        <shiro:hasPermission name="address:manage">
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main ss-panel" id="ss-address-panel"
              style="display: none;">
             <!--<h1 class="page-header">通讯录录入</h1>-->
@@ -191,7 +207,9 @@
             </div>
 
         </div>
+        </shiro:hasPermission>
 
+        <shiro:hasPermission name="website:manage">
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main ss-panel" id="ss-website-panel"
              style="display: none">
             <h1>网址导航添加</h1>
@@ -246,7 +264,9 @@
             </div>
 
         </div>
+        </shiro:hasPermission>
 
+        <shiro:hasPermission name="index:manage">
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main ss-panel" id="ss-index-panel"
              style="display: none">
             <h1>索引管理</h1>
@@ -268,7 +288,9 @@
             </div>
 
         </div>
+        </shiro:hasPermission>
 
+        <shiro:hasPermission name="cache:manage">
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main ss-panel" id="ss-cache-panel"
              style="display: none">
             <h1>缓存管理</h1>
@@ -288,6 +310,7 @@
             </div>
 
         </div>
+        </shiro:hasPermission>
 
     </div>
 </div>

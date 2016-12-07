@@ -38,10 +38,10 @@ public class WebsiteController {
             websiteModel.setDescription(description);
             websiteModel.setContent(content);
             websiteIndexer.addWebsite(websiteModel);
-            return "redirect:/admin.html?status=ok";
+            return "redirect:/admin.jsp?status=ok";
         }catch (Exception e){
             e.printStackTrace();
-            return "redirect:/admin.html?status=error";
+            return "redirect:/admin.jsp?status=error";
         }
     }
 

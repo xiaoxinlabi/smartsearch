@@ -35,7 +35,7 @@ public class UserController {
         try {
             currentUser.login(token);
             result.put("status", "success");
-//            return "redirect:/admin.html";
+//            return "redirect:/admin.jsp";
         } catch (Exception e) {
             result.put("status", "error");
             result.put("detail", e.getLocalizedMessage());

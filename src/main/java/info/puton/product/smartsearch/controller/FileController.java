@@ -88,11 +88,11 @@ public class FileController {
             }
             fileHandler.handleFile(targetFile.getPath(), additional);
             targetFile.delete();
-            return "redirect:/admin.html?status=ok";
+            return "redirect:/admin.jsp?status=ok";
         } catch (Exception e) {
             e.printStackTrace();
             targetFile.delete();
-            return "redirect:/admin.html?status=error";
+            return "redirect:/admin.jsp?status=error";
         }
 
     }

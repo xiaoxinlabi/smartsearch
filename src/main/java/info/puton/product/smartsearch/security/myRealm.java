@@ -18,9 +18,15 @@ public class myRealm extends AuthorizingRealm {
         if(username.equals("admin")){
             info.addStringPermission("sysmgr:visit");
             info.addStringPermission("index:delete");
+            info.addStringPermission("file:manage");
+            info.addStringPermission("address:manage");
+            info.addStringPermission("website:manage");
+            info.addStringPermission("index:manage");
+            info.addStringPermission("cache:manage");
             info.addRole("admin");
         } else {
             info.addStringPermission("sysmgr:visit");
+            info.addStringPermission("file:manage");
             info.addRole("user");
         }
         return info;

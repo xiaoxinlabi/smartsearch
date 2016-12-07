@@ -35,7 +35,7 @@
                 })
 
                 $("a.sysmgr").on("click",function(){
-                    window.parent.location="admin.html";
+                    window.parent.location="admin.jsp";
                 })
 
                 $("a.about").on("click",function(){

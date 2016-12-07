@@ -72,10 +72,10 @@ public class AddressController {
             addressModel.setPosition(position);
             addressModel.setRemark(remark);
             addressIndexer.addAddress(addressModel);
-            return "redirect:/admin.html?status=ok";
+            return "redirect:/admin.jsp?status=ok";
         }catch (Exception e){
             e.printStackTrace();
-            return "redirect:/admin.html?status=error";
+            return "redirect:/admin.jsp?status=error";
         }
 
     }
@@ -109,11 +109,11 @@ public class AddressController {
             Map additional = new HashMap();
             addressHandler.handleFile(targetFile.getPath(), additional);
             targetFile.delete();
-            return "redirect:/admin.html?status=ok";
+            return "redirect:/admin.jsp?status=ok";
         } catch (Exception e) {
             e.printStackTrace();
             targetFile.delete();
-            return "redirect:/admin.html?status=error";
+            return "redirect:/admin.jsp?status=error";
         }
     }
 
