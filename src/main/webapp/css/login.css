@@ -9,11 +9,12 @@ body{
 }
 
 .form-horizontal {
+    top: 150px;
     background: #fff;
-    padding-bottom: 40px;
+    padding-bottom: 15px;
     border-radius: 15px;
     text-align: center;
-    behavior: url("/css/PIE.htc");
+    behavior: url(css/PIE.htc);
     position: relative;
 }
 
@@ -21,7 +22,7 @@ body{
     display: block;
     font-size: 35px;
     font-weight: 700;
-    padding: 90px 0 35px 0;
+    padding: 35px 0 35px 0;
     border-bottom: 1px solid #f0f0f0;
     margin-bottom: 30px;
 }
@@ -55,9 +56,6 @@ body{
 }
 
 .form-horizontal .form-group i {
-    position: absolute;
-    top: 12px;
-    left: 60px;
     font-size: 17px;
     color: #c8c8c8;
     transition: all 0.5s ease 0s;
@@ -70,8 +68,6 @@ body{
 .form-horizontal .fa-question-circle {
     display: inline-block;
     position: absolute;
-    top: 12px;
-    right: 60px;
     font-size: 20px;
     color: #808080;
     transition: all 0.5s ease 0s;
@@ -144,10 +140,4 @@ body{
     transition: all 0.5s ease 0s;
     behavior: url(css/PIE.htc);
     position: relative;
-}
-
-.userlogin{
-    float: left;
-    margin-left: 33%;
-
 }
