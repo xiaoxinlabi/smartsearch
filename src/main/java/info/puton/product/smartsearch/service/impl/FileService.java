@@ -1,7 +1,5 @@
 package info.puton.product.smartsearch.service.impl;
 
-import info.puton.product.smartsearch.constant.Type;
-import info.puton.product.smartsearch.exception.FileException;
 import info.puton.product.smartsearch.model.FileFullText;
 import info.puton.product.smartsearch.service.FileExtractor;
 import info.puton.product.smartsearch.service.FileIndexer;

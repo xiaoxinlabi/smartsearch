@@ -13,7 +13,7 @@ body{
     padding-bottom: 40px;
     border-radius: 15px;
     text-align: center;
-    behavior: url(css/PIE.htc);
+    behavior: url("/css/PIE.htc");
     position: relative;
 }
 

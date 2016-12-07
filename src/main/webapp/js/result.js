@@ -5,9 +5,6 @@
 // 分页功能
 var currentPage = 1, pageSize = 10;
 
-// 最大显示摘要
-var maxHighlightedSize = 250;
-
 $(function(){
 
     init();
@@ -168,7 +165,7 @@ function getResult(keyword, type, currentPage, pageSize){
                 }
 
                 if(record.content!=null && record.content!="null" && record.content!=""){
-                    content = record.content.length <= maxHighlightedSize ? record.content + "..." : record.content.substring(0,maxHighlightedSize) + "...";
+                    content = record.content + "..." ;
                 }else{
                     content = "";
                 }
@@ -279,6 +276,7 @@ function getResult(keyword, type, currentPage, pageSize){
                         '<p class="ss-result-row-content">' +
                         content +
                         '</p>' +
+                        '</div>' +
                         '</div>' +
                         '</div>' +
                         '';
