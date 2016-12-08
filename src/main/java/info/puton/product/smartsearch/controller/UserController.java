@@ -20,9 +20,6 @@ import java.util.Map;
 @RequestMapping(value="/user")
 public class UserController {
 
-    @Value("#{settings['successUrl']}")
-    private String successUrl;
-
     @ResponseBody
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public Map checkLogin(HttpServletRequest request) {

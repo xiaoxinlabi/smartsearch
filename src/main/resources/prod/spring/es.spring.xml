@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:elasticsearch="http://www.springframework.org/schema/data/elasticsearch"
+       xsi:schemaLocation="http://www.springframework.org/schema/data/elasticsearch
+        http://www.springframework.org/schema/data/elasticsearch/spring-elasticsearch.xsd
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <elasticsearch:transport-client id="client" cluster-nodes="tdhdn1:9300,tdhdn2:9300,tdhdn3:9300,tdhdn4:9300,tdhdn5:9300,tdhdn6:9300,tdhdn7:9300,tdhdn8:9300" cluster-name="elasticsearch1" client-transport-sniff="false" client-transport-ping-timeout="10s" />
+
+    <bean name="elasticsearchTemplate" class="org.springframework.data.elasticsearch.core.ElasticsearchTemplate">
+        <constructor-arg name="client" ref="client"/>
+    </bean>
+
+</beans>
