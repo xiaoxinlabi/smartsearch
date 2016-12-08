@@ -24,14 +24,6 @@ public class HBaseDao {
         HBASE_CONFIG.addResource("hadoop/hdfs-site.xml");
         HBASE_CONFIG.addResource("hadoop/hbase-site.xml");
         conf = HBaseConfiguration.create(HBASE_CONFIG);
-        try {
-            UserGroupInformation.setConfiguration(conf);
-            UserGroupInformation.loginUserFromKeytab(
-                    "hstdh",
-                    "hadoop/hstdh.keytab");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     /**
