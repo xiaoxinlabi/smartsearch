@@ -19,7 +19,7 @@ body {
 
 .form-horizontal {
     /*top: 300px;*/
-    top: 200px;
+    top: 220px;
     background: #fff;
     padding-bottom: 15px;
     border-radius: 15px;
@@ -29,10 +29,16 @@ body {
 }
 
 .form-horizontal .heading {
+    /*display: block;*/
+    /*font-size: 35px;*/
+    /*font-weight: 700;*/
+    /*padding: 35px 0 35px 0;*/
+    /*border-bottom: 1px solid #f0f0f0;*/
+    /*margin-bottom: 30px;*/
     display: block;
-    font-size: 35px;
+    font-size: 25px;
     font-weight: 700;
-    padding: 35px 0 35px 0;
+    padding: 18px 0 18px 0;
     border-bottom: 1px solid #f0f0f0;
     margin-bottom: 30px;
 }
