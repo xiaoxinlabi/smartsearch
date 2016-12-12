@@ -7,6 +7,7 @@ import info.puton.product.smartsearch.model.ActionResult;
 import info.puton.product.smartsearch.service.FileHandler;
 import info.puton.product.smartsearch.service.FileStorage;
 import info.puton.product.smartsearch.service.IConvertService;
+import info.puton.product.smartsearch.service.IQueryService;
 import info.puton.product.smartsearch.util.ServletUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
@@ -46,6 +47,19 @@ public class FileController {
 
     @Autowired
     IConvertService convertService;
+
+    @Autowired
+    IQueryService qs;
+
+    @ResponseBody
+    @RequestMapping(value = "/queryMine",method = RequestMethod.GET)
+    public ActionResult query(@RequestParam(value="keyword",defaultValue="") String keyword
+            ,@RequestParam(value="type",defaultValue="myfile") String type
+            ,@RequestParam(value="currentPage",defaultValue= "1") Integer currentPage
+            ,@RequestParam(value="pageSize",defaultValue="10") Integer pageSize){
+
+        return new ActionResult(qs.queryResult(keyword, type, currentPage, pageSize));
+    }
 
     @RequestMapping(value = "/upload", method = RequestMethod.POST)
     public String upload(@RequestParam(value = "file") MultipartFile file,

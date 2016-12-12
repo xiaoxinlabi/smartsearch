@@ -7,6 +7,8 @@ public class Type {
 
     public final static String FILE = "file";
 
+    public final static String MY_FILE = "myfile";
+
     public final static String TXT = "txt";
 
     public final static String DOC = "doc";

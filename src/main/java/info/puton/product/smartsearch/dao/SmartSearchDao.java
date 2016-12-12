@@ -1,9 +1,6 @@
 package info.puton.product.smartsearch.dao;
 
-import info.puton.product.smartsearch.constant.Field;
-import info.puton.product.smartsearch.constant.Group;
-import info.puton.product.smartsearch.constant.Index;
-import info.puton.product.smartsearch.constant.Type;
+import info.puton.product.smartsearch.constant.*;
 import info.puton.product.smartsearch.model.*;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
@@ -81,6 +78,12 @@ public class SmartSearchDao {
                 bqb_auth = bqb_auth.should(qbUser);
                 bqb = bqb.must(bqb_auth);
             }
+            //myfile
+            if(filterType.equals(Type.MY_FILE)){
+                QueryBuilder me = QueryBuilders.matchPhraseQuery(Field.OWNER, currentUser.getPrincipal().toString());
+                QueryBuilder upload = QueryBuilders.matchPhraseQuery(Field.ORIGIN, Origin.UPLOAD);
+                bqb=QueryBuilders.boolQuery().must(me).must(upload);
+            }
         } else{
             //guest
             bqb = bqb.must(bqb_auth);
@@ -94,7 +97,7 @@ public class SmartSearchDao {
 
         //type
         if(filterType!=null && !"".equals(filterType)){
-            if(filterType.equals(Type.FILE)){
+            if(filterType.equals(Type.FILE) || filterType.equals(Type.MY_FILE)){
                 srb = elasticsearchTemplate.getClient().prepareSearch(Index.FILE_FULL_TEXT);
             } else if(filterType.equals(Type.DOC)){
                 srb.setTypes(Type.DOC, Type.DOCX);
