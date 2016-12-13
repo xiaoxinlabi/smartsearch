@@ -306,6 +306,10 @@ public class SmartSearchDao {
                 if(highlightFields.containsKey("content")){
                     Text[] highlights = highlightFields.get("content").getFragments();
                     content = highlights[0].toString();
+                } else {
+                    if(content.length()> maxHighlightedSize){
+                        content = content.substring(0, maxHighlightedSize);
+                    }
                 }
 
                 result.setIndex(index);
