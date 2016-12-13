@@ -12,6 +12,9 @@ import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.highlight.HighlightField;
+import org.elasticsearch.search.sort.SortBuilder;
+import org.elasticsearch.search.sort.SortBuilders;
+import org.elasticsearch.search.sort.SortOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
@@ -142,6 +145,11 @@ public class SmartSearchDao {
 
         srb.setFrom(rowFrom.intValue());
         srb.setSize(pageSize);
+
+        //myfile
+        if(filterType.equals(Type.MY_FILE)){
+            srb = srb.addSort(SortBuilders.fieldSort(Field.TIMESTAMP).order(SortOrder.DESC));
+        }
 
         //action
         SearchResponse sr = srb.execute().actionGet();

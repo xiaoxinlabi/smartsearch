@@ -84,14 +84,9 @@
                 <div class="tab-pane fade" id="manageFile">
 
                     <div class="list-group" id="ss-result-list">
-                        <a href="#" class="list-group-item">
-                            <h4 class="list-group-item-heading">List group item heading</h4>
-                            <p class="list-group-item-text">...</p>
-                        </a>
-                        <a href="#" class="list-group-item">
-                            <h4 class="list-group-item-heading">List group item heading</h4>
-                            <p class="list-group-item-text">...</p>
-                        </a>
+
+
+
                     </div>
 
                     <div>

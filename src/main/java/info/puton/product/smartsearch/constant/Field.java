@@ -13,6 +13,8 @@ public class Field {
 
     public final static String GROUP = "group";
 
+    public final static String TIMESTAMP = "timestamp";
+
     //file
 
     public final static String FILE_NAME = "fileName";
