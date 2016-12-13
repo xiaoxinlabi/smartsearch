@@ -28,7 +28,7 @@ public class UserController {
         String password = request.getParameter("password");
         Subject currentUser = SecurityUtils.getSubject();
         UsernamePasswordToken token = new UsernamePasswordToken(username, password);
-        token.setRememberMe(true);
+        token.setRememberMe(false);
         try {
             currentUser.login(token);
             result.put("status", "success");
