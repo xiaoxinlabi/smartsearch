@@ -97,7 +97,7 @@ function getResult(keyword, type, currentPage, pageSize){
 
     var settings = {
         "async": true,
-        "url": "rest/query",
+        "url": "rest/query?"+Math.random(),
         "method": "GET",
         "headers": {
             "cache-control": "no-cache"

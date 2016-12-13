@@ -60,14 +60,14 @@ function getResult(currentPage, pageSize){
 
     var settings = {
         "async": true,
-        "url": "rest/file/queryMine",
+        "url": "rest/file/queryMine?"+Math.random(),
         "method": "GET",
         "headers": {
             "cache-control": "no-cache"
         },
         "data":{
             currentPage:currentPage,
-            pageSize:pageSize,
+            pageSize:pageSize
         }
     };
 
