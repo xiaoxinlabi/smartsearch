@@ -3,7 +3,7 @@
  */
 
 // 分页功能
-var currentPage = 1, pageSize = 10;
+var currentPage = 1, pageSize = 10, maxPages = 15;
 
 $(function(){
 
@@ -130,8 +130,8 @@ function getResult(currentPage, pageSize){
             tdsFileList.append(inHtml);
 
             var element = $('#ss-result-pagination');
-            var totalPages = (response.data.totalPages <= 5) ? response.data.totalPages : 5;
-            var numberOfPages = (response.data.totalPages <= 5) ? response.data.totalPages : 5;
+            var totalPages = (response.data.totalPages <= maxPages) ? response.data.totalPages : maxPages;
+            var numberOfPages = (response.data.totalPages <= maxPages) ? response.data.totalPages : maxPages;
             var currentPage = response.data.current;
             if(count==0){
                 currentPage=1;
