@@ -7,6 +7,7 @@ import org.elasticsearch.action.delete.DeleteResponse;
 import org.elasticsearch.action.get.GetResponse;
 import org.elasticsearch.action.index.IndexResponse;
 import org.elasticsearch.action.search.SearchResponse;
+import org.elasticsearch.action.update.UpdateResponse;
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,6 +61,13 @@ public class ElasticSearchDao {
         GetResponse response = elasticsearchTemplate.getClient().prepareGet(index, type, id).get();
         Map source = response.getSourceAsMap();
         return source;
+    }
+
+    public void updateDocument(String index, String type, String id, Map fields){
+        for (Object key : fields.keySet()) {
+//            System.out.println(fields.get(key));
+            UpdateResponse response = elasticsearchTemplate.getClient().prepareUpdate(index, type, id).setDoc(key, fields.get(key)).get();
+        }
     }
 
 }

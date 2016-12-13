@@ -305,6 +305,11 @@ public class ElasticSearchService implements BaseIndexer, FileIndexer, AddressIn
     }
 
     @Override
+    public void updateDocument(String index, String type, String id, Map fields) {
+        elasticSearchDao.updateDocument(index, type, id, fields);
+    }
+
+    @Override
     public void initRdbms() {
         try{
             elasticSearchDao.deleteIndex(Index.RDBMS);

@@ -13,4 +13,6 @@ public interface BaseIndexer {
 
     Map getDocument(String index, String type, String id);
 
+    void updateDocument(String index, String type, String id, Map fields);
+
 }

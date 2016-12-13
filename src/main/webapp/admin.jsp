@@ -381,7 +381,6 @@
 <script src="assets/js/jquery.js"></script>
 <script src="assets/js/bootstrap.js"></script>
 <!--<script src="assets/js/modernizr.js"></script>-->
-<%--<script src="assets/js/docs.js"></script>--%>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
 <script src="utils/js/bootstrap-paginator.min.js"></script>

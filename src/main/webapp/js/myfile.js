@@ -13,16 +13,39 @@ $(function(){
 
 function init(){
 
-    //$('#ss-result-list').on('click','.ss-record-index-delete', function () {
-    //    index = $(this).closest('.dropdown-menu').data('index');
-    //    type = $(this).closest('.dropdown-menu').data('type');
-    //    id = $(this).closest('.dropdown-menu').data('id');
-    //    deleteIndex(index, type, id);
-    //});
-    //
-    //$('#ss-result-list').on('click','.ss-file-down', function () {
-    //    window.open ('rest/file/download?id=' + $(this).data('id') + '&type=' + $(this).data('type'), 'newwindow');
-    //});
+    $('#ss-result-list').on('click','.ss-record-index-delete', function () {
+        index = $(this).parent().data('index');
+        type = $(this).parent().data('type');
+        id = $(this).parent().data('id');
+
+        if(confirm("确定删除吗？")){
+            deleteIndex(index, type, id);
+        }
+    });
+
+    $('#ss-result-list').on('click','.ss-record-index-share', function () {
+        index = $(this).parent().data('index');
+        type = $(this).parent().data('type');
+        id = $(this).parent().data('id');
+
+        if(confirm("确定共享吗？")){
+            shareIndex(index, type, id);
+        }
+    });
+
+    $('#ss-result-list').on('click','.ss-record-index-noshare', function () {
+        index = $(this).parent().data('index');
+        type = $(this).parent().data('type');
+        id = $(this).parent().data('id');
+
+        if(confirm("确定取消共享吗？")){
+            noShareIndex(index, type, id);
+        }
+    });
+
+    $('#ss-result-list').on('click','.ss-file-down', function () {
+        window.open ('rest/file/download?id=' + $(this).data('id') + '&type=' + $(this).data('type'), 'newwindow');
+    });
 
     refresh();
 
@@ -79,11 +102,22 @@ function getResult(currentPage, pageSize){
                     modifyDate = new Date();
                     modifyDate.setTime(record.lastModified);
 
-                    titleLink = '<span class="ss-result-row-title ss-file-down" data-id="' + record.id + '" data-type = "' + record.type + '"> '+ record.fileName +'</span>';
+                    if(record.group.indexOf("public")<0){
+                        shareImg = ' <img src="./img/type_icon/noshare.png" class="ss-icon-sm ss-record-index-share">';
+                    }else{
+                        shareImg = ' <img src="./img/type_icon/share.png" class="ss-icon-sm ss-record-index-noshare">';
+                    }
+
+                    indexDate = new Date(parseInt(record.timestamp)).toLocaleString();
+
+                    titleLink = '<img src="./img/' + typeToIcon(record.type) + '" class="ss-icon-sm">' +
+                        '<span class="ss-result-row-title ss-file-down" data-id="' + record.id + '" data-type = "' + record.type + '"> '+ record.fileName +'</span>'
+                        + shareImg +
+                        ' <img src="./img/type_icon/rubbish.png" class="ss-icon-sm ss-record-index-delete">' +
+                        '<span class="ss-result-row-timestamp">上传于 '+ indexDate + '</span>';
 
                     inHtml+='<a href="#" class="list-group-item">' +
-                        '<h5 class="list-group-item-heading">' +
-                        '<img src="./img/' + typeToIcon(record.type) + '" class="ss-icon-sm">' +
+                        '<h5 class="list-group-item-heading" data-id="' + record.id + '" data-type = "' + record.type + '" data-index = "'+ record.index +'">' +
                         titleLink +
                         '</h5>' +
                         '<p class="list-group-item-text">' +
@@ -125,9 +159,6 @@ function getResult(currentPage, pageSize){
 
 function deleteIndex(index, type, id){
 
-    $("#ss-file-type-selector").prop("disabled","disabled");
-    $("#search-button").button('loading');
-
     var settings = {
         "async": true,
         "url": "rest/index/delete",
@@ -145,6 +176,58 @@ function deleteIndex(index, type, id){
     $.ajax(settings).done(function (response) {
         if (response.success == true) {
             alert("删除成功，稍后生效。");
+        } else{
+            alert("没有相关权限！");
+        }
+        setTimeout("location.reload();",1000);
+    });
+}
+
+function shareIndex(index, type, id){
+
+    var settings = {
+        "async": true,
+        "url": "rest/index/share",
+        "method": "POST",
+        "headers": {
+            "cache-control": "no-cache"
+        },
+        "data":{
+            index:index,
+            type:type,
+            id:id
+        }
+    };
+
+    $.ajax(settings).done(function (response) {
+        if (response.success == true) {
+            alert("共享成功，稍后生效。");
+        } else{
+            alert("没有相关权限！");
+        }
+        setTimeout("location.reload();",1000);
+    });
+}
+
+function noShareIndex(index, type, id){
+
+    var settings = {
+        "async": true,
+        "url": "rest/index/noshare",
+        "method": "POST",
+        "headers": {
+            "cache-control": "no-cache"
+        },
+        "data":{
+            index:index,
+            type:type,
+            id:id
+        }
+    };
+
+    $.ajax(settings).done(function (response) {
+        if (response.success == true) {
+            alert("取消共享成功，稍后生效。");
         } else{
             alert("没有相关权限！");
         }

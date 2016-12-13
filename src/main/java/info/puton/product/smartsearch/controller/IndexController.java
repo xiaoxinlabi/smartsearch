@@ -1,5 +1,7 @@
 package info.puton.product.smartsearch.controller;
 
+import info.puton.product.smartsearch.constant.Field;
+import info.puton.product.smartsearch.constant.Group;
 import info.puton.product.smartsearch.constant.Index;
 import info.puton.product.smartsearch.model.ActionResult;
 import info.puton.product.smartsearch.service.BaseIndexer;
@@ -8,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.Map;
 
 
@@ -50,6 +53,30 @@ public class IndexController {
             , @RequestParam(value="id",defaultValue="") String id){
         Map source= baseIndexer.getDocument(index, type, id);
         return new ActionResult(source);
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/share", method = RequestMethod.POST)
+    public ActionResult share(
+            @RequestParam(value="index",defaultValue="") String index
+            , @RequestParam(value="type",defaultValue="") String type
+            , @RequestParam(value="id",defaultValue="") String id){
+        Map fields = new HashMap();
+        fields.put(Field.GROUP, Group.PUBLIC);
+        baseIndexer.updateDocument(index, type, id, fields);
+        return new ActionResult(true);
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/noshare", method = RequestMethod.POST)
+    public ActionResult noShare(
+            @RequestParam(value="index",defaultValue="") String index
+            , @RequestParam(value="type",defaultValue="") String type
+            , @RequestParam(value="id",defaultValue="") String id){
+        Map fields = new HashMap();
+        fields.put(Field.GROUP, Group.DEFAULT);
+        baseIndexer.updateDocument(index, type, id, fields);
+        return new ActionResult(true);
     }
 
 }
