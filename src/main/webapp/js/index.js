@@ -11,7 +11,14 @@ $(function () {
 
 function init() {
 
+
     $("#headbar").load(function() {
+        loginBox();
+    });
+    $("#headbar").ready(function() {
+        loginBox();
+    });
+
         $("#headbar").contents().find("#headbar-login").on("click", function () {
             $("#login").modal({
                 backdrop: 'static',
@@ -22,9 +29,8 @@ function init() {
         $(".btn-close").on("click", function () {
             //$("#login").hide();
             $("#login").modal("toggle");
-        })
+        });
 
-    });
 
     $("#search-button").on('click', function () {
 

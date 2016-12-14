@@ -14,18 +14,10 @@ $(function(){
 function init(){
 
     $("#headbar").load(function() {
-        $("#headbar").contents().find("#headbar-login").on("click", function () {
-            $("#login").modal({
-                backdrop: 'static',
-                keyboard: false
-            });
-        });
-
-        $(".btn-close").on("click", function () {
-            //$("#login").hide();
-            $("#login").modal("toggle");
-        })
-
+        loginBox();
+    });
+    $("#headbar").ready(function() {
+        loginBox();
     });
 
     if($_GET['wd']!=null && $_GET['wd']!=""){

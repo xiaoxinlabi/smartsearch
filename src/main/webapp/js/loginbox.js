@@ -38,3 +38,17 @@ function submit() {
         }
     });
 }
+
+function loginBox(){
+    $("#headbar").contents().find("#headbar-login").on("click", function () {
+        $("#login").modal({
+            backdrop: 'static',
+            keyboard: false
+        });
+    });
+
+    $(".btn-close").on("click", function () {
+        //$("#login").hide();
+        $("#login").modal("toggle");
+    });
+}
