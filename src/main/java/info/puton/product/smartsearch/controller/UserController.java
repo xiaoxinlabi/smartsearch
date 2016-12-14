@@ -26,11 +26,11 @@ public class UserController {
         Map<String, Object> result = new HashMap<String, Object>();
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        Subject currentUser = SecurityUtils.getSubject();
+        Subject subject = SecurityUtils.getSubject();
         UsernamePasswordToken token = new UsernamePasswordToken(username, password);
         token.setRememberMe(false);
         try {
-            currentUser.login(token);
+            subject.login(token);
             result.put("status", "success");
 //            return "redirect:/admin.jsp";
         } catch (Exception e) {

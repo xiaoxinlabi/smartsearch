@@ -28,11 +28,7 @@ function submit() {
             } else if ($("#password").val() == "") {
                 alert("密码不能为空！");
             } else if (data.status == "success") {
-                loginUrl = 'http://zhoa.hsbank.com/names.nsf?login&username='+$("#username").val()+'&password='+$("#password").val();
-                //alert(loginUrl);
-                $('#oaLoginPage').prop('src', loginUrl);
-                setTimeout(1000);
-                window.location.href = "index.html";
+                location.reload();
             } else if (data.status == "error") {
                 alert("用户名或密码错误！");
             }

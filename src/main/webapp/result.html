@@ -16,7 +16,7 @@
   <script src="assets/js/html5shiv.min.js"></script>
   <script src="assets/js/respond.min.js"></script>
   <![endif]-->
-
+  <!--<link rel="stylesheet" href="css/login.css">-->
   <link href="css/result.css" rel="stylesheet">
   
 </head>
@@ -136,6 +136,31 @@
     <iframe id="footer" src="custom/hsb/footer.html" width="100%" height="50px" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
   </div>
 
+  <div class="col-md-4 col-md-offset-4" id="login" style="display:none">
+    <form class="form-horizontal">
+            <span class="heading">
+                用户登录
+                <i class="icon-remove btn-close"></i>
+            </span>
+
+      <div class="form-group form-input">
+        <i class="icon-user" style="float:left"></i>
+        <input type="name" name="username" class="form-control" id="username" placeholder="OA用户名" required="required">
+      </div>
+
+      <div class="form-group form-input">
+        <i class="icon-lock" style="float:left"></i>
+        <input type="password" name="password" class="form-control" id="password" placeholder="OA密码" required="required">
+      </div>
+
+      <div class="form-group">
+        <div id="ss-login-btn" class="btn btn-primary">登录</div>
+        <!--<input type="submit" class="btn btn-default" placeholder="登录">-->
+      </div>
+
+    </form>
+  </div>
+
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="assets/js/jquery.min.js"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -145,6 +170,7 @@
 
   <script src="js/common.js"></script>
   <script src="js/result.js"></script>
+  <script src="js/login.js"></script>
 
 </body>
 </html>

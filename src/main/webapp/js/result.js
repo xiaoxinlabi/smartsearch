@@ -13,6 +13,21 @@ $(function(){
 
 function init(){
 
+    $("#headbar").load(function() {
+        $("#headbar").contents().find("#headbar-login").on("click", function () {
+            $("#login").modal({
+                backdrop: 'static',
+                keyboard: false
+            });
+        });
+
+        $(".btn-close").on("click", function () {
+            //$("#login").hide();
+            $("#login").modal("toggle");
+        })
+
+    });
+
     if($_GET['wd']!=null && $_GET['wd']!=""){
         $("#search-wd").val(decodeURIComponent($_GET['wd']));
 
@@ -73,7 +88,9 @@ function init(){
 
     $(document).keyup(function(event){
         if(event.keyCode ==13){
-            $("#search-button").trigger("click");
+            if($("#login").css("display")=="none"){
+                $("#search-button").trigger("click");
+            }
         }
     });
 
