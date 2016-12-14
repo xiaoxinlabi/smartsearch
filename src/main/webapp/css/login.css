@@ -19,55 +19,74 @@ body {
 
 .form-horizontal {
     /*top: 300px;*/
-    top: 220px;
+    top: 120px;
     background: #fff;
-    padding-bottom: 15px;
-    border-radius: 15px;
-    text-align: center;
-    behavior: url(css/PIE.htc);
+    padding-bottom: 1px;
+    /*border-radius: 15px;*/
+    /*text-align: center;*/
+    /*behavior: url(css/PIE.htc);*/
     position: relative;
+    z-index: 100;
 }
 
 .form-horizontal .heading {
-    /*display: block;*/
     /*font-size: 35px;*/
     /*font-weight: 700;*/
     /*padding: 35px 0 35px 0;*/
     /*border-bottom: 1px solid #f0f0f0;*/
-    /*margin-bottom: 30px;*/
     display: block;
-    font-size: 25px;
+    font-size: 16px;
     font-weight: 700;
-    padding: 18px 0 18px 0;
+    padding: 13px 0 13px 20px;
     border-bottom: 1px solid #f0f0f0;
     margin-bottom: 30px;
+    background-color: #f7f7f7;
+    border: 1px solid #ddd;
+    border-width: 1px 1px 0;
+    border-bottom: 0;
+    color: #666;
+}
+.form-horizontal .heading i{
+    font-size: 20px;
+}
+
+.form-horizontal .btn-close{
+    float:right;
+    padding-right:20px;
+    cursor: pointer;
 }
 
 .form-horizontal .form-group {
-    padding: 0 40px;
-    margin: 0 0 25px 0;
+    padding-left:10px;
+    /*padding-right:20px;*/
+    margin: 0 20px 25px 20px;
     position: relative;
+}
+
+.form-horizontal .form-input{
+    border: 1px solid #ddd;
 }
 
 .form-horizontal .form-control {
-    background: #f0f0f0;
+    /*background: #f0f0f0;*/
     border: none;
-    border-radius: 20px;
+    /*border-radius: 20px;*/
     box-shadow: none;
-    /*padding: 0 20px 0 45px;*/
-    /*height: 40px;*/
-    padding: 10px 20px 10px 45px;
     height: 40px;
     transition: all 0.3s ease 0s;
-    behavior: url(css/PIE.htc);
+    /*behavior: url(css/PIE.htc);*/
     position: relative;
+    /*width: 205px;*/
+    width: auto;
+    float:left;
+    padding: 10px 10px 10px 12px;
 }
 
 .form-horizontal .form-control:focus {
-    background: #e0e0e0;
+    /*background: #e0e0e0;*/
     box-shadow: none;
     outline: 0 none;
-    behavior: url(css/PIE.htc);
+    /*behavior: url(css/PIE.htc);*/
     position: relative;
 }
 
@@ -75,6 +94,7 @@ body {
     font-size: 17px;
     color: #c8c8c8;
     transition: all 0.5s ease 0s;
+    padding: 10px 0 0 0;
 }
 
 .form-horizontal .form-control:focus + i {
@@ -98,44 +118,13 @@ body {
     width: 20px;
     height: 20px;
     background: #428bca;
-    border-radius: 50%;
+    /*border-radius: 50%;*/
     position: relative;
     margin: 5px 0 0 5px;
     border: 1px solid #428bca;
-    behavior: url(css/PIE.htc);
+    /*behavior: url(css/PIE.htc);*/
 }
 
-/*.form-horizontal .main-checkbox label {*/
-/*width: 20px;*/
-/*height: 20px;*/
-/*position: absolute;*/
-/*top: 0;*/
-/*left: 0;*/
-/*cursor: pointer;*/
-/*}*/
-
-/*.form-horizontal .main-checkbox label:after {*/
-/*content: "";*/
-/*width: 10px;*/
-/*height: 5px;*/
-/*position: absolute;*/
-/*top: 5px;*/
-/*left: 4px;*/
-/*border: 3px solid #fff;*/
-/*border-top: none;*/
-/*border-right: none;*/
-/*background: transparent;*/
-/*opacity: 0;*/
-/*-webkit-transform: rotate(-45deg);*/
-/*transform: rotate(-45deg);*/
-/*}*/
-/*.form-horizontal .main-checkbox input[type=checkbox] {*/
-/*visibility: hidden;*/
-/*}*/
-
-/*.form-horizontal .main-checkbox input[type=checkbox]:checked + label:after {*/
-/*opacity: 1;*/
-/*}*/
 
 .form-horizontal .text {
     float: left;
@@ -148,11 +137,11 @@ body {
 .form-horizontal .btn {
     float: right;
     font-size: 14px;
-    border-radius: 30px;
+    /*border-radius: 30px;*/
     padding: 10px 25px;
     border: none;
     text-transform: capitalize;
     transition: all 0.5s ease 0s;
-    behavior: url(css/PIE.htc);
+    /*behavior: url(css/PIE.htc);*/
     position: relative;
 }
