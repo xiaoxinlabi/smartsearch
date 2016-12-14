@@ -1,91 +1,134 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-  <title>智能检索平台</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>智能检索平台</title>
 
-  <!-- Bootstrap -->
-  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <!--[if IE 7]>
+    <link rel="stylesheet" href="assets/css/font-awesome-ie7.min.css">
+    <![endif]-->
+    <link rel="stylesheet" href="css/login.css">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="assets/js/html5shiv.min.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
 
-  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-  <script src="assets/js/html5shiv.min.js"></script>
-  <script src="assets/js/respond.min.js"></script>
-  <![endif]-->
-
-  <link href="css/index.css" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
 
 </head>
 <body>
 
 <div class="container">
 
-  <div class="row">
-    <iframe id="headbar" src="headbar.jsp" width="100%" height="50px" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
-  </div>
+    <div class="row">
+        <iframe id="headbar" src="headbar.jsp" width="100%" height="50px" frameborder="0" scrolling="no"
+                allowtransparency="true"></iframe>
+    </div>
 
-  <!--<div class="row ss-content-logo">-->
+    <!--<div class="row ss-content-logo">-->
 
     <!--<div class="col-md-1 col-md-offset-4 col-sm-1 col-sm-offset-3 col-xs-1 col-xs-offset-0">-->
 
-      <!--<div class="ss-content-logo-image">-->
-        <!--<img src="img/hsb_icon.png" width="60px" height="60px">-->
-      <!--</div>-->
+    <!--<div class="ss-content-logo-image">-->
+    <!--<img src="img/hsb_icon.png" width="60px" height="60px">-->
+    <!--</div>-->
 
     <!--</div>-->
 
     <!--<div class="col-md-4 col-md-offset-0 col-sm-5 col-sm-offset-0 col-xs-10 col-xs-offset-1">-->
-      <!--<span class="ss-content-logo-text">徽商智能搜</span>-->
+    <!--<span class="ss-content-logo-text">徽商智能搜</span>-->
     <!--</div>-->
 
-  <!--</div>-->
+    <!--</div>-->
 
-  <div class="row ss-content-search">
+    <div class="row ss-content-search">
 
-    <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-8 col-md-offset-2">
 
-      <div class="input-group">
+            <div class="input-group">
 
-        <div class="input-group-btn">
-          <button type="button" class="btn btn-primary btn-lg dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="ss-file-type-selector">所有 <span class="caret"></span></button>
-          <ul class="dropdown-menu">
-            <li class="ss-type-item" data-id=""><a>所有</a></li>
-            <li role="separator" class="divider"></li>
-            <li class="dropdown-header">类型</li>
-            <li class="ss-type-item" data-id="file"><a><img src="img/type_icon/file.png" class="ss-icon-sm"> 文件</a></li>
-            <li class="ss-type-item" data-id="address"><a><img src="img/type_icon/address.png" class="ss-icon-sm"> 通讯录</a></li>
-            <li class="ss-type-item" data-id="website"><a><img src="img/type_icon/web.png" class="ss-icon-sm"> 网页</a></li>
-            <!--<li class="ss-type-item" data-id="law"><a><img src="img/file_type_icon/readme.png" class="ss-icon-sm"> 内控合规</a></li>-->
-            <li class="dropdown-header">文件格式</li>
-            <li class="ss-type-item" data-id="txt"><a><img src="img/type_icon/txt.png" class="ss-icon-sm"> txt</a></li>
-            <li class="ss-type-item" data-id="doc"><a><img src="img/type_icon/doc.png" class="ss-icon-sm"> doc(x)</a></li>
-            <li class="ss-type-item" data-id="ppt"><a><img src="img/type_icon/ppt.png" class="ss-icon-sm"> ppt(x)</a></li>
-            <li class="ss-type-item" data-id="xls"><a><img src="img/type_icon/xls.png" class="ss-icon-sm"> xls(x)</a></li>
-            <li class="ss-type-item" data-id="pdf"><a><img src="img/type_icon/pdf.png" class="ss-icon-sm"> pdf</a></li>
-            <li class="ss-type-item" data-id="gd"><a><img src="img/type_icon/gd.png" class="ss-icon-sm"> gd/gw</a></li>
-          </ul>
-        </div>
+                <div class="input-group-btn">
+                    <button type="button" class="btn btn-primary btn-lg dropdown-toggle" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false" id="ss-file-type-selector">所有 <span
+                            class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                        <li class="ss-type-item" data-id=""><a>所有</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li class="dropdown-header">类型</li>
+                        <li class="ss-type-item" data-id="file"><a><img src="img/type_icon/file.png" class="ss-icon-sm">
+                            文件</a></li>
+                        <li class="ss-type-item" data-id="address"><a><img src="img/type_icon/address.png"
+                                                                           class="ss-icon-sm"> 通讯录</a></li>
+                        <li class="ss-type-item" data-id="website"><a><img src="img/type_icon/web.png"
+                                                                           class="ss-icon-sm"> 网页</a></li>
+                        <!--<li class="ss-type-item" data-id="law"><a><img src="img/file_type_icon/readme.png" class="ss-icon-sm"> 内控合规</a></li>-->
+                        <li class="dropdown-header">文件格式</li>
+                        <li class="ss-type-item" data-id="txt"><a><img src="img/type_icon/txt.png" class="ss-icon-sm">
+                            txt</a></li>
+                        <li class="ss-type-item" data-id="doc"><a><img src="img/type_icon/doc.png" class="ss-icon-sm">
+                            doc(x)</a></li>
+                        <li class="ss-type-item" data-id="ppt"><a><img src="img/type_icon/ppt.png" class="ss-icon-sm">
+                            ppt(x)</a></li>
+                        <li class="ss-type-item" data-id="xls"><a><img src="img/type_icon/xls.png" class="ss-icon-sm">
+                            xls(x)</a></li>
+                        <li class="ss-type-item" data-id="pdf"><a><img src="img/type_icon/pdf.png" class="ss-icon-sm">
+                            pdf</a></li>
+                        <li class="ss-type-item" data-id="gd"><a><img src="img/type_icon/gd.png" class="ss-icon-sm">
+                            gd/gw</a></li>
+                    </ul>
+                </div>
 
-        <input type="text" class="form-control input-lg" id="search-wd" required="required">
+                <input type="text" class="form-control input-lg" id="search-wd" required="required">
 			      <span class="input-group-btn">
-              <button class="btn btn-lg btn-primary" type="button" id="search-button" data-loading-text="正在查询..." autocomplete="off">
-                <strong>搜索一下</strong>
+              <button class="btn btn-lg btn-primary" type="button" id="search-button" data-loading-text="正在查询..."
+                      autocomplete="off">
+                  <strong>搜索一下</strong>
               </button>
 			      </span>
-      </div>
+            </div>
+
+        </div>
 
     </div>
 
+    <div class="col-md-4 col-md-offset-4" id="login" style="display:none">
+    <form class="form-horizontal">
+        <span class="heading">
+            用户登录
+            <i class="icon-remove btn-close"></i>
+        </span>
+
+      <div class="form-group form-input">
+        <i class="icon-user" style="float:left"></i>
+        <input type="name" name="username" class="form-control" id="username" placeholder="OA用户名"
+               required="required">
+      </div>
+
+      <div class="form-group form-input">
+        <i class="icon-lock" style="float:left"></i>
+        <input type="password" name="password" class="form-control" id="password" placeholder="OA密码"
+               required="required">
+      </div>
+      <div class="form-group">
+        <div id="ss-login-btn" class="btn btn-primary">登录</div>
+        <!--<input type="submit" class="btn btn-default" placeholder="登录">-->
+      </div>
+    </form>
   </div>
 
 </div>
 
 <div style="width:100%; position: fixed;bottom: 0;">
-  <iframe id="footer" src="custom/hsb/footer.html" width="100%" height="50px" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
+    <iframe id="footer" src="custom/hsb/footer.html" width="100%" height="50px" frameborder="0" scrolling="no"
+            allowtransparency="true"></iframe>
 </div>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -95,6 +138,7 @@
 
 <script src="js/common.js"></script>
 <script src="js/index.js"></script>
+<script src="js/login.js"></script>
 
 </body>
 </html>

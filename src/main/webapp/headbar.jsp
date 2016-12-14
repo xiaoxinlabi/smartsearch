@@ -1,56 +1,54 @@
-<%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="utf-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="utf-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title></title>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
 
-        <script src="assets/js/jquery.min.js" type="text/javascript"></script>
+    <script src="assets/js/jquery.min.js" type="text/javascript"></script>
+    <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/headbar.css">
+    <%--<link href="css/headbar.css" rel="stylesheet" type="text/css" />--%>
+    <%--<link href="css/login.css" rel="stylesheet" type="text/css" />--%>
+    <script src="js/common.js" type="text/javascript"></script>
 
-        <link href="css/headbar.css" rel="stylesheet" type="text/css" />
-        <script src="js/common.js" type="text/javascript"></script>
+    <style>
+        a {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    </style>
 
-        <style>
-            a {
-                text-decoration: underline;
-                cursor: pointer;
-            }
-        </style>
+    <script>
+        $(document).ready(function () {
 
-        <script>
-            $(document).ready(function(){
+            $("a.index").on("click", function () {
+                window.parent.location = "index.html";
+            })
 
-                $("a.index").on("click",function(){
-                    window.parent.location="index.html";
-                })
+            $("a.logout").on("click", function () {
+                window.parent.location = "rest/user/logout";
+            })
 
-                $("a.login").on("click",function(){
-                    window.parent.location="login.html";
-                })
+            $("a.sysmgr").on("click", function () {
+                window.parent.location = "admin.jsp";
+            })
 
-                $("a.logout").on("click",function(){
-                    window.parent.location="rest/user/logout";
-                })
+            $("a.about").on("click", function () {
+                alert("谢谢。");
+            })
+        });
 
-                $("a.sysmgr").on("click",function(){
-                    window.parent.location="admin.jsp";
-                })
+    </script>
 
-                $("a.about").on("click",function(){
-                    alert("谢谢。");
-                })
+</head>
 
-            });
+<body style="background-color: transparent">
 
-        </script>
-
-    </head>
-
-    <body style="background-color: transparent">
-
-    <div class="pa-headbar">
+<div class="pa-headbar">
 
         <span class="pa-headbar-left">
             <%--<a class="index">首页</a>--%>
@@ -76,16 +74,15 @@
             </shiro:user>
 
             <shiro:guest>
-                您未登录，请<a class="login">登录</a>后搜索更多结果。
+                您未登录，请<a class="login" id="headbar-login">登录</a>后搜索更多结果。
             </shiro:guest>
 
         </span>
 
-    </div>
+</div>
+<div id="user" style="display: none">
+    <shiro:principal/>
+</div>
 
-    <div id="user" style="display: none">
-        <shiro:principal/>
-    </div>
-
-    </body>
+</body>
 </html>
