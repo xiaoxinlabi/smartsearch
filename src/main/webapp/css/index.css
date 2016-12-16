@@ -1,34 +1,166 @@
-.ss-icon-sm{
+.ss-icon-sm {
     height: 20px;
     width: 20px;
 }
 
-.ss-content-logo{
+.ss-content-logo {
     margin-top: 15%;
     /*position: fixed;*/
 }
 
-.ss-content-logo-image{
+.ss-content-logo-image {
     vertical-align: middle;
     text-align: right;
 }
 
-.ss-content-logo-text{
+.ss-content-logo-text {
     vertical-align: middle;
     text-align: left;
     font-size: 45px;
     color: #B41116;
 }
 
-.ss-content-logo-text .right{
+.ss-content-logo-text .right {
     vertical-align: middle;
     text-align: left;
     font-size: 45px;
     color: #B41116;
 }
 
-.ss-content-search{
+.ss-content-search {
     margin-top: 30px;
     /*position: fixed;*/
 }
 
+.ss-content-nav {
+    width: 893px;
+    min-height: 363px;
+    border: 1px solid #e9e9e9;
+    margin: 80px auto;
+}
+
+.ss-content-nav .ss-nav-container {
+    width: 844px;
+    overflow: hidden;
+    margin: 13px auto;
+
+}
+
+.ss-content-nav .ss-nav-title {
+    position: relative;
+    z-index: 0;
+    height: 36px;
+    width: 100%;
+    text-align: left;
+    font-size: 14px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.ss-content-nav .title-content {
+    height: 100%;
+    line-height: 30px;
+    cursor: pointer;
+}
+
+.ss-content-nav .title-content .mine-title .mine-title-icon {
+    position: relative;
+    z-index: 0;
+    font-size: 0;
+    height: 10px;
+    width: 10px;
+    margin-right: 6px;
+    display: inline-block;
+    zoom: 1;
+    vertical-align: middle;
+}
+
+.ss-content-nav .title-content .mine-title .mine-title-text {
+    line-height: 30px;
+    height: 30px;
+    font-weight: bold;
+    margin-right: 4px;
+    display: inline-block;
+    zoom: 1;
+    vertical-align: middle;
+}
+
+.ss-content-nav .title-content .mine-title .mine-title-icon em {
+    position: absolute;
+    top: 3px;
+    left: 0;
+    height: 0;
+    line-height: 0;
+    width: 0;
+    font-size: 0;
+    border: 5px dashed transparent;
+    border-top: 5px solid #666;
+}
+
+.ss-content-nav .ss-nav-content {
+    text-align: left;
+    position: relative;
+    width: 850px;
+    /*border-top: 1px solid #f0f0f0;*/
+    padding-bottom: 15px;
+    font-size: 14px;
+    margin-left: 18px;
+    /*border-bottom: 1px solid #f0f0f0;*/
+}
+
+.ss-content-nav .nav-item {
+    display: inline-block;
+    zoom: 1;
+    height: 44px;
+    line-height: 44px;
+    width: 200px;
+    cursor: pointer;
+    /*border-bottom: 1px solid #f0f0f0;*/
+}
+
+.ss-content-nav .nav-item .border-for-item {
+    display: block;
+    height: 41px;
+    width: 200px;
+    border: 1px solid transparent;
+    _border-color: tomato;
+    text-decoration: none;
+    color: #333
+}
+
+.ss-content-nav .nav-icon {
+    display: inline-block;
+    zoom: 1;
+    vertical-align: top;
+    height: 16px;
+    width: 16px;
+    margin-top: 12px;
+}
+.ss-content-nav .border-for-item .nav-text {
+    display: inline-block;
+    line-height: 41px;
+    height: 41px;
+    margin-left: 5px;
+    text-align: left;
+    width: 173px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.ss-content-nav .nav-item a:hover {
+    background-color:#f0f0f0;
+}
+.ss-content-nav .nav-text .nav-text-content{
+    display: inline-block;
+    zoom: 1;
+    vertical-align: top;
+    max-width: 100%;
+    _width: 100%;
+    height: 100%;
+    float: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
